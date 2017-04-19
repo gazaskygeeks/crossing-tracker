@@ -10,7 +10,8 @@
     "server:watch": "nodemon -x 'npm start'",
     "watch": "webpack -w",
     "build": "webpack"
-  },"pre-commit": [
+  },
+  "pre-commit": [
     "lint"
   ],
   "repository": {
@@ -52,7 +53,6 @@
   },
   "dependencies": {
     "aguid": "^2.0.0",
-    "bcrypt": "^1.0.2",
     "codeclimate-test-reporter": "^0.4.1",
     "env2": "^2.1.1",
     "hapi": "^16.1.1",
