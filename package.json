@@ -6,7 +6,7 @@
   "scripts": {
     "lint": "eslint ./ --cache --ignore-pattern .gitignore",
     "test": "node tests/test.js",
-    "start": "node index.js && npm run migrate",
+    "start": "npm run migrate && node index.js",
     "server:watch": "nodemon -x 'npm start'",
     "watch": "webpack -w",
     "build": "webpack",
