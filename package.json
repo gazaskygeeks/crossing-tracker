@@ -9,7 +9,8 @@
     "start": "node index.js",
     "server:watch": "nodemon -x 'npm start'",
     "watch": "webpack -w",
-    "build": "webpack"
+    "build": "webpack",
+    "migrate":"node scripts/migrate.js"
   },
   "pre-commit": [
     "lint"
