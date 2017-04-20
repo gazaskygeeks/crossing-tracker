@@ -15,7 +15,7 @@ const config = {
     database: 'tests',
     port: 5432
   },
-  heruko : {
+  heroku : {
     user: process.env.HEROKU_USER,
     password: process.env.HEROKU_PASSWORD,
     database: process.env.HEROKU_DATABASE,
@@ -24,7 +24,7 @@ const config = {
     ssl: process.env.HEROKU_SSL
   }
 }
-const client = new pg.Client(config.heruko);
+const client = new pg.Client(config.heroku);
 client.connect(function(err) {
   if (err) {
     return err;
