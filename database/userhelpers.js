@@ -9,8 +9,24 @@ function getuserbyusername (username,cb){
   dbutils.select(query,[username],cb)
 }
 function createuser (data,cb){
-  const query = 'insert into users (username,email,password,phone,user_type,approved) values ($1, $2, $3, $4, $5, $6)'
-  dbutils.insert(query,[data.username,data.email,data.password,data.phone,data.user_type,data.approved],cb);
+  const query = `insert into users
+   (username,
+    email,
+    password,
+    phone,
+    user_type,
+    approved)
+    values ($1, $2, $3, $4, $5, $6)`
+  dbutils.insert(
+    query,
+    [
+      data.username,
+      data.email,
+      data.password,
+      data.phone,
+      data.user_type,
+      data.approved
+    ],cb);
 }
 module.exports = {
   getuserbyemail:getuserbyemail,
