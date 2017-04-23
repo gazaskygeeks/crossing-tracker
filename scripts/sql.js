@@ -11,7 +11,9 @@ const users = `CREATE TABLE IF NOT EXISTS users (
     email varchar(100),
     password varchar(255),
     phone varchar(15),
-    org_id INT references org(org_id)
+    org_id INT references org(org_id),
+    user_type varchar(25),
+    approved INT SET DEFAULT 0
   );`;
 const trip = `CREATE TABLE IF NOT EXISTS trip (
     trip_id serial PRIMARY KEY,
