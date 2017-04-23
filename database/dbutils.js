@@ -1,7 +1,7 @@
-
+const client = require('./config.js');
 const table = require('../scripts/sql.js');
 
-function createTable(client, cb) {
+function createTable(cb) {
   const tables = `${table.org}
   ${table.location}
   ${table.users}
@@ -9,6 +9,29 @@ function createTable(client, cb) {
   ${table.usertrip}`
   client.query(tables, cb);
 }
+
+function select (query,condition,cb){
+  client.query(query,condition,(errSelect,result)=>{
+    if (errSelect){
+      cb(errSelect,undefined)
+    }
+    else {
+      cb (errSelect,result.rows)
+    }
+  })
+}
+function insert (query,data,cb) {
+  client.query(query,data, (errInsert) => {
+    if (errInsert) {
+      cb(errInsert);
+    }else{
+      cb(errInsert);
+    }
+  });
+}
+
 module.exports = {
-  createTable: createTable
+  createTable: createTable,
+  select:select,
+  insert:insert
 }

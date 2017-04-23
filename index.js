@@ -1,5 +1,4 @@
 const server = require('./backend/server.js');
-
 server.start((err) => {
   if (err) {
     throw err

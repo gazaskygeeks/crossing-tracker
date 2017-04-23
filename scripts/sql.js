@@ -1,6 +1,7 @@
 const org = `CREATE TABLE IF NOT EXISTS org (
   org_id serial PRIMARY KEY,
-  org_name varchar(50));`;
+  org_name varchar(50)
+);`;
 const location = `CREATE TABLE IF NOT EXISTS location (
     location_id serial PRIMARY KEY,
     location_name varchar(50)
@@ -8,10 +9,12 @@ const location = `CREATE TABLE IF NOT EXISTS location (
 const users = `CREATE TABLE IF NOT EXISTS users (
     user_id serial PRIMARY KEY ,
     username varchar(25),
-    email varchar(100),
+    email varchar(100) UNIQUE,
     password varchar(255),
     phone varchar(15),
-    org_id INT references org(org_id)
+    org_id INT references org(org_id),
+    user_type varchar(25),
+    approved INT  DEFAULT 0
   );`;
 const trip = `CREATE TABLE IF NOT EXISTS trip (
     trip_id serial PRIMARY KEY,
@@ -26,9 +29,6 @@ const usertrip = `CREATE TABLE IF NOT EXISTS usertrip (
   user_id INT references users (user_id),
   trip_id INT references trip(trip_id)
 );`;
-
-
-
 module.exports = {
   users: users,
   trip: trip,
