@@ -4,10 +4,10 @@ and missing import handlers
 and validations module
 const signupget = require('./signupget');
 */
-
+const signupPostHandler = require('../handlers/signupget.js');
 const signupPost = {
   method:'POST',
   path:'/signup',
-  handler:()=>{/* handler function for signupPost*/}
+  handler:signupPostHandler
 }
 module.exports =signupPost;

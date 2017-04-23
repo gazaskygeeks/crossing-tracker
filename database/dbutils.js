@@ -10,9 +10,8 @@ function createTable(cb) {
   client.query(tables, cb);
 }
 
-function select (table,condition,cb){
-  const query = 'SELECT * from ? where ?;';
-  client.query(query,[table,condition],(errSelect,result)=>{
+function select (query,condition,cb){
+  client.query(query,condition,(errSelect,result)=>{
     if (errSelect){
       cb(errSelect,undefined)
     }
@@ -21,44 +20,18 @@ function select (table,condition,cb){
     }
   })
 }
-
-function insert (table,data,cb) {
-  const d = conversion(data);
-  const query = `INSERT INTO ${table} ${d};`
-  client.query(query, (errInsert, result) => {
+function insert (query,data,cb) {
+  client.query(query,data, (errInsert) => {
     if (errInsert) {
       cb(errInsert);
     }else{
-      cb(undefined, result.rows);
+      cb(errInsert);
     }
   });
 }
-
 
 module.exports = {
   createTable: createTable,
   select:select,
   insert:insert
-}
-
-//conversion function
-//input: {username:"alaa",password:"123asd!@#"}
-//output: (username,password) value ("alaa","123asd!@#")
-
-// arraytoString function
-// input: {username:"aaaaa",passwprd:"pasdsad"}
-//output:username, passwprd
-function conversion(data) {
-  const columns = arraytoString(Object.keys(data));
-  const values = arraytoString(Object.keys(data).map((elm) => typeof data[elm] === 'string' ? `'${data[elm]}'` : data[elm]))
-  return `(${columns}) values (${values})`;
-}
-function arraytoString(array) {
-  return array.reduce(function(prev, curr, index) {
-    prev = prev + curr
-    if (index < array.length - 1) {
-      prev = prev + ', ';
-    }
-    return prev;
-  }, '');
 }
