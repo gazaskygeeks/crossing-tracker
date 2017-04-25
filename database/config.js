@@ -2,6 +2,7 @@
 
 const pg = require('pg');
 require('env2')('../.env');
+const location = process.env.APP_CONFIG || 'local';
 const config = {
   local: {
     user: 'postgres',
@@ -24,7 +25,7 @@ const config = {
     ssl: process.env.HEROKU_SSL
   }
 }
-const client = new pg.Client(config.heroku);
+const client = new pg.Client(config[location]);
 client.connect(function(err) {
   if (err) {
     return err;
