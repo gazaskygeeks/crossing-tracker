@@ -10,7 +10,7 @@
     "server:watch": "nodemon -x 'npm start'",
     "watch": "webpack -w",
     "build": "webpack",
-    "migrate":"node scripts/migrate.js"
+    "migrate": "node scripts/migrate.js"
   },
   "pre-commit": [
     "lint"
@@ -33,6 +33,8 @@
     "babel-loader": "^6.4.1",
     "babel-preset-env": "^1.3.2",
     "babel-preset-react": "^6.23.0",
+    "bcrypt": "^1.0.2",
+    "boom": "^4.3.1",
     "css-loader": "^0.28.0",
     "enzyme": "^2.8.2",
     "eslint": "^3.19.0",
@@ -41,6 +43,7 @@
     "eslint-plugin-standard": "^3.0.1",
     "istanbul": "^0.4.5",
     "jest": "^19.0.2",
+    "joi": "^10.4.1",
     "nodemon": "^1.11.0",
     "pre-commit": "^1.2.2",
     "react": "^15.5.4",
