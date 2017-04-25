@@ -1,7 +1,6 @@
 /*global process*/
 
 const pg = require('pg');
-require('env2')('../.env');
 const config = {
   local: {
     user: 'postgres',
@@ -24,7 +23,9 @@ const config = {
     ssl: process.env.HEROKU_SSL
   }
 }
-const client = new pg.Client(config.local);
+
+const location = process.env.NODE_ENV === 'production' ? config.heroku : config.local;
+const client = new pg.Client(location);
 client.connect(function(err) {
   if (err) {
     return err;
