@@ -24,7 +24,7 @@ const config = {
     ssl: process.env.HEROKU_SSL
   }
 }
-const client = new pg.Client(config.local);
+const client = new pg.Client(config.heroku);
 client.connect(function(err) {
   if (err) {
     return err;
