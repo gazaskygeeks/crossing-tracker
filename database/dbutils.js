@@ -1,13 +1,14 @@
 const client = require('./config.js');
 const table = require('../scripts/sql.js');
 
-function createTable(cb) {
+function createTable (cb) {
+
   const tables = `${table.org}
   ${table.location}
   ${table.users}
   ${table.trip}
   ${table.usertrip}`
-  client.query(tables, cb);
+  client.query(tables,cb);
 }
 
 function select (query,condition,cb){
