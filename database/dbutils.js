@@ -1,8 +1,7 @@
 const client = require('./config.js');
 const table = require('../scripts/sql.js');
 
-function createTable (cb) {
-
+function runMigrate(cb) {
   const tables = `${table.org}
   ${table.location}
   ${table.users}
@@ -32,7 +31,7 @@ function insert (query,data,cb) {
 }
 
 module.exports = {
-  createTable: createTable,
-  select:select,
-  insert:insert
+  runMigrate,
+  select,
+  insert
 }
