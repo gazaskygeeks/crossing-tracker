@@ -8,7 +8,7 @@ module.exports = (req, res) => {
   */
   hash(req.payload.password, function(err, hash) {
     if (err) {
-      return err;
+      throw err;
     }
     req.payload.password = hash;
     user.createUser( req.payload, (err, result) => {
