@@ -1,6 +1,5 @@
 const server = require('./backend/server.js');
 const dbutils = require('./database/dbutils.js');
-
 dbutils.runMigrate((err) => {
   if (err) {
     throw err
