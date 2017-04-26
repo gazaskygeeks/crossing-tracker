@@ -1,6 +1,5 @@
 const test = require('tape');
 const server = require('../backend/server.js');
-const client = require('../database/config.js');
 const generateRandomPayload = (data) => {
   return Object.assign({
     email: 'email' + Math.floor(Math.random() * 100000) + '@gmail.com',
@@ -105,6 +104,7 @@ test('POST/login: with correct pass&email | USER approved', (t) => {
     t.equal(res.statusCode, 200, 'Get status code correctly')
     t.equal(result.message, 'redirect to home page', 'Get error message successfully')
     t.end()
+    // eslint-disable-next-line no-console
     console.log('***************** Create Trip TEST****************************');
   })
 })

@@ -1,4 +1,3 @@
-const hash = require('../backend/utils.js');
 const orgQuery = `INSERT INTO org
 (org_name)
 values

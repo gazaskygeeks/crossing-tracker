@@ -2,7 +2,7 @@ const dbutils = require('../database/dbutils.js');
 const data = require('../scripts/sqltest.js');
 const hash = require('../backend/utils.js');
 const test = require('tape');
-console.log('data.notApprovedUser', data.notApprovedUser);
+// eslint-disable-next-line no-console
 console.log('************************* DataBase Test**********************************');
 test('create tables ', (t) => {
   dbutils.runMigrate((err) => {
@@ -87,24 +87,25 @@ test('insert normalUser AND approved into USERS table ', (t) => {
   })
 })
 test('insert trip  into trip table ', (t) => {
-    dbutils.runQuery(data.tripQuery, data.trip, (err) => {
-      t.notOk(err, 'insert data into USERS table successfully')
-      t.end()
-    })
+  dbutils.runQuery(data.tripQuery, data.trip, (err) => {
+    t.notOk(err, 'insert data into USERS table successfully')
+    t.end()
   })
+})
 test('insert data  into USERTRIP table ', (t) => {
-    dbutils.runQuery(data.usertripQuery, data.usertrip, (err) => {
-      t.notOk(err, 'insert data into USERS table successfully')
-      t.end()
-    })
+  dbutils.runQuery(data.usertripQuery, data.usertrip, (err) => {
+    t.notOk(err, 'insert data into USERS table successfully')
+    t.end()
   })
+})
 test('select  data from USERS table ', (t) => {
   const query = 'SELECT * FROM users WHERE username=$1'
   const data = ['approvedUser'] //from previous insertion
   dbutils.runQuery(query, data, (err, result) => {
     t.notOk(err, 'select data from USERS table successfully')
-    t.notEqual(result.rows.length,0,'ok')
+    t.notEqual(result.rows.length, 0, 'ok')
     t.end()
+    // eslint-disable-next-line no-console
     console.log('***************** Login TEST**************************');
 
   })
