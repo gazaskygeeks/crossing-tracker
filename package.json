@@ -34,10 +34,6 @@
     "babel-preset-react": "^6.23.0",
     "bcrypt": "^1.0.2",
     "boom": "^4.3.1",
-<<<<<<< HEAD
-    "cross-env": "^4.0.0",
-=======
->>>>>>> 15affc1dd069f6605e66d1c22c75bcef2148fe41
     "css-loader": "^0.28.0",
     "enzyme": "^2.8.2",
     "eslint": "^3.19.0",
@@ -60,20 +56,12 @@
   },
   "dependencies": {
     "aguid": "^2.0.0",
-<<<<<<< HEAD
-=======
     "bcrypt": "^1.0.2",
->>>>>>> 15affc1dd069f6605e66d1c22c75bcef2148fe41
     "codeclimate-test-reporter": "^0.4.1",
     "env2": "^2.1.1",
     "hapi": "^16.1.1",
     "hapi-auth-jwt2": "^7.2.4",
     "inert": "^4.2.0",
-<<<<<<< HEAD
-    "pg": "^6.1.5",
-    "shot": "^3.4.0"
-=======
     "pg": "^6.1.5"
->>>>>>> 15affc1dd069f6605e66d1c22c75bcef2148fe41
   }
 }
