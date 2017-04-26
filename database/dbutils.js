@@ -10,28 +10,11 @@ function runMigrate(cb) {
   client.query(tables, cb);
 }
 
-function select (query,condition,cb){
-  client.query(query,condition,(errSelect,result)=>{
-    if (errSelect){
-      cb(errSelect,undefined)
-    }
-    else {
-      cb (errSelect,result.rows)
-    }
-  })
-}
-function insert (query,data,cb) {
-  client.query(query,data, (errInsert) => {
-    if (errInsert) {
-      cb(errInsert);
-    }else{
-      cb(errInsert);
-    }
-  });
+function runQuery(query, data, cb) {
+  client.query(query,data,cb)
 }
 
 module.exports = {
   runMigrate,
-  select,
-  insert
+  runQuery
 }
