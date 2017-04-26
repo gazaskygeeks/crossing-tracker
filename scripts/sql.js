@@ -18,9 +18,10 @@ const users = `CREATE TABLE IF NOT EXISTS users (
   );`;
 const trip = `CREATE TABLE IF NOT EXISTS trip (
     trip_id serial PRIMARY KEY,
-    location_id INT references location(location_id),
-    time time,
-    date date,
+    location_from_id INT references location(location_id),
+    location_to_id INT references location(location_id),
+    time varchar(30),
+    date varchar(30),
     user_id INT references users(user_id),
     available_seats int
   );`;

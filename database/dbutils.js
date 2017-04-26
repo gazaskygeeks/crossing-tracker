@@ -7,13 +7,14 @@ function runMigrate(cb) {
   ${table.users}
   ${table.trip}
   ${table.usertrip}`
-  client.query(tables, cb);
+  client.query(tables,cb);
 }
 
 function select (query,condition,cb){
   client.query(query,condition,(errSelect,result)=>{
+
     if (errSelect){
-      cb(errSelect,undefined)
+      cb(errSelect)
     }
     else {
       cb (errSelect,result.rows)
@@ -21,6 +22,7 @@ function select (query,condition,cb){
   })
 }
 function insert (query,data,cb) {
+
   client.query(query,data, (errInsert) => {
     if (errInsert) {
       cb(errInsert);
