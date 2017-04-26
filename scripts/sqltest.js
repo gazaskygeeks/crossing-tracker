@@ -1,19 +1,26 @@
-const org = `INSERT INTO org
+const hash = require('../backend/utils.js');
+const orgQuery = `INSERT INTO org
 (org_name)
 values
-('mercyco')
+($1)
 ;`;
-const first_location = `INSERT INTO location
+const org = ['mercyco']
+const locationQuery= `INSERT INTO location
 (location_name)
  VALUES
-('GAZA')
+($1)
 ;`;
-const second_location = `INSERT INTO location
- (location_name)
-  VALUES
-  ('RAMALLAH')
-  ;`;
-const users = `INSERT INTO  users (
+const userTypeQuery = `INSERT INTO usertype
+(usertype_id,usertype)
+values
+($1,$2)
+;`;
+const superAdmin = ['1','superAdmin']
+const admin = ['2','admin']
+const normalUser = ['3','user']
+const firstLocation = ['GAZA'];
+const secondLocation = ['RAMALLAH'];
+const userQuery = `INSERT INTO  users (
     username ,
     email,
     password,
@@ -23,10 +30,11 @@ const users = `INSERT INTO  users (
     approved
   ) VALUES
   (
-    'admin','admin@admin.com','123456','0598287410','1','1','1'
+    $1,$2,$3,$4,$5,$6,$7
   )
   ;`;
-const trip = `INSERT INTO trip (
+const users = ['admin','admin@admin.com','123456','0598287410','1','2','1'];
+const tripQuery = `INSERT INTO trip (
     location_from_id ,
     location_to_id,
     time,
@@ -35,23 +43,33 @@ const trip = `INSERT INTO trip (
     available_seats
   ) VALUES
  (
-   '1','2','01:01 AM','08082017','1','3'
+   $1,$2,$3,$4,$5,$6
  );`
-const usertrip = `INSERT INTO  usertrip
+const trip = ['1','2','01:01 AM','08082017','1','3'];
+const usertripQuery =`INSERT INTO  usertrip
 (
   user_id ,
   trip_id
-
 )VALUES
 (
-  '1','1'
+  $1,$2
 )
 ;`;
+const usertrip = ['1','1']
 module.exports = {
-  users: users,
-  trip: trip,
-  usertrip: usertrip,
-  org: org,
-  first_location: first_location,
-  second_location:second_location
+  org,
+  orgQuery,
+  locationQuery,
+  firstLocation,
+  secondLocation,
+  userQuery,
+  users,
+  userTypeQuery,
+  superAdmin,
+  admin,
+  normalUser,
+  tripQuery,
+  trip,
+  usertripQuery,
+  usertrip
 }

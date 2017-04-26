@@ -94,5 +94,4 @@ test('POST /createtrip :check duplicate trip', (t) => {
       server.stop(t.end());
     })
   })
-
 })

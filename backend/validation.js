@@ -19,6 +19,6 @@ const tripvalidation = {
 
 module.exports = {
   signupvalidation,
-  loginvalidation:loginvalidation,
+  loginvalidation,
   tripvalidation
 }

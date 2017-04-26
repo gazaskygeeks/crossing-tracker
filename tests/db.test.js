@@ -1,8 +1,9 @@
 const dbutils = require('../database/dbutils.js');
-//const client = require('../database/config.js');
+const data = require('../scripts/sqltest.js');
 const hash = require('../backend/utils.js');
 const test = require('tape');
-console.log('************************* DataBase Test*************************');
+console.log('data.notApprovedUser', data.notApprovedUser);
+console.log('************************* DataBase Test**********************************');
 test('create tables ', (t) => {
   dbutils.runMigrate((err) => {
     t.notOk(err, 'create table successfully')
@@ -10,100 +11,101 @@ test('create tables ', (t) => {
   })
 })
 test('insert data into ORGANIZATION table ', (t) => {
-  const query = 'INSERT INTO org (org_name) values ($1)'
-  const data = ['geeks']
-  dbutils.runQuery(query, data, (err) => {
+  dbutils.runQuery(data.orgQuery, data.org, (err) => {
     t.notOk(err, 'insert data into ORGANIZATION table successfully')
     t.end()
   })
 })
 test('select  data from ORGANIZATION table ', (t) => {
   const query = 'SELECT * FROM org WHERE org_name=$1'
-  const data = ['geeks'] //from previous insertion
-  dbutils.runQuery(query, data, (err, result) => {
+  dbutils.runQuery(query, data.org, (err, result) => {
     t.notOk(err, 'select data from ORGANIZATION table successfully')
-    t.notEqual(result.rows.length,0,'ok')
+    t.notEqual(result.rows.length, 0, 'ok')
     t.end()
   })
 })
 test('insert data into LOCATION table ', (t) => {
-  const query = 'INSERT INTO location (location_name) values ($1)'
-  const data = ['gaza']
-  dbutils.runQuery(query, data, (err) => {
+  dbutils.runQuery(data.locationQuery, data.firstLocation, (err) => {
+    t.notOk(err, 'insert data into LOCATION table successfully')
+    t.end()
+  })
+})
+test('insert another data into LOCATION table ', (t) => {
+  dbutils.runQuery(data.locationQuery, data.secondLocation, (err) => {
     t.notOk(err, 'insert data into LOCATION table successfully')
     t.end()
   })
 })
 test('select  data from LOCATION table ', (t) => {
   const query = 'SELECT * FROM location WHERE location_name=$1'
-  const data = ['gaza'] //from previous insertion
-  dbutils.runQuery(query, data, (err, result) => {
+  dbutils.runQuery(query, data.secondLocation, (err, result) => {
     t.notOk(err, 'select data from LOCATION table successfully')
-    t.notEqual(result.rows.length,0,'ok')
+    t.notEqual(result.rows.length, 0, 'ok')
     t.end()
   })
 })
-test('insert data into USERS table with UNAPPROVED user', (t) => {
-  var data=[];
-  const query = `insert into users
-   (username,
-    email,
-    password,
-    phone,
-    org_id,
-    user_type,
-    approved)
-    values ($1, $2, $3, $4, $5, $6,$7)`
-  hash('123654',(err,result)=>{
-    data = ['test',
-      'test@gmail.com',
-      result,
-      '1597536',
-      '1',
-      'user',
-      '0'
-    ]
-    dbutils.runQuery(query, data, (err) => {
-      t.notOk(err, 'insert data into USERS table successfully')
-      t.end()
-    })
+test('insert superAdmin into USERTYPE table ', (t) => {
+  dbutils.runQuery(data.userTypeQuery, data.superAdmin, (err) => {
+    t.notOk(err, 'insert data into USERTYPE table successfully')
+    t.end()
   })
 })
-
+test('insert admin into USERTYPE table ', (t) => {
+  dbutils.runQuery(data.userTypeQuery, data.admin, (err) => {
+    t.notOk(err, 'insert data into USERTYPE table successfully')
+    t.end()
+  })
+})
+test('insert normalUser into USERTYPE table ', (t) => {
+  dbutils.runQuery(data.userTypeQuery, data.normalUser, (err) => {
+    t.notOk(err, 'insert data into USERTYPE table successfully')
+    t.end()
+  })
+})
 test('insert data into USERS table with approved user ', (t) => {
-  var data=[];
-  const query = `insert into users
-   (username,
-    email,
-    password,
-    phone,
-    org_id,
-    user_type,
-    approved)
-    values ($1, $2, $3, $4, $5, $6,$7)`
-  hash('1236541',(err,result)=>{
-    data = ['test1',
-      'test1@gmail.com',
-      result,
-      '15975361',
-      '1',
-      'user',
-      '1'
-    ]
-    dbutils.runQuery(query, data, (err) => {
+  dbutils.runQuery(data.userQuery, data.users, (err) => {
+    t.notOk(err, 'insert data into USERS table successfully')
+    t.end()
+  })
+})
+test('insert normalUser AND not approved into USERS table ', (t) => {
+  hash('notApprovedUser', (err, hashPass) => {
+    const user = ['notApprovedUser', 'notApprovedUser@gmail.com', hashPass, '059984253', '1', '3', '0']
+    dbutils.runQuery(data.userQuery, user, (err) => {
       t.notOk(err, 'insert data into USERS table successfully')
       t.end()
     })
   })
 })
+test('insert normalUser AND approved into USERS table ', (t) => {
+  hash('approvedUser', (err, hashPass) => {
+    const user = ['approvedUser', 'approvedUser@gmail.com', hashPass, '059984253', '1', '3', '1']
+    dbutils.runQuery(data.userQuery, user, (err) => {
+      t.notOk(err, 'insert data into USERS table successfully')
+      t.end()
+    })
+  })
+})
+test('insert trip  into trip table ', (t) => {
+    dbutils.runQuery(data.tripQuery, data.trip, (err) => {
+      t.notOk(err, 'insert data into USERS table successfully')
+      t.end()
+    })
+  })
+test('insert data  into USERTRIP table ', (t) => {
+    dbutils.runQuery(data.usertripQuery, data.usertrip, (err) => {
+      t.notOk(err, 'insert data into USERS table successfully')
+      t.end()
+    })
+  })
 test('select  data from USERS table ', (t) => {
   const query = 'SELECT * FROM users WHERE username=$1'
-  const data = ['test'] //from previous insertion
+  const data = ['approvedUser'] //from previous insertion
   dbutils.runQuery(query, data, (err, result) => {
     t.notOk(err, 'select data from USERS table successfully')
     t.notEqual(result.rows.length,0,'ok')
     t.end()
-    console.log('***************** Login TEST********************');
+    console.log('***************** Login TEST**************************');
 
   })
 })

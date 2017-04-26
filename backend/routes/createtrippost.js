@@ -1,9 +1,4 @@
-/*
-missing validations functions
-and missing import handlers
-and validations module
-const signupget = require('./signupget');
-*/
+
 const validation = require('../validation.js');
 const createTripPostHandler = require('../handlers/createtrippsot.js');
 const createTripPost = {

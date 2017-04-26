@@ -9,7 +9,8 @@
     "start": "node index.js",
     "server:watch": "nodemon -x 'npm start'",
     "db:create": "psql -c 'CREATE DATABASE tests;' -U postgres -h localhost",
-    "db:drop": "psql -c 'DROP DATABASE tests;' -U postgres -h localhost"
+    "db:drop": "psql -c 'DROP DATABASE tests;' -U postgres -h localhost",
+    "test:watch":"nodemon -x 'npm test' "
   },
   "pre-commit": [
     "lint"
@@ -64,5 +65,4 @@
     "inert": "^4.2.0",
     "pg": "^6.1.5"
   }
->>>>>>> 17c90c780fe4afd02e6de738c2ab328e6fce8740
 }

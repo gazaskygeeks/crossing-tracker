@@ -1,12 +1,11 @@
 const test = require('tape');
 const server = require('../backend/server.js');
 const client = require('../database/config.js');
-
 const generateRandomPayload = (data) => {
   return Object.assign({
-      email: 'email' + Math.floor(Math.random() * 100000) + '@gmail.com',
-      password: 'pass' + Math.floor(Math.random() * 100000)
-    },
+    email: 'email' + Math.floor(Math.random() * 100000) + '@gmail.com',
+    password: 'pass' + Math.floor(Math.random() * 100000)
+  },
     data)
 }
 
@@ -58,8 +57,8 @@ test('POST/login: with VALID email and password BUT email is NOT Exist', (t) => 
 })
 test('POST/login: with VALID email and password BUT password is NOT CORRECT', (t) => {
   const data = {
-    email: 'test@gmail.com',
-    password: '11111111'
+    email: 'approvedUser@gmail.com',//from db.test.js file line:82
+    password: 'notcorrect'
   }
   const option = {
     method: 'POST',
@@ -73,17 +72,16 @@ test('POST/login: with VALID email and password BUT password is NOT CORRECT', (t
     t.end()
   })
 })
-test('POST/login: with VALID email and password AND both are correct, and user type is USER but NOT APPROVED', (t) => {
+test('POST/login: with correct pass&email | USER not approved', (t) => {
   const data = {
-    email: 'test@gmail.com',
-    password: '123654'
+    email: 'notApprovedUser@gmail.com',// from db.test.js line:73
+    password: 'notApprovedUser' // from db.test.js line: 72
   }
   const option = {
     method: 'POST',
     url: '/login',
     payload: data
   }
-  console.log('test');
   server.inject(option, (res) => {
     const result = JSON.parse(res.payload)
     t.equal(result.statusCode, 401, 'Get status code correctly')
@@ -92,22 +90,21 @@ test('POST/login: with VALID email and password AND both are correct, and user t
   })
 
 })
-test('POST/login: with VALID email and password AND both are correct, and user type is USER but  APPROVED', (t) => {
+test('POST/login: with correct pass&email | USER approved', (t) => {
   const data = {
-    email: 'test1@gmail.com',
-    password: '1236541'
+    email: 'approvedUser@gmail.com',// from db.test.js line:82
+    password: 'approvedUser'// from db.test.js line:81
   }
   const option = {
     method: 'POST',
     url: '/login',
     payload: data
   }
-  console.log('test');
   server.inject(option, (res) => {
     const result = JSON.parse(res.payload)
     t.equal(res.statusCode, 200, 'Get status code correctly')
     t.equal(result.message, 'redirect to home page', 'Get error message successfully')
-    client.end()
+    t.end()
+    console.log('***************** Create Trip TEST****************************');
   })
-  server.stop(t.end())
 })
