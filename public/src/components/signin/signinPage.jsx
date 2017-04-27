@@ -15,7 +15,6 @@ class SigninPage extends React.Component {
     if (this.state.email.length && this.state.password.length) {
       this.props.sginin(this.state)
       this.setState({email: '', password: ''})
-      browserHistory.push('/home');
     }
   }
   changeEmail(ev) {

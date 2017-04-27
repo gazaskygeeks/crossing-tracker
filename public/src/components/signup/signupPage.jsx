@@ -45,7 +45,6 @@ class SignupPage extends React.Component {
         org: ''
       }
       );
-    browserHistory.push('/home');
   }
 
   render() {

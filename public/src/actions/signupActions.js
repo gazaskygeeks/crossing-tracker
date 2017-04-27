@@ -11,6 +11,7 @@ const register = (data)=>{
   })
 .then((response)=>{
   store.dispatch({type: types.REGISTER_USER, payload: response});
+  browserHistory.push('/home');
 }).catch((err) =>{
   store.dispatch({type: types.REGISTER_USER_FAIL})
 })}

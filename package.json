@@ -5,12 +5,11 @@
   "main": "index.js",
   "scripts": {
     "lint": "eslint ./ --cache --ignore-pattern .gitignore",
-    "test": " export NODE_ENV=test  &&  npm run db:create && node tests/runner.js && npm run db:drop",
+    "test": " export NODE_ENV=test  &&  npm run db:create && node tests/runner.js && npm run db:drop ",
     "start": "node index.js",
     "server:watch": "nodemon -x 'npm start'",
     "watch": "webpack -w",
     "build": "webpack",
-    "migrate": "node scripts/migrate.js",
     "db:create": "psql -c 'CREATE DATABASE tests;' -U postgres -h localhost",
     "db:drop": "psql -c 'DROP DATABASE tests;' -U postgres -h localhost",
     "test:watch":"nodemon -x 'npm test' "
@@ -64,11 +63,7 @@
   },
   "dependencies": {
     "aguid": "^2.0.0",
-<<<<<<< HEAD
     "babel-preset-react": "^6.24.1",
-    "bootstrap": "^3.3.7",
-=======
->>>>>>> 29a316f1a7d4e7bb6ee1e6c70b4d1f2ef5261b1b
     "bcrypt": "^1.0.2",
     "codeclimate-test-reporter": "^0.4.1",
     "env2": "^2.1.1",
