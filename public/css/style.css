@@ -1,0 +1,423 @@
+/* style */
+
+
+/************ general ************/
+
+.heading {
+  background-color: #f9f9f9;
+  border-bottom: 2px solid #000000;
+  padding-bottom: 10px;
+  padding-top: 10px;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+span.caption {
+  display: block;
+  color: #999999;
+  margin-bottom: 10px;
+}
+
+button.btn-default, button.btn-default:hover, button.btn-default:focus, button.btn-default:active:hover {
+  background-color: rgba(88, 36, 72, 0.8);
+  color: #FFFFFF;
+  border: 0;
+}
+
+button.btn-success, button.btn-success:hover, button.btn-success:focus, button.btn-success:active:hover {
+  background-color: #4ad86a;
+  border: 0;
+}
+
+.btn-wrp-right {
+  text-align: right;
+}
+
+button.btn-danger, button.btn-danger:hover, button.btn-danger:focus, button.btn-danger:active:hover {
+  border: 0;
+}
+
+ul {
+  list-style-type: none;
+}
+
+
+/************ header ************/
+
+header {
+  background-color: rgba(0, 0, 0, 0.88);
+}
+
+header .logo img {
+  width: 160px;
+  margin-top: 5px;
+}
+
+header .navbar-default {
+  margin-bottom: 0;
+  border: 0;
+  border-radius: 0;
+  background-color: transparent;
+}
+
+header .navbar-default .navbar-nav>li>a {
+  color: #fff;
+}
+
+header .navbar-default .navbar-nav>li:last-of-type>a {
+  padding-right: 0;
+}
+
+header .navbar-default .navbar-nav>li>a.active, header .navbar-default .navbar-nav>li>a.active:focus, header .navbar-default .navbar-nav>li>a.active:hover {
+  color: #ccc;
+  background-color: transparent;
+}
+
+header .navbar-default .navbar-nav>li>a:focus, header .navbar-default .navbar-nav>li>a:hover {
+  color: #ccc;
+  background-color: transparent;
+}
+
+header .navbar-default .navbar-toggle {
+  border-color: #FFF;
+}
+
+header .navbar-default .navbar-toggle .icon-bar {
+  background-color: #FFF;
+}
+
+header .navbar-default .navbar-toggle:focus, header .navbar-default .navbar-toggle:hover {
+  background-color: transparent
+}
+
+
+/************ signin / singup ************/
+
+.form-wrp {
+  text-align: center;
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+.form-wrp img{
+  max-width: 100%;
+}
+.form-wrp .container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -60%);
+}
+
+.form-wrp.signup .container {
+  transform: translate(-50%, -55%);
+}
+
+.form-wrp h1 {
+  margin-bottom: 20px;
+  margin-top: 0;
+
+}
+.form-wrp.signin h1 {
+  color: #4ad86a;
+  font-size: 25px;
+}
+.form-wrp.signin .overlay{
+  background-color: rgba(0, 0, 0, 0.5);
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+}
+.form-wrp .form {
+  border: 2px solid #000;
+  padding: 40px 60px;
+  border-radius: 10px;
+}
+.form-wrp.signin .form{
+  border: 0;
+  background-color: #f9f9f9;
+  padding: 20px 60px;
+}
+.form-wrp .form .form-group {
+  margin-bottom: 25px;
+}
+
+.form-wrp .form button {
+  margin-bottom: 20px;
+}
+
+.form-wrp .form p {
+  margin-bottom: 0;
+}
+
+.form-wrp .form p a {
+  color: #cccccc;
+  text-decoration: none;
+}
+
+
+/************ home page ************/
+
+.data-wrp {
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+
+.data-wrp .details .table {
+  background-color: #eee;
+  border-radius: 5px;
+  text-align: center;
+  color: #777;
+}
+
+.data-wrp .details .table thead th {
+  text-align: center;
+}
+
+.data-wrp .details .table td a {
+  color: rgba(88, 36, 72, 0.8);
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.data-wrp .details .table>thead>tr>th {
+  border-bottom: 1px solid #e4e4e4;
+}
+
+.data-wrp .table>tbody>tr:not(:last-of-type)>td {
+  border-bottom: 1px solid #e4e4e4;
+}
+
+
+/************ mytrip ************/
+
+.mytrip {
+  padding-top: 20px;
+  padding-bottom: 10px;
+}
+
+.mytrip ul {
+  padding-left: 0;
+  margin-bottom: 10px;
+}
+
+.mytrip ul li {
+  list-style-type: none;
+  padding: 8px 10px;
+  border-radius: 5px;
+}
+
+.mytrip ul li:nth-child(odd) {
+  background-color: #eeeeee;
+}
+
+.mytrip ul li span, .mytrip ul li label {
+  width: 50%;
+  margin-bottom: 0;
+}
+
+.mytrip button.btn-default {
+  margin-bottom: 10px;
+  margin-left: 10px;
+}
+
+
+/************ trip-create ************/
+
+.trip-create {
+  padding-top: 20px;
+}
+
+.trip-create .form {
+  padding-bottom: 20px;
+}
+
+.trip-create .form .form-group {
+  font-size: 0;
+}
+
+.trip-create .form .form-group label {
+  width: 50%;
+  display: inline-block;
+  font-size: 14px;
+}
+
+.trip-create .form .form-group input, .trip-create .form .form-group select {
+  width: 50%;
+  display: inline-block;
+}
+
+.trip-create .form button.btn-default {
+  margin-left: 10px;
+}
+
+
+/************ trip-details ************/
+
+.trip-details {
+  padding-top: 20px;
+}
+
+.trip-details table, .trip-details table thead th {
+  text-align: center;
+}
+
+.trip-details table {
+  padding-bottom: 20px;
+}
+
+.trip-details .heading {
+  margin-bottom: 15px;
+}
+
+.trip-details table tr {
+  background-color: #cccccc;
+}
+
+
+/************ success ************/
+
+.success {
+  text-align: center;
+  position: relative;
+  height: 100vh;
+}
+
+.success .container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -65%);
+}
+
+.success .message {
+  background-color: rgba(88, 36, 72, 0.9);
+  color: #FFFFFF;
+  padding: 40px 15px;
+  font-size: 26px;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+.success p {
+  color: #999999;
+  font-size: 19px;
+}
+
+
+/************ calendar ************/
+
+.month {
+  padding: 58px 25px;
+  width: 100%;
+  background: rgba(88, 36, 72, 0.8);
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+.month ul {
+  margin: 0;
+  padding: 0;
+}
+
+.month ul li {
+  color: white;
+  font-size: 28px;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+}
+
+.month .prev {
+  float: left;
+  padding-top: 10px;
+}
+
+.month .next {
+  float: right;
+  padding-top: 10px;
+}
+
+.weekdays {
+  margin: 0;
+  padding: 10px 0;
+  background-color: #d8d5d5;
+}
+
+.weekdays li {
+  display: inline-block;
+  width: 13.6%;
+  color: #ffffff;
+  text-align: center;
+}
+
+.days {
+  padding: 36px 0 30px;
+  background: #eee;
+  margin: 0;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  margin-bottom: 30px;
+}
+
+.days li {
+  list-style-type: none;
+  display: inline-block;
+  width: 13.6%;
+  text-align: center;
+  margin-bottom: 5px;
+  font-size: 14px;
+  color: #777;
+  margin-bottom: 23px;
+}
+
+.days li .active {
+  padding: 5px;
+  background: rgba(88, 36, 72, 0.8);
+  color: white !important
+}
+
+
+/* Add media queries for smaller screens */
+
+@media screen and (max-width:720px) {
+  .weekdays li, .days li {
+    width: 13.1%;
+  }
+}
+
+@media screen and (max-width: 420px) {
+  .weekdays li, .days li {
+    width: 12.5%;
+  }
+  .days li .active {
+    padding: 2px;
+  }
+}
+
+@media screen and (max-width: 290px) {
+  .weekdays li, .days li {
+    width: 12.2%;
+  }
+}
+
+.admin table tr td select {
+  width: 70%;
+  display: inline-block;
+}
+
+.admin table, .admin table thead th {
+  text-align: center;
+}
+
+.admin .select-org {
+  padding-bottom: 20px;
+  padding-top: 20px;
+}
+
+.admin .select-org select {
+  display: inline-block;
+  width: 250px;
+}
