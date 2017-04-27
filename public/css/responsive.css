@@ -1,0 +1,87 @@
+@media (max-width: 767px) {
+  header .navbar-default .navbar-collapse, header .navbar-default .navbar-form {
+    border-color: #e7e7e7;
+    position: absolute;
+    z-index: 111;
+    background-color: #000;
+    width: 100%;
+    border-top: 0;
+    left: 0;
+  }
+  header .nav-wrp, header .navbar-default {
+    position: static;
+  }
+  .form-wrp .container {
+    width: 100%;
+  }
+  .trip-details:first-of-type table {
+    text-align: left;
+  }
+  .trip-details:first-of-type table thead {
+    display: none;
+  }
+  .trip-details:first-of-type table tbody tr td {
+    display: block;
+  }
+  .trip-details:first-of-type table tbody tr td:before {
+    display: inline-block;
+    width: 110px;
+    font-weight: bold;
+  }
+  .trip-details:first-of-type table tbody tr td:first-child:before {
+    content: "Trip Date: ";
+  }
+  .trip-details:first-of-type table tbody tr td:nth-child(2):before {
+    content: "Time: ";
+  }
+  .trip-details:first-of-type table tbody tr td:nth-child(3):before {
+    content: "From: ";
+  }
+  .trip-details:first-of-type table tbody tr td:nth-child(4):before {
+    content: "To: ";
+  }
+  .trip-details:first-of-type table tbody tr td:nth-child(5):before {
+    content: "Passing by: ";
+  }
+  .trip-details:first-of-type table tbody tr td:nth-child(6):before {
+    content: "Passpoint time: ";
+  }
+  .trip-details:first-of-type table tbody tr td:nth-child(7):before {
+    content: "Seats available: ";
+  }
+  .trip-details:first-of-type table tbody tr td:last-child:before {
+    content: "Organization: ";
+  }
+  .trip-details:last-of-type table {
+    text-align: left;
+  }
+  .trip-details:last-of-type table thead {
+    display: none;
+  }
+  .trip-details:last-of-type table tbody tr td {
+    display: block;
+  }
+  .trip-details:last-of-type table tbody tr td:before {
+    display: inline-block;
+    width: 110px;
+    font-weight: bold;
+  }
+  .trip-details:last-of-type table tbody tr td:first-child:before {
+    content: "Trip owner: ";
+  }
+  .trip-details:last-of-type table tbody tr td:nth-child(2):before {
+    content: "Email: ";
+  }
+  .trip-details:last-of-type table tbody tr td:nth-child(3):before {
+    content: "Phone no: ";
+  }
+  .trip-details:last-of-type table tbody tr td:last-child:before {
+    content: "Skype name: ";
+  }
+  .trip-create form .form-group input, .trip-create form .form-group select, .trip-create form .form-group label {
+    width: 100%;
+  }
+  .success .container{
+    width: 100%;
+  }
+}
