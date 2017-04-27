@@ -2,19 +2,19 @@
 require('env2')('./.env');
 const pg = require('pg');
 const config = {
-  local: {
+  development: {
     user: 'postgres',
     password: '123654',
-    database: 'local',
+    database: 'test2',
     port: 5432
   },
-  test : {
+  test: {
     user: 'postgres',
     password: '123654',
     database: 'tests',
     port: 5432
   },
-  heroku : {
+  production: {
     user: process.env.HEROKU_USER,
     password: process.env.HEROKU_PASSWORD,
     database: process.env.HEROKU_DATABASE,
@@ -23,22 +23,10 @@ const config = {
     ssl: process.env.HEROKU_SSL
   }
 }
-
-var   location ;
-if(process.env.NODE_ENV === 'production')
-{
-  location = config.heroku;
-}
-else if(process.env.NODE_ENV==='test'){
-  location = config.test;
-}
-else {
-  location =config.local;
-}
-const client = new pg.Client(location);
+const client = new pg.Client(config[process.env.NODE_ENV]);
 client.connect(function(err) {
   if (err) {
-    throw err;
+    return err;
   }
 });
 module.exports = client;
