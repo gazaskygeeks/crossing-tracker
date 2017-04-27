@@ -86,6 +86,33 @@ test('insert normalUser AND approved into USERS table ', (t) => {
     })
   })
 })
+test('insert admin AND not approved into USERS table ', (t) => {
+  hash('notApprovedAdmin', (err, hashPass) => {
+    const user = ['notApprovedAdmin', 'notApprovedAdmin@gmail.com', hashPass, '059984253', '1', '2', '0']
+    dbutils.runQuery(data.userQuery, user, (err) => {
+      t.notOk(err, 'insert data into USERS table successfully')
+      t.end()
+    })
+  })
+})
+test('insert admin AND approved into USERS table ', (t) => {
+  hash('approvedAdmin', (err, hashPass) => {
+    const user = ['approvedAdmin', 'approvedAdmin@gmail.com', hashPass, '059984253', '1', '2', '1']
+    dbutils.runQuery(data.userQuery, user, (err) => {
+      t.notOk(err, 'insert data into USERS table successfully')
+      t.end()
+    })
+  })
+})
+test('insert superAdmin  into USERS table ', (t) => {
+  hash('superAdmin', (err, hashPass) => {
+    const user = ['superAdmin', 'superAdmin@gmail.com', hashPass, '059984253', '1', '1', '1']
+    dbutils.runQuery(data.userQuery, user, (err) => {
+      t.notOk(err, 'insert data into USERS table successfully')
+      t.end()
+    })
+  })
+})
 test('insert trip  into trip table ', (t) => {
   dbutils.runQuery(data.tripQuery, data.trip, (err) => {
     t.notOk(err, 'insert data into USERS table successfully')

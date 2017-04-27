@@ -104,6 +104,57 @@ test('POST/login: with correct pass&email | USER approved', (t) => {
     t.equal(res.statusCode, 200, 'Get status code correctly')
     t.equal(result.message, 'redirect to home page', 'Get error message successfully')
     t.end()
+  })
+})
+test('POST/login: with correct pass&email | ADMIN not approved', (t) => {
+  const data = {
+    email: 'notApprovedAdmin@gmail.com',// from db.test.js line:91
+    password: 'notApprovedAdmin'// from db.test.js line:90
+  }
+  const option = {
+    method: 'POST',
+    url: '/login',
+    payload: data
+  }
+  server.inject(option, (res) => {
+    const result = JSON.parse(res.payload)
+    t.equal(result.statusCode, 401, 'Get status code correctly')
+    t.equal(result.message, 'Wait until the admin approved your request', 'Get error message successfully')
+    t.end()
+  })
+})
+test('POST/login: with correct pass&email | ADMIN approved', (t) => {
+  const data = {
+    email: 'approvedAdmin@gmail.com',// from db.test.js line:100
+    password: 'approvedAdmin'// from db.test.js line:99
+  }
+  const option = {
+    method: 'POST',
+    url: '/login',
+    payload: data
+  }
+  server.inject(option, (res) => {
+    const result = JSON.parse(res.payload)
+    t.equal(res.statusCode, 200, 'Get status code correctly')
+    t.equal(result.message, 'redirect to admin page', 'Get error message successfully')
+    t.end()
+  })
+})
+test('POST/login: with correct pass&email | SUPER ADMIN approved', (t) => {
+  const data = {
+    email: 'superAdmin@gmail.com',// from db.test.js line:109
+    password: 'superAdmin'// from db.test.js line:108
+  }
+  const option = {
+    method: 'POST',
+    url: '/login',
+    payload: data
+  }
+  server.inject(option, (res) => {
+    const result = JSON.parse(res.payload)
+    t.equal(res.statusCode, 200, 'Get status code correctly')
+    t.equal(result.message, 'redirect to superAdmin page', 'Get error message successfully')
+    t.end()
     // eslint-disable-next-line no-console
     console.log('***************** Create Trip TEST****************************');
   })
