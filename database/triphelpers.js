@@ -1,14 +1,12 @@
 const dbutils = require('./dbutils.js');
 
 function gettripbytime (data,cb){
-      
+
   const query = 'SELECT * From trip WHERE user_id=$1 AND time=$2 AND date=$3';
-  dbutils.select(query,[data.user_id,data.time,data.tripdate],cb);
+  dbutils.runQuery(query,[data.user_id,data.time,data.tripdate],cb);
 }
 
 function createtrip (data,cb) {
-
-
   const query = `INSERT INTO trip
   (
   location_from_id,
@@ -28,7 +26,7 @@ values
   $6
 )
 `;
-  dbutils.insert(
+  dbutils.runQuery(
     query,[
       data.location_from_id,
       data.location_to_id,
