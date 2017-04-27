@@ -6,7 +6,7 @@
   "scripts": {
     "lint": "eslint ./ --cache --ignore-pattern .gitignore",
 
-    "test": " export NODE_ENV=test && node db:create && node tests/runner.js && db:drop  ",
+    "test": " export NODE_ENV=test &&  npm run db:create && node tests/runner.js && npm run db:drop  ",
     "start": "node index.js",
     "server:watch": "nodemon -x 'npm start'",
     "watch": "webpack -w",

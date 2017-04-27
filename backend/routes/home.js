@@ -4,7 +4,7 @@ const home = {
   config:{
     handler: (request, reply) => {
       reply.file('public/src/index.html')
-    },auth:'session'
+    },auth:false
   },
 
 }

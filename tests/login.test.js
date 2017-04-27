@@ -117,6 +117,7 @@ test('POST/login: with correct pass&email | ADMIN not approved', (t) => {
     payload: data
   }
   server.inject(option, (res) => {
+
     const result = JSON.parse(res.payload)
     t.equal(result.statusCode, 401, 'Get status code correctly')
     t.equal(result.message, 'Wait until the admin approved your request', 'Get error message successfully')

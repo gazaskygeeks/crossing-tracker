@@ -8,7 +8,8 @@ const createTripPost = {
   config: {
     validate: {
       payload: validation.tripvalidation
-    }
+
+    }  ,auth:'session'
   }
 }
 module.exports =createTripPost;
