@@ -1,5 +1,6 @@
 
 module.exports=[
-  require ('./signupget.js'),
-  require ('./signuppost.js')
+  require ('./signuppost.js'),
+  require ('./loginpost.js'),
+  require('./createtrippost.js')
 ];
