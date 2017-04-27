@@ -7,7 +7,7 @@ const loginpost = {
   config:{
     validate:{
       payload:validation.loginvalidation
-    }
+    },auth:false
   }
 }
 module.exports=loginpost

@@ -5,7 +5,8 @@ import { browserHistory } from 'react-router';
 const login = (data)=>{
   fetch('/login',{
     method: 'POST',
-    body:JSON.stringify(data)
+    body:JSON.stringify(data),
+    credentials: 'same-orign'
   })
   .then((response)=>{
     return  response.json()

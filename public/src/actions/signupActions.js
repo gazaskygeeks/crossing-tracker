@@ -4,7 +4,8 @@ import store from '../store/store';
 const register = (data)=>{
   fetch('/signup',{
     method: 'POST',
-    body:JSON.stringify(data)
+    body:JSON.stringify(data),
+    credentials: 'includes'
   })
   .then((response)=>{
     return  response.json()
