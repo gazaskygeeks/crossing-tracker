@@ -1,5 +1,5 @@
 import React from 'react';
-import { browserHistory, Link, IndexLink } from 'react-router';
+import { browserHistory, Link } from 'react-router';
 import  login  from '../../actions/signinActions';
 import { connect } from 'react-redux';
 
@@ -16,8 +16,6 @@ class SigninPage extends React.Component {
       this.props.sginin(this.state)
       this.setState({email: '', password: ''})
       browserHistory.push('/home');
-    } else {
-       alert('You must insert data')
     }
   }
   changeEmail(ev) {
@@ -29,41 +27,48 @@ class SigninPage extends React.Component {
 
   render() {
     return (
-      <section className="form-wrp signin">
-        <div className="overlay"></div>
-        <img src={require("../../../img/IMG_1925.jpg")} />
-        <div className="container">
-          <div className="row">
-            <div className="col-sm-offset-3 col-sm-6 col-md-offset-4 col-md-4 wrapper">
-              <div className="form">
+      <section className='form-wrp signin'>
+        <div className='overlay'></div>
+        <img src={require('../../../img/IMG_1925.jpg')} />
+        <div className='container'>
+          <div className='row'>
+            <div
+              className='
+              col-sm-offset-3
+              col-sm-6
+              col-md-offset-4
+              col-md-4
+              wrapper'
+              >
+              <div className='form'>
                 <h1>Member Login</h1>
-                <div className="form-group">
+                <div className='form-group'>
                   <input
-                    type="email"
+                    type='email'
                     value={this.state.email}
-                    className="form-control"
-                    placeholder="Email"
+                    className='form-control'
+                    placeholder='Email'
                     onChange={this.changeEmail.bind(this)}
                     />
                 </div>
-                <div className="form-group">
+                <div className='form-group'>
                   <input
-                    type="password"
+                    type='password'
                     value={this.state.password}
-                    className="form-control"
-                    placeholder="Password"
+                    className='form-control'
+                    placeholder='Password'
                     onChange={this.changePassword.bind(this)}
                     />
                 </div>
                 <button
-                  type="submit"
-                  className="btn btn-success"
+                  type='submit'
+                  className='btn btn-success'
                   onClick={this.valid.bind(this)}
                   >
                   Sign In
                 </button>
                 <p>
-                  <Link to="/signup" activeClassName="active">
+                  <Link to='/signup' activeClassName='active'>
                     Lorem ipsum dolor sit amet Lorem ipsum elit
                   </Link>
                 </p>

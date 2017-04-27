@@ -4,12 +4,12 @@ class TripDetails extends React.Component {
   render() {
     return (
       <div>
-        <section className="trip-details">
-      <div className="container">
-        <div className="row">
-          <div className="col-md-offset-1 col-md-10">
-            <h3 className="heading">Trip Info</h3>
-            <table className="table table-bordered">
+        <section className='trip-details'>
+      <div className='container'>
+        <div className='row'>
+          <div className='col-md-offset-1 col-md-10'>
+            <h3 className='heading'>Trip Info</h3>
+            <table className='table table-bordered'>
               <thead>
                 <tr>
                   <th>Trip Date</th>
@@ -39,12 +39,12 @@ class TripDetails extends React.Component {
         </div>
       </div>
     </section>
-    <section className="trip-details">
-      <div className="container">
-        <div className="row">
-          <div className="col-md-offset-1 col-md-10">
-            <h3 className="heading">Contact Info</h3>
-            <table className="table table-bordered">
+    <section className='trip-details'>
+      <div className='container'>
+        <div className='row'>
+          <div className='col-md-offset-1 col-md-10'>
+            <h3 className='heading'>Contact Info</h3>
+            <table className='table table-bordered'>
               <thead>
                 <tr>
                   <th>Trip owner</th>

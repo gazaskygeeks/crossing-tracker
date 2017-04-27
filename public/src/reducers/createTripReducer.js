@@ -9,4 +9,6 @@ function createTripReducer(state = initialState.createTrip, action) {
     return state
   }
 }
-export { createTripReducer };
+export {
+  createTripReducer
+};

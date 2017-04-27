@@ -9,10 +9,10 @@ server.connection({
 })
 
 server.register(inert, (err) => {
-      if (err) {
-        throw err
-      }
-      server.route(routes)
+  if (err) {
+    throw err
+  }
+  server.route(routes)
 });
 
 module.exports = server

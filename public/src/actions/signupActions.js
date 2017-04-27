@@ -1,3 +1,4 @@
+/* eslint-disable */
 import * as types from './actionTypes';
 import store from '../store/store';
 const register = (data)=>{
@@ -9,7 +10,6 @@ const register = (data)=>{
     return  response.json()
   })
 .then((response)=>{
-  console.log('response',response);
   store.dispatch({type: types.REGISTER_USER, payload: response});
 }).catch((err) =>{
   store.dispatch({type: types.REGISTER_USER_FAIL})
