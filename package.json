@@ -5,12 +5,15 @@
   "main": "index.js",
   "scripts": {
     "lint": "eslint ./ --cache --ignore-pattern .gitignore",
-    "test": "node tests/test.js",
-    "start": "npm run migrate && node index.js",
+    "test": " export NODE_ENV=test  &&  npm run db:create && node tests/runner.js && npm run db:drop",
+    "start": "node index.js",
     "server:watch": "nodemon -x 'npm start'",
     "watch": "webpack -w",
     "build": "webpack",
-    "migrate": "node scripts/migrate.js"
+    "migrate": "node scripts/migrate.js",
+    "db:create": "psql -c 'CREATE DATABASE tests;' -U postgres -h localhost",
+    "db:drop": "psql -c 'DROP DATABASE tests;' -U postgres -h localhost",
+    "test:watch":"nodemon -x 'npm test' "
   },
   "pre-commit": [
     "lint"
@@ -34,6 +37,8 @@
     "babel-preset-env": "^1.3.2",
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-react": "^6.23.0",
+    "bcrypt": "^1.0.2",
+    "boom": "^4.3.1",
     "css-loader": "^0.28.0",
     "enzyme": "^2.8.2",
     "eslint": "^3.19.0",
@@ -43,6 +48,7 @@
     "file-loader": "^0.8.5",
     "istanbul": "^0.4.5",
     "jest": "^19.0.2",
+    "joi": "^10.4.1",
     "nodemon": "^1.11.0",
     "pre-commit": "^1.2.2",
     "react": "^15.5.4",
@@ -58,8 +64,11 @@
   },
   "dependencies": {
     "aguid": "^2.0.0",
+<<<<<<< HEAD
     "babel-preset-react": "^6.24.1",
     "bootstrap": "^3.3.7",
+=======
+>>>>>>> 29a316f1a7d4e7bb6ee1e6c70b4d1f2ef5261b1b
     "bcrypt": "^1.0.2",
     "codeclimate-test-reporter": "^0.4.1",
     "env2": "^2.1.1",
