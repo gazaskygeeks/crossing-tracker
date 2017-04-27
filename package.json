@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "lint": "eslint ./ --cache --ignore-pattern .gitignore",
-    "test": "node tests/runner.js",
+    "test": "NODE_ENV=test node tests/runner.js",
     "start": "node index.js",
     "server:watch": "nodemon -x 'npm start'",
     "watch": "webpack -w",
@@ -33,8 +33,6 @@
     "babel-loader": "^6.4.1",
     "babel-preset-env": "^1.3.2",
     "babel-preset-react": "^6.23.0",
-    "bcrypt": "^1.0.2",
-    "boom": "^4.3.1",
     "css-loader": "^0.28.0",
     "enzyme": "^2.8.2",
     "eslint": "^3.19.0",
@@ -58,6 +56,7 @@
   "dependencies": {
     "aguid": "^2.0.0",
     "bcrypt": "^1.0.2",
+    "boom": "^4.3.1",
     "codeclimate-test-reporter": "^0.4.1",
     "env2": "^2.1.1",
     "hapi": "^16.1.1",
