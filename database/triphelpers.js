@@ -37,8 +37,13 @@ values
     ]
     ,cb);
 }
+function gettripbyuserid (data,cb){
+  const query = 'SELECT * From trip WHERE user_id=$1';
+  dbutils.runQuery(query,[data.user_id],cb);
+}
 module.exports = {
   gettripbytime:gettripbytime,
-  createtrip:createtrip
+  createtrip:createtrip,
+  gettripbyuserid:gettripbyuserid
 
 }

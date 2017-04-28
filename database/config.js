@@ -4,13 +4,13 @@ const pg = require('pg');
 const config = {
   development: {
     user: 'postgres',
-    password: '123654',
+    password: '482106',
     database: 'test2',
     port: 5432
   },
   test: {
     user: 'postgres',
-    password: '123654',
+    password: '482106',
     database: 'tests',
     port: 5432
   },
@@ -24,9 +24,10 @@ const config = {
   }
 }
 const client = new pg.Client(config[process.env.NODE_ENV]);
+
 client.connect(function(err) {
   if (err) {
-    return err;
+    throw  err;
   }
 });
 module.exports = client;

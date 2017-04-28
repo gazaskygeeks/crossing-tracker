@@ -1,9 +1,12 @@
 const home = {
   method: 'GET',
   path: '/',
-  handler: (request, reply) => {
-    reply.file('public/src/index.html')
-  }
+  config:{
+    handler: (request, reply) => {
+      reply.file('public/src/index.html')
+    },auth:false
+  },
+
 }
 
 module.exports = home;

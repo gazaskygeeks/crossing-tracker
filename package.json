@@ -5,14 +5,16 @@
   "main": "index.js",
   "scripts": {
     "lint": "eslint ./ --cache --ignore-pattern .gitignore",
-    "test": " export NODE_ENV=test  &&  npm run db:create && node tests/runner.js && npm run db:drop ",
+
+
+    "test": "export NODE_ENV=test  &&  npm run db:create && node tests/runner.js && npm run db:drop",
     "start": "node index.js",
     "server:watch": "nodemon -x 'npm start'",
     "watch": "webpack -w",
     "build": "webpack",
     "db:create": "psql -c 'CREATE DATABASE tests;' -U postgres -h localhost",
     "db:drop": "psql -c 'DROP DATABASE tests;' -U postgres -h localhost",
-    "test:watch":"nodemon -x 'npm test' "
+    "test:watch": "nodemon -x 'npm test' "
   },
   "pre-commit": [
     "lint"
@@ -68,6 +70,7 @@
     "codeclimate-test-reporter": "^0.4.1",
     "env2": "^2.1.1",
     "hapi": "^16.1.1",
+    "hapi-auth-cookie": "^7.0.0",
     "hapi-auth-jwt2": "^7.2.4",
     "inert": "^4.2.0",
     "pg": "^6.1.5",
