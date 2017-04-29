@@ -1,3 +1,4 @@
+const validation = require('../validation.js');
 /*
 missing validations functions
 and missing import handlers
@@ -9,6 +10,11 @@ const signupPostHandler = require('../handlers/signuppost.js');
 const signupPost = {
   method:'POST',
   path:'/signup',
-  handler:signupPostHandler
+  handler:signupPostHandler,
+  config: {
+    validate: {
+      payload: validation.signupvalidation
+    }
+  }
 }
 module.exports =signupPost;
