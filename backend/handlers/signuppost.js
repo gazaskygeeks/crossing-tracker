@@ -1,18 +1,14 @@
-const hash = require('../utils.js');
-const user = require('../../database/userhelpers.js')
+const user = require('../../database/userhelpers.js');
 module.exports = (req, res) => {
-
-  /*
-  1. insert user data into database , if return err (return boom msg email is exist)
-  2. else reply signup page
-  */
-  hash(req.payload.password, function(err, hash) {
+  user.createuser(req.payload, (err, result) => {
     if (err) {
-      throw err;
+      res({
+        msg: 'User already regestered'
+      }).code(400)
+    } else {
+      res({
+        msg: 'User regestered'
+      }).code(200)
     }
-    req.payload.password = hash;
-    user.createUser( req.payload, (err, result) => {
-
-    })
-  });
+  })
 }

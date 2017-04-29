@@ -1,12 +1,12 @@
-const Joi = require('Joi');
+const Joi = require('joi');
 const signupvalidation = {
   username: Joi.string().min(5).max(25).required(),
   email: Joi.string().email().required(),
   password: Joi.string().min(6).max(255).required(),
   phone: Joi.string().min(6).max(15).required(),
-  org_id: Joi.number().integer().min(1).max(2).required(),
-  user_type: Joi.string().min(1).max(25).required(),
-  approved: Joi.number().integer().min(0).max(2).required()
+  org_id: Joi.number().integer().min(1).max(2).required()
+  // user_type: Joi.number().integer().min(1).max(3).required(),
+  // approved: Joi.number().integer().min(0).max(2).required()
 }
 
 const loginvalidation = {

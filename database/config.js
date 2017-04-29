@@ -1,5 +1,7 @@
 /*global process*/
-require('env2')('./.env');
+if (process.env.NODE_ENV !== 'production'){
+  require('env2')('./.env');
+}
 const pg = require('pg');
 const config = {
   development: {
@@ -26,7 +28,7 @@ const config = {
 const client = new pg.Client(config[process.env.NODE_ENV]);
 client.connect(function(err) {
   if (err) {
-    return err;
+    throw err;
   }
 });
 module.exports = client;

@@ -156,6 +156,6 @@ test('POST/login: with correct pass&email | SUPER ADMIN approved', (t) => {
     t.equal(result.message, 'redirect to superAdmin page', 'Get error message successfully')
     t.end()
     // eslint-disable-next-line no-console
-    console.log('***************** Create Trip TEST****************************');
+    console.log('***************** Sign Up TEST****************************');
   })
 })

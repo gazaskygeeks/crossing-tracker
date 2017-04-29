@@ -5,12 +5,12 @@
   "main": "index.js",
   "scripts": {
     "lint": "eslint ./ --cache --ignore-pattern .gitignore",
-    "test": "NODE_ENV=test npm run db:create && node tests/runner.js && npm run db:drop",
+    "test": "export NODE_ENV=test && npm run db:create && node tests/runner.js && npm run db:drop",
     "start": "node index.js",
     "server:watch": "nodemon -x 'npm start'",
     "db:create": "psql -c 'CREATE DATABASE tests;' -U postgres -h localhost",
     "db:drop": "psql -c 'DROP DATABASE tests;' -U postgres -h localhost",
-    "test:watch":"nodemon -x 'npm test' "
+    "test:watch": "nodemon -x 'npm test' "
   },
   "pre-commit": [
     "lint"
@@ -62,6 +62,7 @@
     "hapi": "^16.1.1",
     "hapi-auth-jwt2": "^7.2.4",
     "inert": "^4.2.0",
+    "mailgun-js": "^0.10.1",
     "pg": "^6.1.5"
   }
 }
