@@ -6,6 +6,7 @@ const test = require('tape');
 console.log('************************* DataBase Test**********************************');
 test('create tables ', (t) => {
   dbutils.runMigrate((err) => {
+
     t.notOk(err, 'create table successfully')
     t.end()
   })
