@@ -11,6 +11,7 @@ const login = (data)=>{
   .then((response)=>{
     return  response.json()
   }).then((response)=>{
+    console.log("response: ",response);
     if(response.statusCode === 200 && response.usertype === 'user' ){
       store.dispatch({type: types.POST_SIGNIN_DATA, payload: response});
       browserHistory.push('/home');
