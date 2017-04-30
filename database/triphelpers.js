@@ -1,12 +1,12 @@
 const dbutils = require('./dbutils.js');
 
-function gettripbytime (data,cb){
+function gettripbytime(data, cb) {
 
   const query = 'SELECT * From trip WHERE user_id=$1 AND time=$2 AND date=$3';
-  dbutils.runQuery(query,[data.user_id,data.time,data.tripdate],cb);
+  dbutils.runQuery(query, [data.user_id, data.time, data.tripdate], cb);
 }
 
-function createtrip (data,cb) {
+function createtrip(data, cb) {
   const query = `INSERT INTO trip
   (
   location_from_id,
@@ -27,23 +27,29 @@ values
 )
 `;
   dbutils.runQuery(
-    query,[
+    query, [
       data.location_from_id,
       data.location_to_id,
       data.time,
       data.tripdate,
       data.user_id,
       data.seatavailable
-    ]
-    ,cb);
+    ], cb);
 }
-function gettripbyuserid (data,cb){
+
+function gettripbyuserid(data, cb) {
   const query = 'SELECT * From trip WHERE user_id=$1';
-  dbutils.runQuery(query,[data.user_id],cb);
+  dbutils.runQuery(query, [data.user_id], cb);
+}
+
+function getTripeByDate(date, cb) {
+  const query = 'SELECT * FROM trip WHERE date=$1'
+  dbutils.runQuery(query, [date], cb)
 }
 module.exports = {
-  gettripbytime:gettripbytime,
-  createtrip:createtrip,
-  gettripbyuserid:gettripbyuserid
+  gettripbytime: gettripbytime,
+  createtrip: createtrip,
+  gettripbyuserid: gettripbyuserid,
+  getTripeByDate: getTripeByDate
 
 }

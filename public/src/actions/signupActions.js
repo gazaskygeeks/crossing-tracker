@@ -2,7 +2,6 @@
 import * as types from './actionTypes';
 import store from '../store/store';
 const register = (data)=>{
-  console.log("data: ",data);
   fetch('/signup',{
     method: 'POST',
     body:JSON.stringify(data),
@@ -12,7 +11,6 @@ const register = (data)=>{
     return  response.json()
   })
 .then((response)=>{
-  console.log("here");
   store.dispatch({type: types.REGISTER_USER, payload: response});
   browserHistory.push('/home');
 }).catch((err) =>{

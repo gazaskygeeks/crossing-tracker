@@ -96,6 +96,26 @@ test('insert admin AND not approved into USERS table ', (t) => {
     })
   })
 })
+test('insert admin AND not approved into USERS table ', (t) => {
+  hash('DEFAULT', (err, hashPass) => {
+    const userQuery = `INSERT INTO  users (
+        username ,
+        email,
+        password,
+        phone,
+        org_id
+      ) VALUES
+      (
+        $1,$2,$3,$4,$5
+      )
+      ;`;
+    const user = ['DEFAULT', 'DEFAULT@gmail.com', hashPass, '059984253', '1']
+    dbutils.runQuery(userQuery, user, (err) => {
+      t.notOk(err, 'insert data into USERS table successfully')
+      t.end()
+    })
+  })
+})
 test('insert admin AND approved into USERS table ', (t) => {
   hash('approvedAdmin', (err, hashPass) => {
     const user = ['approvedAdmin', 'approvedAdmin@gmail.com', hashPass, '059984253', '1', '2', '1']
