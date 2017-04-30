@@ -69,6 +69,7 @@
     "hapi-auth-cookie": "^7.0.0",
     "hapi-auth-jwt2": "^7.2.4",
     "inert": "^4.2.0",
+    "mailgun": "^0.5.0",
     "mailgun-js": "^0.10.1",
     "pg": "^6.1.5",
     "react-dom": "^15.5.4",
