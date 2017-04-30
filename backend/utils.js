@@ -1,3 +1,4 @@
+const mg = require('./mailer.js');
 const Bcrypt = require('bcrypt');
 const SALT_WORK_FACTOR = 10;
 const hash = (pass, cb) => {
@@ -9,4 +10,18 @@ const hash = (pass, cb) => {
   });
 }
 
-module.exports = hash
+const sendemail = (sender, recipient, recipientemail, title, sub) => {
+  mg.sendText(recipientemail, [recipient, recipientemail],
+  title,
+  sub,
+  sender, {},
+  function(err) {
+    if (err)
+      throw err ;
+  });
+}
+
+module.exports = {
+  hash: hash,
+  sendemail
+}
