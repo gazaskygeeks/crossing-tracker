@@ -38,3 +38,4 @@ jspm_packages
 .eslintcache
 .env
 bundle.js
+sendgrid.env

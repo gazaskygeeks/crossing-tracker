@@ -1,6 +1,6 @@
 const dbutils = require('../database/dbutils.js');
 const data = require('../scripts/sqltest.js');
-const hash = require('../backend/utils.js');
+const utiles= require('../backend/utils.js');
 const test = require('tape');
 // eslint-disable-next-line no-console
 console.log('************************* DataBase Test**********************************');
@@ -70,7 +70,7 @@ test('insert data into USERS table with approved user ', (t) => {
   })
 })
 test('insert normalUser AND not approved into USERS table ', (t) => {
-  hash('notApprovedUser', (err, hashPass) => {
+  utiles.hash('notApprovedUser', (err, hashPass) => {
     const user = ['notApprovedUser', 'notApprovedUser@gmail.com', hashPass, '059984253', '1', '3', '0']
     dbutils.runQuery(data.userQuery, user, (err) => {
       t.notOk(err, 'insert data into USERS table successfully')
@@ -79,7 +79,7 @@ test('insert normalUser AND not approved into USERS table ', (t) => {
   })
 })
 test('insert normalUser AND approved into USERS table ', (t) => {
-  hash('approvedUser', (err, hashPass) => {
+  utiles.hash('approvedUser', (err, hashPass) => {
     const user = ['approvedUser', 'approvedUser@gmail.com', hashPass, '059984253', '1', '3', '1']
     dbutils.runQuery(data.userQuery, user, (err) => {
       t.notOk(err, 'insert data into USERS table successfully')
@@ -88,7 +88,7 @@ test('insert normalUser AND approved into USERS table ', (t) => {
   })
 })
 test('insert admin AND not approved into USERS table ', (t) => {
-  hash('notApprovedAdmin', (err, hashPass) => {
+  utiles.hash('notApprovedAdmin', (err, hashPass) => {
     const user = ['notApprovedAdmin', 'notApprovedAdmin@gmail.com', hashPass, '059984253', '1', '2', '0']
     dbutils.runQuery(data.userQuery, user, (err) => {
       t.notOk(err, 'insert data into USERS table successfully')
@@ -117,7 +117,7 @@ test('insert admin AND not approved into USERS table ', (t) => {
   })
 })
 test('insert admin AND approved into USERS table ', (t) => {
-  hash('approvedAdmin', (err, hashPass) => {
+  utiles.hash('approvedAdmin', (err, hashPass) => {
     const user = ['approvedAdmin', 'approvedAdmin@gmail.com', hashPass, '059984253', '1', '2', '1']
     dbutils.runQuery(data.userQuery, user, (err) => {
       t.notOk(err, 'insert data into USERS table successfully')
@@ -126,7 +126,7 @@ test('insert admin AND approved into USERS table ', (t) => {
   })
 })
 test('insert superAdmin  into USERS table ', (t) => {
-  hash('superAdmin', (err, hashPass) => {
+  utiles.hash('superAdmin', (err, hashPass) => {
     const user = ['superAdmin', 'superAdmin@gmail.com', hashPass, '059984253', '1', '1', '1']
     dbutils.runQuery(data.userQuery, user, (err) => {
       t.notOk(err, 'insert data into USERS table successfully')

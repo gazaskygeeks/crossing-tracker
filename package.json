@@ -69,12 +69,14 @@
     "hapi-auth-cookie": "^7.0.0",
     "hapi-auth-jwt2": "^7.2.4",
     "inert": "^4.2.0",
+    "mailgun": "^0.5.0",
     "moment": "^2.18.1",
     "pg": "^6.1.5",
     "react": "^15.5.4",
     "react-datepicker": "^0.46.0",
     "react-dom": "^15.5.4",
     "react-redux": "^5.0.4",
-    "react-router": "2.4.0"
+    "react-router": "2.4.0",
+    "sendgrid": "^5.0.1"
   }
 }

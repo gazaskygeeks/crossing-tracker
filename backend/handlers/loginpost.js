@@ -1,8 +1,6 @@
-
 const user = require('../../database/userhelpers.js');
 const Boom = require('boom');
 const Bcrypt = require('bcrypt');
-
 module.exports = (req, res) => {
   const email = req.payload.email;
   const password = req.payload.password;
@@ -13,6 +11,8 @@ module.exports = (req, res) => {
     if (result.rows.length > 0) {
       Bcrypt.compare(password, result.rows[0].password, (err, resultHash) => {
         if (resultHash) {
+
+
           if (result.rows[0].approved === 0) {
             res(Boom.unauthorized('Wait until the admin approved your request'))
           } else {

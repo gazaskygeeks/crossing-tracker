@@ -30,5 +30,4 @@ server.register(inert, (err) => {
   }
   server.route(routes)
 });
-
 module.exports = server
