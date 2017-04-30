@@ -1,7 +1,7 @@
 import React from 'react';
 import DatePicker from 'react-datepicker';
 import moment from 'moment';
-import getHomeTrips from '../../actions/tripsActions.js';
+import HomeTrips from '../../actions/tripsActions.js';
 import 'react-datepicker/dist/react-datepicker.css';
 import { connect } from 'react-redux'
 class Example extends React.Component {
@@ -32,7 +32,7 @@ class Example extends React.Component {
 const mapDispatchToProps = () => {
   return {
     getTrips  : (date) => {
-      getHomeTrips(date);
+      HomeTrips(date);
     }
   }
 }

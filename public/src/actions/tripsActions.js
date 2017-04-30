@@ -1,7 +1,7 @@
 /* eslint-disable */
 import * as types from './actionTypes';
 import store from '../store/store';
-const getHomeTrips = (data)=>{
+const homeTrips = (data)=>{
   fetch('/trips',{
     method: 'POST',
     body:data,
@@ -18,4 +18,4 @@ const getHomeTrips = (data)=>{
   }
 
 
-export default getHomeTrips;
+export default homeTrips;
