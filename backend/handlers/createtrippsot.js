@@ -10,7 +10,6 @@ module.exports = (req, res) => {
       }).code(400);
     } else {
       trip.createtrip(req.payload, (err, result) => {
-
         if (err)
           throw err
         res({

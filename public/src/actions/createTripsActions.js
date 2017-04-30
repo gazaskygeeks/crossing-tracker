@@ -7,7 +7,8 @@ const createTrip = (data)=>{
   console.log("data: ",data);
   fetch('/createtrip',{
     method: 'POST',
-    body:JSON.stringify(data)
+    body:JSON.stringify(data),
+    credentials: 'include'
   })
   .then((response)=>{
     console.log('response: ',response);

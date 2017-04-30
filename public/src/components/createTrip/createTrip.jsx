@@ -5,18 +5,18 @@ class CreateTrip extends React.Component{
   constructor(props) {
     super(props);
     this.state = {
-      tripDate: '',
+      tripdate: '',
       time: '',
-      locationFrom: '',
-      locationTo: '',
-      passingBy:'',
-      passingPointTime:'',
-      seatsAvailable: ''
+      location_from_id: '',
+      location_to_id: '',
+      passingby:'',
+      passpointtime:'',
+      seatavailable: ''
     };
   }
 
   changeTripDate(ev) {
-    this.setState({tripDate: ev.target.value});
+    this.setState({tripdate: ev.target.value});
   }
 
   changeTime(ev) {
@@ -24,35 +24,35 @@ class CreateTrip extends React.Component{
   }
 
   changeLocationFrom(ev) {
-    this.setState({locationFrom: ev.target.value});
+    this.setState({location_from_id: ev.target.value});
   }
 
   changeLocationTo(ev) {
-    this.setState({locationTo: ev.target.value});
+    this.setState({location_to_id: ev.target.value});
   }
 
   changePassingBy(ev) {
-    this.setState({passingBy: ev.target.value});
+    this.setState({passingby: ev.target.value});
   }
 
   changePassingPointTime(ev) {
-    this.setState({passingPointTime: ev.target.value});
+    this.setState({passpointtime: ev.target.value});
   }
 
   changeSeatsAvailable(ev) {
-    this.setState({seatsAvailable: ev.target.value});
+    this.setState({seatavailable: ev.target.value});
   }
   clickCreateTrip(){
     this.props.TripsCreation(this.state)
     this.setState(
       {
-        tripDate: '',
+        tripdate: '',
         time: '',
-        locationFrom: '',
-        locationTo: '',
-        passingBy:'',
-        passingPointTime:'',
-        seatsAvailable: ''
+        location_from_id: '',
+        location_to_id: '',
+        passingby:'',
+        passpointtime:'',
+        seatavailable: ''
       }
     )
   }
@@ -69,7 +69,7 @@ class CreateTrip extends React.Component{
                     <label>Trip date</label>
                     <input
                       type='date'
-                      value={this.state.tripDate}
+                      value={this.state.tripdate}
                       className='form-control'
                       onChange={this.changeTripDate.bind(this)}
                       />
@@ -86,7 +86,7 @@ class CreateTrip extends React.Component{
                   <div className='form-group'>
                     <label>From</label>
                     <select
-                      value={this.state.locationFrom}
+                      value={this.state.location_from_id}
                       className='form-control'
                       onChange={this.changeLocationFrom.bind(this)}
                       >
@@ -104,7 +104,7 @@ class CreateTrip extends React.Component{
                   <div className='form-group'>
                     <label>To</label>
                     <select
-                      value={this.state.locationTo}
+                      value={this.state.location_to_id}
                       className='form-control'
                       onChange={this.changeLocationTo.bind(this)}
                       >
@@ -123,7 +123,7 @@ class CreateTrip extends React.Component{
                     <label>Passing by</label>
                     <input
                       type='text'
-                      value={this.state.passingBy}
+                      value={this.state.passingby}
                       className='form-control'
                       onChange={this.changePassingBy.bind(this)}
                       />
@@ -132,7 +132,7 @@ class CreateTrip extends React.Component{
                     <label>Passingpoint Time</label>changePassingPointTime
                     <input
                       type='time'
-                      value={this.state.passingPointTime}
+                      value={this.state.passpointtime}
                       className='form-control'
                       onChange={this.changePassingPointTime.bind(this)}
                       />
@@ -142,7 +142,7 @@ class CreateTrip extends React.Component{
                     <input
                       type='number'
                       className='form-control'
-                      value={this.state.seatsAvailable}
+                      value={this.state.seatavailable}
                       className='form-control'
                       onChange={this.changeSeatsAvailable.bind(this)}
                       />
