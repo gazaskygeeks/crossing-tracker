@@ -42,7 +42,7 @@ const Header = () => {
                     </Link>
                   </li>
                   <li>
-                    <Link to='/createtirp' activeClassName='active'>
+                    <Link to='/createtrip' activeClassName='active'>
                       Create Trips
                     </Link>
                   </li>

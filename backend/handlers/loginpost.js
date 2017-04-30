@@ -42,7 +42,7 @@ module.exports = (req, res) => {
         }
       })
     } else {
-      res(Boom.unauthorized('Email is not Exist'))
+      res(Boom.unauthorized('Email Does Not Exist'))
     }
   })
 
