@@ -22,6 +22,6 @@ const sendemail = (sender, recipient, recipientemail, title, sub) => {
 }
 
 module.exports = {
-  hash: hash,
+  hash,
   sendemail
 }
