@@ -14,7 +14,8 @@ const signupPost = {
   config: {
     validate: {
       payload: validation.signupvalidation
-    }
+    },
+    auth:false
   }
 }
 module.exports =signupPost;
