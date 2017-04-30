@@ -10,7 +10,6 @@ const homeTrips = (data)=>{
   .then((response)=>{
     return  response.json()
   }).then((response)=>{
-    console.log('respnse of get trips:',response);
       store.dispatch({type: types.DISPLAY_ALL_TRIPS, payload: response});
     }).catch((err) => {
       store.dispatch({type: types.DISPLAY_ALL_TRIPS_FAILURE})

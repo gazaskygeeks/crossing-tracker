@@ -1,6 +1,6 @@
 export default {
   signin: {},
-  createTrip: [],
+  createTrip: {},
   signup: [],
   homeTrips:[]
 };

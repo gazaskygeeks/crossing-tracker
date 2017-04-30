@@ -5,14 +5,13 @@ import {Link} from 'react-router';
 const HomeTrips = (props) => {
   // debugger;
   const trips = props.tripsList.map(function(item) {
-    console.log("item", item);
     return (
             <tr>
                 <td>{item.time}</td>
                 <td>{item.location_from_id}</td>
                 <td>{item.location_to_id}</td>
                 <td>
-                    <Link to={'/tripDetails/'}>View Trip</Link>
+                    <Link to={`/tripDetails/${item.trip_id}`}>View Trip</Link>
                 </td>
             </tr>
     )
@@ -25,7 +24,6 @@ const HomeTrips = (props) => {
 }
 
 const mapStateToProps = (store) => {
-    console.log('store in trips:', store.homeTrips);
     return {tripsList: store.homeTrips}
 }
 
