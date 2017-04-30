@@ -1,0 +1,33 @@
+import React from 'react'
+import {connect} from 'react-redux'
+import {Link} from 'react-router';
+
+const HomeTrips = (props) => {
+  // debugger;
+  const trips = props.tripsList.map(function(item) {
+    console.log("item", item);
+    return (
+            <tr>
+                <td>{item.time}</td>
+                <td>{item.location_from_id}</td>
+                <td>{item.location_to_id}</td>
+                <td>
+                    <Link to={'/tripDetails/'}>View Trip</Link>
+                </td>
+            </tr>
+    )
+  })
+  return (
+        <tbody>
+            {trips}
+        </tbody>
+  )
+}
+
+const mapStateToProps = (store) => {
+    console.log('store in trips:', store.homeTrips);
+    return {tripsList: store.homeTrips}
+}
+
+const TripsHomeDisplay = connect(mapStateToProps)(HomeTrips)
+export default TripsHomeDisplay

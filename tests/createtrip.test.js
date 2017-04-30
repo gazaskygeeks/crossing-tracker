@@ -5,7 +5,7 @@ test('POST /createtrip : test if recive the the correct Data', (t) => {
 
   var data ={
     user_id:1,
-    tripdate:'01012017',
+    tripdate:'2017-04-25',
     time:'01:01 AM',
     location_from_id:1,
     location_to_id:2,
@@ -80,7 +80,7 @@ test('POST /createtrip : test data fields', (t) => {
 
       var  data ={
         user_id:'a',
-        tripdate:'01012017',
+        tripdate:'2017-04-29',
         time:'01:01 AM',
         location_from_id:1,
         location_to_id:2,
@@ -136,7 +136,7 @@ test('POST /createtrip :check duplicate trip', (t) => {
 
       data ={
         user_id:'1',
-        tripdate:'01012017',
+        tripdate:'2017-04-25',
         time:'01:01 AM',
         location_from_id:1,
         location_to_id:2,

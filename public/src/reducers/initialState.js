@@ -1,5 +1,6 @@
 export default {
-  signin: [],
+  signin: {},
   createTrip: [],
-  signup: []
+  signup: [],
+  homeTrips:[]
 };
