@@ -79,7 +79,6 @@ class SigninPage extends React.Component {
     );
   }
 }
-
 const mapDispatchToProps = () => {
   return {
     sginin  : (data) => {

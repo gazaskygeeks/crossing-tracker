@@ -6,7 +6,7 @@ const login = (data)=>{
   fetch('/login',{
     method: 'POST',
     body:JSON.stringify(data),
-    credentials: 'same-orign'
+    credentials: 'include'
   })
   .then((response)=>{
     return  response.json()
