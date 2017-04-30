@@ -1,16 +1,17 @@
 import * as types from '../actions/actionTypes';
 import initialState from './initialState';
 
-function createTripReducer(state = initialState.createTrip, action) {
+function homeTripsReducer(state = initialState.homeTrips, action) {
   switch (action.type) {
-  case types.CREATE_TRIP:
+  case types.DISPLAY_ALL_TRIPS:
     return action.payload;
-  case types.CREATE_TRIP_FAILURE:
+  case types.DISPLAY_ALL_TRIPS_FAILURE:
     return state;
   default:
     return state;
   }
 }
+
 export {
-  createTripReducer
+  homeTripsReducer
 };

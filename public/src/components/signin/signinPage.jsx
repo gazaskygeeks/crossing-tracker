@@ -2,7 +2,6 @@ import React from 'react';
 import { browserHistory, Link } from 'react-router';
 import  login  from '../../actions/signinActions';
 import { connect } from 'react-redux';
-
 class SigninPage extends React.Component {
   constructor(props) {
     super(props);
@@ -66,6 +65,7 @@ class SigninPage extends React.Component {
                   >
                   Sign In
                 </button>
+                <span>{this.state.message}</span>
                 <p>
                   <Link to='/signup' activeClassName='active'>
                     Lorem ipsum dolor sit amet Lorem ipsum elit
@@ -80,6 +80,10 @@ class SigninPage extends React.Component {
   }
 }
 
+// const mapStateToProps = (store) => {
+//   return { signin: store.signin }
+// }
+
 const mapDispatchToProps = () => {
   return {
     sginin  : (data) => {
@@ -89,6 +93,7 @@ const mapDispatchToProps = () => {
 }
 
 const sginin = connect(
+//  mapStateToProps,
   mapDispatchToProps
 )(SigninPage)
 

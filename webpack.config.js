@@ -15,6 +15,12 @@ module.exports = {
         test: /\.(jpg|png|svg)$/,
         loader: 'url-loader'
       },
+      {
+        test: /\.css$/,
+        loader: ['style-loader','css-loader']
+
+      }
     ]
-  }
+  },
+  devtool: 'inline-source-map'
 }

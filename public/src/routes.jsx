@@ -14,7 +14,7 @@ export default (
     <Route path="trips" component={TripsPage} />
     <Route path="signup" component={SignupPage} />
     <Route path="home" component={HomePage} />
-    <Route path="createtirp" component={CreateTrip} />
+    <Route path="createtrip" component={CreateTrip} />
     <Route path="tripDetails/:id" component={TripDetails} />
     <Route path="success" component={SuccessPage} />
   </Route>

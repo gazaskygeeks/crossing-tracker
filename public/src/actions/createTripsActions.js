@@ -1,21 +1,18 @@
 /* eslint-disable */
+
 import * as types from './actionTypes';
-import {
-  store
-} from '../store/store';
-const createTrip = (data) => {
-  fetch('/createtirp', {
+import store from '../store/store';
+
+const createTrip = (data)=>{
+  fetch('/createtrip',{
     method: 'POST',
-    body: JSON.stringify(data)
+    body:JSON.stringify(data),
+    credentials: 'include'
   })
-  .then((res) => {
-    return res.json()
-  })
-  .then((response) => {
-    store.dispatch({
-      type: types.CREATE_TRIP,
-      payload: response
-    });
+  .then((response)=>{
+    return  response.json();
+  }).then((response)=>{
+      store.dispatch({type: types.CREATE_TRIP, payload: response});
   }).catch((err) => {
     store.dispatch({
       type: types.CREATE_TRIP_FAILURE
