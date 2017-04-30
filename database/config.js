@@ -2,6 +2,9 @@
 if (process.env.NODE_ENV !== 'production'){
   require('env2')('./.env');
 }
+
+// eslint-disable-next-line no-console
+console.log(process.env.NODE_ENV);
 const pg = require('pg');
 const config = {
   development: {
