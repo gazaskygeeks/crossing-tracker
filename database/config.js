@@ -1,5 +1,7 @@
 /*global process*/
-require('env2')('./.env');
+if (process.env.NODE_ENV !== 'production'){
+  require('env2')('./.env');
+}
 const pg = require('pg');
 const config = {
   development: {
