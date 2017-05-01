@@ -97,7 +97,7 @@ test('insert admin AND not approved into USERS table ', (t) => {
   })
 })
 test('insert admin AND not approved into USERS table ', (t) => {
-  hash('DEFAULT', (err, hashPass) => {
+  utiles.hash('DEFAULT', (err, hashPass) => {
     const userQuery = `INSERT INTO  users (
         username ,
         email,
