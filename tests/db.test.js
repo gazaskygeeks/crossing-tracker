@@ -97,7 +97,7 @@ test('insert admin AND not approved into USERS table ', (t) => {
   })
 })
 test('insert admin AND not approved into USERS table ', (t) => {
-  hash('DEFAULT', (err, hashPass) => {
+utiles.hash('DEFAULT', (err, hashPass) => {
     const userQuery = `INSERT INTO  users (
         username ,
         email,
@@ -154,7 +154,7 @@ test('select  data from USERS table ', (t) => {
     t.notEqual(result.rows.length, 0, 'ok')
     t.end()
     // eslint-disable-next-line no-console
-    console.log('***************** Login TEST**************************');
+    console.log('***************** Signup TEST**************************');
 
   })
 })

@@ -2,9 +2,6 @@
 if (process.env.NODE_ENV !== 'production'){
   require('env2')('./.env');
 }
-
-// eslint-disable-next-line no-console
-console.log(process.env.NODE_ENV);
 const pg = require('pg');
 const config = {
   development: {
@@ -29,8 +26,6 @@ const config = {
   }
 }
 const client = new pg.Client(config[process.env.NODE_ENV]);
-// eslint-disable-next-line no-console
-console.log('client', client);
 client.connect(function(err) {
   if (err) {
     throw  err;

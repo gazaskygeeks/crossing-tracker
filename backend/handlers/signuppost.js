@@ -9,15 +9,18 @@ module.exports = (req, res) => {
         msg: 'User already registered'
       }).code(400)
     } else {
-      utiles.sendemail('moha.buy@gmail.com',
-      'Recipient 1 <moha.buy@gmail.com>',
-      'moha.buy@gmail.com',
-      'There a new user registered',
-      '<h1>there a new user registered</h1>');
-
-      res({
-        msg: 'User regestered'
-      }).code(200)
+      utiles.sendemail(`${req.payload.username} <erezedule@gmail.com>`,
+        'erezedule@gmail.com',
+        `New registeration from <${req.payload.email}>`,
+        `A new user registered with email:
+         ${req.payload.email}`, (err, info) => {
+          if (err) {
+            throw err
+          }
+          res({
+            msg: 'User regestered'
+          }).code(200)
+        });
     }
   })
 }

@@ -151,12 +151,13 @@ test('POST/login: with correct pass&email | SUPER ADMIN approved', (t) => {
     url: '/login',
     payload: data
   }
+  console.log('here 1 ');
   server.inject(option, (res) => {
     const result = JSON.parse(res.payload)
     t.equal(res.statusCode, 200, 'Get status code correctly')
     t.equal(result.message, 'redirect to superAdmin page', 'Get error message successfully')
     t.end()
     // eslint-disable-next-line no-console
-    console.log('***************** Sign Up TEST****************************');
+    console.log('***************** Create Trip TEST****************************');
   })
 })
