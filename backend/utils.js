@@ -10,7 +10,23 @@ const hash = (pass, cb) => {
   });
 }
 
+
 const sendemail = (sender, recipient, recipientemail, title, sub) => {
+  let mailOptions = {
+    from: '"Fred Foo 👻" '.sender, // sender address
+    to: recipient, // list of receivers
+    subject: 'Hello ✔', // Subject line
+    text: 'Hello world ?', // plain text body
+    html: '<b>Hello world ?</b>' // html body
+  };
+
+  // send mail with defined transport object
+  transporter.sendMail(mailOptions, (error, info) => {
+      if (error) {
+          return console.log(error);
+      }
+      console.log('Message %s sent: %s', info.messageId, info.response);
+  });
   mg.sendText(recipientemail, [recipient, recipientemail],
   title,
   sub,

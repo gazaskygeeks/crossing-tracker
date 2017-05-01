@@ -1,6 +1,12 @@
-/*global process*/
+'use strict';
+const nodemailer = require('nodemailer');
 
- const Mailgun = require('mailgun').Mailgun;
- const mg = new Mailgun(process.env.MAILGUN_KEY);
-
- module.exports =mg;
+// create reusable transporter object using the default SMTP transport
+let transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+        user: ,
+        pass: 'yourpass'
+    }
+});
+module.exports = transporter
