@@ -151,7 +151,6 @@ test('POST/login: with correct pass&email | SUPER ADMIN approved', (t) => {
     url: '/login',
     payload: data
   }
-  console.log('here 1 ');
   server.inject(option, (res) => {
     const result = JSON.parse(res.payload)
     t.equal(res.statusCode, 200, 'Get status code correctly')

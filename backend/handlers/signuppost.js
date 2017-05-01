@@ -14,13 +14,13 @@ module.exports = (req, res) => {
         `New registeration from <${req.payload.email}>`,
         `A new user registered with email:
          ${req.payload.email}`, (err, info) => {
-          if (err) {
-            throw err
-          }
-          res({
-            msg: 'User regestered'
-          }).code(200)
-        });
+           if (err) {
+             throw err
+           }
+           res({
+             msg: 'User regestered'
+           }).code(200)
+         });
     }
   })
 }

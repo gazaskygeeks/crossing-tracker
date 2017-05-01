@@ -1,6 +1,6 @@
 const dbutils = require('../database/dbutils.js');
 const data = require('../scripts/sqltest.js');
-const utiles= require('../backend/utils.js');
+const utiles = require('../backend/utils.js');
 const test = require('tape');
 // eslint-disable-next-line no-console
 console.log('************************* DataBase Test**********************************');
@@ -97,7 +97,7 @@ test('insert admin AND not approved into USERS table ', (t) => {
   })
 })
 test('insert admin AND not approved into USERS table ', (t) => {
-utiles.hash('DEFAULT', (err, hashPass) => {
+  utiles.hash('DEFAULT', (err, hashPass) => {
     const userQuery = `INSERT INTO  users (
         username ,
         email,
