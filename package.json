@@ -46,6 +46,7 @@
     "istanbul": "^0.4.5",
     "jest": "^19.0.2",
     "joi": "^10.4.1",
+    "nodemailer": "^4.0.1",
     "nodemon": "^1.11.0",
     "pre-commit": "^1.2.2",
     "react": "^15.5.4",
