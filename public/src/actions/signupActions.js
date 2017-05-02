@@ -14,8 +14,13 @@ const register = (data)=>{
   })
 .then((response)=>{
   console.log('res in sign up:',response);
-  // browserHistory.push('/home');
-  // browserHistory.push('/success');
+  if(response.statusCode === 200){
+    browserHistory.push('/success');
+  }else if(response.statusCode === 409){
+    alert(response.msg)
+  }else{
+    alert('invalid data ')
+  }
 }).catch((err) =>{
   store.dispatch({type: types.REGISTER_USER_FAIL})
 })}

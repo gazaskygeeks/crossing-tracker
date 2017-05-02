@@ -73,7 +73,7 @@ test('POST /signup : write data from signup into db with exitsted email', (t) =>
     payload: data
   }
   server.inject(option, (res) => {
-    t.equal(res.statusCode, 400, 'User already regestered')
+    t.equal(JSON.parse(res.payload).statusCode, 409, 'User already regestered')
     t.end()
     // eslint-disable-next-line no-console
     console.log('*********************** Login Test********************************');

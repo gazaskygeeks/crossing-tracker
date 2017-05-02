@@ -6,8 +6,9 @@ module.exports = (req, res) => {
 
     if (err) {
       res({
-        msg: 'User already registered'
-      }).code(400)
+        msg: 'User already registered',
+        statusCode:409,
+      })
     } else {
       utiles.sendemail(`${req.payload.username} <erezedule@gmail.com>`,
         'erezedule@gmail.com',
@@ -18,8 +19,9 @@ module.exports = (req, res) => {
              throw err
            }
            res({
-             msg: 'User regestered'
-           }).code(200)
+             msg: 'User regestered',
+             statusCode: 200,
+           })
          });
     }
   })

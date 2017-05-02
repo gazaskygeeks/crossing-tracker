@@ -10,7 +10,7 @@ class SignupPage extends React.Component {
       email: '',
       password: '',
       phone: '',
-      org: ''
+      org_id: ''
     };
   }
 
@@ -31,7 +31,7 @@ class SignupPage extends React.Component {
   }
 
   changeOrg(ev) {
-    this.setState({org: ev.target.value});
+    this.setState({org_id: ev.target.value});
   }
 
   valid(){
@@ -42,7 +42,7 @@ class SignupPage extends React.Component {
         email: '',
         password: '',
         phone: '',
-        org: ''
+        org_id: ''
       }
       );
   }
@@ -76,6 +76,7 @@ class SignupPage extends React.Component {
                     type='email'
                     className='form-control'
                     placeholder='Email'
+                    value={this.state.email}
                     onChange={this.changeEmail.bind(this)}
                     />
                 </div>
@@ -84,6 +85,7 @@ class SignupPage extends React.Component {
                     type='password'
                     className='form-control'
                     placeholder='Password'
+                    value={this.state.password}
                     onChange={this.changePassword.bind(this)}
                     />
                 </div>
@@ -92,11 +94,13 @@ class SignupPage extends React.Component {
                     type='text'
                     className='form-control'
                     placeholder='Phone Number'
+                    value={this.state.phone}
                     onChange={this.changePhone.bind(this)}
                     />
                 </div>
                 <div className='form-group'>
                   <select
+                    value={this.state.org_id}
                     className='form-control'
                     onChange={this.changeOrg.bind(this)}
                     >
