@@ -8,8 +8,8 @@ const HomeTrips = (props) => {
     return (
             <tr>
                 <td>{item.time}</td>
-                <td>{item.location_from_id}</td>
-                <td>{item.location_to_id}</td>
+                <td> {item.location_from}</td>
+                <td>{item.location_to}</td>
                 <td>
                     <Link to={`/tripDetails/${item.trip_id}`}>View Trip</Link>
                 </td>

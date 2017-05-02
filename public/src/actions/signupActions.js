@@ -13,7 +13,6 @@ const register = (data)=>{
     return  response.json()
   })
 .then((response)=>{
-  console.log('res in sign up:',response);
   // browserHistory.push('/home');
   // browserHistory.push('/success');
 }).catch((err) =>{
