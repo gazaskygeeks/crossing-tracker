@@ -16,7 +16,8 @@ module.exports = (req, res) => {
           if (result.rows[0].approved === 0) {
             res(Boom.unauthorized('Wait until the admin approved your request'))
           } else {
-            req.cookieAuth.set({user_id:result.rows[0].user_id,user_type:result.rows[0].user_type});
+            req.cookieAuth.set({user_id:result.rows[0].user_id,
+              user_type:result.rows[0].user_type});
             if (result.rows[0].user_type === 2) {
               res({
                 message: 'redirect to admin page',
