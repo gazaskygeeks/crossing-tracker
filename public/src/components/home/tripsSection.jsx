@@ -11,7 +11,7 @@ const HomeTrips = (props) => {
                 <td>{item.location_from_id}</td>
                 <td>{item.location_to_id}</td>
                 <td>
-                    <Link to={`/tripDetails/${item.trip_id}`}>View Trip</Link>
+                    <Link to={`/tripdetails/${item.trip_id}`}>View Trip</Link>
                 </td>
             </tr>
     )

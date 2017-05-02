@@ -2,5 +2,6 @@ export default {
   signin: {},
   createTrip: {},
   signup: [],
-  homeTrips:[]
+  homeTrips:[],
+  tripDetails:[]
 };
