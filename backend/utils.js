@@ -14,11 +14,7 @@ const sendemail = (sender, recipient, recipientemail, title, sub) => {
   mg.sendText(recipientemail, [recipient, recipientemail],
   title,
   sub,
-  sender, {},
-  function(err) {
-    if (err)
-      throw err ;
-  });
+  sender);
 }
 
 module.exports = {
