@@ -73,7 +73,7 @@ test('POST/login: with VALID email and password BUT password is NOT CORRECT', (t
 })
 test('POST/login: with correct pass&email | USER not approved', (t) => {
   const data = {
-    email: 'notApprovedUser@gmail.com',// from db.test.js line:73
+    email: 'alaakhattab92@gmail.com',// from db.test.js line:73
     password: 'notApprovedUser' // from db.test.js line: 72
   }
   const option = {
