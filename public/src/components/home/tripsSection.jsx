@@ -8,8 +8,8 @@ const HomeTrips = (props) => {
     return (
             <tr>
                 <td>{item.time}</td>
-                <td>{item.location_from_id}</td>
-                <td>{item.location_to_id}</td>
+                <td> {item.location_from}</td>
+                <td>{item.location_to}</td>
                 <td>
                     <Link to={`/tripDetails/${item.trip_id}`}>View Trip</Link>
                 </td>
@@ -24,7 +24,7 @@ const HomeTrips = (props) => {
 }
 
 const mapStateToProps = (store) => {
-    return {tripsList: store.homeTrips}
+  return {tripsList: store.homeTrips}
 }
 
 const TripsHomeDisplay = connect(mapStateToProps)(HomeTrips)
