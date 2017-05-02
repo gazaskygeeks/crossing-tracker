@@ -1,6 +1,6 @@
 const dbutils = require('../database/dbutils.js');
 const data = require('../scripts/sqltest.js');
-const utiles= require('../backend/utils.js');
+const utiles = require('../backend/utils.js');
 const test = require('tape');
 // eslint-disable-next-line no-console
 console.log('************************* DataBase Test**********************************');
@@ -154,7 +154,7 @@ test('select  data from USERS table ', (t) => {
     t.notEqual(result.rows.length, 0, 'ok')
     t.end()
     // eslint-disable-next-line no-console
-    console.log('***************** Login TEST**************************');
+    console.log('***************** Signup TEST**************************');
 
   })
 })
