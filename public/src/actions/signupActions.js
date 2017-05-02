@@ -13,7 +13,6 @@ const register = (data)=>{
     return  response.json()
   })
 .then((response)=>{
-  console.log('res in sign up:',response);
   if(response.statusCode === 200){
     browserHistory.push('/success');
   }else if(response.statusCode === 409){
