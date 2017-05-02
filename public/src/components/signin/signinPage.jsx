@@ -68,7 +68,7 @@ class SigninPage extends React.Component {
                 <span>{this.state.message}</span>
                 <p>
                   <Link to='/signup' activeClassName='active'>
-                    Lorem ipsum dolor sit amet Lorem ipsum elit
+                    You can create new acount
                   </Link>
                 </p>
               </div>

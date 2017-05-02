@@ -6,7 +6,7 @@ class SignupPage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      name: '',
+      username: '',
       email: '',
       password: '',
       phone: '',
@@ -15,7 +15,7 @@ class SignupPage extends React.Component {
   }
 
   changeName(ev) {
-    this.setState({name: ev.target.value});
+    this.setState({username: ev.target.value});
   }
 
   changeEmail(ev) {
@@ -38,7 +38,7 @@ class SignupPage extends React.Component {
     this.props.sginup(this.state);
     this.setState(
       {
-        name: '',
+        username: '',
         email: '',
         password: '',
         phone: '',
@@ -67,6 +67,7 @@ class SignupPage extends React.Component {
                     type='text'
                     className='form-control'
                     placeholder='Full Name'
+                    value={this.state.username}
                     onChange={this.changeName.bind(this)}
                     />
                 </div>

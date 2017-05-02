@@ -76,6 +76,6 @@ test('POST /signup : write data from signup into db with exitsted email', (t) =>
     t.equal(res.statusCode, 400, 'User already regestered')
     t.end()
     // eslint-disable-next-line no-console
-    console.log('*********************** Create Trip Test********************************');
+    console.log('*********************** Login Test********************************');
   })
 })
