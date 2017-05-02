@@ -24,7 +24,7 @@ const HomeTrips = (props) => {
 }
 
 const mapStateToProps = (store) => {
-    return {tripsList: store.homeTrips}
+  return {tripsList: store.homeTrips}
 }
 
 const TripsHomeDisplay = connect(mapStateToProps)(HomeTrips)
