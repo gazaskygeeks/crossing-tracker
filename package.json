@@ -59,7 +59,6 @@
     "webpack": "^2.4.1",
     "webpack-dev-server": "^2.4.2"
   },
-  
   "dependencies": {
       "babel-preset-react": "^6.24.1",
     "bcrypt": "^1.0.2",
@@ -78,6 +77,6 @@
     "react-dom": "^15.5.4",
     "react-redux": "^5.0.4",
     "react-router": "2.4.0",
-    "react-router-dom": "^4.1.1",
+    "react-router-dom": "^4.1.1"
   }
 }
