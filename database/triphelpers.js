@@ -97,7 +97,7 @@ function getusertripbyuserid(data, cb) {
 
 
 function gettripbytripid(data, cb) {
-  const query = `SELECT SELECT
+  const query = `SELECT
   trip_id,location_from_id,
   location_to_id,date,pass_point_time,
   passing_by,user_id,available_seats
