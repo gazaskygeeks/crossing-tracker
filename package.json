@@ -70,6 +70,7 @@
     "hapi-auth-jwt2": "^7.2.4",
     "inert": "^4.2.0",
     "moment": "^2.18.1",
+    "nexmo": "^2.0.2",
     "nodemailer": "^4.0.1",
     "pg": "^6.1.5",
     "prop-types": "^15.5.8",

@@ -423,3 +423,8 @@ header .navbar-default .navbar-toggle:focus, header .navbar-default .navbar-togg
   display: inline-block;
   width: 250px;
 }
+
+.sign-out{
+  padding-top: 14px;
+  color: #fff!important;
+}
