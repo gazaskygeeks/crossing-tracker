@@ -49,6 +49,11 @@ function gettripbyuserid(data, cb) {
   dbutils.runQuery(query, [data.user_id], cb);
 }
 
+function getusertripbyuserid(data, cb) {
+  const query = 'SELECT * From usertrip WHERE user_id=$1';
+  dbutils.runQuery(query, [data.user_id], cb);
+}
+
 
 function getTripeByDate(date, cb) {
   const query = `
@@ -99,6 +104,7 @@ module.exports = {
   createtrip: createtrip,
   gettripbyuserid: gettripbyuserid,
   getTripeByDate: getTripeByDate,
-  getTripeByid: getTripeByid
+  getTripeByid: getTripeByid,
+  getusertripbyuserid:getusertripbyuserid
 
 }
