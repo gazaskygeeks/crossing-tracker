@@ -2,7 +2,8 @@
   "name": "crossing-tracker",
   "version": "1.0.0",
   "engines": {
-  "npm": "4.2.0"
+  "npm": "4.2.0",
+  "node" : "v7.8.0"
 },
   "description": "[![Stories in Ready](https://badge.waffle.io/gazaskygeeks/crossing-tracker.png?label=ready&title=Ready)](https://waffle.io/gazaskygeeks/crossing-tracker) # crossing-tracker GSG Project",
   "main": "index.js",
