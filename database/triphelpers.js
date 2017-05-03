@@ -44,9 +44,39 @@ values
     ], cb);
 }
 
+function addtripuser(data,cb){
+  const usertripQuery = `INSERT INTO  usertrip
+  (
+    user_id ,
+    trip_id
+  )VALUES
+  (
+    $1,$2
+  )
+  ;`;
+  dbutils.runQuery(usertripQuery, data, cb);
+}
+
+function getusertripbytripisuserid(data, cb) {
+
+  const query = 'SELECT * From usertrip WHERE user_id=$1 AND trip_id=$2';
+  dbutils.runQuery(query, data, cb);
+}
+
 function gettripbyuserid(data, cb) {
   const query = 'SELECT * From trip WHERE user_id=$1';
   dbutils.runQuery(query, [data.user_id], cb);
+}
+
+
+function gettripbytripid(data, cb) {
+  const query = 'SELECT * From trip WHERE trip_id=$1';
+  dbutils.runQuery(query, [data.trip_id], cb);
+}
+
+function getusertripbytripid(data, cb) {
+  const query = 'SELECT * From usertrip WHERE trip_id=$1';
+  dbutils.runQuery(query, [data.trip_id], cb);
 }
 
 
@@ -99,6 +129,10 @@ module.exports = {
   createtrip: createtrip,
   gettripbyuserid: gettripbyuserid,
   getTripeByDate: getTripeByDate,
-  getTripeByid: getTripeByid
 
+  gettripbytripid: gettripbytripid,
+  getusertripbytripid: getusertripbytripid,
+  addtripuser: addtripuser,
+  getusertripbytripisuserid: getusertripbytripisuserid,
+  getTripeByid: getTripeByid
 }

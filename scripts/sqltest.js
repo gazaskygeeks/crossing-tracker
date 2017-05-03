@@ -44,7 +44,7 @@ const tripQuery = `INSERT INTO trip (
  (
    $1,$2,$3,$4,$5,$6
  );`
-const trip = ['1','2','01:01 AM','08082017','1','3'];
+const trip = ['1','2','01:01 AM','08082017','1','2'];
 const usertripQuery =`INSERT INTO  usertrip
 (
   user_id ,
