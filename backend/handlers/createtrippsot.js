@@ -1,6 +1,7 @@
 const trip = require('../../database/triphelpers.js')
 module.exports = (req, res) => {
-  trip.gettripbytime(req.payload, (err, result) => {
+  const data = Object.assign(JSON.parse(req.payload),  req.state.sid)
+  trip.gettripbytime(data, (err, result) => {
     if (err)
       throw err
 

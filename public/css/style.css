@@ -32,7 +32,9 @@ button.btn-success, button.btn-success:hover, button.btn-success:focus, button.b
 .btn-wrp-right {
   text-align: right;
 }
-
+.btn-wrp-center{
+    text-align: center;
+}
 button.btn-danger, button.btn-danger:hover, button.btn-danger:focus, button.btn-danger:active:hover {
   border: 0;
 }
@@ -420,4 +422,9 @@ header .navbar-default .navbar-toggle:focus, header .navbar-default .navbar-togg
 .admin .select-org select {
   display: inline-block;
   width: 250px;
+}
+
+.sign-out{
+  padding-top: 14px;
+  color: #fff!important;
 }

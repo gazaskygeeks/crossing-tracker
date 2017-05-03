@@ -1,7 +1,7 @@
 /* eslint-disable */
 import * as types from './actionTypes';
 import store from '../store/store';
-import { browserHistory } from 'react-router';
+import { hashHistory } from 'react-router';
 const login = (data)=>{
   fetch('/login',{
     method: 'POST',

@@ -3,22 +3,21 @@
 import * as types from './actionTypes';
 import store from '../store/store';
 
-const createTrip = (data)=>{
-  console.log('data: ',data);
-  fetch('/createtrip',{
+const viewTrip = (id)=>{
+  fetch(`/tripdetails/${id}`,{
     method: 'POST',
-    body:JSON.stringify(data),
+    body:JSON.stringify(id),
     credentials: 'include'
   })
   .then((response)=>{
     return  response.json();
   }).then((response)=>{
-      store.dispatch({type: types.CREATE_TRIP, payload: response});
+      store.dispatch({type: types.TRIP_DETAILS, payload: response});
   }).catch((err) => {
     store.dispatch({
-      type: types.CREATE_TRIP_FAILURE
+      type: types.TRIP_DETAILS_FAILURE
     })
   })
 }
 
-export default createTrip;
+export default viewTrip;

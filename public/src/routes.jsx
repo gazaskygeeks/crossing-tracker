@@ -10,13 +10,13 @@ import TripDetails from './components/tripDetails/tripDetails.jsx';
 import SuccessPage from './components/success/successPage.jsx';
 import AdminHome from './components/admin/homeAdmin.jsx';
 export default (
-    <Route path="/" component={App}>
+  <Route path="/" component={App}>
     <IndexRoute component={SigninPage} />
     <Route path="trips" component={TripsPage} />
     <Route path="signup" component={SignupPage} />
     <Route path="home" component={HomePage} />
     <Route path="createtrip" component={CreateTrip} />
-    <Route path="tripDetails/:id" component={TripDetails} />
+    <Route path="tripdetails/:id" component={TripDetails} />
     <Route path="success" component={SuccessPage} />
     <Route path="adminpage" component={AdminHome} />
   </Route>

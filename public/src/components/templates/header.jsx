@@ -1,7 +1,9 @@
 import React from 'react';
 import { Link, IndexLink } from 'react-router';
+import signout from '../../actions/signout.js'
 
-const Header = () => {
+const Header = (props) => {
+
   return (
     <header>
       <div className='container'>
@@ -51,7 +53,14 @@ const Header = () => {
                       Admin page
                     </Link>
                   </li>
-                  <li><Link to='/'>Sign Out</Link></li>
+                  <li><Link to='/'>Sign Out</Link>
+                    <button
+                      className="sign-out btn btn-link"
+                      onClick={signout}
+                      >
+                      Signout
+                    </button>
+                    </li>
                 </ul>
               </div>
             </nav>

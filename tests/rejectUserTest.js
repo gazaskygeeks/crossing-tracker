@@ -1,6 +1,5 @@
 const test = require('tape');
 const server= require('../backend/server.js');
-const client = require('../database/config.js');
 const dbutils = require('../database/dbutils.js');
 test('POST /rejectuser : should delete user from db and send confirmation email',(t)=>{
   const adminInfo ={

@@ -1,7 +1,6 @@
 const helpers = require('../../database/userhelpers.js');
 const mail= require('../../backend/utils.js');
 module.exports=(req,res)=>{
-  console.log('req.payload.email',req.payload.email);
   const valid = req.state.sid.user_type;
   if(valid === 2){
     helpers.changestatus(req.payload.email,(err)=>{
