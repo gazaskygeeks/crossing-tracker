@@ -10,12 +10,12 @@ const TripRow = ({trip}) => {
           <tr>
             <td>{trip.date}</td>
             <td>{trip.time}</td>
-            <td>{trip.location_from_id}</td>
-            <td>{trip.location_to_id}</td>
+            <td>{trip.location_from}</td>
+            <td>{trip.location_to}</td>
             <td>{trip.passing_by}</td>
             <td>{trip.pass_point_time}</td>
             <td>{trip.available_seats}</td>
-            <td>Mercy Corps</td>
+            <td>{trip.org_name}</td>
           </tr>
         </tbody>
   )
