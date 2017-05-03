@@ -1,6 +1,5 @@
 const test = require('tape');
 const server = require('../backend/server.js');
-const client = require('../database/config.js');
 test('POST /createtrip : test if recive the the correct Data', (t) => {
 
   var data ={
@@ -154,8 +153,7 @@ test('POST /createtrip :check duplicate trip', (t) => {
       }
       server.inject(option, (response) => {
         t.equal(response.statusCode, 400, 'trip already exists')
-        client.end();
-        server.stop(t.end());
+        t.end();
       })
     })
   })
