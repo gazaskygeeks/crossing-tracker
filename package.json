@@ -9,7 +9,7 @@
     "start": "npm run build && node index.js",
     "server:watch": "nodemon -x 'npm start'",
     "watch": "webpack -w",
-    "build": "webpack",
+    "build": "webpack --config=webpack.config.js -p",
     "db:create": "psql -c 'CREATE DATABASE tests;' -U postgres -h localhost",
     "db:drop": "psql -c 'DROP DATABASE tests;' -U postgres -h localhost",
     "test:watch": "nodemon -x 'npm test' "
