@@ -1,8 +1,12 @@
 {
   "name": "crossing-tracker",
   "version": "1.0.0",
+  "engines": {
+  "npm": "4.2.0"
+},
   "description": "[![Stories in Ready](https://badge.waffle.io/gazaskygeeks/crossing-tracker.png?label=ready&title=Ready)](https://waffle.io/gazaskygeeks/crossing-tracker) # crossing-tracker GSG Project",
   "main": "index.js",
+
   "scripts": {
     "lint": "eslint ./ --cache --ignore-pattern .gitignore",
     "test": "export NODE_ENV=test  &&  npm run db:create && node tests/runner.js && npm run db:drop",
