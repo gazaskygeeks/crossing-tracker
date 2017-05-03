@@ -10,6 +10,7 @@
     "server:watch": "nodemon -x 'npm start'",
     "watch": "webpack -w",
     "build": "webpack",
+    "jest:watch": "jest --watch",
     "db:create": "psql -c 'CREATE DATABASE tests;' -U postgres -h localhost",
     "db:drop": "psql -c 'DROP DATABASE tests;' -U postgres -h localhost",
     "test:watch": "nodemon -x 'npm test' "
@@ -60,7 +61,7 @@
     "webpack-dev-server": "^2.4.2"
   },
   "dependencies": {
-      "babel-preset-react": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
     "bcrypt": "^1.0.2",
     "boom": "^4.3.1",
     "codeclimate-test-reporter": "^0.4.1",

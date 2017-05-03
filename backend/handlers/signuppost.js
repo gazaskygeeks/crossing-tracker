@@ -1,7 +1,6 @@
 const user = require('../../database/userhelpers.js');
 const utiles = require('../utils.js');
 module.exports = (req, res) => {
-
   user.createuser(req.payload, (err, result) => {
 
     if (err) {

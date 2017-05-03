@@ -1,5 +1,6 @@
-require('./db.test.js');
-require('./signup.test.js');
-require('./login.test.js');
-require('./createtrip.test.js')
-require('./acceptUser.test.js')
+require('./dbTest.js');
+require('./signupTest.js');
+require('./loginTest.js');
+require('./createtripTest.js')
+require('./acceptUserTest.js')
+require('./rejectUserTest.js')

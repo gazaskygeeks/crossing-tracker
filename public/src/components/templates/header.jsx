@@ -46,6 +46,11 @@ const Header = () => {
                       Create Trips
                     </Link>
                   </li>
+                  <li>
+                    <Link to='/adminpage' activeClassName='active'>
+                      Admin page
+                    </Link>
+                  </li>
                   <li><Link to='/'>Sign Out</Link></li>
                 </ul>
               </div>

@@ -154,6 +154,8 @@ test('POST /createtrip :check duplicate trip', (t) => {
       server.inject(option, (response) => {
         t.equal(response.statusCode, 400, 'trip already exists')
         t.end();
+        // eslint-disable-next-line no-console
+        console.log('********************************* AcceptUser Test***********************');
       })
     })
   })

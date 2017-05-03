@@ -7,5 +7,6 @@ module.exports=[
   require('./createtrippost.js'),
   require('./mytrippost.js'),
   require('./getTrips.js'),
-  require('./acceptUser.js')
+  require('./acceptUser.js'),
+  require('./rejectUser.js')
 ];

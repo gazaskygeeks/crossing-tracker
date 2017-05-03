@@ -78,6 +78,15 @@ test('insert normalUser AND not approved into USERS table ', (t) => {
     })
   })
 })
+test('insert normalUser AND not approved into USERS table ', (t) => {
+  utiles.hash('notApprovedUser', (err, hashPass) => {
+    const user = ['notApprovedUser', 'a7ladonia9991@gmail.com', hashPass, '059984253', '1', '3', '0']
+    dbutils.runQuery(data.userQuery, user, (err) => {
+      t.notOk(err, 'insert data into USERS table successfully')
+      t.end()
+    })
+  })
+})
 test('insert normalUser AND approved into USERS table ', (t) => {
   utiles.hash('approvedUser', (err, hashPass) => {
     const user = ['approvedUser', 'approvedUser@gmail.com', hashPass, '059984253', '1', '3', '1']

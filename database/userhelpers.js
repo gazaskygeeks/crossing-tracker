@@ -12,7 +12,11 @@ function getuserbyusername(username, cb) {
 }
 function changestatus(email, cb) {
   const query = `UPDATE users
-SET approved=1 WHERE email=$1 `
+SET approved=1 WHERE email=$1`
+  dbutils.runQuery(query, [email], cb)
+}
+function deletUser(email, cb) {
+  const query = 'DELETE FROM users WHERE email=$1'
   dbutils.runQuery(query, [email], cb)
 }
 
@@ -47,6 +51,7 @@ module.exports = {
   getuserbyemail: getuserbyemail,
   getuserbyusername: getuserbyusername,
   createuser,
-  changestatus
+  changestatus,
+  deletUser
 
 }
