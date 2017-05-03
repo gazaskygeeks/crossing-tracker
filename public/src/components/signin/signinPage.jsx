@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{PropTypes} from 'react';
 import { browserHistory, Link } from 'react-router';
 import  login  from '../../actions/signinActions';
 import { connect } from 'react-redux';
@@ -83,7 +83,9 @@ class SigninPage extends React.Component {
 // const mapStateToProps = (store) => {
 //   return { signin: store.signin }
 // }
-
+SigninPage.propTypes = {
+  sginin: PropTypes.func.isRequired
+};
 const mapDispatchToProps = () => {
   return {
     sginin  : (data) => {

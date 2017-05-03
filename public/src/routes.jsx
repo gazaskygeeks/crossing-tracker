@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, IndexRoute } from 'react-router';
+import { Route, IndexRoute} from 'react-router';
 import App from './components/App.jsx';
 import HomePage from './components/home/homePage.jsx';
 import TripsPage from './components/trips/tripsPage.jsx';
@@ -15,7 +15,8 @@ export default (
     <Route path="signup" component={SignupPage} />
     <Route path="home" component={HomePage} />
     <Route path="createtrip" component={CreateTrip} />
-    <Route path="tripDetails/:id" component={TripDetails} />
+    <Route path="tripdetails/:id" component={TripDetails} />
     <Route path="success" component={SuccessPage} />
   </Route>
+
 );

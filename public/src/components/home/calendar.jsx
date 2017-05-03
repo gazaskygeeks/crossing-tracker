@@ -10,12 +10,10 @@ class Example extends React.Component {
     this.state = {
       startDate: moment()
     };
-     this.handleChange = this.handleChange.bind(this);
+    this.handleChange = this.handleChange.bind(this);
   }
   handleChange(date) {
     var formatted = moment(date._d).format('YYYY-MM-DD');
-    console.log("date in calnder:",date._d);
-    console.log('formatted Date', formatted);
     this.props.getTrips(formatted);
     this.setState({
       startDate: date

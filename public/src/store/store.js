@@ -3,11 +3,16 @@ import {createTripReducer} from '../reducers/createTripReducer.js';
 import {createStore,combineReducers} from  'redux';
 import {signupReducer} from '../reducers/signupReducer.js';
 import {homeTripsReducer} from '../reducers/getTripsByDate.js';
+import {tripDetailsReducer} from '../reducers/tripDetailsReducer.js';
+import {getOrgsReducer} from '../reducers/getOrgsReducer.js';
+
 const reducers = combineReducers({
   signin: signinReducer,
   createTrip: createTripReducer,
   signup: signupReducer,
-  homeTrips:homeTripsReducer
+  homeTrips: homeTripsReducer,
+  tripDetails: tripDetailsReducer,
+  orgs: getOrgsReducer
 });
 var store = createStore(
   reducers,
