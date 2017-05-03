@@ -3,5 +3,6 @@ export default {
   createTrip: {},
   signup: [],
   homeTrips:[],
-  tripDetails:[]
+  tripDetails:[],
+  getOrgs: []
 };

@@ -1,4 +1,5 @@
 /* eslint-disable */
+
 module.exports = {
   entry: './public/src/index.jsx',
   output: {
@@ -22,5 +23,6 @@ module.exports = {
       }
     ]
   },
-  devtool: 'inline-source-map'
+  devtool: 'inline-source-map',
+
 }

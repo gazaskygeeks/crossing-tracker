@@ -10,6 +10,11 @@ function getuserbyusername(username, cb) {
   const query = 'SELECT * From users WHERE username=$1';
   dbutils.runQuery(query, [username], cb)
 }
+function changestatus(email, cb) {
+  const query = `UPDATE users
+SET approved=1 WHERE email=$1 `
+  dbutils.runQuery(query, [email], cb)
+}
 
 function createuser(data, cb) {
   hash.make(data.password)
@@ -41,6 +46,7 @@ function createuser(data, cb) {
 module.exports = {
   getuserbyemail: getuserbyemail,
   getuserbyusername: getuserbyusername,
-  createuser
+  createuser,
+  changestatus
 
 }

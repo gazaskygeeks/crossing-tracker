@@ -1,21 +1,21 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import  register  from '../../actions/signupActions';
 import { connect } from 'react-redux';
-import { browserHistory } from 'react-router';
 class SignupPage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      name: '',
+      username: '',
       email: '',
       password: '',
       phone: '',
-      org: ''
+      org_id: ''
     };
   }
 
   changeName(ev) {
-    this.setState({name: ev.target.value});
+    this.setState({username: ev.target.value});
   }
 
   changeEmail(ev) {
@@ -31,18 +31,18 @@ class SignupPage extends React.Component {
   }
 
   changeOrg(ev) {
-    this.setState({org: ev.target.value});
+    this.setState({org_id: ev.target.value});
   }
 
   valid(){
     this.props.sginup(this.state);
     this.setState(
       {
-        name: '',
+        username: '',
         email: '',
         password: '',
         phone: '',
-        org: ''
+        org_id: ''
       }
       );
   }
@@ -67,6 +67,7 @@ class SignupPage extends React.Component {
                     type='text'
                     className='form-control'
                     placeholder='Full Name'
+                    value={this.state.username}
                     onChange={this.changeName.bind(this)}
                     />
                 </div>
@@ -75,6 +76,7 @@ class SignupPage extends React.Component {
                     type='email'
                     className='form-control'
                     placeholder='Email'
+                    value={this.state.email}
                     onChange={this.changeEmail.bind(this)}
                     />
                 </div>
@@ -83,6 +85,7 @@ class SignupPage extends React.Component {
                     type='password'
                     className='form-control'
                     placeholder='Password'
+                    value={this.state.password}
                     onChange={this.changePassword.bind(this)}
                     />
                 </div>
@@ -91,11 +94,13 @@ class SignupPage extends React.Component {
                     type='text'
                     className='form-control'
                     placeholder='Phone Number'
+                    value={this.state.phone}
                     onChange={this.changePhone.bind(this)}
                     />
                 </div>
                 <div className='form-group'>
                   <select
+                    value={this.state.org_id}
                     className='form-control'
                     onChange={this.changeOrg.bind(this)}
                     >
@@ -125,7 +130,9 @@ class SignupPage extends React.Component {
     );
   }
 }
-
+SignupPage.propTypes = {
+  sginin: PropTypes.func.sginup
+};
 const mapDispatchToProps = () => {
   return {
     sginup  : (data) => {

@@ -73,7 +73,7 @@ test('POST/login: with VALID email and password BUT password is NOT CORRECT', (t
 })
 test('POST/login: with correct pass&email | USER not approved', (t) => {
   const data = {
-    email: 'notApprovedUser@gmail.com',// from db.test.js line:73
+    email: 'alaakhattab92@gmail.com',// from db.test.js line:73
     password: 'notApprovedUser' // from db.test.js line: 72
   }
   const option = {
@@ -157,6 +157,6 @@ test('POST/login: with correct pass&email | SUPER ADMIN approved', (t) => {
     t.equal(result.message, 'redirect to superAdmin page', 'Get error message successfully')
     t.end()
     // eslint-disable-next-line no-console
-    console.log('***************** Sign Up TEST****************************');
+    console.log('***************** Create Trip TEST****************************');
   })
 })

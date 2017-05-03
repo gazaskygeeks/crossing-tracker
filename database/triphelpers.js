@@ -49,8 +49,22 @@ function gettripbyuserid(data, cb) {
   dbutils.runQuery(query, [data.user_id], cb);
 }
 
+
 function getTripeByDate(date, cb) {
-  const query = 'SELECT * FROM trip WHERE date=$1'
+  const query = `
+  select
+    trip.available_seats,
+    trip.trip_id,
+    trip.time,
+    trip.date,
+    l.location_name as location_from,
+    (select location_name from location where
+    location_id=trip.location_to_id) as location_to
+  from trip, location l
+  where date=$1
+  and trip.location_from_id=l.location_id
+  `;
+
   dbutils.runQuery(query, [date], cb)
 }
 

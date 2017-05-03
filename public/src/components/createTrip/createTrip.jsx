@@ -1,6 +1,8 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import  createTrip  from '../../actions/createTripsActions.js';
 import { connect } from 'react-redux';
+import getOrgs from '../../actions/getOrgsAction';
 class CreateTrip extends React.Component{
   constructor(props) {
     super(props);
@@ -57,6 +59,7 @@ class CreateTrip extends React.Component{
       }
     )
   }
+
   render() {
     return (
         <section className='trip-create'>
@@ -166,6 +169,13 @@ class CreateTrip extends React.Component{
     );
   }
 }
+CreateTrip.propTypes = {
+  TripsCreation: PropTypes.func.isRequired
+};
+const mapStateToProps = (store) => {
+  console.log('store.organizations: ',store);
+  return {orgs: store}
+}
 
 const mapDispatchToProps = () => {
   return {
@@ -176,6 +186,7 @@ const mapDispatchToProps = () => {
 }
 
 const TripsCreation = connect(
+  mapStateToProps,
   mapDispatchToProps
 )(CreateTrip)
 export default TripsCreation;

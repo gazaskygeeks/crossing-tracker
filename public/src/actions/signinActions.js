@@ -13,7 +13,7 @@ const login = (data)=>{
   }).then((response)=>{
     if(response.statusCode === 200 && response.usertype === 'user' ){
       store.dispatch({type: types.POST_SIGNIN_DATA, payload: response});
-      browserHistory.push('/home');
+      browserHistory.push('/#/home?_k=s6j8so');
     }else{
       store.dispatch({type: types.POST_SIGNIN_FAIL})
     }

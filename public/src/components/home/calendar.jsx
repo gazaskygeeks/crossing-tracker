@@ -14,8 +14,6 @@ class Example extends React.Component {
   }
   handleChange(date) {
     var formatted = moment(date._d).format('YYYY-MM-DD');
-    console.log("date in calnder:",date._d);
-    console.log('formatted Date', formatted);
     this.props.getTrips(formatted);
     this.setState({
       startDate: date
