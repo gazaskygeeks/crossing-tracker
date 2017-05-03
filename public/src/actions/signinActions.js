@@ -1,7 +1,7 @@
 /* eslint-disable */
 import * as types from './actionTypes';
 import store from '../store/store';
-import { browserHistory } from 'react-router';
+import { hashHistory } from 'react-router';
 const login = (data)=>{
   fetch('/login',{
     method: 'POST',
@@ -13,7 +13,7 @@ const login = (data)=>{
   }).then((response)=>{
     if(response.statusCode === 200 && response.usertype === 'user' ){
       store.dispatch({type: types.POST_SIGNIN_DATA, payload: response});
-      browserHistory.push('/home');
+      hashHistory.push('home');
     }else{
       store.dispatch({type: types.POST_SIGNIN_FAIL})
     }

@@ -1,7 +1,7 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import  register  from '../../actions/signupActions';
 import { connect } from 'react-redux';
-import { browserHistory } from 'react-router';
 class SignupPage extends React.Component {
   constructor(props) {
     super(props);
@@ -130,7 +130,9 @@ class SignupPage extends React.Component {
     );
   }
 }
-
+SignupPage.propTypes = {
+  sginin: PropTypes.func.sginup
+};
 const mapDispatchToProps = () => {
   return {
     sginup  : (data) => {

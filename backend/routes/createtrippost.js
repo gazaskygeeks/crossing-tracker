@@ -1,5 +1,5 @@
-
 const validation = require('../validation.js');
+
 const createTripPostHandler = require('../handlers/createtrippsot.js');
 
 const createTripPost = {
@@ -9,8 +9,8 @@ const createTripPost = {
   config: {
     validate: {
       payload: validation.tripvalidation
-
-    }  ,auth:'session'
+    },
+    auth:'session'
   }
 }
 module.exports =createTripPost;

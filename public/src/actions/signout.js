@@ -1,5 +1,5 @@
 /* eslint-disable */
-import { browserHistory } from 'react-router';
+import { hashHistory } from 'react-router';
 
 const signout = (data)=>{
   fetch('/signout',{
@@ -8,7 +8,7 @@ const signout = (data)=>{
     credentials: 'include'
   })
   .then((response)=>{
-    browserHistory.push('/');
+    hashHistory.push('/');
 
   }).catch((err) => {
   throw err

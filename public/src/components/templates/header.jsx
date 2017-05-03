@@ -49,7 +49,12 @@ const Header = (props) => {
                     </Link>
                   </li>
                   <li>
-                    <button  className="sign-out btn btn-link"  onClick={signout} > Signout</button>
+                    <button
+                      className="sign-out btn btn-link"
+                      onClick={signout}
+                      >
+                      Signout
+                    </button>
                     </li>
                 </ul>
               </div>

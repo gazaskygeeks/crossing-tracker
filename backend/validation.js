@@ -11,15 +11,15 @@ const loginvalidation = {
   password: Joi.string().regex(/^[a-zA-Z0-9]{3,30}$/).min(6).max(20).required()
 }
 const tripvalidation = {
-  // user_id: Joi.number().required(),
   tripdate: Joi.required(),
   time:Joi.string().regex(/^(0?[1-9]|1[012])(:[0-5]\d)$/).required(),
   location_from_id: Joi.number().min(1).max(3).required(),
   location_to_id: Joi.number().min(1).max(3).required(),
-  passingby: Joi.string().min(4).max(25),
-  passpointtime: Joi.string()
+  passing_by: Joi.string().min(4).max(25),
+  pass_point_time: Joi.string()
     .regex(/^(0?[1-9]|1[012])(:[0-5]\d)$/).required(),
-  seatavailable: Joi.number().min(0).max(7).required()
+  seatavailable: Joi.number().min(0).max(7).required(),
+  user_id: Joi.number().required()
 }
 
 module.exports = {

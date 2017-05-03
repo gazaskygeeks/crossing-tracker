@@ -1,44 +1,23 @@
 import React from 'react';
+import viewTrip from '../../actions/tripDetailsActions.js';
+import {connect} from 'react-redux';
+import TripSection from './tripSection.jsx';
 
 class TripDetails extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+  componentWillMount(){
+    {this.props.viewThisTrip(this.props.params.id)}
+  }
+
+
   render() {
     return (
       <div>
-        <section className='trip-details'>
-      <div className='container'>
-        <div className='row'>
-          <div className='col-md-offset-1 col-md-10'>
-            <h3 className='heading'>Trip Info</h3>
-            <table className='table table-bordered'>
-              <thead>
-                <tr>
-                  <th>Trip Date</th>
-                  <th>Time</th>
-                  <th>From</th>
-                  <th>To</th>
-                  <th>Passing by</th>
-                  <th>Passpoint time</th>
-                  <th>Seats available</th>
-                  <th>Organization</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>16/06/2017</td>
-                  <td>8:30</td>
-                  <td>Jerusalem</td>
-                  <td>EREZ</td>
-                  <td>Beit Hanina</td>
-                  <td>14:30</td>
-                  <td>3</td>
-                  <td>Mercy Corps</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </div>
-    </section>
+
+        <TripSection trip={this.props.tripDetails}/>
+
     <section className='trip-details'>
       <div className='container'>
         <div className='row'>
@@ -66,9 +45,26 @@ class TripDetails extends React.Component {
         </div>
       </div>
     </section>
+    <div className="btn-wrp-center">
+      <button className="btn btn-default">
+        Join this trip
+      </button>
+    </div>
       </div>
     );
   }
 }
 
-export default TripDetails;
+const mapStateToProps = (store) => {
+  console.log('store.tripDetails[0]: ',store.tripDetails[0]);
+  return {tripDetails: store.tripDetails[0]}
+}
+
+const mapDispatchToProps = () => {
+  return {
+    viewThisTrip  : (id) => {
+      viewTrip(id);
+    }
+  }
+}
+export default connect(mapStateToProps,mapDispatchToProps)(TripDetails);

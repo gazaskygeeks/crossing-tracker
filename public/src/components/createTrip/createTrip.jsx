@@ -1,6 +1,8 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import  createTrip  from '../../actions/createTripsActions.js';
 import { connect } from 'react-redux';
+import getOrgs from '../../actions/getOrgsAction';
 class CreateTrip extends React.Component{
   constructor(props) {
     super(props);
@@ -9,9 +11,10 @@ class CreateTrip extends React.Component{
       time: '',
       location_from_id: '',
       location_to_id: '',
-      passingby:'',
-      passpointtime:'',
-      seatavailable: ''
+      passing_by:'',
+      pass_point_time:'',
+      seatavailable: '',
+      user_id: 1
     };
   }
 
@@ -32,11 +35,11 @@ class CreateTrip extends React.Component{
   }
 
   changePassingBy(ev) {
-    this.setState({passingby: ev.target.value});
+    this.setState({passing_by: ev.target.value});
   }
 
   changePassingPointTime(ev) {
-    this.setState({passpointtime: ev.target.value});
+    this.setState({pass_point_time: ev.target.value});
   }
 
   changeSeatsAvailable(ev) {
@@ -50,12 +53,13 @@ class CreateTrip extends React.Component{
         time: '',
         location_from_id: '',
         location_to_id: '',
-        passingby:'',
-        passpointtime:'',
+        passing_by:'',
+        pass_point_time:'',
         seatavailable: ''
       }
     )
   }
+
   render() {
     return (
         <section className='trip-create'>
@@ -123,7 +127,7 @@ class CreateTrip extends React.Component{
                     <label>Passing by</label>
                     <input
                       type='text'
-                      value={this.state.passingby}
+                      value={this.state.passing_by}
                       className='form-control'
                       onChange={this.changePassingBy.bind(this)}
                       />
@@ -132,7 +136,7 @@ class CreateTrip extends React.Component{
                     <label>Passingpoint Time</label>changePassingPointTime
                     <input
                       type='time'
-                      value={this.state.passpointtime}
+                      value={this.state.pass_point_time}
                       className='form-control'
                       onChange={this.changePassingPointTime.bind(this)}
                       />
@@ -165,6 +169,13 @@ class CreateTrip extends React.Component{
     );
   }
 }
+CreateTrip.propTypes = {
+  TripsCreation: PropTypes.func.isRequired
+};
+const mapStateToProps = (store) => {
+  console.log('store.organizations: ',store);
+  return {orgs: store}
+}
 
 const mapDispatchToProps = () => {
   return {
@@ -175,6 +186,7 @@ const mapDispatchToProps = () => {
 }
 
 const TripsCreation = connect(
+  mapStateToProps,
   mapDispatchToProps
 )(CreateTrip)
 export default TripsCreation;
