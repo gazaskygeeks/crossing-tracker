@@ -1,7 +1,7 @@
 /* eslint-disable */
 import * as types from './actionTypes';
 import store from '../store/store';
-import { browserHistory } from 'react-router';
+import { hashHistory } from 'react-router';
 
 const register = (data)=>{
   fetch('/signup',{
@@ -14,7 +14,7 @@ const register = (data)=>{
   })
 .then((response)=>{
   if(response.statusCode === 200){
-    browserHistory.push('/success');
+    hashHistory.push('success');
   }else if(response.statusCode === 409){
     alert(response.msg)
   }else{

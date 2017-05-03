@@ -4,13 +4,14 @@ import  createTrip  from '../../actions/createTripsActions.js';
 import { connect } from 'react-redux';
 import getOrgs from '../../actions/getOrgsAction';
 class CreateTrip extends React.Component{
+  
   constructor(props) {
     super(props);
     this.state = {
       tripdate: '',
       time: '',
-      location_from_id: '',
-      location_to_id: '',
+      location_from: '',
+      location_to: '',
       passing_by:'',
       pass_point_time:'',
       seatavailable: '',
@@ -27,11 +28,11 @@ class CreateTrip extends React.Component{
   }
 
   changeLocationFrom(ev) {
-    this.setState({location_from_id: ev.target.value});
+    this.setState({location_from: ev.target.value});
   }
 
   changeLocationTo(ev) {
-    this.setState({location_to_id: ev.target.value});
+    this.setState({location_to: ev.target.value});
   }
 
   changePassingBy(ev) {
@@ -51,11 +52,12 @@ class CreateTrip extends React.Component{
       {
         tripdate: '',
         time: '',
-        location_from_id: '',
-        location_to_id: '',
+        location_from: '',
+        location_to: '',
         passing_by:'',
         pass_point_time:'',
-        seatavailable: ''
+        seatavailable: '',
+        user_id: 1
       }
     )
   }
@@ -90,7 +92,7 @@ class CreateTrip extends React.Component{
                   <div className='form-group'>
                     <label>From</label>
                     <select
-                      value={this.state.location_from_id}
+                      value={this.state.location_from}
                       className='form-control'
                       onChange={this.changeLocationFrom.bind(this)}
                       >
@@ -108,7 +110,7 @@ class CreateTrip extends React.Component{
                   <div className='form-group'>
                     <label>To</label>
                     <select
-                      value={this.state.location_to_id}
+                      value={this.state.location_to}
                       className='form-control'
                       onChange={this.changeLocationTo.bind(this)}
                       >
