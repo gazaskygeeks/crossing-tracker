@@ -100,9 +100,9 @@ test('POST /jointrip : test 3', (t) => {
     }
     server.inject(option, (response) => {
       t.equal(response.statusCode, 400, 'Trip is full')
-      // t.end();
-      client.end();
-      server.stop(t.end());
+      t.end();
+//       client.end();
+//       server.stop(t.end());
     })
 
   })
