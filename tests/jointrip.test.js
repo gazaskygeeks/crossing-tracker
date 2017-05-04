@@ -62,7 +62,6 @@ test('POST /jointrip : test2', (t) => {
       }
     }
     server.inject(option, (resp) => {
-      // console.log('resp', resp);
       t.equal(resp.statusCode, 401, 'User already joined this trip')
       t.end();
     })
@@ -104,3 +103,5 @@ test('POST /jointrip : test 3', (t) => {
 
   })
 })
+// eslint-disable-next-line no-console
+console.log('***************** Edit Trip TEST****************************');

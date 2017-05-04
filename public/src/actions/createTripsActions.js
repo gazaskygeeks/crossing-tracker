@@ -4,9 +4,12 @@ import * as types from './actionTypes';
 import store from '../store/store';
 
 const createTrip = (data)=>{
-  console.log('data: ',data);
   fetch('/createtrip',{
     method: 'POST',
+    headers: {
+           'Accept': 'application/json, text/plain, */*',
+           'Content-Type': 'application/json'
+    },
     body:JSON.stringify(data),
     credentials: 'include'
   })

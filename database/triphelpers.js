@@ -17,7 +17,6 @@ function gettripbytime(data, cb) {
 }
 
 function createtrip(data, cb) {
-  data = JSON.parse(data);
   const query = `INSERT INTO trip
   (
   location_from_id,
@@ -106,12 +105,33 @@ function gettripbytripid(data, cb) {
 }
 
 function getusertripbytripid(data, cb) {
+
   const query = `SELECT
    id,user_id,trip_id
    From usertrip
    WHERE trip_id=$1`;
   dbutils.runQuery(query, [data.trip_id], cb);
 }
+function updatetrip(data, cb) {
+  const query = `UPDATE trip
+   SET
+   location_from_id=$1,
+   location_to_id=$2,
+   time=$3,
+   date=$4
+   WHERE trip_id=$5`;
+  dbutils.runQuery(
+    query,
+    [
+      data.location_to_id,
+      data.location_from_id,
+      data.time,
+      data.date,
+      data.trip_id
+    ]
+    , cb);
+}
+
 
 
 function getTripeByDate(date, cb) {
@@ -132,7 +152,7 @@ function getTripeByDate(date, cb) {
   dbutils.runQuery(query, [date], cb)
 }
 
-function getTripeByid(data, cb) {
+function getTripByid(data, cb) {
   const query = `
     select
       trip.available_seats,
@@ -156,17 +176,18 @@ function getTripeByid(data, cb) {
     where trip.trip_id=$1 and u.user_id = trip.user_id
     and trip.location_from_id=l.location_id and u.org_id = o.org_id
     `;
-  dbutils.runQuery(query, [data], cb);
+  dbutils.runQuery(query, [data.trip_id], cb);
 }
 module.exports = {
   gettripbytime: gettripbytime,
   createtrip: createtrip,
   gettripbyuserid: gettripbyuserid,
   getTripeByDate: getTripeByDate,
-  getTripeByid: getTripeByid,
+  getTripByid: getTripByid,
   getusertripbyuserid:getusertripbyuserid,
   gettripbytripid: gettripbytripid,
   getusertripbytripid: getusertripbytripid,
   addtripuser: addtripuser,
   getusertripbytripisuserid: getusertripbytripisuserid,
+  updatetrip:updatetrip
 }
