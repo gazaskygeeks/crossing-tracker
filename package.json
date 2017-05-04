@@ -63,7 +63,6 @@
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-react": "^6.23.0",
     "css-loader": "^0.28.0",
-<<<<<<< HEAD
     "enzyme": "^2.8.2",
     "eslint": "^3.19.0",
     "eslint-config-standard": "^10.2.1",
@@ -83,11 +82,7 @@
     "style-loader": "^0.16.1",
     "tape": "^4.6.3",
     "url-loader": "0.5.7",
-    "webpack-dev-server": "^2.4.2"
-  },
-  "dependencies": {
-=======
->>>>>>> a8a1fd761f4c723f765cf031e356232a05e723c1
+    "webpack-dev-server": "^2.4.2",
     "webpack": "^2.4.1",
     "url-loader": "0.5.7",
     "autoprefixer-loader": "^3.2.0",

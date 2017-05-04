@@ -1,5 +1,4 @@
 const server = require('../backend/server.js');
-const client = require('../database/config.js');
 const test = require('tape');
 test('GET/disApproved: should return all dis approved useres ', (t) => {
   const adminInfo = {

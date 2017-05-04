@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 require('./dbTest.js');
 require('./signupTest.js');
 require('./loginTest.js');

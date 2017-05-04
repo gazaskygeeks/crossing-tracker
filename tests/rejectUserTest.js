@@ -16,7 +16,7 @@ test('POST /rejectuser : should delete user from db and send confirmation email'
     var t1 =cookies[0].split(';');
     var t2 =t1[0].split('=');
     var t3 = t2[1];
-    const data ={email:'moha.buy@gmail.com'}
+    const data ={email:'fake1@fake1.com'}
     var option = {
       method: 'POST',
       url: '/rejectuser',
@@ -54,7 +54,7 @@ test('POST /rejectuser without ADMIN email: should reject the access to this act
     var t1 =cookies[0].split(';');
     var t2 =t1[0].split('=');
     var t3 = t2[1];
-    const data ={email:'moha.buy@gmail.com'}
+    const data ={email:'fake1@fake1.com'}
     var option = {
       method: 'POST',
       url: '/rejectuser',
