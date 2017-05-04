@@ -19,6 +19,14 @@ function deletUser(email, cb) {
   const query = 'DELETE FROM users WHERE email=$1'
   dbutils.runQuery(query, [email], cb)
 }
+function getDisApprovedUser(cb) {
+  const query = `select users.username,
+  users.email,
+  users.phone,
+  o.org_name as org_id from users,
+  org o where approved=$1;`
+  dbutils.runQuery(query, ['0'], cb)
+}
 
 function createuser(data, cb) {
   hash.make(data.password)
@@ -52,6 +60,7 @@ module.exports = {
   getuserbyusername: getuserbyusername,
   createuser,
   changestatus,
-  deletUser
+  deletUser,
+  getDisApprovedUser
 
 }

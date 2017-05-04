@@ -17,40 +17,14 @@ const payload2 = {
 }
 test('REGISTER_USER : should return the data that fetched',()=>{
   expect(signupReducer(initialState,{type: types.REGISTER_USER,
-    payload: payload1})).toEqual([payload1])
-})
-test('REGISTER_USER with another payload: should return the data that fetched',()=>{
-  initialState = [payload1]
-  expect(signupReducer(initialState,{type: types.REGISTER_USER,
-    payload: payload2})).toEqual([payload1,payload2])
+    payload: [payload1]})).toEqual([payload1])
 })
 test('ACCEPT_OR_REJECT_USER : should delete that user ',()=>{
   initialState = [payload1,payload2]
   expect(signupReducer(initialState,{type: types.ACCEPT_OR_REJECT_USER,
-    payload: payload1.email})).toEqual([payload2])
+    payload: [payload1,payload2]})).toEqual([payload1,payload2])
 })
 test('REGISTER_USER_FAIL: should return the initialState ',()=>{
   expect(signupReducer(initialState,{type: types.REGISTER_USER_FAIL,
-    payload: payload1.email})).toEqual(initialState)
+    payload: initialState})).toEqual(initialState)
 })
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// test('ACCEPT_OR_REJECT_USER : should remove that user from state',()=>{
-//   expect(signupReducer(initialState,{type: types.ACCEPT_OR_REJECT_USER, payload: payload.email})).toEqual([])
-//   console.log('initialState aftre reject:',initialState);
-// })
-// test('REGISTER_USER_FAIL : should return the initialState',()=>{
-//   expect(signupReducer(initialState,{type: types.REGISTER_USER_FAIL, payload: payload})).toEqual(initialState)
-// })

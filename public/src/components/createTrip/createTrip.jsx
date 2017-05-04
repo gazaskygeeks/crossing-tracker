@@ -173,7 +173,6 @@ CreateTrip.propTypes = {
   TripsCreation: PropTypes.func.isRequired
 };
 const mapStateToProps = (store) => {
-  console.log('store.organizations: ',store);
   return {orgs: store}
 }
 

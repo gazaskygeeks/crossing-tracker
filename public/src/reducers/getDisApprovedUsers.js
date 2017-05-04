@@ -1,20 +1,16 @@
 import * as types from '../actions/actionTypes';
 import initialState from './initialState';
 
-function signupReducer(state = initialState.signup, action) {
-
+function disApprovedUsers(state = initialState.disApproved, action) {
   switch (action.type) {
-  case types.REGISTER_USER:
+  case types.GET_DISAPPROVED_USERS:
     return action.payload;
-  case types.ACCEPT_OR_REJECT_USER:
-    return action.payload
-  case types.REGISTER_USER_FAIL:
+  case types.GET_DISAPPROVED_USERS_FAILURE:
     return state;
   default:
     return state;
   }
 }
-
 export {
-  signupReducer
+  disApprovedUsers
 };

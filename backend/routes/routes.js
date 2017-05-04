@@ -11,5 +11,6 @@ module.exports=[
   require('./tripDetails.js'),
   require('./acceptUser.js'),
   require('./getOrgs.js'),
-  require('./signoutpost.js')
+  require('./signoutpost.js'),
+  require('./getDisApprovedUsers')
 ];

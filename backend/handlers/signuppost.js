@@ -19,7 +19,7 @@ module.exports = (req, res) => {
            }
            res({
              msg: 'User regestered',
-             statusCode: 200,
+             statusCode: 200
            })
          });
     }

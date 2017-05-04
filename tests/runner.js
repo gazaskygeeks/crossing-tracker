@@ -4,3 +4,4 @@ require('./loginTest.js');
 require('./createtripTest.js')
 require('./acceptUserTest.js')
 require('./rejectUserTest.js')
+require('./getDisApproved.js')

@@ -16,7 +16,7 @@ test('POST /rejectuser : should delete user from db and send confirmation email'
     var t1 =cookies[0].split(';');
     var t2 =t1[0].split('=');
     var t3 = t2[1];
-    const data ={email:'a7ladonia9991@gmail.com'}
+    const data ={email:'moha.buy@gmail.com'}
     var option = {
       method: 'POST',
       url: '/rejectuser',
@@ -28,8 +28,8 @@ test('POST /rejectuser : should delete user from db and send confirmation email'
     server.inject(option,(response)=>{
       const res = JSON.parse(response.payload);
       t.equal(res.er,null,'email sent without any errors')
-      t.equal(res.message,'confirmation success','recieve confirmation message successfully')
-      t.equal(res.info.rejected.length,0,'email sent successfully')
+      t.equal(res.message,'reject registration','recieve confirmation message successfully')
+    //  t.equal(res.info.rejected.length,0,'email sent successfully')
       const query='SELECT * FROM USERS WHERE email=$1';
       const condition = [data.email]
       dbutils.runQuery(query,condition,(err,result)=>{
@@ -54,7 +54,7 @@ test('POST /rejectuser without ADMIN email: should reject the access to this act
     var t1 =cookies[0].split(';');
     var t2 =t1[0].split('=');
     var t3 = t2[1];
-    const data ={email:'a7ladonia9991@gmail.com'}
+    const data ={email:'moha.buy@gmail.com'}
     var option = {
       method: 'POST',
       url: '/rejectuser',
@@ -68,8 +68,7 @@ test('POST /rejectuser without ADMIN email: should reject the access to this act
       t.equal(result.message,'You are not admin','get the correct message')
       t.equal(result.statusCode,401,'get statusCode correctly')
       t.end()
-      // client.end();
-      // server.stop(t.end());
+      console.log('******************************Get disApproved Users Test**********************');
     })
   })
 })

@@ -56,7 +56,6 @@ class TripDetails extends React.Component {
 }
 
 const mapStateToProps = (store) => {
-  console.log('store.tripDetails[0]: ',store.tripDetails[0]);
   return {tripDetails: store.tripDetails[0]}
 }
 

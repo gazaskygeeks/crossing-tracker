@@ -53,7 +53,7 @@ const Header = (props) => {
                       Admin page
                     </Link>
                   </li>
-                  <li><Link to='/'>Sign Out</Link>
+                  <li>
                     <button
                       className="sign-out btn btn-link"
                       onClick={signout}

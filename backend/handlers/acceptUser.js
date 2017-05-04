@@ -1,5 +1,7 @@
 const helpers = require('../../database/userhelpers.js');
 const mail= require('../../backend/utils.js');
+const user = require('../../database/userhelpers.js');
+
 module.exports=(req,res)=>{
   const valid = req.state.sid.user_type;
   if(valid === 2){
@@ -14,12 +16,18 @@ module.exports=(req,res)=>{
           if (error) {
             throw error
           }
-          res({message:'confirmation success',
-            er:error,
-            info:info,
-            statusCode:200
-          })
-        });
+          user.getDisApprovedUser((err, users) => {
+            const rep = {
+              message: 'accept registration',
+              er: error,
+              info: info,
+              result: users.rows,
+              statusCode:200
+            }
+            res(rep)
+          });
+        })
+
     })
   }else{
     res({message:'You are not admin',

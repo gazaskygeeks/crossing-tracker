@@ -1,26 +1,26 @@
 /* eslint-disable */
-
 import * as types from './actionTypes';
 import store from '../store/store';
-
-const acceptUser = (data)=>{
+const accept = (data)=>{
   fetch('/acceptuser',{
     method: 'POST',
-    body:JSON.stringify(data),
+    headers: {
+           'Accept': 'application/json, text/plain, */*',
+           'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(data),
     credentials: 'include'
   })
   .then((response)=>{
-    return  response.json();
-  }).then((response)=>{
-    if(response.statusCode === 200 && response.message === 'confirmation success'){
-      store.dispatch({type: types.ACCEPT_OR_REJECT_USER, payload: data});
-    }else{
-    }
-  }).catch((err) => {
-    store.dispatch({
-      type: types.CREATE_TRIP_FAILURE
-    })
+    return  response.json()
   })
-}
+.then((response)=>{
+  if(response.statusCode === 200 && response.message === 'accept registration'){
+    store.dispatch({type: types.GET_DISAPPROVED_USERS, payload: response.result});
+  }
+}).catch((err) =>{
+  store.dispatch({type: types.REGISTER_USER_FAIL})
+})}
 
-export default acceptUser;
+
+export default accept;
