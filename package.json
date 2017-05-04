@@ -43,7 +43,6 @@
     "babel-loader": "^6.4.1",
     "babel-preset-env": "^1.3.2",
     "babel-preset-es2015": "^6.24.1",
-<<<<<<< HEAD
     "babel-preset-react": "^6.23.0",
     "css-loader": "^0.28.0",
     "enzyme": "^2.8.2",
@@ -69,8 +68,6 @@
     "webpack": "^2.4.1",
     "url-loader": "0.5.7",
     "autoprefixer-loader": "^3.2.0",
-=======
->>>>>>> fda2964d19b7736fa8ab99cbd75fe64102d6151b
     "babel-preset-react": "^6.24.1",
     "bcrypt": "^1.0.2",
     "boom": "^4.3.1",
