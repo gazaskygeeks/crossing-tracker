@@ -9,9 +9,9 @@
   "main": "index.js",
   "scripts": {
     "lint": "eslint ./ --cache --ignore-pattern .gitignore",
-    "test": "export NODE_ENV=test  &&  npm run db:create && node tests/runner.js && npm run db:drop",
+    "test": "export NODE_ENV=test  &&  npm run db:create && node tests/runner.js ",
     "start": "node index.js",
-    "server:watch": "nodemon -x 'npm start'",
+    "server:watch": "npm test && nodemon -x 'npm start'  ",
     "watch": "webpack -w",
     "heroku-postbuild": "webpack -p --config webpack.config.js --progress",
     "build": "webpack",

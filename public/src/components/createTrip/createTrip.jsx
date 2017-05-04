@@ -9,12 +9,11 @@ class CreateTrip extends React.Component{
     this.state = {
       tripdate: '',
       time: '',
-      location_from_id: '',
+      location_from_id: 0,
       location_to_id: '',
       passing_by:'',
       pass_point_time:'',
-      seatavailable: '',
-      user_id: 1
+      seatavailable: 0
     };
   }
 
@@ -173,7 +172,6 @@ CreateTrip.propTypes = {
   TripsCreation: PropTypes.func.isRequired
 };
 const mapStateToProps = (store) => {
-  console.log('store.organizations: ',store);
   return {orgs: store}
 }
 
