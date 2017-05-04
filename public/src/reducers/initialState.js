@@ -4,5 +4,6 @@ export default {
   signup: [],
   homeTrips:[],
   tripDetails:[],
-  getOrgs: []
+  getOrgs: [],
+  getLocations: []
 };

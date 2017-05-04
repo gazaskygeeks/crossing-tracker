@@ -20,4 +20,5 @@ const viewTrip = (id)=>{
   })
 }
 
+
 export default viewTrip;

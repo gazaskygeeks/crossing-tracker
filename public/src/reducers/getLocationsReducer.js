@@ -1,16 +1,16 @@
 import * as types from '../actions/actionTypes';
 import initialState from './initialState';
 
-function getOrgsReducer(state = initialState.getOrgs, action) {
+function geLocationsReducer(state = initialState.getLocations, action) {
   switch (action.type) {
-  case types.FETCH_ORGS_SUCCESS:
+  case types.FETCH_LOCATIONS_SUCCESS:
     return action.payload;
-  case types.FETCH_ORGS_FAILURE:
+  case types.FETCH_LOCATIONS_FAILURE:
     return state;
   default:
     return state;
   }
 }
 export {
-  getOrgsReducer
+  geLocationsReducer
 };

@@ -1,10 +1,10 @@
 const dbutils = require('./dbutils.js');
 
-function getOrgs(cb) {
-  const query = 'SELECT * FROM org';
+function getLocation(cb) {
+  const query = 'SELECT * FROM location';
   dbutils.runQuery(query, cb);
 }
 
 module.exports = {
-  getOrgs: getOrgs
+  getLocation: getLocation
 }

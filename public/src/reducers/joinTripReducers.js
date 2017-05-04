@@ -1,16 +1,17 @@
 import * as types from '../actions/actionTypes';
 import initialState from './initialState';
 
-function getOrgsReducer(state = initialState.getOrgs, action) {
+function joinTripReducer(state = initialState.tripDetails, action) {
   switch (action.type) {
-  case types.FETCH_ORGS_SUCCESS:
+  case types.JOIN_TRIP:
     return action.payload;
-  case types.FETCH_ORGS_FAILURE:
+  case types.JOIN_TRIP_FAILURE:
     return state;
   default:
     return state;
   }
 }
+
 export {
-  getOrgsReducer
+  joinTripReducer
 };

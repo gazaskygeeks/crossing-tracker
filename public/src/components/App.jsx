@@ -12,9 +12,7 @@ class App extends React.Component {
     );
   }
 }
-App.propTypes = {
-  children: PropTypes.object.isRequired
-};
+
 
 const mapStateToProps = (store) => {
   return {userLoged: store.signin}
