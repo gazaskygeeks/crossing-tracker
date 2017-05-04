@@ -1,7 +1,6 @@
 const test = require('tape');
 const server = require('../backend/server.js');
 const client = require('../database/config.js');
-
 test('POST /jointrip : test1', (t) => {
   var data = {
     trip_id: 1

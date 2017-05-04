@@ -18,7 +18,7 @@ test('insert data into ORGANIZATION table ', (t) => {
   })
 })
 test('select  data from ORGANIZATION table ', (t) => {
-  const query = 'SELECT * FROM org WHERE org_name=$1'
+  const query = 'SELECT org_id,org_name FROM org WHERE org_name=$1'
   dbutils.runQuery(query, data.org, (err, result) => {
     t.notOk(err, 'select data from ORGANIZATION table successfully')
     t.notEqual(result.rows.length, 0, 'ok')
@@ -38,7 +38,7 @@ test('insert another data into LOCATION table ', (t) => {
   })
 })
 test('select  data from LOCATION table ', (t) => {
-  const query = 'SELECT * FROM location WHERE location_name=$1'
+  const query = 'SELECT location_id,location_name FROM location WHERE location_name=$1'
   dbutils.runQuery(query, data.secondLocation, (err, result) => {
     t.notOk(err, 'select data from LOCATION table successfully')
     t.notEqual(result.rows.length, 0, 'ok')
@@ -156,7 +156,7 @@ test('insert data  into USERTRIP table ', (t) => {
   })
 })
 test('select  data from USERS table ', (t) => {
-  const query = 'SELECT * FROM users WHERE username=$1'
+  const query = 'SELECT user_id FROM users WHERE username=$1'
   const data = ['approvedUser'] //from previous insertion
   dbutils.runQuery(query, data, (err, result) => {
     t.notOk(err, 'select data from USERS table successfully')
