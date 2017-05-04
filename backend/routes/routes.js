@@ -8,6 +8,7 @@ module.exports=[
   require('./mytrippost.js'),
   require('./getTrips.js'),
   require('./rejectUser.js'),
+  require('./jointrip.js'),
   require('./tripDetails.js'),
   require('./acceptUser.js'),
   require('./getOrgs.js'),

@@ -57,8 +57,9 @@ test('GET /disApproved without ADMIN email: should reject the access to this act
       const result = JSON.parse(response.payload)
       t.equal(result.message,'You are not admin','get the correct message')
       t.equal(result.statusCode,401,'get statusCode correctly')
-      client.end();
-      server.stop(t.end());
+      t.end();
+      // eslint-disable-next-line no-console
+      console.log('***************** Join Trip Test**************************');
     })
   })
 })

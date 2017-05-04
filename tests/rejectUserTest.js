@@ -68,6 +68,7 @@ test('POST /rejectuser without ADMIN email: should reject the access to this act
       t.equal(result.message,'You are not admin','get the correct message')
       t.equal(result.statusCode,401,'get statusCode correctly')
       t.end()
+      // eslint-disable-next-line no-console
       console.log('******************************Get disApproved Users Test**********************');
     })
   })

@@ -33,8 +33,8 @@ values
 `;
   dbutils.runQuery(
     query, [
-      data.location_from_id,
-      data.location_to_id,
+      data.location_from,
+      data.location_to,
       data.time,
       data.tripdate,
       data.pass_point_time,
@@ -44,9 +44,39 @@ values
     ], cb);
 }
 
+function addtripuser(data,cb){
+  const usertripQuery = `INSERT INTO  usertrip
+  (
+    user_id ,
+    trip_id
+  )VALUES
+  (
+    $1,$2
+  )
+  ;`;
+  dbutils.runQuery(usertripQuery, data, cb);
+}
+
+function getusertripbytripisuserid(data, cb) {
+
+  const query = 'SELECT * From usertrip WHERE user_id=$1 AND trip_id=$2';
+  dbutils.runQuery(query, data, cb);
+}
+
 function gettripbyuserid(data, cb) {
   const query = 'SELECT * From trip WHERE user_id=$1';
   dbutils.runQuery(query, [data.user_id], cb);
+}
+
+
+function gettripbytripid(data, cb) {
+  const query = 'SELECT * From trip WHERE trip_id=$1';
+  dbutils.runQuery(query, [data.trip_id], cb);
+}
+
+function getusertripbytripid(data, cb) {
+  const query = 'SELECT * From usertrip WHERE trip_id=$1';
+  dbutils.runQuery(query, [data.trip_id], cb);
 }
 
 
@@ -69,7 +99,29 @@ function getTripeByDate(date, cb) {
 }
 
 function getTripeByid(data, cb) {
-  const query = 'SELECT * From trip WHERE trip_id=$1';
+  const query = `
+    select
+      trip.available_seats,
+      trip.trip_id,
+      trip.time,
+      trip.date,
+      trip.pass_point_time,
+      trip.passing_by,
+      trip.user_id,
+      l.location_name as location_from,
+      u.user_id,
+      u.username,
+      u.email,
+      u.phone,
+      u.org_id,
+      o.org_id,
+      o.org_name,
+      (select location_name from location where
+      location_id=trip.location_to_id) as location_to
+    from trip, location l , users u, org o
+    where trip.trip_id=$1 and u.user_id = trip.user_id
+    and trip.location_from_id=l.location_id and u.org_id = o.org_id
+    `;
   dbutils.runQuery(query, [data], cb);
 }
 module.exports = {
@@ -77,6 +129,10 @@ module.exports = {
   createtrip: createtrip,
   gettripbyuserid: gettripbyuserid,
   getTripeByDate: getTripeByDate,
-  getTripeByid: getTripeByid
 
+  gettripbytripid: gettripbytripid,
+  getusertripbytripid: getusertripbytripid,
+  addtripuser: addtripuser,
+  getusertripbytripisuserid: getusertripbytripisuserid,
+  getTripeByid: getTripeByid
 }
