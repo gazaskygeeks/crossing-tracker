@@ -2,12 +2,25 @@ const dbutils = require('./dbutils.js');
 const hash = require('../backend/hashing.js');
 
 function getuserbyemail(email, cb) {
-  const query = 'SELECT * FROM users WHERE email=$1 ';
+  const query = `SELECT
+  user_id,username,
+  email,password,
+  phone,org_id,
+  user_type,
+  approved
+  FROM users
+  WHERE email=$1`;
   dbutils.runQuery(query, [email], cb)
 }
 
 function getuserbyusername(username, cb) {
-  const query = 'SELECT * From users WHERE username=$1';
+  const query = `SELECT
+  user_id,username,
+  email,password,
+  phone,org_id,
+  user_type,
+  approved
+  From users WHERE username=$1`;
   dbutils.runQuery(query, [username], cb)
 }
 function changestatus(email, cb) {

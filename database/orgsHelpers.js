@@ -1,7 +1,7 @@
 const dbutils = require('./dbutils.js');
 
 function getOrgs(cb) {
-  const query = 'SELECT * FROM org';
+  const query = 'SELECT org_id,org_name From org';
   dbutils.runQuery(query, cb);
 }
 
