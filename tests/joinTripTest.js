@@ -22,7 +22,7 @@ test('POST /jointrip : test1', (t) => {
     var t3 = t2[1];
     var option = {
       method: 'POST',
-      url: '/jointrip',
+      url: '/triprequest',
       payload: data,
       headers: {
         cookie: 'sid=' + t3
@@ -56,14 +56,13 @@ test('POST /jointrip : test2', (t) => {
     var t3 = t2[1];
     var option = {
       method: 'POST',
-      url: '/jointrip',
+      url: '/triprequest',
       payload: data,
       headers: {
         cookie: 'sid=' + t3
       }
     }
     server.inject(option, (resp) => {
-      // console.log('resp', resp);
       t.equal(resp.statusCode, 401, 'User already joined this trip')
       t.end();
     })
@@ -91,7 +90,7 @@ test('POST /jointrip : test 3', (t) => {
     var t3 = t2[1];
     var option = {
       method: 'POST',
-      url: '/jointrip',
+      url: '/triprequest',
       payload: data,
       headers: {
         cookie: 'sid=' + t3
@@ -105,3 +104,5 @@ test('POST /jointrip : test 3', (t) => {
 
   })
 })
+// eslint-disable-next-line no-console
+console.log('***************** Edit Trip TEST****************************');

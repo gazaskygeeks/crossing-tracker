@@ -1,4 +1,4 @@
-const trip = require('../../database/triphelpers.js');
+const trip = require('../../database/tripHelpers');
 
 module.exports = (req, res) => {
   const pay = JSON.parse(req.payload);

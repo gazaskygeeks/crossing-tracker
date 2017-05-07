@@ -11,12 +11,11 @@ class CreateTrip extends React.Component{
     this.state = {
       tripdate: '',
       time: '',
-      location_from: '',
-      location_to: '',
+      location_from_id: 0,
+      location_to_id: '',
       passing_by:'',
       pass_point_time:'',
-      seatavailable: '',
-      user_id: null
+      seatavailable: 0
     };
   }
 
@@ -156,7 +155,11 @@ class CreateTrip extends React.Component{
 }
 
 const mapStateToProps = (store) => {
+<<<<<<< HEAD
   return {locations: store.locations}
+=======
+  return {orgs: store}
+>>>>>>> 5005f3a05cbb23f57c72fc691e60d2c881391ecc
 }
 
 const mapDispatchToProps = () => {

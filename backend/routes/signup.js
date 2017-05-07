@@ -6,11 +6,11 @@ and validations module
 const signupget = require('./signupget');
 */
 
-const signupPostHandler = require('../handlers/signuppost.js');
-const signupPost = {
+const signupHandler = require('../handlers/signup.js');
+const signup = {
   method:'POST',
   path:'/signup',
-  handler:signupPostHandler,
+  handler:signupHandler,
   config: {
     validate: {
       payload: validation.signupvalidation
@@ -18,4 +18,4 @@ const signupPost = {
     auth:false
   }
 }
-module.exports =signupPost;
+module.exports =signup;

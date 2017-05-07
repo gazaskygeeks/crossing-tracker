@@ -1,4 +1,5 @@
 const server = require('../backend/server.js');
+const client = require('../database/config.js');
 const test = require('tape');
 test('GET/disApproved: should return all dis approved useres ', (t) => {
   const adminInfo = {
@@ -56,9 +57,8 @@ test('GET /disApproved without ADMIN email: should reject the access to this act
       const result = JSON.parse(response.payload)
       t.equal(result.message,'You are not admin','get the correct message')
       t.equal(result.statusCode,401,'get statusCode correctly')
-      t.end();
-      // eslint-disable-next-line no-console
-      console.log('***************** Join Trip Test**************************');
+      client.end();
+      server.stop(t.end());
     })
   })
 })
