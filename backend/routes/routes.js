@@ -13,5 +13,7 @@ module.exports=[
   require('./acceptUser.js'),
   require('./getOrgs.js'),
   require('./signoutpost.js'),
-  require('./getDisApprovedUsers')
+  require('./getDisApprovedUsers'),
+  require('./getLocations.js')
+
 ];

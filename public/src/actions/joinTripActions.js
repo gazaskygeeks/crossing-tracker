@@ -3,8 +3,9 @@
 import * as types from './actionTypes';
 import store from '../store/store';
 
-const viewTrip = (id)=>{
-  fetch(`/tripdetails/${id}`,{
+const joinTrip = (id)=>{
+  console.log('jointrip id: ',id);
+  fetch('/jointrip',{
     method: 'POST',
     body:JSON.stringify(id),
     credentials: 'include'
@@ -12,13 +13,13 @@ const viewTrip = (id)=>{
   .then((response)=>{
     return  response.json();
   }).then((response)=>{
-      store.dispatch({type: types.TRIP_DETAILS, payload: response});
+    console.log('join response: ',response);
+      store.dispatch({type: types.JOIN_TRIP, payload: response});
   }).catch((err) => {
     store.dispatch({
-      type: types.TRIP_DETAILS_FAILURE
+      type: types.JOIN_TRIP_FAILURE
     })
   })
 }
 
-
-export default viewTrip;
+export default joinTrip;

@@ -2,8 +2,10 @@ import React from 'react';
 import { Link, IndexLink } from 'react-router';
 import signout from '../../actions/signout.js'
 
-const Header = (props) => {
-
+const Header = ({logedIn}) => {
+  if(!logedIn.usertype){
+    return <div></div>;
+  }
   return (
     <header>
       <div className='container'>

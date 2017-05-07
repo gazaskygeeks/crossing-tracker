@@ -81,7 +81,34 @@
   .trip-create form .form-group input, .trip-create form .form-group select, .trip-create form .form-group label {
     width: 100%;
   }
-  .success .container{
+  .success .container {
     width: 100%;
+  }
+  .react-datepicker__day-name, .react-datepicker__day {
+    width: 5.7rem !important;
+    line-height: 5.7rem !important;
+  }
+  .form-wrp img {
+    height: 100vh;
+    max-width: none;
+    width: 100%;
+  }
+  button.btn-default, button.btn-default:hover, button.btn-default:focus, button.btn-default:active:hover {
+    font-size: 12px;
+  }
+
+  button.btn-success, button.btn-success:hover, button.btn-success:focus, button.btn-success:active:hover {
+    font-size: 12px;
+  }
+
+  button.btn-danger, button.btn-danger:hover, button.btn-danger:focus, button.btn-danger:active:hover {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 470px) {
+  .react-datepicker__day-name, .react-datepicker__day {
+    width: 3.6rem !important;
+    line-height: 3.6rem !important;
   }
 }

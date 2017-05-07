@@ -17,7 +17,6 @@ function gettripbytime(data, cb) {
 }
 
 function createtrip(data, cb) {
-  data = JSON.parse(data);
   const query = `INSERT INTO trip
   (
   location_from_id,
@@ -76,6 +75,7 @@ function getusertripbytripisuserid(data, cb) {
   user_id=$1
   AND
    trip_id=$2`;
+
   dbutils.runQuery(query, data, cb);
 }
 
@@ -97,6 +97,7 @@ function getusertripbyuserid(data, cb) {
 
 
 function gettripbytripid(data, cb) {
+
   const query = `SELECT
   trip_id,location_from_id,
   location_to_id,date,pass_point_time,
@@ -168,5 +169,5 @@ module.exports = {
   gettripbytripid: gettripbytripid,
   getusertripbytripid: getusertripbytripid,
   addtripuser: addtripuser,
-  getusertripbytripisuserid: getusertripbytripisuserid,
+  getusertripbytripisuserid: getusertripbytripisuserid
 }

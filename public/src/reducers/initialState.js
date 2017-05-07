@@ -5,5 +5,6 @@ export default {
   homeTrips:[],
   tripDetails:[],
   getOrgs: [],
-  disApproved:[]
+  disApproved:[],
+  getLocations: []
 };
