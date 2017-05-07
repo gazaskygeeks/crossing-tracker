@@ -1,9 +1,9 @@
 const validation = require('../validation.js');
-const editTripPostHandler = require('../handlers/edittrippsot.js');
-const editTripPost = {
-  method:'POST',
-  path:'/edittrip',
-  handler:editTripPostHandler,
+const editTripHandler = require('../handlers/edittrip.js');
+const editTrip = {
+  method:'PUT',
+  path:'/trip',
+  handler:editTripHandler,
   config: {
     validate: {
       payload: validation.ediTripValidation
@@ -11,4 +11,4 @@ const editTripPost = {
     auth:'session'
   }
 }
-module.exports =editTripPost;
+module.exports =editTrip;

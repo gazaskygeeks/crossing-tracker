@@ -1,4 +1,4 @@
-const trip = require('../../database/triphelpers.js')
+const trip = require('../../database/tripHelpers')
 module.exports = (req, res) => {
   const user_id = {user_id: req.state.sid.user_id};
   const data = Object.assign(req.payload, user_id);

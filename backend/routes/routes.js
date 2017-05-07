@@ -1,16 +1,16 @@
 
 module.exports=[
-  require ('./signuppost.js'),
+  require ('./signup.js'),
   require ('./home.js'),
   require ('./assets.js'),
-  require ('./loginpost.js'),
-  require('./createtrippost.js'),
-  require('./mytrippost.js'),
+  require ('./login.js'),
+  require('./createtrip.js'),
+  require('./mytrip.js'),
   require('./getTrips.js'),
   require('./jointrip.js'),
   require('./tripDetails.js'),
   require('./acceptUser.js'),
   require('./getOrgs.js'),
-  require('./signoutpost.js'),
+  require('./signout.js'),
   require('./edittrip.js')
 ];

@@ -29,7 +29,7 @@ test('POST /createtrip : test if recive the the correct Data', (t) => {
     var t3 = t2[1];
     var option = {
       method: 'POST',
-      url: '/createtrip',
+      url: '/trip',
       payload:data,
       headers:{
         cookie:'sid='+t3
@@ -64,7 +64,7 @@ test('POST /createtrip : test data fields', (t) => {
 
     var option = {
       method: 'POST',
-      url: '/createtrip',
+      url: '/trip',
       payload:data,
       headers:{
         cookie:'sid='+t3
@@ -87,7 +87,7 @@ test('POST /createtrip : test data fields', (t) => {
       }
       var  option = {
         method: 'POST',
-        url: '/createtrip',
+        url: '/trip',
         payload:data,
         headers:{
           cookie:'sid='+t3
@@ -121,7 +121,7 @@ test('POST /createtrip :check duplicate trip', (t) => {
     }
     let option = {
       method: 'POST',
-      url: '/createtrip',
+      url: '/trip',
       payload:data,
       headers:{
         cookie:'sid='+t3
@@ -143,7 +143,7 @@ test('POST /createtrip :check duplicate trip', (t) => {
       }
       option = {
         method: 'POST',
-        url: '/createtrip',
+        url: '/trip',
         payload:data,
         headers:{
           cookie:'sid='+t3

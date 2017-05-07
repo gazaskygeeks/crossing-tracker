@@ -13,13 +13,15 @@ test('POST /acceptUser : should approve user and send confirmation email',(t)=>{
     payload:adminInfo
   }
   server.inject(loginOption,(res)=>{
+    client.end();
+    server.stop(t.end());
     var cookies=  res.request.response.headers['set-cookie']
     var t1 =cookies[0].split(';');
     var t2 =t1[0].split('=');
     var t3 = t2[1];
     var option = {
       method: 'POST',
-      url: '/acceptuser',
+      url: '/user',
       payload:'{"email":"alaakhattab92@gmail.com"}',
       headers:{
         cookie:'sid='+t3
@@ -29,8 +31,7 @@ test('POST /acceptUser : should approve user and send confirmation email',(t)=>{
       const res = JSON.parse(response.payload);
       t.equal(res.er,null,'email sent successfully')
       t.equal(res.message,'confirmation success','email sent successfully')
-      client.end();
-      server.stop(t.end());
+
     })
   })
 })
