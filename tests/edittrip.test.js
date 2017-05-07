@@ -29,7 +29,7 @@ test('POST /edittrip : edit trip not exist', (t) => {
     var t3 = t2[1];
     var option = {
       method: 'POST',
-      url: '/createtrip',
+      url: '/triprequest',
       payload:data,
       headers:{
         cookie:'sid='+t3
@@ -49,8 +49,8 @@ test('POST /edittrip : edit trip not exist', (t) => {
       }
 
       var  option3 = {
-        method: 'POST',
-        url: '/edittrip',
+        method: 'PUT',
+        url: '/trip',
         payload: data3,
         headers:{
           cookie:'sid='+t3
@@ -96,7 +96,7 @@ test('POST /edittrip : edit trip exist by another user ', (t) => {
     var t3 = t2[1];
     var option = {
       method: 'POST',
-      url: '/createtrip',
+      url: '/trip',
       payload:data,
       headers:{
         cookie:'sid='+t3
@@ -117,8 +117,8 @@ test('POST /edittrip : edit trip exist by another user ', (t) => {
       }
 
       var  option3 = {
-        method: 'POST',
-        url: '/edittrip',
+        method: 'PUT',
+        url: '/trip',
         payload: data3,
         headers:{
           cookie:'sid='+t3
@@ -165,7 +165,7 @@ test('POST /edittrip : edit trip Successfully ', (t) => {
     var t3 = t2[1];
     var option = {
       method: 'POST',
-      url: '/createtrip',
+      url: '/triprequest',
       payload:data,
       headers:{
         cookie:'sid='+t3
@@ -186,8 +186,8 @@ test('POST /edittrip : edit trip Successfully ', (t) => {
       }
 
       var  option3 = {
-        method: 'POST',
-        url: '/edittrip',
+        method: 'PUT',
+        url: '/trip',
         payload: data3,
         headers:{
           cookie:'sid='+t3
@@ -205,4 +205,4 @@ test('POST /edittrip : edit trip Successfully ', (t) => {
   })
 })
 // eslint-disable-next-line no-console
-console.log('***************** accept User TEST****************************');
+console.log('***************** Trip Details TEST****************************');

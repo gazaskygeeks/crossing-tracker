@@ -1,9 +1,7 @@
 const test = require('tape');
 const server = require('../backend/server.js');
 
-
-test('POST/mytrip: Test my trip ', (t) => {
-
+test('POST/tripDetails: test  ', (t) => {
   var data1 = {
     email: 'approvedUser@gmail.com',// from db.test.js line:82
     password: 'approvedUser'// from db.test.js line:81
@@ -14,40 +12,35 @@ test('POST/mytrip: Test my trip ', (t) => {
     payload: data1
   }
   server.inject(option1, (response) => {
-    // console.log(response);
     var cookies=  response.request.response.headers['set-cookie']
     var t1 =cookies[0].split(';');
     var t2 =t1[0].split('=');
     var t3 = t2[1];
-    const option = {
+    var option = {
       method: 'POST',
-      url: '/mytrip',
-      payload: {user_id:3},
+      url: '/tripdetails/1',
+      payload:'',
       headers:{
         cookie:'sid='+t3
       }
     }
     server.inject(option, (res) => {
-      const re=
-        {
-          available_seats: 2, date: null,
-          location_from_id: 1, location_to_id: 2,
-          pass_point_time: '01:01', passing_by: 'asxsacs',
-          trip_id: 2, user_id: 3
-        }
-      const conv=JSON.parse(res.payload);
+      const re={
+        'available_seats':2,
+        'trip_id':1,'time':'01:01 AM',
+        'date':'08082017','pass_point_time':null,
+        'passing_by':null,'user_id':1,
+        'location_from':'GAZA','username':'admin',
+        'email':'admin@admin.com','phone':'0598287410',
+        'org_id':1,'org_name':'mercyco',
+        'location_to':'RAMALLAH'
+      }
 
-      t.deepEqual(conv[0]  , re, 'Bad request | email must be valid');
+      const conv=JSON.parse(res.payload);
+      t.deepEqual(conv[0], re, 'get trip details');
       t.end();
     })
-
   })
 })
-
-
-
-
-
-
 // eslint-disable-next-line no-console
-console.log('***************** Accept User TEST****************************');
+console.log('***************** MY TRIP TEST****************************');

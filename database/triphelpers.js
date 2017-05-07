@@ -172,9 +172,9 @@ function getTripByid(data, cb) {
       o.org_name,
       (select location_name from location where
       location_id=trip.location_to_id) as location_to
-    from trip, location l , users u, org o
-    where trip.trip_id=$1 and u.user_id = trip.user_id
-    and trip.location_from_id=l.location_id and u.org_id = o.org_id
+      from trip, location l , users u, org o
+      where trip.trip_id=$1 and u.user_id = trip.user_id
+      and trip.location_from_id=l.location_id and u.org_id = o.org_id
     `;
   dbutils.runQuery(query, [data.trip_id], cb);
 }

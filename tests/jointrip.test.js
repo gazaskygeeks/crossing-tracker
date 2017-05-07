@@ -21,7 +21,7 @@ test('POST /jointrip : test1', (t) => {
     var t3 = t2[1];
     var option = {
       method: 'POST',
-      url: '/jointrip',
+      url: '/triprequest',
       payload: data,
       headers: {
         cookie: 'sid=' + t3
@@ -55,7 +55,7 @@ test('POST /jointrip : test2', (t) => {
     var t3 = t2[1];
     var option = {
       method: 'POST',
-      url: '/jointrip',
+      url: '/triprequest',
       payload: data,
       headers: {
         cookie: 'sid=' + t3
@@ -89,7 +89,7 @@ test('POST /jointrip : test 3', (t) => {
     var t3 = t2[1];
     var option = {
       method: 'POST',
-      url: '/jointrip',
+      url: '/triprequest',
       payload: data,
       headers: {
         cookie: 'sid=' + t3

@@ -11,8 +11,6 @@ module.exports = (req, res) => {
     if (result.rows.length > 0) {
       Bcrypt.compare(password, result.rows[0].password, (err, resultHash) => {
         if (resultHash) {
-
-
           if (result.rows[0].approved === 0) {
             res(Boom.unauthorized('Wait until the admin approved your request'))
           } else {
