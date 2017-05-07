@@ -1,25 +1,27 @@
 const trip = require('../../database/tripHelpers')
 module.exports = (req, res) => {
-  trip.gettripbyuserid(req.payload, (err, result) => {
+  trip.gettripbyuserid(req.state.sid.user_id, (err, result1) => {
     if (err)
       throw err
-    if (result.rows.length > 0) {
-      res(result.rows)
-    } else {
-      res({
-        msg: 'You Dont have any trip'
-      })
-    }
-  })
-  trip.getusertripbyuserid(req.payload, (err, result) => {
-    if (err)
-      throw err
-    if (result.rows.length > 0) {
-      res(result.rows)
-    } else {
-      res({
-        msg: 'You Dont have any joined trip'
-      })
-    }
+    trip.getusertripbyuserid(req.state.sid.user_id, (err, result2) => {
+      if (err)
+        throw err
+      if (result2.rowCount > 0) {
+        trip.getJoinedTrip(result2.rows[0].trip_id, (err, result3) => {
+          if (err)
+            throw err
+          res({
+            createdTrip: result1.rows,
+            joinedTrip: result3.rows
+          })
+        })
+      } else {
+        res({
+          createdTrip: result1.rows,
+          joinedTrip: []
+        })
+
+      }
+    })
   })
 }

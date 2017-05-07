@@ -20,7 +20,7 @@ test('POST /acceptUser : should approve user and send confirmation email',(t)=>{
     var data = {email:'fake@fake.com'}
     var option = {
       method: 'POST',
-      url: '/acceptuser',
+      url: '/user',
       payload: data,
       headers:{
         cookie:'sid='+t3
@@ -30,7 +30,7 @@ test('POST /acceptUser : should approve user and send confirmation email',(t)=>{
       const res = JSON.parse(response.payload);
       t.equal(res.er,null,'email sent without any errors')
       t.equal(res.message,'accept registration','recieve confirmation message successfully')
-      //t.equal(res.info.rejected.length,0,'email sent successfully')
+      t.equal(res.info.rejected.length,0,'email sent successfully')
       const query='SELECT approved FROM USERS WHERE email=$1';
       const condition = ['fake@fake.com']
       dbutils.runQuery(query,condition,(err,result)=>{
@@ -58,7 +58,7 @@ test('POST /acceptUser without ADMIN email: should reject the access to this act
     const data ={email:'fake@fake.com'}
     var option = {
       method: 'POST',
-      url: '/acceptuser',
+      url: '/user',
       payload:data,
       headers:{
         cookie:'sid='+t3

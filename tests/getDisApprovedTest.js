@@ -1,5 +1,4 @@
 const server = require('../backend/server.js');
-const client = require('../database/config.js');
 const test = require('tape');
 test('GET/disApproved: should return all dis approved useres ', (t) => {
   const adminInfo = {
@@ -31,34 +30,35 @@ test('GET/disApproved: should return all dis approved useres ', (t) => {
     })
   })
 })
-test('GET /disApproved without ADMIN email: should reject the access to this action',(t)=>{
-  const adminInfo ={
-    email:'approvedUser@gmail.com',
-    password:'approvedUser'
+test('GET /disApproved without ADMIN email: should reject the access to this action', (t) => {
+  const adminInfo = {
+    email: 'approvedUser@gmail.com',
+    password: 'approvedUser'
   }
-  const loginOption={
-    method:'POST',
-    url:'/login',
-    payload:adminInfo
+  const loginOption = {
+    method: 'POST',
+    url: '/login',
+    payload: adminInfo
   }
-  server.inject(loginOption,(res)=>{
-    var cookies=  res.request.response.headers['set-cookie']
-    var t1 =cookies[0].split(';');
-    var t2 =t1[0].split('=');
+  server.inject(loginOption, (res) => {
+    var cookies = res.request.response.headers['set-cookie']
+    var t1 = cookies[0].split(';');
+    var t2 = t1[0].split('=');
     var t3 = t2[1];
     var option = {
       method: 'GET',
       url: '/disApproved',
-      headers:{
-        cookie:'sid='+t3
+      headers: {
+        cookie: 'sid=' + t3
       }
     }
-    server.inject(option,(response)=>{
+    server.inject(option, (response) => {
       const result = JSON.parse(response.payload)
-      t.equal(result.message,'You are not admin','get the correct message')
-      t.equal(result.statusCode,401,'get statusCode correctly')
-      client.end();
-      server.stop(t.end());
+      t.equal(result.message, 'You are not admin', 'get the correct message')
+      t.equal(result.statusCode, 401, 'get statusCode correctly')
+      t.end()
+      // eslint-disable-next-line no-console
+      console.log('*****************Sign out TEST****************************');
     })
   })
 })

@@ -158,5 +158,3 @@ test('POST /createtrip :check duplicate trip', (t) => {
     })
   })
 })
-// eslint-disable-next-line no-console
-console.log('***************** Signout  TEST****************************');

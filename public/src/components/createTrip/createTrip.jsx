@@ -11,8 +11,8 @@ class CreateTrip extends React.Component{
     this.state = {
       tripdate: '',
       time: '',
-      location_from_id: 0,
-      location_to_id: '',
+      location_from: '',
+      location_to: '',
       passing_by:'',
       pass_point_time:'',
       seatavailable: 0
@@ -60,8 +60,8 @@ class CreateTrip extends React.Component{
         location_to: '',
         passing_by:'',
         pass_point_time:'',
-        seatavailable: '',
-        user_id: 1
+        seatavailable: 0
+
       }
     )
   }

@@ -1,13 +1,12 @@
 const trip = require('../../database/tripHelpers')
 module.exports = (req, res) => {
-  const data = Object.assign(req.payload,  req.state.sid.user_id)
-  trip.getTripByid(data,(err,result)=>{
+  trip.gettripbytripid(req.payload.trip_id,(err,result)=>{
     if (err)
       throw err
     if (result.rows.length>0){
       const d =result.rows[0];
       if (d.user_id===req.state.sid.user_id){
-        trip.updatetrip(data, (err, result) => {
+        trip.updatetrip(req.payload, (err, result) => {
           if (err)
             throw err
           res({msg:'Your Trip Edit Successfully'});

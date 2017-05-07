@@ -5,7 +5,6 @@ const SelectLocations = ({options,value,change,label}) => {
     return <div>Loading...</div>;
   }
   const locationOptions = options.map((locations)=> {
-    console.log('arrlocations: ',locations);
     return(
     <option
       key={locations.location_id}

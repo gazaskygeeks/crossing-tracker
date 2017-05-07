@@ -1,6 +1,5 @@
 const test = require('tape');
 const server = require('../backend/server.js');
-const client = require('../database/config.js');
 test('POST /jointrip : test1', (t) => {
   var data = {
     trip_id: 1
@@ -98,11 +97,10 @@ test('POST /jointrip : test 3', (t) => {
     }
     server.inject(option, (response) => {
       t.equal(response.statusCode, 400, 'Trip is full')
-      client.end();
-      server.stop(t.end());
+      t.end()
+      // eslint-disable-next-line no-console
+      console.log('***************** Edit Trip TEST****************************');
     })
 
   })
 })
-// eslint-disable-next-line no-console
-console.log('***************** Edit Trip TEST****************************');

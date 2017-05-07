@@ -39,8 +39,8 @@ test('POST/tripDetails: test  ', (t) => {
       const conv=JSON.parse(res.payload);
       t.deepEqual(conv[0], re, 'get trip details');
       t.end();
+      // eslint-disable-next-line no-console
+      console.log('***************** MY TRIP TEST****************************');
     })
   })
 })
-// eslint-disable-next-line no-console
-console.log('***************** MY TRIP TEST****************************');
