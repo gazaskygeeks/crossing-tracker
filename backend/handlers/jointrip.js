@@ -8,8 +8,8 @@ module.exports = (req, res) => {
         msg: 'User is already in this Trip'
       }).code(401)
     } else {
-      trip.gettripbytripid(req.payload, (err, result) => {
-        trip.getusertripbytripid(req.payload, (err, result2) => {
+      trip.gettripbytripid(req.payload.trip_id, (err, result) => {
+        trip.getusertripbytripid(req.payload.trip_id, (err, result2) => {
           if (result2.rows.length < result.rows[0].available_seats) {
             trip.addtripuser(usertripinfo, (err) => {
               res({

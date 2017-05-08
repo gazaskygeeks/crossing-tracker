@@ -155,13 +155,8 @@ class CreateTrip extends React.Component{
 }
 
 const mapStateToProps = (store) => {
-<<<<<<< HEAD
   return {locations: store.locations}
-=======
-  return {orgs: store}
->>>>>>> 5005f3a05cbb23f57c72fc691e60d2c881391ecc
 }
-
 const mapDispatchToProps = () => {
   return {
     TripsCreation  : (data) => {

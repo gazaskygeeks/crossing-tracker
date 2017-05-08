@@ -1,6 +1,6 @@
 const trip = require('../../database/tripHelpers')
 module.exports = (req, res) => {
-  trip.gettripbytripid(req.payload.trip_id,(err,result)=>{
+  trip.getUserIdByTripId(req.payload.trip_id,(err,result)=>{
     if (err)
       throw err
     if (result.rows.length>0){

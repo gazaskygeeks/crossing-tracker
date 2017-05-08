@@ -119,6 +119,11 @@ function getusertripbyuserid(data, cb) {
 
 function gettripbytripid(data, cb) {
 
+  const query = `SELECT available_seats
+  From trip WHERE trip_id=$1`;
+  dbutils.runQuery(query, [data], cb);
+}
+function getUserIdByTripId(data, cb){
   const query = `SELECT user_id
   From trip WHERE trip_id=$1`;
   dbutils.runQuery(query, [data], cb);
@@ -129,7 +134,7 @@ function getusertripbytripid(data, cb) {
    id,user_id,trip_id
    From usertrip
    WHERE trip_id=$1`;
-  dbutils.runQuery(query, [data.trip_id], cb);
+  dbutils.runQuery(query, [data], cb);
 }
 function updatetrip(data, cb) {
   const query = `UPDATE trip
@@ -215,5 +220,6 @@ module.exports = {
   addtripuser: addtripuser,
   getusertripbytripisuserid: getusertripbytripisuserid,
   updatetrip:updatetrip,
-  getJoinedTrip:getJoinedTrip
+  getJoinedTrip:getJoinedTrip,
+  getUserIdByTripId:getUserIdByTripId
 }
