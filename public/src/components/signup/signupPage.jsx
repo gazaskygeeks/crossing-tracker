@@ -1,7 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import  register  from '../../actions/signupActions';
-import { connect } from 'react-redux';
+import register from '../../actions/signupActions';
+import {connect} from 'react-redux';
+import getOrgs from '../../actions/getOrgsAction';
+import SelectOrgs from './selectOrgs.jsx';
+
 class SignupPage extends React.Component {
   constructor(props) {
     super(props);
@@ -12,6 +15,10 @@ class SignupPage extends React.Component {
       phone: '',
       org_id: ''
     };
+  }
+
+  componentDidMount() {
+    this.props.myorgs();
   }
 
   changeName(ev) {
@@ -34,7 +41,7 @@ class SignupPage extends React.Component {
     this.setState({org_id: ev.target.value});
   }
 
-  valid(){
+  valid() {
     this.props.sginup(this.state);
     this.setState(
       {
@@ -44,7 +51,7 @@ class SignupPage extends React.Component {
         phone: '',
         org_id: ''
       }
-      );
+    );
   }
 
   render() {
@@ -52,19 +59,16 @@ class SignupPage extends React.Component {
       <section className='form-wrp signup'>
         <div className='container'>
           <div className='row'>
-            <div
-              className='
+            <div className='
               col-sm-offset-3
               col-sm-6
               col-md-offset-4
               col-md-4
-              wrapper'
-              >
+              wrapper'>
               <h1>Sign up</h1>
               <div className='form'>
                 <div className='form-group'>
-                  <input
-                    type='text'
+                  <input type='text'
                     className='form-control'
                     placeholder='Full Name'
                     value={this.state.username}
@@ -98,23 +102,11 @@ class SignupPage extends React.Component {
                     onChange={this.changePhone.bind(this)}
                     />
                 </div>
-                <div className='form-group'>
-                  <select
-                    value={this.state.org_id}
-                    className='form-control'
-                    onChange={this.changeOrg.bind(this)}
-                    >
-                    <option
-                      disabled='disabled'
-                      selected='selected'>
-                      Organization
-                    </option>
-                    <option value='1'>Mercy Corps</option>
-                    <option value='2'>UNRWA</option>
-                    <option value='3'>HelpAge International</option>
-                    <option value='4'>Handicap</option>
-                  </select>
-                </div>
+                <SelectOrgs
+                  options={this.props.orgs}
+                  value={this.state.org_id}
+                  change={this.changeOrg.bind(this)}
+                  />
                 <button
                   type='submit'
                   className='btn btn-primary'
@@ -122,27 +114,31 @@ class SignupPage extends React.Component {
                   >
                   Sign Up
                 </button>
+              </div>
             </div>
-          </div>
           </div>
         </div>
       </section>
     );
   }
 }
-SignupPage.propTypes = {
-  sginin: PropTypes.func.sginup
-};
+
+
+const mapStateToProps = (store) => {
+  return {orgs: store.organizations}
+}
+
 const mapDispatchToProps = () => {
   return {
-    sginup  : (data) => {
-      register(data)
+    myorgs: () => {
+      getOrgs();
+    },
+    sginup: (data) => {
+      register(data);
     }
   }
 }
 
-const sginup = connect(
-  mapDispatchToProps
-)(SignupPage)
+const sginup = connect(mapStateToProps, mapDispatchToProps)(SignupPage)
 
 export default sginup;

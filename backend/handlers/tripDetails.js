@@ -1,7 +1,8 @@
-const trip = require('../../database/triphelpers.js');
+const trip = require('../../database/tripHelpers');
 
 module.exports = (req, res) => {
-  trip.getTripeByid(JSON.parse(req.payload,10), (err, result) => {
+  const data={trip_id:req.params.id}
+  trip.getTripByid(data, (err, result) => {
     if (err) {
       throw err
     }

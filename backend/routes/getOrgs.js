@@ -2,8 +2,8 @@ const getOrgsHandler = require('../handlers/getOrgs.js');
 
 const getOrgs = {
   method:'GET',
-  path:'/orgs',
-  handler:getOrgsHandler
+  path:'/organizations',
+  handler: getOrgsHandler
 }
 
-module.exports  =getOrgs;
+module.exports  = getOrgs;

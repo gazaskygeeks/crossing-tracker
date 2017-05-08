@@ -1,21 +1,26 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import  createTrip  from '../../actions/createTripsActions.js';
 import { connect } from 'react-redux';
-import getOrgs from '../../actions/getOrgsAction';
+import getLocations from '../../actions/getLocationActions';
+import SelectLocations from './SelectLocations.jsx';
+
 class CreateTrip extends React.Component{
+
   constructor(props) {
     super(props);
     this.state = {
       tripdate: '',
       time: '',
-      location_from_id: '',
-      location_to_id: '',
+      location_from: '',
+      location_to: '',
       passing_by:'',
       pass_point_time:'',
-      seatavailable: '',
-      user_id: 1
+      seatavailable: 0
     };
+  }
+
+  componentWillMount(){
+    this.props.Locations();
   }
 
   changeTripDate(ev) {
@@ -27,11 +32,11 @@ class CreateTrip extends React.Component{
   }
 
   changeLocationFrom(ev) {
-    this.setState({location_from_id: ev.target.value});
+    this.setState({location_from: ev.target.value});
   }
 
   changeLocationTo(ev) {
-    this.setState({location_to_id: ev.target.value});
+    this.setState({location_to: ev.target.value});
   }
 
   changePassingBy(ev) {
@@ -51,15 +56,15 @@ class CreateTrip extends React.Component{
       {
         tripdate: '',
         time: '',
-        location_from_id: '',
-        location_to_id: '',
+        location_from: '',
+        location_to: '',
         passing_by:'',
         pass_point_time:'',
-        seatavailable: ''
+        seatavailable: 0
+
       }
     )
   }
-
   render() {
     return (
         <section className='trip-create'>
@@ -87,42 +92,21 @@ class CreateTrip extends React.Component{
                       onChange={this.changeTime.bind(this)}
                       />
                   </div>
-                  <div className='form-group'>
-                    <label>From</label>
-                    <select
-                      value={this.state.location_from_id}
-                      className='form-control'
-                      onChange={this.changeLocationFrom.bind(this)}
-                      >
-                      <option
-                        disabled='disabled'
-                        selected='selected'
-                        >
-                        From
-                      </option>
-                      <option value="1">test</option>
-                      <option value="2">test</option>
-                      <option value="3">test</option>
-                    </select>
-                  </div>
-                  <div className='form-group'>
-                    <label>To</label>
-                    <select
-                      value={this.state.location_to_id}
-                      className='form-control'
-                      onChange={this.changeLocationTo.bind(this)}
-                      >
-                      <option
-                        disabled='disabled'
-                        selected='selected'
-                        >
-                        To
-                      </option>
-                      <option value="1">test</option>
-                      <option value="2">test</option>
-                      <option value="3">test</option>
-                    </select>
-                  </div>
+
+                  <SelectLocations
+                    label='From'
+                    options={this.props.locations}
+                    value={this.state.location_from}
+                    change={this.changeLocationFrom.bind(this)}
+                    />
+
+                  <SelectLocations
+                    label='To'
+                    options={this.props.locations}
+                    value={this.state.location_to}
+                    change={this.changeLocationTo.bind(this)}
+                    />
+
                   <div className='form-group'>
                     <label>Passing by</label>
                     <input
@@ -169,18 +153,22 @@ class CreateTrip extends React.Component{
     );
   }
 }
-CreateTrip.propTypes = {
-  TripsCreation: PropTypes.func.isRequired
-};
+
 const mapStateToProps = (store) => {
-  console.log('store.organizations: ',store);
+<<<<<<< HEAD
+  return {locations: store.locations}
+=======
   return {orgs: store}
+>>>>>>> 5005f3a05cbb23f57c72fc691e60d2c881391ecc
 }
 
 const mapDispatchToProps = () => {
   return {
     TripsCreation  : (data) => {
       createTrip(data)
+    },
+    Locations: ()=>{
+      getLocations();
     }
   }
 }

@@ -13,17 +13,29 @@ const loginvalidation = {
 const tripvalidation = {
   tripdate: Joi.required(),
   time:Joi.string().regex(/^(0?[1-9]|1[012])(:[0-5]\d)$/).required(),
-  location_from_id: Joi.number().min(1).max(3).required(),
-  location_to_id: Joi.number().min(1).max(3).required(),
+  location_from: Joi.number().min(1).max(3).required(),
+  location_to: Joi.number().min(1).max(3).required(),
+  passing_by: Joi.string().min(4).max(25),
+  pass_point_time: Joi.string()
+    .regex(/^(0?[1-9]|1[012])(:[0-5]\d)$/).required(),
+  seatavailable: Joi.number().min(0).max(7).required()
+}
+const ediTripValidation = {
+  tripdate: Joi.required(),
+  time:Joi.string().regex(/^(0?[1-9]|1[012])(:[0-5]\d)$/).required(),
+  location_from: Joi.number().min(1).max(3).required(),
+  location_to: Joi.number().min(1).max(3).required(),
   passing_by: Joi.string().min(4).max(25),
   pass_point_time: Joi.string()
     .regex(/^(0?[1-9]|1[012])(:[0-5]\d)$/).required(),
   seatavailable: Joi.number().min(0).max(7).required(),
-  user_id: Joi.number().required()
+  trip_id:Joi.number()
 }
+
 
 module.exports = {
   signupvalidation,
   loginvalidation,
-  tripvalidation
+  tripvalidation,
+  ediTripValidation
 }

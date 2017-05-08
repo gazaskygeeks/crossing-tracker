@@ -3,14 +3,19 @@
 import * as types from './actionTypes';
 import store from '../store/store';
 
-const getOrgs = ()=> {
-    fetch('/orgs',{method:'GET'})
+const getOrgs = () => {
+
+  fetch('/organizations', {
+      method: 'GET',
+      credentials: 'include'
+    })
     .then(res => res.json())
     .then((response) => {
-      console.log('Orgs: ', response);
         store.dispatch({type: types.FETCH_ORGS_SUCCESS, payload: response});
     }).catch((err) => {
-      store.dispatch({type: types.FETCH_ORGS_FAILURE})
+      store.dispatch({
+        type: types.FETCH_ORGS_FAILURE
+      })
     })
 
 };

@@ -1,7 +1,6 @@
 const user = require('../../database/userhelpers.js');
 const utiles = require('../utils.js');
 module.exports = (req, res) => {
-
   user.createuser(req.payload, (err, result) => {
 
     if (err) {
@@ -20,7 +19,7 @@ module.exports = (req, res) => {
            }
            res({
              msg: 'User regestered',
-             statusCode: 200,
+             statusCode: 200
            })
          });
     }

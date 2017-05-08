@@ -3,14 +3,14 @@ const server = require('../backend/server.js');
 test('POST /createtrip : test if recive the the correct Data', (t) => {
 
   var data ={
-    user_id:1,
-    tripdate:'2017-04-25',
-    time:'01:01 AM',
-    location_from_id:1,
-    location_to_id:2,
-    passingby:'Mohammed',
-    passpointtime:'01:02 AM',
-    seatavailable:1,
+    tripdate: '2017-04-25',
+    time: '01:01',
+    location_from: 1,
+    location_to: 2,
+    passing_by:'asxsacs',
+    pass_point_time:'01:01',
+    seatavailable: 2,
+
   }
 
   var data1 = {
@@ -29,22 +29,20 @@ test('POST /createtrip : test if recive the the correct Data', (t) => {
     var t3 = t2[1];
     var option = {
       method: 'POST',
-      url: '/createtrip',
+      url: '/trip',
       payload:data,
       headers:{
         cookie:'sid='+t3
       }
     }
-    server.inject(option, (res) => {
+    server.inject(option, (response) => {
       t.equal(typeof response.request.payload,'object', 'data is object')
-      server.inject(option, (response) => {
-        t.deepEqual(response.request.payload,data, 'Server get the correct data')
-        t.end();
-      })
+      t.end();
     })
-
   })
 })
+
+
 test('POST /createtrip : test data fields', (t) => {
 
   const data1 = {
@@ -66,7 +64,7 @@ test('POST /createtrip : test data fields', (t) => {
 
     var option = {
       method: 'POST',
-      url: '/createtrip',
+      url: '/trip',
       payload:data,
       headers:{
         cookie:'sid='+t3
@@ -77,26 +75,26 @@ test('POST /createtrip : test data fields', (t) => {
 
       t.equal(response.statusCode, 400, 'data fields is required')
 
-      var  data ={
-        user_id:'a',
-        tripdate:'2017-04-29',
-        time:'01:01 AM',
-        location_from_id:1,
-        location_to_id:2,
-        passingby:'Mohammed',
-        passpointtime:'01:02 AM',
-        seatavailable:1,
+      var data ={
+        tripdate: '2017-04-25',
+        time: '01:01',
+        location_from: 1,
+        location_to: 2,
+        passing_by:'asxsacs',
+        pass_point_time:'01:1',
+        seatavailable: 2,
+
       }
       var  option = {
         method: 'POST',
-        url: '/createtrip',
+        url: '/trip',
         payload:data,
         headers:{
           cookie:'sid='+t3
         }
       }
       server.inject(option, (response) => {
-        t.equal(response.statusCode, 400, 'check user_id')
+        t.equal(response.statusCode, 400, 'check pas point time')
         t.end();
       })
     })
@@ -123,7 +121,7 @@ test('POST /createtrip :check duplicate trip', (t) => {
     }
     let option = {
       method: 'POST',
-      url: '/createtrip',
+      url: '/trip',
       payload:data,
       headers:{
         cookie:'sid='+t3
@@ -133,19 +131,19 @@ test('POST /createtrip :check duplicate trip', (t) => {
 
       t.equal(response.statusCode, 400, 'data fields is required')
 
-      data ={
-        user_id:'1',
-        tripdate:'2017-04-25',
-        time:'01:01 AM',
-        location_from_id:1,
-        location_to_id:2,
-        passingby:'Mohammed',
-        passpointtime:'01:02 AM',
-        seatavailable:1,
+      var data ={
+        tripdate: '2017-04-25',
+        time: '01:01',
+        location_from: 1,
+        location_to: 2,
+        passing_by:'asxsacs',
+        pass_point_time:'01:01',
+        seatavailable: 2,
+
       }
       option = {
         method: 'POST',
-        url: '/createtrip',
+        url: '/trip',
         payload:data,
         headers:{
           cookie:'sid='+t3
@@ -154,6 +152,8 @@ test('POST /createtrip :check duplicate trip', (t) => {
       server.inject(option, (response) => {
         t.equal(response.statusCode, 400, 'trip already exists')
         t.end();
+        // eslint-disable-next-line no-console
+        console.log('********************************* AcceptUser Test***********************');
       })
     })
   })

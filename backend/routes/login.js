@@ -1,13 +1,13 @@
-const loginPostHandler = require('../handlers/loginpost.js');
+const loginHandler = require('../handlers/login.js');
 const validation = require('../validation.js');
-const loginpost = {
+const login = {
   method : 'POST',
   path: '/login',
-  handler : loginPostHandler,
+  handler : loginHandler,
   config:{
     validate:{
       payload:validation.loginvalidation
     },auth:false
   }
 }
-module.exports=loginpost
+module.exports=login

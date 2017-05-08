@@ -1,6 +1,6 @@
-const trip = require('../../database/triphelpers.js')
+const trip = require('../../database/tripHelpers')
 module.exports = (req, res) => {
-  const data = Object.assign(JSON.parse(req.payload),  req.state.sid)
+  const data = Object.assign(req.payload, {user_id :req.state.sid.user_id} )
   trip.gettripbytime(data, (err, result) => {
     if (err)
       throw err
@@ -10,7 +10,7 @@ module.exports = (req, res) => {
         msg: 'You already Created trip before'
       }).code(400);
     } else {
-      trip.createtrip(req.payload, (err, result) => {
+      trip.createtrip(data, (err, result) => {
         if (err)
           throw err
         res({

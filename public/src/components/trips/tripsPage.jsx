@@ -40,7 +40,7 @@ class TripsPage extends React.Component {
       <div className='container'>
         <div className='row'>
           <div className='col-md-offset-2 col-md-8'>
-            <h3 className='heading'>Created Trips</h3>
+            <h3 className='heading'>Joined Trips</h3>
             <span className='caption'>Joined trips apear here</span>
             <ul>
               <li><label>Trip date</label> <span>16/06/2017</span></li>

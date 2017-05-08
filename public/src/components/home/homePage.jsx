@@ -9,7 +9,7 @@ class HomePage extends React.Component {
             <section className='data-wrp'>
                 <div className='container'>
                     <div className='row'>
-                        <div className='col-md-8'>
+                        <div className='col-md-8 calendar'>
                             <Calendar/>
                         </div>
                         <div className='col-md-4 details'>
