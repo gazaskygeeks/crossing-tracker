@@ -1,5 +1,5 @@
-import { signupReducer } from './signupReducer.js'
-import * as types from '../actions/actionTypes.js';
+import { signupReducer } from '../public/src/reducers/signupReducer.js'
+import * as types from '../public/src/actions/actionTypes.js';
 var initialState = [];
 const payload1 = {
   username : 'jestJest',
