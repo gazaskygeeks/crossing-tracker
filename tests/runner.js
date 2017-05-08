@@ -1,11 +1,13 @@
-require('./db.test.js');
-require('./signup.test.js');
-require('./login.test.js');
-require('./createtrip.test.js');
-require('./signout.test.js');
-require('./jointrip.test.js');
-require('./edittrip.test.js');
-require('./tripdetails.test.js');
-require('./mytrip.test.js');
 
-require('./acceptUser.test.js');
+require('./dbTest.js');
+require('./signupTest.js');
+require('./loginTest.js');
+require('./createtripTest.js')
+require('./acceptUserTest.js')
+require('./rejectUserTest.js')
+//require('./joinTripTest.js');
+require('./editTripTest.js');
+require('./tripdetailsTest.js');
+require('./mytripTest.js');
+require('./getDisApprovedTest.js')
+require('./signoutTest.js');

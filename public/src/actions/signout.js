@@ -8,8 +8,7 @@ const signout = (data)=>{
     credentials: 'include'
   })
   .then((response)=>{
-    hashHistory.push('/');
-
+    window.location.replace('/');
   }).catch((err) => {
   throw err
   })

@@ -32,9 +32,11 @@ button.btn-success, button.btn-success:hover, button.btn-success:focus, button.b
 .btn-wrp-right {
   text-align: right;
 }
-.btn-wrp-center{
-    text-align: center;
+
+.btn-wrp-center {
+  text-align: center;
 }
+
 button.btn-danger, button.btn-danger:hover, button.btn-danger:focus, button.btn-danger:active:hover {
   border: 0;
 }
@@ -102,9 +104,11 @@ header .navbar-default .navbar-toggle:focus, header .navbar-default .navbar-togg
   height: 100vh;
   overflow: hidden;
 }
-.form-wrp img{
+
+.form-wrp img {
   max-width: 100%;
 }
+
 .form-wrp .container {
   position: absolute;
   top: 50%;
@@ -119,13 +123,14 @@ header .navbar-default .navbar-toggle:focus, header .navbar-default .navbar-togg
 .form-wrp h1 {
   margin-bottom: 20px;
   margin-top: 0;
-
 }
+
 .form-wrp.signin h1 {
   color: #4ad86a;
   font-size: 25px;
 }
-.form-wrp.signin .overlay{
+
+.form-wrp.signin .overlay {
   background-color: rgba(0, 0, 0, 0.5);
   position: absolute;
   top: 0;
@@ -133,16 +138,19 @@ header .navbar-default .navbar-toggle:focus, header .navbar-default .navbar-togg
   height: 100%;
   width: 100%;
 }
+
 .form-wrp .form {
   border: 2px solid #000;
   padding: 40px 60px;
   border-radius: 10px;
 }
-.form-wrp.signin .form{
+
+.form-wrp.signin .form {
   border: 0;
   background-color: #f9f9f9;
   padding: 20px 60px;
 }
+
 .form-wrp .form .form-group {
   margin-bottom: 25px;
 }
@@ -424,7 +432,30 @@ header .navbar-default .navbar-toggle:focus, header .navbar-default .navbar-togg
   width: 250px;
 }
 
-.sign-out{
+.sign-out {
   padding-top: 14px;
   color: #fff!important;
+}
+
+
+.react-datepicker__day-name, .react-datepicker__day {
+  width: 7.7rem !important;
+  line-height: 7.7rem !important;
+}
+
+.react-datepicker {
+  font-size: 1.4rem !important;
+  margin-bottom: 30px;
+}
+
+.react-datepicker__current-month {
+  font-size: 2rem !important;
+}
+
+.calendar{
+  text-align: center;
+}
+
+.react-datepicker__navigation{
+    border-width: 1rem!important;
 }

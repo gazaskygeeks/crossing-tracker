@@ -7,11 +7,11 @@ class SuccessPage extends React.Component {
           <div className='row'>
             <div className='col-md-offset-2 col-md-8'>
               <div className='message'>
-                Your Request to join the trip has been sent successfully!
+                Your Request to registeration has been sent successfully!
               </div>
               <p>
                 We will send you an email to notify you that
-                the trip owner has accepted your request
+                the admin has accepted your registeration
               </p>
             </div>
           </div>

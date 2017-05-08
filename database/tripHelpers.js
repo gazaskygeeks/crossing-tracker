@@ -75,37 +75,56 @@ function getusertripbytripisuserid(data, cb) {
   user_id=$1
   AND
    trip_id=$2`;
+
   dbutils.runQuery(query, data, cb);
 }
 
 function gettripbyuserid(data, cb) {
-  const query = `SELECT
-  trip_id,location_from_id,
-  location_to_id,date,pass_point_time,
-  passing_by,user_id,available_seats
-  From trip trip
-  WHERE
-  user_id=$1`;
-  dbutils.runQuery(query, [data.user_id], cb);
+  const query = `SELECT trip.trip_id,
+  trip.date,
+  trip.time,
+  trip.pass_point_time,
+  trip.passing_by,
+  trip.available_seats,
+  l.location_name as location_from,
+  (select location_name from location where
+  location_id=trip.location_to_id) as location_to  FROM
+  trip , location l where user_id=$1
+  and trip.location_from_id=l.location_id`;
+  dbutils.runQuery(query, [data], cb);
 }
-
+function getJoinedTrip(data,cb){
+  const query = `SELECT trip.trip_id,
+  trip.date,
+  trip.time,
+  trip.pass_point_time,
+  trip.passing_by,
+  trip.available_seats,
+  l.location_name as location_from,
+  u.username,
+  u.email,
+  u.phone,
+  (select location_name from location where
+  location_id=trip.location_to_id) as location_to  FROM
+  trip , location l, users u where trip_id=$1 and
+  u.user_id=trip.user_id
+  and trip.location_from_id=l.location_id`;
+  dbutils.runQuery(query, [data], cb);
+}
 function getusertripbyuserid(data, cb) {
-  const query = 'SELECT id,user_id,trip_id From usertrip WHERE user_id=$1';
-  dbutils.runQuery(query, [data.user_id], cb);
+  const query = 'SELECT trip_id from usertrip where user_id=$1';
+  dbutils.runQuery(query, [data], cb);
 }
 
 
 function gettripbytripid(data, cb) {
-  const query = `SELECT
-  trip_id,location_from_id,
-  location_to_id,date,pass_point_time,
-  passing_by,user_id,available_seats
+
+  const query = `SELECT user_id
   From trip WHERE trip_id=$1`;
-  dbutils.runQuery(query, [data.trip_id], cb);
+  dbutils.runQuery(query, [data], cb);
 }
 
 function getusertripbytripid(data, cb) {
-
   const query = `SELECT
    id,user_id,trip_id
    From usertrip
@@ -118,15 +137,21 @@ function updatetrip(data, cb) {
    location_from_id=$1,
    location_to_id=$2,
    time=$3,
-   date=$4
-   WHERE trip_id=$5`;
+   date=$4,
+   pass_point_time=$5,
+   passing_by=$6,
+   available_seats=$7
+   WHERE trip_id=$8`;
   dbutils.runQuery(
     query,
     [
-      data.location_to_id,
-      data.location_from_id,
+      data.location_from,
+      data.location_to,
       data.time,
-      data.date,
+      data.tripdate,
+      data.pass_point_time,
+      data.passing_by,
+      data.seatavailable,
       data.trip_id
     ]
     , cb);
@@ -189,5 +214,6 @@ module.exports = {
   getusertripbytripid: getusertripbytripid,
   addtripuser: addtripuser,
   getusertripbytripisuserid: getusertripbytripisuserid,
-  updatetrip:updatetrip
+  updatetrip:updatetrip,
+  getJoinedTrip:getJoinedTrip
 }

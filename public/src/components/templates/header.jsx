@@ -2,8 +2,10 @@ import React from 'react';
 import { Link, IndexLink } from 'react-router';
 import signout from '../../actions/signout.js'
 
-const Header = (props) => {
-
+const Header = ({logedIn}) => {
+  if(!logedIn.usertype){
+    return <div></div>;
+  }
   return (
     <header>
       <div className='container'>
@@ -46,6 +48,11 @@ const Header = (props) => {
                   <li>
                     <Link to='/createtrip' activeClassName='active'>
                       Create Trips
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to='/adminpage' activeClassName='active'>
+                      Admin page
                     </Link>
                   </li>
                   <li>
