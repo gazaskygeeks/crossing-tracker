@@ -22,8 +22,10 @@ class SigninPage extends React.Component {
   changePassword(ev) {
     this.setState({password: ev.target.value});
   }
-
   render() {
+    const message = this.props.signin.statusCode === 401
+        ? 'Your email or password is not correct'
+        : ''
     return (
       <section className='form-wrp signin'>
         <div className='overlay'></div>
@@ -58,6 +60,7 @@ class SigninPage extends React.Component {
                     onChange={this.changePassword.bind(this)}
                     />
                 </div>
+                <p className='error'>{message}</p>
                 <button
                   type='submit'
                   className='btn btn-success'
@@ -65,7 +68,6 @@ class SigninPage extends React.Component {
                   >
                   Sign In
                 </button>
-                <span>{this.state.message}</span>
                 <p>
                   <Link to='/signup' activeClassName='active'>
                     You can create new acount
@@ -80,9 +82,9 @@ class SigninPage extends React.Component {
   }
 }
 
-// const mapStateToProps = (store) => {
-//   return { signin: store.signin }
-// }
+const mapStateToProps = (store) => {
+  return { signin: store.signin }
+}
 
 
 
@@ -95,7 +97,7 @@ const mapDispatchToProps = () => {
 }
 
 const sginin = connect(
-//  mapStateToProps,
+  mapStateToProps,
   mapDispatchToProps
 )(SigninPage)
 
