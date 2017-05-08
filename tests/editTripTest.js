@@ -126,7 +126,7 @@ test('POST /edittrip : edit trip Successfully ', (t) => {
       t.equal(res.result.msg,'Your Trip Edit Successfully', 'Trip Edit Successfully');
       t.end();
         // eslint-disable-next-line no-console
-        console.log('***************** Trip Details TEST****************************');
+      console.log('***************** Trip Details TEST****************************');
     })
   })
 })
