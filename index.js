@@ -3,7 +3,6 @@ const dbutils = require('./database/dbutils.js');
 
 dbutils.runMigrate((error) => {
   if (error) {
-    console.log('error in creating table:',error);
     throw error
   }
 
