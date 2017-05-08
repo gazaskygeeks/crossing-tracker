@@ -2,6 +2,9 @@ const mytripHandler = require('../handlers/mytrip.js');
 const mytrip = {
   method:'POST',
   path:'/mytrip',
-  handler:mytripHandler
+  handler:mytripHandler,
+  config: {
+    auth:'session'
+  }
 }
 module.exports =mytrip;

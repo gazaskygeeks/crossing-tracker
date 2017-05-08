@@ -1,4 +1,4 @@
-// const validation = require('../validation.js');
+const validation = require('../validation.js');
 
 const createTripPostHandler = require('../handlers/createtrippsot.js');
 
@@ -7,9 +7,9 @@ const createTripPost = {
   path:'/createtrip',
   handler:createTripPostHandler,
   config: {
-    // validate: {
-    //   payload: validation.tripvalidation
-    // },
+    validate: {
+      payload: validation.tripvalidation
+    },
     auth:'session'
   }
 }

@@ -9,4 +9,5 @@ require('./editTripTest.js');
 require('./tripdetailsTest.js');
 require('./mytripTest.js');
 require('./getDisApprovedTest.js')
+require('./removeJoinedTripTest.js')
 require('./signoutTest.js');
