@@ -32,7 +32,7 @@ test('POST /rejectuser : should delete user from db and send confirmation email'
     //  t.equal(res.info.rejected.length,0,'email sent successfully')
       const query='SELECT * FROM USERS WHERE email=$1';
       const condition = [data.email]
-      dbutils.runQuery(query,condition,(err,result)=>{
+      dbutils.runQuery(query,condition,(error,result)=>{
         t.equal(result.rows.length,0,'user was deleted successfully')
         t.end()
       })

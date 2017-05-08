@@ -4,13 +4,17 @@ const make = (str) => {
 // export function make(str) {
   return new Promise((resolve, reject) =>
     // Generate hash's random salt
-    Bcrypt.genSalt(10, (err, salt) => {
+    Bcrypt.genSalt(10, (error, salt) => {
 
-      if (err) { return reject(err); }
+      if (error) {
+        // eslint-disable-next-line no-console
+        console.log('Bcrypt Error :',error)
+        return reject(error);
+      }
 
       // Now, with the given salt, generate the hash
-      Bcrypt.hash(str, salt, (err, hash) => {
-        if (err) { return reject(err); }
+      Bcrypt.hash(str, salt, (error, hash) => {
+        if (error) { return reject(error); }
 
         // Hash generated successfully!
         return resolve(hash);
@@ -23,9 +27,12 @@ const make = (str) => {
 const compare = (str, hash) => {
 // export function compare(str, hash) {
   return new Promise((resolve, reject) =>
-    Bcrypt.compare(str, hash, (err, result) => {
-      if (err) { return reject(err); }
-      return result ? resolve() : reject();
+    Bcrypt.compare(str, hash, (error, result) => {
+      if (error) {
+        // eslint-disable-next-line no-console
+        console.log('Bcrypt Error :',error)
+        return reject(error);
+      }      return result ? resolve() : reject();
     })
   );
 }
