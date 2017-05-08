@@ -106,7 +106,7 @@ header .navbar-default .navbar-toggle:focus, header .navbar-default .navbar-togg
 }
 
 .form-wrp img {
-  max-width: 100%;
+  width: 100%;
 }
 
 .form-wrp .container {
