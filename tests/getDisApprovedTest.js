@@ -58,7 +58,7 @@ test('GET /disApproved without ADMIN email: should reject the access to this act
       t.equal(result.statusCode, 401, 'get statusCode correctly')
       t.end()
       // eslint-disable-next-line no-console
-      console.log('*****************Sign out TEST****************************');
+      console.log('***************** Remove Joined Trip****************************');
     })
   })
 })
