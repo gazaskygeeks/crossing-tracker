@@ -2,7 +2,13 @@ const trip = require('../../database/tripHelpers');
 
 module.exports = (req, res) => {
   const usertripinfo = [req.state.sid.user_id, req.payload.trip_id];
-  trip.getusertripbytripisuserid(usertripinfo, (err, res1) => {
+  trip.getusertripbytripisuserid(usertripinfo, (error, res1) => {
+    if (error) {
+      // eslint-disable-next-line no-console
+      console.log('get user trip by trip id user id error :',error)
+      res().code(500)
+
+    }
     if (res1.rows.length > 0) {
       res({
         msg: 'User is already in this Trip'
@@ -11,7 +17,13 @@ module.exports = (req, res) => {
       trip.gettripbytripid(req.payload.trip_id, (err, result) => {
         trip.getusertripbytripid(req.payload.trip_id, (err, result2) => {
           if (result2.rows.length < result.rows[0].available_seats) {
-            trip.addtripuser(usertripinfo, (err) => {
+            trip.addtripuser(usertripinfo, (error) => {
+              if (error) {
+                // eslint-disable-next-line no-console
+                console.log('add trip user error:',error)
+                res().code(500)
+
+              }
               res({
                 msg: 'Trip added successfully'
               }).code(200)
@@ -22,9 +34,6 @@ module.exports = (req, res) => {
             }).code(400)
           }
         })
-        if (err) {
-          throw err
-        }
       })
     }
   })

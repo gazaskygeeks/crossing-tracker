@@ -26,9 +26,9 @@ const config = {
   }
 }
 const client = new pg.Client(config[process.env.NODE_ENV]);
-client.connect(function(err) {
-  if (err) {
-    throw  err;
+client.connect(function(error) {
+  if (error) {
+    throw  error;
   }
 });
 module.exports = client;

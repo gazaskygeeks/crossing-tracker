@@ -12,7 +12,7 @@ const getOrgs = () => {
     .then(res => res.json())
     .then((response) => {
         store.dispatch({type: types.FETCH_ORGS_SUCCESS, payload: response});
-    }).catch((err) => {
+    }).catch((error) => {
       store.dispatch({
         type: types.FETCH_ORGS_FAILURE
       })

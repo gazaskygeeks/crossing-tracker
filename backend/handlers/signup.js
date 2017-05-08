@@ -1,9 +1,9 @@
 const user = require('../../database/userhelpers.js');
 const utiles = require('../utils.js');
 module.exports = (req, res) => {
-  user.createuser(req.payload, (err, result) => {
+  user.createuser(req.payload, (error, result) => {
 
-    if (err) {
+    if (error) {
       res({
         msg: 'User already registered',
         statusCode:409,
@@ -13,9 +13,12 @@ module.exports = (req, res) => {
         'erezedule@gmail.com',
         `New registeration from <${req.payload.email}>`,
         `A new user registered with email:
-         ${req.payload.email}`, (err, info) => {
-           if (err) {
-             throw err
+         ${req.payload.email}`, (error, info) => {
+           if (error) {
+             // eslint-disable-next-line no-console
+             console.log('sendemail :',error)
+             res().code(500)
+
            }
            res({
              msg: 'User regestered',

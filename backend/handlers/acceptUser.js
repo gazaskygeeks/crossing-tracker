@@ -5,18 +5,22 @@ const user = require('../../database/userhelpers.js');
 module.exports=(req,res)=>{
   const valid = req.state.sid.user_type;
   if(valid === 2){
-    helpers.changestatus(req.payload.email,(err)=>{
-      if(err){
-        throw err
+    helpers.changestatus(req.payload.email,(error)=>{
+      if(error){
+        // eslint-disable-next-line no-console
+        console.log('changestatus :',error)
+        res().code(500)
       }
       mail.sendemail('Admin comfirmation <erezedule@gmail.com>',
         `${req.payload.email}`,
         'Admin accept your registeration',
         'Your registeration was accepted, so you can log in successfully :)', (error, info) => {
           if (error) {
-            throw error
+            // eslint-disable-next-line no-console
+            console.log('sendemail:',error);
+            res().code(500)
           }
-          user.getDisApprovedUser((err, users) => {
+          user.getDisApprovedUser((error, users) => {
             const rep = {
               message: 'accept registration',
               er: error,
