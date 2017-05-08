@@ -17,7 +17,7 @@ const joinTrip = (id)=>{
     return  response.json();
   }).then((response)=>{
       store.dispatch({type: types.JOIN_TRIP, payload: response});
-  }).catch((err) => {
+  }).catch((error) => {
     store.dispatch({
       type: types.JOIN_TRIP_FAILURE
     })

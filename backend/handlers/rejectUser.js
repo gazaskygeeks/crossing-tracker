@@ -4,18 +4,30 @@ const mail = require('../../backend/utils.js');
 module.exports = (req, res) => {
   const valid = req.state.sid.user_type;
   if (valid === 2) { // admin user
-    helpers.deletUser(req.payload.email, (err) => {
-      if (err) {
-        throw err
+    helpers.deletUser(req.payload.email, (error) => {
+      if (error) {
+          // eslint-disable-next-line no-console
+        console.log('delete User Error  :',error)
+        res().code(500)
       }
+
       mail.sendemail('Admin comfirmation <erezedule@gmail.com>',
         `${req.payload.email}`,
         'Admin reject your registeration',
-        'Your registeration was rejected , يا حيوان :)', (error, info) => {
+        'Your registeration was rejected', (error, info) => {
           if (error) {
-            throw error
+            // eslint-disable-next-line no-console
+            console.log('sendmail :',error)
+            res().code(500);
+
           }
-          user.getDisApprovedUser((err, users) => {
+          user.getDisApprovedUser((error, users) => {
+            if (error) {
+              // eslint-disable-next-line no-console
+              console.log('get DisApprovedUser Error :',error)
+              res().code(500)
+
+            }
             res({
               message: 'reject registration',
               er: error,

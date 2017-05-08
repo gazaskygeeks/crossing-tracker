@@ -10,7 +10,10 @@ server.connection({
 const cache = server.cache({ segment: 'sessions', expiresIn: 3 * 24 * 60 * 60 * 1000 });
 server.app.cache = cache;
 
-server.register(CookieAuth, function (err) {
+server.register(CookieAuth, function (error) {
+  if (error)
+    throw error
+    
   server.auth.strategy('session', 'cookie',true, {
     password: 'mngiyt76gsdjfldsjflkjioej097tf586tyibf6gr86yt',
     cookie: 'sid',
@@ -24,9 +27,9 @@ server.register(CookieAuth, function (err) {
     }
   });
 });
-server.register(inert, (err) => {
-  if (err) {
-    throw err
+server.register(inert, (error) => {
+  if (error) {
+    throw error
   }
   server.route(routes)
 });

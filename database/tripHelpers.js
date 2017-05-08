@@ -48,7 +48,7 @@ values
       data.tripdate,
       data.pass_point_time,
       data.passing_by,
-      data.seatavailable,
+      data.available_seats,
       data.user_id
     ], cb);
 }
@@ -132,6 +132,7 @@ function getusertripbytripid(data, cb) {
   dbutils.runQuery(query, [data.trip_id], cb);
 }
 function updatetrip(data, cb) {
+
   const query = `UPDATE trip
    SET
    location_from_id=$1,
@@ -148,10 +149,10 @@ function updatetrip(data, cb) {
       data.location_from,
       data.location_to,
       data.time,
-      data.tripdate,
+      data.date,
       data.pass_point_time,
       data.passing_by,
-      data.seatavailable,
+      data.available_seats,
       data.trip_id
     ]
     , cb);

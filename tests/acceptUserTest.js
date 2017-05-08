@@ -30,10 +30,10 @@ test('POST /acceptUser : should approve user and send confirmation email',(t)=>{
       const res = JSON.parse(response.payload);
       t.equal(res.er,null,'email sent without any errors')
       t.equal(res.message,'accept registration','recieve confirmation message successfully')
-      t.equal(res.info.rejected.length,0,'email sent successfully')
-      const query='SELECT approved FROM USERS WHERE email=$1';
+      t.equal(res.info.test,'data','email sent successfully')
+      const query='SELECT approved FROM users WHERE email=$1';
       const condition = ['fake@fake.com']
-      dbutils.runQuery(query,condition,(err,result)=>{
+      dbutils.runQuery(query,condition,(error,result)=>{
         t.equal(result.rows[0].approved,1,'change approve user status successfully')
         t.end();
       })

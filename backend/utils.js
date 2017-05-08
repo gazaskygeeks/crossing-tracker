@@ -5,9 +5,12 @@ const nodemailer = require('nodemailer');
 const SALT_WORK_FACTOR = 10;
 const hash = (pass, cb) => {
 
-  Bcrypt.genSalt(SALT_WORK_FACTOR, function(err, salt) {
-    if (err) {
-      throw err
+  Bcrypt.genSalt(SALT_WORK_FACTOR, function(error, salt) {
+    if (error) {
+      // eslint-disable-next-line no-console
+      console.log('genSalt :',error)
+
+      throw error
     }
     Bcrypt.hash(pass, salt, cb);
   });
