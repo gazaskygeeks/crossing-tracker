@@ -1,9 +1,9 @@
-const jointripproc = require('../handlers/jointrip.js');
+const joinTripHandler = require('../handlers/jointrip.js');
 
 const jointrip = {
   method: 'POST',
-  path: '/jointrip',
-  handler: jointripproc
+  path: '/triprequest',
+  handler: joinTripHandler
 }
 
 module.exports = jointrip

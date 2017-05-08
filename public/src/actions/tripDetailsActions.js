@@ -13,7 +13,7 @@ const viewTrip = (id)=>{
     return  response.json();
   }).then((response)=>{
       store.dispatch({type: types.TRIP_DETAILS, payload: response});
-  }).catch((err) => {
+  }).catch((error) => {
     store.dispatch({
       type: types.TRIP_DETAILS_FAILURE
     })

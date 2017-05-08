@@ -6,6 +6,10 @@ import store from '../store/store';
 const createTrip = (data)=>{
   fetch('/createtrip',{
     method: 'POST',
+    headers: {
+           'Accept': 'application/json, text/plain, */*',
+           'Content-Type': 'application/json'
+    },
     body:JSON.stringify(data),
     credentials: 'include'
   })
@@ -13,7 +17,7 @@ const createTrip = (data)=>{
     return  response.json();
   }).then((response)=>{
       store.dispatch({type: types.CREATE_TRIP, payload: response});
-  }).catch((err) => {
+  }).catch((error) => {
     store.dispatch({
       type: types.CREATE_TRIP_FAILURE
     })

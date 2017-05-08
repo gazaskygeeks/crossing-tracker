@@ -5,6 +5,7 @@ import {signupReducer} from '../reducers/signupReducer.js';
 import {homeTripsReducer} from '../reducers/getTripsByDate.js';
 import {tripDetailsReducer} from '../reducers/tripDetailsReducer.js';
 import {getOrgsReducer} from '../reducers/getOrgsReducer.js';
+import {disApprovedUsers} from '../reducers/getDisApprovedUsers.js';
 import {geLocationsReducer} from '../reducers/getLocationsReducer.js';
 import {joinTripReducer} from '../reducers/joinTripReducers.js';
 const reducers = combineReducers({
@@ -13,6 +14,8 @@ const reducers = combineReducers({
   signup: signupReducer,
   homeTrips: homeTripsReducer,
   tripDetails: tripDetailsReducer,
+  orgs: getOrgsReducer,
+  disApproved: disApprovedUsers,
   organizations: getOrgsReducer,
   locations: geLocationsReducer,
   joinTrip: joinTripReducer

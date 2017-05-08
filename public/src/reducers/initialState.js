@@ -1,9 +1,10 @@
 export default {
   signin: {},
   createTrip: {},
-  signup: [],
+  signup: {},
   homeTrips:[],
   tripDetails:[],
   getOrgs: [],
+  disApproved:[],
   getLocations: []
 };

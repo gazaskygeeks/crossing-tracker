@@ -14,7 +14,7 @@ const getLocations = () => {
         type: types.FETCH_LOCATIONS_SUCCESS,
         payload: response
       });
-    }).catch((err) => {
+    }).catch((error) => {
       store.dispatch({
         type: types.FETCH_LOCATIONS_FAILURE
       })

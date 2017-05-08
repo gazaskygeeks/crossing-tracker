@@ -51,6 +51,11 @@ const Header = ({logedIn}) => {
                     </Link>
                   </li>
                   <li>
+                    <Link to='/adminpage' activeClassName='active'>
+                      Admin page
+                    </Link>
+                  </li>
+                  <li>
                     <button
                       className="sign-out btn btn-link"
                       onClick={signout}

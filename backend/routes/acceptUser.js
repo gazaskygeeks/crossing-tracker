@@ -2,7 +2,7 @@ const acceptUserHandler = require('../handlers/acceptUser.js');
 
 const acceptUser = {
   method:'POST',
-  path:'/acceptuser',
+  path:'/user',
   handler:acceptUserHandler,
   config: {
     auth:'session'
