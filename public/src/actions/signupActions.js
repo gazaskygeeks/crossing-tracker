@@ -1,4 +1,4 @@
-/* eslint-disable */
+  /* eslint-disable */
 import * as types from './actionTypes';
 import store from '../store/store';
 import { hashHistory } from 'react-router';
