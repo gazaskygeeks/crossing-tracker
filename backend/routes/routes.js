@@ -15,5 +15,7 @@ module.exports=[
   require('./getDisApprovedUsers'),
   require('./getLocations.js'),
   require('./signout.js'),
-  require('./edittrip.js')
+  require('./edittrip.js'),
+  require('./removejoinedtrip.js')
+
 ];
