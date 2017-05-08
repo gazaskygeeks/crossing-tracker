@@ -1,5 +1,6 @@
 const test = require('tape');
 const server = require('../backend/server.js');
+
 test('POST /jointrip : test1', (t) => {
   var data = {
     trip_id: 1
