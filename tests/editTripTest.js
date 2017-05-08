@@ -125,8 +125,7 @@ test('POST /edittrip : edit trip Successfully ', (t) => {
     server.inject(option, (res) => {
       t.equal(res.result.msg, 'Your Trip Edit Successfully', 'Trip Edit Successfully');
       t.end();
-
-        // eslint-disable-next-line no-console
+      // eslint-disable-next-line no-console
       console.log('***************** Trip Details TEST****************************');
     })
   })

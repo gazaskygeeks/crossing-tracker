@@ -14,20 +14,8 @@ module.exports = (req, res) => {
         msg: 'User is already in this Trip'
       }).code(401)
     } else {
-      trip.gettripbytripid(req.payload, (error, result) => {
-        if (error) {
-          // eslint-disable-next-line no-console
-          console.log('get trip by trip id error :',error)
-          res().code(500)
-
-        }
-        trip.getusertripbytripid(req.payload, (error, result2) => {
-          if (error) {
-            // eslint-disable-next-line no-console
-            console.log('get user trip by trip id error :',error)
-            res().code(500)
-
-          }
+      trip.gettripbytripid(req.payload.trip_id, (err, result) => {
+        trip.getusertripbytripid(req.payload.trip_id, (err, result2) => {
           if (result2.rows.length < result.rows[0].available_seats) {
             trip.addtripuser(usertripinfo, (error) => {
               if (error) {
