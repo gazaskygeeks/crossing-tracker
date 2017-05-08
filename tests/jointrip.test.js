@@ -28,6 +28,7 @@ test('POST /jointrip : test1', (t) => {
       }
     }
     server.inject(option, (res) => {
+
       t.equal(res.statusCode, 200, 'User joined the trip')
       t.end();
     })

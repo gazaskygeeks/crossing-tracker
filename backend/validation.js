@@ -18,7 +18,7 @@ const tripvalidation = {
   passing_by: Joi.string().min(4).max(25),
   pass_point_time: Joi.string()
     .regex(/^(0?[1-9]|1[012])(:[0-5]\d)$/).required(),
-  seatavailable: Joi.number().min(0).max(7).required()
+  available_seats: Joi.number().min(0).max(7).required()
 }
 
 module.exports = {

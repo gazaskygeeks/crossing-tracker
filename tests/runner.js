@@ -7,5 +7,4 @@ require('./jointrip.test.js');
 require('./edittrip.test.js');
 require('./tripdetails.test.js');
 require('./mytrip.test.js');
-
 require('./acceptUser.test.js');

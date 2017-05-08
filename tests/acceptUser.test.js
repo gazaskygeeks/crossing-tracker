@@ -13,8 +13,7 @@ test('POST /acceptUser : should approve user and send confirmation email',(t)=>{
     payload:adminInfo
   }
   server.inject(loginOption,(res)=>{
-    client.end();
-    server.stop(t.end());
+
     var cookies=  res.request.response.headers['set-cookie']
     var t1 =cookies[0].split(';');
     var t2 =t1[0].split('=');
@@ -32,6 +31,11 @@ test('POST /acceptUser : should approve user and send confirmation email',(t)=>{
       t.equal(res.er,null,'email sent successfully')
       t.equal(res.message,'confirmation success','email sent successfully')
 
+      client.end();
+      server.stop(t.end());
+
     })
+
   })
+
 })

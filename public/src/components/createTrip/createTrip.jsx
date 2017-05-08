@@ -13,7 +13,7 @@ class CreateTrip extends React.Component{
       location_to_id: '',
       passing_by:'',
       pass_point_time:'',
-      seatavailable: 0
+      available_seats: 0
     };
   }
 
@@ -42,7 +42,7 @@ class CreateTrip extends React.Component{
   }
 
   changeSeatsAvailable(ev) {
-    this.setState({seatavailable: ev.target.value});
+    this.setState({available_seats: ev.target.value});
   }
   clickCreateTrip(){
     this.props.TripsCreation(this.state)
@@ -54,7 +54,7 @@ class CreateTrip extends React.Component{
         location_to_id: '',
         passing_by:'',
         pass_point_time:'',
-        seatavailable: ''
+        available_seats: ''
       }
     )
   }
@@ -145,7 +145,7 @@ class CreateTrip extends React.Component{
                     <input
                       type='number'
                       className='form-control'
-                      value={this.state.seatavailable}
+                      value={this.state.available_seats}
                       className='form-control'
                       onChange={this.changeSeatsAvailable.bind(this)}
                       />

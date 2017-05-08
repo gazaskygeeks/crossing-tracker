@@ -32,7 +32,7 @@ test('POST/mytrip: Test my trip ', (t) => {
         {
           available_seats: 2, date: null,
           location_from_id: 1, location_to_id: 2,
-          pass_point_time: '01:01', passing_by: 'asxsacs',
+          pass_point_time: '12:02', passing_by: 'Rammallah',
           trip_id: 2, user_id: 3
         }
       const conv=JSON.parse(res.payload);

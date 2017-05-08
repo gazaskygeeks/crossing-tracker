@@ -10,7 +10,7 @@ test('POST /edittrip : edit trip not exist', (t) => {
     location_to_id:2,
     passing_by:'Mohammed',
     pass_point_time:'01:01',
-    seatavailable:1,
+    available_seats:1,
   }
 
   var data1 = {
@@ -29,7 +29,7 @@ test('POST /edittrip : edit trip not exist', (t) => {
     var t3 = t2[1];
     var option = {
       method: 'POST',
-      url: '/triprequest',
+      url: '/trip',
       payload:data,
       headers:{
         cookie:'sid='+t3
@@ -45,7 +45,7 @@ test('POST /edittrip : edit trip not exist', (t) => {
         location_to_id:1,
         passing_by:'Rammallah',
         pass_point_time:'12:02',
-        seatavailable:2,
+        available_seats:2,
       }
 
       var  option3 = {
@@ -77,7 +77,7 @@ test('POST /edittrip : edit trip exist by another user ', (t) => {
     location_to_id:2,
     passing_by:'Mohammed',
     pass_point_time:'01:01',
-    seatavailable:1,
+    available_seats:1,
   }
 
   var data1 = {
@@ -113,7 +113,7 @@ test('POST /edittrip : edit trip exist by another user ', (t) => {
         location_to_id:1,
         passing_by:'Rammallah',
         pass_point_time:'12:02',
-        seatavailable:2,
+        available_seats:2,
       }
 
       var  option3 = {
@@ -146,7 +146,7 @@ test('POST /edittrip : edit trip Successfully ', (t) => {
     location_to_id:2,
     passing_by:'Mohammed',
     pass_point_time:'01:01',
-    seatavailable:1,
+    available_seats:1,
   }
 
   var data1 = {
@@ -165,7 +165,7 @@ test('POST /edittrip : edit trip Successfully ', (t) => {
     var t3 = t2[1];
     var option = {
       method: 'POST',
-      url: '/triprequest',
+      url: '/trip',
       payload:data,
       headers:{
         cookie:'sid='+t3
@@ -182,7 +182,7 @@ test('POST /edittrip : edit trip Successfully ', (t) => {
         location_to_id:1,
         passing_by:'Rammallah',
         pass_point_time:'12:02',
-        seatavailable:2,
+        available_seats:2,
       }
 
       var  option3 = {
