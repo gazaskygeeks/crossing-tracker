@@ -19,7 +19,7 @@ const register = (data)=>{
   }else{
     alert('invalid data ')
   }
-}).catch((err) =>{
+}).catch((error) =>{
   store.dispatch({type: types.REGISTER_USER_FAIL})
 })}
 

@@ -18,7 +18,7 @@ const reject = (data)=>{
   if(response.statusCode === 200 && response.message === 'reject registration'){
     store.dispatch({type: types.GET_DISAPPROVED_USERS, payload: response.result});
   }
-}).catch((err) =>{
+}).catch((error) =>{
   store.dispatch({type: types.REGISTER_USER_FAIL})
 })}
 

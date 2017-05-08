@@ -13,7 +13,7 @@ const disApproved = ()=>{
   if(response.statusCode === 200){
     store.dispatch({type: types.GET_DISAPPROVED_USERS, payload: response.result});
   }
-  }).catch((err) =>{
+  }).catch((error) =>{
   store.dispatch({type: types.GET_DISAPPROVED_USERS_FAUILR})
 })}
 

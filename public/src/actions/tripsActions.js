@@ -11,7 +11,7 @@ const homeTrips = (data)=>{
     return  response.json()
   }).then((response)=>{
       store.dispatch({type: types.DISPLAY_ALL_TRIPS, payload: response});
-    }).catch((err) => {
+    }).catch((error) => {
       store.dispatch({type: types.DISPLAY_ALL_TRIPS_FAILURE})
     })
   }
