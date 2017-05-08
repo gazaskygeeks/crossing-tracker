@@ -1,5 +1,5 @@
-import { disApprovedUsers } from './getDisApprovedUsers.js'
-import * as types from '../actions/actionTypes.js';
+import { disApprovedUsers } from '../public/src/reducers/getDisApprovedUsers.js'
+import * as types from '../public/src/actions/actionTypes.js';
 var initialState = [];
 const payload1 = {
   username : 'jestJest',
