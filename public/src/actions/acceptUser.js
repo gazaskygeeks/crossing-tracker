@@ -2,7 +2,7 @@
 import * as types from './actionTypes';
 import store from '../store/store';
 const accept = (data)=>{
-  fetch('/acceptuser',{
+  fetch('/user',{
     method: 'POST',
     headers: {
            'Accept': 'application/json, text/plain, */*',
