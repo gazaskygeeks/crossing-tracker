@@ -1,6 +1,12 @@
 const test = require('tape');
+const nm = require('nodemailer');
+const sinon = require('sinon');
 const server = require('../backend/server.js');
 // const client = require('../database/config.js');
+
+const mock = () => ({ sendMail: (options, cb) => cb(null, {test: 'data'}) });
+sinon.stub(nm, 'createTransport', mock);
+
 test('POST /signup : compare recived data with send data', (t) => {
   const data = {
     username: 'abdallah',
