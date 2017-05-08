@@ -4,5 +4,7 @@ export default {
   signup: [],
   homeTrips:[],
   tripDetails:[],
-  getOrgs: []
+  getOrgs: [],
+  disApproved:[],
+  getLocations: []
 };

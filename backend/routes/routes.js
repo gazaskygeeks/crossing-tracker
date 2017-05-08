@@ -7,10 +7,13 @@ module.exports=[
   require('./createtrip.js'),
   require('./mytrip.js'),
   require('./getTrips.js'),
+  require('./rejectUser.js'),
   require('./jointrip.js'),
   require('./tripDetails.js'),
   require('./acceptUser.js'),
   require('./getOrgs.js'),
+  require('./getDisApprovedUsers'),
+  require('./getLocations.js'),
   require('./signout.js'),
   require('./edittrip.js')
 ];

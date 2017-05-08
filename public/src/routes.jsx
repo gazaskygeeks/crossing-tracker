@@ -8,6 +8,7 @@ import SigninPage from './components/signin/signinPage.jsx';
 import CreateTrip from './components/createTrip/createTrip.jsx';
 import TripDetails from './components/tripDetails/tripDetails.jsx';
 import SuccessPage from './components/success/successPage.jsx';
+import AdminHome from './components/admin/homeAdmin.jsx';
 export default (
   <Route path="/" component={App}>
     <IndexRoute component={SigninPage} />
@@ -17,6 +18,7 @@ export default (
     <Route path="createtrip" component={CreateTrip} />
     <Route path="tripdetails/:id" component={TripDetails} />
     <Route path="success" component={SuccessPage} />
+    <Route path="adminpage" component={AdminHome} />
   </Route>
 
 );

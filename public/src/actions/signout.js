@@ -8,10 +8,9 @@ const signout = (data)=>{
     credentials: 'include'
   })
   .then((response)=>{
-    hashHistory.push('/');
-
-  }).catch((err) => {
-  throw err
+    window.location.replace('/');
+  }).catch((error) => {
+  {res().code(500)}
   })
 }
 

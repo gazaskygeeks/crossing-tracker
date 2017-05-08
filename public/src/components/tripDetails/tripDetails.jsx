@@ -1,8 +1,10 @@
 import React from 'react';
 import viewTrip from '../../actions/tripDetailsActions.js';
+import joinTrip from '../../actions/joinTripActions.js';
 import {connect} from 'react-redux';
 import TripSection from './tripSection.jsx';
 import UserSection from './userSection.jsx';
+
 class TripDetails extends React.Component {
   constructor(props) {
     super(props);
@@ -11,7 +13,9 @@ class TripDetails extends React.Component {
     {this.props.viewThisTrip(this.props.params.id)}
   }
 
-
+  joinTripp(){
+    this.props.joinThisTrip({trip_id: this.props.params.id});
+  }
   render() {
     return (
       <div>
@@ -21,7 +25,10 @@ class TripDetails extends React.Component {
         <UserSection user={this.props.tripDetails}/>
 
     <div className="btn-wrp-center">
-      <button className="btn btn-default">
+      <button
+        className="btn btn-default"
+        onClick={this.joinTripp.bind(this)}
+        >
         Join this trip
       </button>
     </div>
@@ -38,6 +45,9 @@ const mapDispatchToProps = () => {
   return {
     viewThisTrip  : (id) => {
       viewTrip(id);
+    },
+    joinThisTrip : (id) => {
+      joinTrip(id);
     }
   }
 }

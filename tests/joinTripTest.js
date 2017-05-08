@@ -98,11 +98,10 @@ test('POST /jointrip : test 3', (t) => {
     }
     server.inject(option, (response) => {
       t.equal(response.statusCode, 400, 'Trip is full')
-      t.end();
-
+      t.end()
+      // eslint-disable-next-line no-console
+      console.log('***************** Edit Trip TEST****************************');
     })
 
   })
 })
-// eslint-disable-next-line no-console
-console.log('***************** Edit Trip TEST****************************');
