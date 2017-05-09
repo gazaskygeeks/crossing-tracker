@@ -5,7 +5,7 @@ module.exports = (req, res) => {
     if (error)
     {
     // eslint-disable-next-line no-console
-      console.log('get Trip by time :',error)
+      console.log('get Trip by time Error :',error)
       return res().code(500)
 
     }
@@ -19,7 +19,7 @@ module.exports = (req, res) => {
         if (error)
           {
             // eslint-disable-next-line no-console
-          console.log('createtrip error :',error)
+          console.log('createtrip Error :',error)
           return res().code(500)
         }
         res({

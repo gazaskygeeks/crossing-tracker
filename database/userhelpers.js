@@ -12,6 +12,17 @@ function getuserbyemail(email, cb) {
   WHERE email=$1`;
   dbutils.runQuery(query, [email], cb)
 }
+function getuserbyid(userid, cb) {
+  const query = `SELECT
+  username,
+  email,password,
+  phone,org_id,
+  user_type,
+  approved
+  FROM users
+  WHERE user_id=$1`;
+  dbutils.runQuery(query, [userid], cb)
+}
 
 function getuserbyusername(username, cb) {
   const query = `SELECT
@@ -74,6 +85,7 @@ module.exports = {
   createuser,
   changestatus,
   deletUser,
-  getDisApprovedUser
+  getDisApprovedUser,
+  getuserbyid
 
 }

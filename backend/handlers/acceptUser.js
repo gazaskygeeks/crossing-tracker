@@ -8,7 +8,7 @@ module.exports=(req,res)=>{
     helpers.changestatus(req.payload.email,(error)=>{
       if(error){
         // eslint-disable-next-line no-console
-        console.log('changestatus :',error)
+        console.log('changestatus Error :',error)
         return res().code(500)
       }
       mail.sendemail('Admin comfirmation <erezedule@gmail.com>',
@@ -17,7 +17,7 @@ module.exports=(req,res)=>{
         'Your registeration was accepted, so you can log in successfully :)', (error, info) => {
           if (error) {
             // eslint-disable-next-line no-console
-            console.log('sendemail:',error);
+            console.log('sendemail Error :',error);
             return res().code(500)
           }
           user.getDisApprovedUser((error, users) => {
