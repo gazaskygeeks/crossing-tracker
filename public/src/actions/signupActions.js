@@ -14,10 +14,8 @@ const register = (data)=>{
 .then((response)=>{
     if(response.statusCode === 200 && response.msg === 'User regestered'){
     hashHistory.push('success');
-  }else if(response.statusCode === 409 && response.msg === 'User already registered'){
-    alert(response.msg)
   }else{
-    alert('invalid data ')
+    store.dispatch({type: types.REGISTER_USER, payload: response})
   }
 }).catch((error) =>{
   store.dispatch({type: types.REGISTER_USER_FAIL})
