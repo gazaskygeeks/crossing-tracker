@@ -1,6 +1,5 @@
 import React from 'react'
 const RegestratedList = (props) => {
-  console.log('props in registeredUsers:',props);
   const list = props.regList.map(function(item) {
     return (
       <tr>
