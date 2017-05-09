@@ -6,12 +6,12 @@ module.exports = (req, res) => {
     if (error) {
       // eslint-disable-next-line no-console
       console.log('get user trip by trip id user id error :',error)
-      res().code(500)
+      return res().code(500)
 
     }
     if (res1.rows.length > 0) {
       res({
-        msg: 'User is already in this Trip'
+        msg: 'User is already in this Trip',
       }).code(401)
     } else {
       trip.gettripbytripid(req.payload.trip_id, (err, result) => {
@@ -21,16 +21,16 @@ module.exports = (req, res) => {
               if (error) {
                 // eslint-disable-next-line no-console
                 console.log('add trip user error:',error)
-                res().code(500)
+                return res().code(500)
 
               }
               res({
-                msg: 'Trip added successfully'
+                msg: 'Trip added successfully',
               }).code(200)
             })
           } else {
             res({
-              msg: 'No Available Seats in this Trip'
+              msg: 'No Available Seats in this Trip',
             }).code(400)
           }
         })

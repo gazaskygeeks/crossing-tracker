@@ -55,6 +55,13 @@ class SignupPage extends React.Component {
   }
 
   render() {
+    var message ='';
+    if(this.props.signup.statusCode === 409){
+      message=  'User already registered';
+    }
+    else if (this.props.signup.statusCode === 400){
+      message = 'Invalid inputs';
+    }
     return (
       <section className='form-wrp signup'>
         <div className='container'>
@@ -107,6 +114,7 @@ class SignupPage extends React.Component {
                   value={this.state.org_id}
                   change={this.changeOrg.bind(this)}
                   />
+                <p className='error'>{message}</p>
                 <button
                   type='submit'
                   className='btn btn-primary'
@@ -125,7 +133,8 @@ class SignupPage extends React.Component {
 
 
 const mapStateToProps = (store) => {
-  return {orgs: store.organizations}
+  return {orgs: store.organizations,
+    signup: store.signup}
 }
 
 const mapDispatchToProps = () => {
@@ -139,6 +148,6 @@ const mapDispatchToProps = () => {
   }
 }
 
-const sginup = connect(mapStateToProps, mapDispatchToProps)(SignupPage)
+const Sginup = connect(mapStateToProps, mapDispatchToProps)(SignupPage)
 
-export default sginup;
+export  {Sginup,SignupPage};

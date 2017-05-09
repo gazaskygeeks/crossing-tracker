@@ -6,24 +6,26 @@ module.exports = (req, res) => {
     {
     // eslint-disable-next-line no-console
       console.log('get Trip by time :',error)
-      res().code(500)
+      return res().code(500)
 
     }
     if (result.rows.length > 0) {
       res({
-        msg: 'You already Created trip before'
-      }).code(400);
+        msg: 'You already Created trip before',
+        statusCode:409
+      })
     } else {
       trip.createtrip(data, (error, result) => {
         if (error)
           {
             // eslint-disable-next-line no-console
           console.log('createtrip error :',error)
-          res().code(500)
+          return res().code(500)
         }
         res({
-          msg: 'Your Trip Created Successfully'
-        }).code(200)
+          msg: 'Your Trip Created Successfully',
+          statusCode: 200
+        })
       })
     }
   })

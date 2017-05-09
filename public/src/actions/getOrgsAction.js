@@ -11,6 +11,7 @@ const getOrgs = () => {
     })
     .then(res => res.json())
     .then((response) => {
+      console.log('response in sign up action:',response);
         store.dispatch({type: types.FETCH_ORGS_SUCCESS, payload: response});
     }).catch((error) => {
       store.dispatch({

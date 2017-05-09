@@ -14,7 +14,6 @@ test('POST/mytrip: Test my trip ', (t) => {
     payload: data1
   }
   server.inject(option1, (response) => {
-    // console.log(response);
     var cookies = response.request.response.headers['set-cookie']
     var t1 = cookies[0].split(';');
     var t2 = t1[0].split('=');

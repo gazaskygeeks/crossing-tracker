@@ -15,7 +15,17 @@ function gettripbytime(data, cb) {
   date=$3`;
   dbutils.runQuery(query, [data.user_id, data.time, data.tripdate], cb);
 }
+function deleteusertrip(data,cb){
+  const query =`DELETE FROM
+  usertrip
+  where
+  user_id=$1
+  AND
+  trip_id=$2
+`;
+  dbutils.runQuery(query, [data.user_id,data.trip_id], cb);
 
+}
 function createtrip(data, cb) {
   const query = `INSERT INTO trip
   (
@@ -222,5 +232,6 @@ module.exports = {
   getusertripbytripisuserid: getusertripbytripisuserid,
   updatetrip:updatetrip,
   getJoinedTrip:getJoinedTrip,
-  getUserIdByTripId:getUserIdByTripId
+  getUserIdByTripId:getUserIdByTripId,
+  deleteusertrip:deleteusertrip
 }
