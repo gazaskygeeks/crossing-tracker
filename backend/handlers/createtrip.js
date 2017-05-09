@@ -11,8 +11,9 @@ module.exports = (req, res) => {
     }
     if (result.rows.length > 0) {
       res({
-        msg: 'You already Created trip before'
-      }).code(400);
+        msg: 'You already Created trip before',
+        statusCode:409
+      })
     } else {
       trip.createtrip(data, (error, result) => {
         if (error)
@@ -22,8 +23,9 @@ module.exports = (req, res) => {
           return res().code(500)
         }
         res({
-          msg: 'Your Trip Created Successfully'
-        }).code(200)
+          msg: 'Your Trip Created Successfully',
+          statusCode: 200
+        })
       })
     }
   })

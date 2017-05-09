@@ -65,6 +65,15 @@ class CreateTrip extends React.Component{
     )
   }
   render() {
+    var message ='';
+    if(this.props.createTrip.statusCode === 200){
+      message=  'Your Trip Created Successfully';
+    }
+    else if (this.props.createTrip.statusCode === 409){
+      message = 'You already Created trip before in this time ';
+    }else if (this.props.createTrip.statusCode === 400){
+      message = 'Invalid inputs'
+    }
     return (
         <section className='trip-create'>
           <div className='container'>
@@ -135,6 +144,7 @@ class CreateTrip extends React.Component{
                       />
                   </div>
                   <div className='btn-wrp-right'>
+                    <p className='error'>{message}</p>
                     <button
                       type='submit'
                       className='btn btn-success'
@@ -154,7 +164,8 @@ class CreateTrip extends React.Component{
 }
 
 const mapStateToProps = (store) => {
-  return {locations: store.locations}
+  return {locations: store.locations,
+    createTrip: store.createTrip}
 }
 const mapDispatchToProps = () => {
   return {
