@@ -48,7 +48,7 @@ function getDisApprovedUser(cb) {
   users.email,
   users.phone,
   o.org_name as org_id from users,
-  org o where approved=$1;`
+  org o where approved=$1 and users.org_id=o.org_id;`
   dbutils.runQuery(query, ['0'], cb)
 }
 
