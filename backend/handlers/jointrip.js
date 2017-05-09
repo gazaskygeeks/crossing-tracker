@@ -11,7 +11,7 @@ module.exports = (req, res) => {
     }
     if (res1.rows.length > 0) {
       res({
-        msg: 'User is already in this Trip'
+        msg: 'User is already in this Trip',
       }).code(401)
     } else {
       trip.gettripbytripid(req.payload.trip_id, (err, result) => {
@@ -25,12 +25,12 @@ module.exports = (req, res) => {
 
               }
               res({
-                msg: 'Trip added successfully'
+                msg: 'Trip added successfully',
               }).code(200)
             })
           } else {
             res({
-              msg: 'No Available Seats in this Trip'
+              msg: 'No Available Seats in this Trip',
             }).code(400)
           }
         })
