@@ -9,7 +9,7 @@ module.exports=(req,res)=>{
       if(error){
         // eslint-disable-next-line no-console
         console.log('changestatus :',error)
-        res().code(500)
+        return res().code(500)
       }
       mail.sendemail('Admin comfirmation <erezedule@gmail.com>',
         `${req.payload.email}`,
@@ -18,7 +18,7 @@ module.exports=(req,res)=>{
           if (error) {
             // eslint-disable-next-line no-console
             console.log('sendemail:',error);
-            res().code(500)
+            return res().code(500)
           }
           user.getDisApprovedUser((error, users) => {
             const rep = {
