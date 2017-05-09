@@ -38,7 +38,7 @@ test('POST/login: with in INVALID password (short password)', (t) => {
   })
 })
 
-test('POST/login: with VALID email and password BUT email is NOT Exist', (t) => {
+test('POST/login: with VALID email and password BUT Email does not Exist', (t) => {
   const data = generateRandomPayload({
     email: 'notcorrect@gmail.com'
   })
@@ -50,7 +50,7 @@ test('POST/login: with VALID email and password BUT email is NOT Exist', (t) => 
   server.inject(option, (res) => {
     const result = JSON.parse(res.payload)
     t.equal(result.statusCode, 401, 'Get status code correctly')
-    t.equal(result.message, 'Email is not Exist', 'Get error message successfully')
+    t.equal(result.message, 'Email does not Exist', 'Get error message successfully')
     t.end()
   })
 })
