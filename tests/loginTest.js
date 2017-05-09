@@ -83,7 +83,7 @@ test('POST/login: with correct pass&email | USER not approved', (t) => {
   }
   server.inject(option, (res) => {
     const result = JSON.parse(res.payload)
-    t.equal(result.statusCode, 401, 'Get status code correctly')
+    t.equal(result.statusCode, 403, 'Get status code correctly')
     t.equal(result.message, 'Wait until the admin approved your request', 'Get error message successfully')
     t.end()
   })
@@ -119,7 +119,7 @@ test('POST/login: with correct pass&email | ADMIN not approved', (t) => {
   server.inject(option, (res) => {
 
     const result = JSON.parse(res.payload)
-    t.equal(result.statusCode, 401, 'Get status code correctly')
+    t.equal(result.statusCode, 403, 'Get status code correctly')
     t.equal(result.message, 'Wait until the admin approved your request', 'Get error message successfully')
     t.end()
   })

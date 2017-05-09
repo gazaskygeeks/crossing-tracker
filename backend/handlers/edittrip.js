@@ -4,7 +4,7 @@ module.exports = (req, res) => {
     if (err){
       // eslint-disable-next-line no-console
       console.log('get user id by trip id  error :',err)
-      res().code(500)
+      return res().code(500)
     }
     if (result.rows.length>0){
       const d =result.rows[0];
@@ -14,7 +14,7 @@ module.exports = (req, res) => {
             {
               // eslint-disable-next-line no-console
             console.log('update trip error :',error)
-            res().code(500)
+            return res().code(500)
           }
           res({msg:'Your Trip Edit Successfully'});
         })

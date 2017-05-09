@@ -9,7 +9,7 @@ test('POST /edittrip : edit trip that not exist', (t) => {
     location_to: 1,
     passing_by: 'Rammallah',
     pass_point_time: '12:02',
-    seatavailable: 2,
+    available_seats: 2,
     trip_id: 55
   }
 
@@ -23,6 +23,7 @@ test('POST /edittrip : edit trip that not exist', (t) => {
     payload: data1
   }
   server.inject(option1, (response) => {
+
     var cookies = response.request.response.headers['set-cookie']
     var t1 = cookies[0].split(';');
     var t2 = t1[0].split('=');
@@ -50,7 +51,7 @@ test('POST /edittrip : edit trip by a different user ', (t) => {
     location_to: 1,
     passing_by: 'Rammallah',
     pass_point_time: '12:02',
-    seatavailable: 2,
+    available_seats: 2,
     trip_id: 1
   }
 
@@ -93,7 +94,7 @@ test('POST /edittrip : edit trip Successfully ', (t) => {
     location_to: 1,
     passing_by: 'Rammallah',
     pass_point_time: '12:02',
-    seatavailable: 2,
+    available_seats: 2,
     trip_id: 2
   }
 

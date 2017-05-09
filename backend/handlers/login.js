@@ -9,7 +9,7 @@ module.exports = (req, res) => {
       {
           // eslint-disable-next-line no-console
         console.log('get user by email :',error)
-        res().code(500)
+        return res().code(500)
       }
     }
     if (result.rows.length > 0) {
@@ -17,12 +17,12 @@ module.exports = (req, res) => {
         if (error) {
           // eslint-disable-next-line no-console
           console.log('Bcrypt comapre error  :',error)
-          res().code(500)
+          return res().code(500)
 
         }
         if (resultHash) {
           if (result.rows[0].approved === 0) {
-            res(Boom.unauthorized('Wait until the admin approved your request'))
+            res(Boom.forbidden('Wait until the admin approved your request'))
           } else {
             req.cookieAuth.set({
               user_id: result.rows[0].user_id,

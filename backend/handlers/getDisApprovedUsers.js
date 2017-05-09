@@ -7,7 +7,7 @@ module.exports = (req, res) => {
         {
           // eslint-disable-next-line no-console
           console.log('getDisApprovedUser error :',error)
-          res().code(500)
+          return res().code(500)
         }
       }
       res({
