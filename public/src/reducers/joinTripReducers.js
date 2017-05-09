@@ -1,7 +1,7 @@
 import * as types from '../actions/actionTypes';
 import initialState from './initialState';
 
-function joinTripReducer(state = initialState.tripDetails, action) {
+function joinTripReducer(state = initialState.joinTrip, action) {
   switch (action.type) {
   case types.JOIN_TRIP:
     return action.payload;
