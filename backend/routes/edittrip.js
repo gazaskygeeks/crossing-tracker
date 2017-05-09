@@ -6,7 +6,7 @@ const editTrip = {
   handler:editTripHandler,
   config: {
     validate: {
-      payload: validation.ediTripValidation
+      payload: validation.editTripValidation
     },
     auth:'session'
   }

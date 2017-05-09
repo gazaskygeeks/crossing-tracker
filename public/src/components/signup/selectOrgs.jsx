@@ -2,7 +2,6 @@
 import React from 'react'
 
 const SelectInput = ({options,value,change}) => {
-  console.log('ooooooooo:',options);
   if(!options[0]){
     return <div>Loading...</div>;
   }

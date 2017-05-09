@@ -23,9 +23,13 @@ class SigninPage extends React.Component {
     this.setState({password: ev.target.value});
   }
   render() {
-    const message = this.props.signin.statusCode === 401
-        ? 'Your email or password is not correct'
-        : ''
+    var message ='';
+    if(this.props.signin.statusCode === 401){
+      message=  'Your email or password is not correct';
+    }
+    else if (this.props.signin.statusCode === 403){
+      message = 'Your registration request has not been approved yet ';
+    }
     return (
       <section className='form-wrp signin'>
         <div className='overlay'></div>

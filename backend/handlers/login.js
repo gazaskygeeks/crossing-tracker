@@ -22,7 +22,7 @@ module.exports = (req, res) => {
         }
         if (resultHash) {
           if (result.rows[0].approved === 0) {
-            res(Boom.unauthorized('Wait until the admin approved your request'))
+            res(Boom.forbidden('Wait until the admin approved your request'))
           } else {
             req.cookieAuth.set({
               user_id: result.rows[0].user_id,

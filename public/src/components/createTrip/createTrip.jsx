@@ -60,7 +60,7 @@ class CreateTrip extends React.Component{
         location_to: '',
         passing_by:'',
         pass_point_time:'',
-        seatavailable: 0
+        available_seats: 0
       }
     )
   }
