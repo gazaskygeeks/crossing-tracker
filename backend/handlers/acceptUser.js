@@ -1,7 +1,9 @@
+
+/*global process*/
+require('env2')('./.env');
 const helpers = require('../../database/userhelpers.js');
 const mail= require('../../backend/utils.js');
 const user = require('../../database/userhelpers.js');
-
 module.exports=(req,res)=>{
   const valid = req.state.sid.user_type;
   if(valid === 2){
@@ -11,10 +13,13 @@ module.exports=(req,res)=>{
         console.log('changestatus Error :',error)
         return res().code(500)
       }
-      mail.sendemail('Admin comfirmation <erezedule@gmail.com>',
+      mail.sendemail(`Erezedule-Admin comfirmation <${process.env.GMAIL_USER}>`,
         `${req.payload.email}`,
-        'Admin accept your registeration',
-        'Your registeration was accepted, so you can log in successfully :)', (error, info) => {
+        'Welcome in Erezedule!',
+        `Your registration request was approved.
+        Please use the link to log in (^_^):
+        https://crossing-tracker.herokuapp.com`
+        , (error, info) => {
           if (error) {
             // eslint-disable-next-line no-console
             console.log('sendemail Error :',error);
