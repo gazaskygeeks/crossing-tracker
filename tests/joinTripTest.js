@@ -30,7 +30,7 @@ test('POST /jointrip : test1', (t) => {
     }
     server.inject(option, (res) => {
 
-      t.equal(res.statusCode, 200, 'User joined the trip')
+      t.equal(res.result.statusCode, 200, 'User joined the trip')
       t.end();
     })
   })
@@ -64,7 +64,7 @@ test('POST /jointrip : test2', (t) => {
       }
     }
     server.inject(option, (resp) => {
-      t.equal(resp.statusCode, 401, 'User already joined this trip')
+      t.equal(resp.result.statusCode, 401, 'User already joined this trip')
       t.end();
     })
   })
@@ -98,7 +98,7 @@ test('POST /jointrip : test 3', (t) => {
       }
     }
     server.inject(option, (response) => {
-      t.equal(response.statusCode, 400, 'Trip is full')
+      t.equal(response.result.statusCode, 400, 'Trip is full')
       t.end()
       // eslint-disable-next-line no-console
       console.log('***************** Edit Trip TEST****************************');
