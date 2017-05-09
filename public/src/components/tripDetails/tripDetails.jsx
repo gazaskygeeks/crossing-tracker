@@ -25,6 +25,7 @@ class TripDetails extends React.Component {
         <UserSection user={this.props.tripDetails}/>
 
     <div className="btn-wrp-center">
+      <p className='error'>{this.props.joinTrip}</p>
       <button
         className="btn btn-default"
         onClick={this.joinTripp.bind(this)}
@@ -38,7 +39,10 @@ class TripDetails extends React.Component {
 }
 
 const mapStateToProps = (store) => {
-  return {tripDetails: store.tripDetails[0]}
+  return {
+    tripDetails: store.tripDetails[0],
+    joinTrip: store.joinTrip.msg
+  }
 }
 
 const mapDispatchToProps = () => {

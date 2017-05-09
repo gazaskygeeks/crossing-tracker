@@ -154,7 +154,7 @@ function updatetrip(data, cb) {
       data.location_from,
       data.location_to,
       data.time,
-      data.date,
+      data.tripdate,
       data.pass_point_time,
       data.passing_by,
       data.available_seats,

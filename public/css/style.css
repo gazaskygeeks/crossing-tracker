@@ -205,8 +205,12 @@ header .navbar-default .navbar-toggle:focus, header .navbar-default .navbar-togg
 /************ mytrip ************/
 
 .mytrip {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.mytrip:first-of-type {
   padding-top: 20px;
-  padding-bottom: 10px;
 }
 
 .mytrip ul {
@@ -218,6 +222,7 @@ header .navbar-default .navbar-toggle:focus, header .navbar-default .navbar-togg
   list-style-type: none;
   padding: 8px 10px;
   border-radius: 5px;
+  font-size: 0;
 }
 
 .mytrip ul li:nth-child(odd) {
@@ -225,12 +230,14 @@ header .navbar-default .navbar-toggle:focus, header .navbar-default .navbar-togg
 }
 
 .mytrip ul li span, .mytrip ul li label {
+  display: inline-block;
   width: 50%;
   margin-bottom: 0;
+  font-size: 14px;
 }
 
 .mytrip button.btn-default {
-  margin-bottom: 10px;
+  margin-bottom: 40px;
   margin-left: 10px;
 }
 
@@ -437,7 +444,6 @@ header .navbar-default .navbar-toggle:focus, header .navbar-default .navbar-togg
   color: #fff!important;
 }
 
-
 .react-datepicker__day-name, .react-datepicker__day {
   width: 7.7rem !important;
   line-height: 7.7rem !important;
@@ -452,14 +458,15 @@ header .navbar-default .navbar-toggle:focus, header .navbar-default .navbar-togg
   font-size: 2rem !important;
 }
 
-.calendar{
+.calendar {
   text-align: center;
 }
 
-.react-datepicker__navigation{
-    border-width: 1rem!important;
+.react-datepicker__navigation {
+  border-width: 1rem!important;
 }
-.error{
+
+.error {
   color: red;
   font-weight: 600;
   margin-bottom: 10px !important;

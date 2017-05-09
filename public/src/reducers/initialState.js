@@ -6,5 +6,7 @@ export default {
   tripDetails:[],
   getOrgs: [],
   disApproved:[],
-  getLocations: []
+  getLocations: [],
+  getUserTrips:{},
+  joinTrip:{}
 };
