@@ -10,6 +10,7 @@ module.exports = (req, res) => {
           return res().code(500)
         }
       }
+      console.log('Dis approved user in handler:',users.rows);
       res({
         result: users.rows,
         statusCode: 200
