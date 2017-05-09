@@ -10,6 +10,7 @@ const disApproved = ()=>{
     return  response.json()
   })
 .then((response)=>{
+  console.log('response in GET_DISAPPROVED_USERS fetch:',response.result);
   if(response.statusCode === 200){
     store.dispatch({type: types.GET_DISAPPROVED_USERS, payload: response.result});
   }

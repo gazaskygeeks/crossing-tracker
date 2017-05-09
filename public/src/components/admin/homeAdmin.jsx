@@ -36,6 +36,7 @@ class HomeAdmin extends React.Component {
     }
 }
 const mapStateToProps = (store) => {
+  console.log('store.disApproved:',store.disApproved);
   return {list: store.disApproved}
 }
 const mapDispatchToProps = () => {
