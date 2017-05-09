@@ -8,8 +8,6 @@ module.exports = (req, res) => {
         return res().code(500)
       }
     }
-    // eslint-disable-next-line no-console
-    console.log('organizations:',result.rows);
     res(result.rows)
   })
 }

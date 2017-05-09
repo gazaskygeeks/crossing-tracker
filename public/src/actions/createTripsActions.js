@@ -4,7 +4,7 @@ import * as types from './actionTypes';
 import store from '../store/store';
 
 const createTrip = (data)=>{
-  fetch('/createtrip',{
+  fetch('/trip',{
     method: 'POST',
     headers: {
            'Accept': 'application/json, text/plain, */*',
