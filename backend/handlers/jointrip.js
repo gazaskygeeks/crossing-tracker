@@ -6,7 +6,7 @@ module.exports = (req, res) => {
     if (error) {
       // eslint-disable-next-line no-console
       console.log('get user trip by trip id user id error :',error)
-      res().code(500)
+      return res().code(500)
 
     }
     if (res1.rows.length > 0) {
@@ -21,7 +21,7 @@ module.exports = (req, res) => {
               if (error) {
                 // eslint-disable-next-line no-console
                 console.log('add trip user error:',error)
-                res().code(500)
+                return res().code(500)
 
               }
               res({

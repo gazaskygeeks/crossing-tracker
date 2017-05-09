@@ -10,7 +10,7 @@ const signout = (data)=>{
   .then((response)=>{
     window.location.replace('/');
   }).catch((error) => {
-  {res().code(500)}
+  {return res().code(500)}
   })
 }
 

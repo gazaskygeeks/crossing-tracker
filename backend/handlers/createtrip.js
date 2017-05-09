@@ -6,7 +6,7 @@ module.exports = (req, res) => {
     {
     // eslint-disable-next-line no-console
       console.log('get Trip by time :',error)
-      res().code(500)
+      return res().code(500)
 
     }
     if (result.rows.length > 0) {
@@ -19,7 +19,7 @@ module.exports = (req, res) => {
           {
             // eslint-disable-next-line no-console
           console.log('createtrip error :',error)
-          res().code(500)
+          return res().code(500)
         }
         res({
           msg: 'Your Trip Created Successfully'
