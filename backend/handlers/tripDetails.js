@@ -5,7 +5,7 @@ module.exports = (req, res) => {
   trip.getTripByid(data, (error, result) => {
     if (error) {
       // eslint-disable-next-line no-console
-      console.log('get Trip by id :',error)
+      console.log('get Trip by id Error :',error)
       return res().code(500)
 
     }

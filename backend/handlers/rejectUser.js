@@ -17,7 +17,7 @@ module.exports = (req, res) => {
         'Your registeration was rejected', (error, info) => {
           if (error) {
             // eslint-disable-next-line no-console
-            console.log('sendmail :',error)
+            console.log('sendmail Error :',error)
             return res().code(500);
 
           }

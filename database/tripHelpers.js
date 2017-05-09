@@ -126,9 +126,7 @@ function getusertripbyuserid(data, cb) {
   dbutils.runQuery(query, [data], cb);
 }
 
-
 function gettripbytripid(data, cb) {
-
   const query = `SELECT available_seats
   From trip WHERE trip_id=$1`;
   dbutils.runQuery(query, [data], cb);

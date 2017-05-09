@@ -16,7 +16,7 @@ module.exports = (req, res) => {
          ${req.payload.email}`, (error, info) => {
            if (error) {
              // eslint-disable-next-line no-console
-             console.log('sendemail :',error)
+             console.log('sendemail Error :',error)
              return res().code(500)
 
            }
