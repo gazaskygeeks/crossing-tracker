@@ -9,8 +9,12 @@ module.exports = (req, res) => {
       return res().code(500)
     }
     if (res1.rows.length > 0) {
-      trip.deleteusertrip(usertripinfo, (error, result) => {
-        console.log(result);
+      trip.deleteusertrip(
+        {
+          user_id:req.state.sid.user_id,
+          trip_id:req.payload.trip_id
+        }
+        , (error, result) => {
         if (error)
         {
           return   res({msg:'There was error try again'})

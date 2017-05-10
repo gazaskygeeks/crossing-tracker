@@ -1,4 +1,5 @@
 import React from 'react'
+import { hashHistory } from 'react-router';
 
 const joinedTripsRow = ({joinedTrips, unjoinTrip, userData, msg}) => {
   if(!joinedTrips){
@@ -24,14 +25,14 @@ const joinedTripsRow = ({joinedTrips, unjoinTrip, userData, msg}) => {
           </li>
         </ul>
         <div className='btn-wrp-right'>
-          <p className='error'>{msg}</p>
           <button
             type='button'
             className='btn btn-default'
             onClick={
               () => {
                 return(
-                  unjoinTrip({trip_id: trip.trip_id})
+                  unjoinTrip({trip_id: trip.trip_id}),
+                  window.location.reload()
                 );
               }
             }
