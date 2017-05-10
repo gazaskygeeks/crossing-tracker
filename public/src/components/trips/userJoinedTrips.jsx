@@ -1,6 +1,6 @@
 import React from 'react';
 import UserTripsRow from './JoinedTripsRow.jsx';
-const userJoinedTrips = ({joinedTrips}) => {
+const userJoinedTrips = ({joinedTrips, unjoinTrip, userData, msg}) => {
 
   if(!joinedTrips){
     return <div>Loading...</div>;
@@ -14,7 +14,12 @@ const userJoinedTrips = ({joinedTrips}) => {
             <h3 className='heading'>Joined Trips</h3>
             <span className='caption'>Joined trips apear here</span>
           </div>
-          <UserTripsRow joinedTrips={joinedTrips} />
+          <UserTripsRow
+            joinedTrips={joinedTrips}
+            unjoinTrip={unjoinTrip}
+            userData={userData}
+            msg={msg}
+            />
         </div>
       </div>
     </section>
