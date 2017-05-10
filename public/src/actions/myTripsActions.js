@@ -24,7 +24,6 @@ const getUserTrips = ()=>{
 }
 
 const UpdateUserTrips = (data)=>{
-  console.log('data: ',data);
   fetch('/trip',{
     method: 'PUT',
     headers: {

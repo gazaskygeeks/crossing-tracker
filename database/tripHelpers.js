@@ -126,7 +126,7 @@ function getusertripbyuserid(data, cb) {
   dbutils.runQuery(query, [data], cb);
 }
 
-function gettripbytripid(data, cb) {
+function getseats(data, cb) {
   const query = `SELECT available_seats
   From trip WHERE trip_id=$1`;
   dbutils.runQuery(query, [data], cb);
@@ -226,7 +226,7 @@ module.exports = {
   getTripeByDate: getTripeByDate,
   getTripByid: getTripByid,
   getusertripbyuserid:getusertripbyuserid,
-  gettripbytripid: gettripbytripid,
+  getseats: getseats,
   getusertripbytripid: getusertripbytripid,
   addtripuser: addtripuser,
   getusertripbytripisuserid: getusertripbytripisuserid,

@@ -31,7 +31,11 @@ class TripsPage extends React.Component {
   }
 }
 
+<<<<<<< HEAD
 const mapStateToProps = (store) => {
+=======
+const mapStateToProps = (store) => 
+>>>>>>> 953fd34cb27a33b9f74df260b0bbd30a4a37cd35
   return {
     GetUserTrips: store.userTrips.createdTrip,
     UserJoinedTrips: store.userTrips.joinedTrip,
