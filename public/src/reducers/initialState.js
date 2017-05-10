@@ -8,5 +8,6 @@ export default {
   disApproved:[],
   getLocations: [],
   getUserTrips:{},
-  joinTrip:{}
+  joinTrip:{},
+  unjoinTrip:{}
 };

@@ -30,10 +30,10 @@ test('POST/tripDetails: test  ', (t) => {
         'trip_id':1,'time':'01:01 AM',
         'date':'08082017','pass_point_time':null,
         'passing_by':null,'user_id':1,
-        'location_from':'GAZA','username':'admin',
+        'location_from':'GAZA','location_from_id': 1,'username':'admin',
         'email':'admin@admin.com','phone':'0598287410',
         'org_id':1,'org_name':'mercyco',
-        'location_to':'RAMALLAH'
+        'location_to':'RAMALLAH','location_to_id': 2
       }
 
       const conv=JSON.parse(res.payload);

@@ -6,7 +6,10 @@ class App extends React.Component {
   render() {
     return (
       <div>
-          <Header logedIn={this.props.userLoged} />
+          <Header
+            logedIn={this.props.userLoged}
+            path = {this.props.location.pathname}
+            />
           {this.props.children}
       </div>
     );

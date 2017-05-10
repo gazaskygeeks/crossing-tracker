@@ -9,6 +9,8 @@ import {disApprovedUsers} from '../reducers/getDisApprovedUsers.js';
 import {geLocationsReducer} from '../reducers/getLocationsReducer.js';
 import {joinTripReducer} from '../reducers/joinTripReducers.js';
 import {userTripsReducer} from '../reducers/myTripsReducer.js';
+import {unjoinTripReducer} from '../reducers/unjoinTripReduce.js';
+
 const reducers = combineReducers({
   signin: signinReducer,
   createTrip: createTripReducer,
@@ -20,7 +22,8 @@ const reducers = combineReducers({
   organizations: getOrgsReducer,
   locations: geLocationsReducer,
   joinTrip: joinTripReducer,
-  userTrips: userTripsReducer
+  userTrips: userTripsReducer,
+  unjoinTrip: unjoinTripReducer
 });
 var store = createStore(
   reducers,

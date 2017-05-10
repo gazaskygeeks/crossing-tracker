@@ -1,23 +1,6 @@
 import React from 'react'
 import UserTripsRow from './userTripsRow.jsx';
-const userTripsSection = (
-  {
-    userTrips,
-    getUserTrips,
-    getTrip,
-    TripData,
-    rowState,
-    changeTime,
-    changeTripDate,
-    changeLocationFrom,
-    changeLocationTo,
-    changePassingBy,
-    changePassingPointTime,
-    changeSeatsAvailable,
-    UpdateTrip
-
-  }
-) => {
+const userTripsSection = ({userTrips}) => {
 
   if(!userTrips){
     return <div>Loading...</div>;
@@ -33,18 +16,6 @@ const userTripsSection = (
           </div>
           <UserTripsRow
             userTrips = {userTrips}
-            getUserTrips = {getUserTrips}
-            getTrip = {getTrip}
-            TripData = {TripData}
-            rowState = {rowState}
-            changeTime = {changeTime}
-            changeTripDate = {changeTripDate}
-            changeLocationFrom = {changeLocationFrom}
-            changeLocationTo = {changeLocationTo}
-            changePassingBy = {changePassingBy}
-            changePassingPointTime = {changePassingPointTime}
-            changeSeatsAvailable = {changeSeatsAvailable}
-            UpdateTrip = {UpdateTrip}
             />
         </div>
       </div>
