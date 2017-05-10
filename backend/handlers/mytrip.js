@@ -4,14 +4,14 @@ module.exports = (req, res) => {
     if (error)
       {
           // eslint-disable-next-line no-console
-      console.log('get trip by user id  :',error)
+      console.log('get trip by user id  Error :',error)
       return res().code(500)
     }
     trip.getusertripbyuserid(req.state.sid.user_id, (error, result2) => {
       if (error)
         {
             // eslint-disable-next-line no-console
-        console.log('get user trip by user id :',error)
+        console.log('get user trip by user id Error :',error)
         return res().code(500)
       }
       if (result2.rowCount > 0) {
@@ -19,7 +19,7 @@ module.exports = (req, res) => {
           if (error)
             {
                 // eslint-disable-next-line no-console
-            console.log('get Joined Trip  :',error)
+            console.log('get Joined Trip Error :',error)
             return res().code(500)
           }
           res({

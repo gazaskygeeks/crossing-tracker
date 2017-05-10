@@ -1,3 +1,6 @@
+
+/*global process*/
+require('env2')('./.env');
 const helpers = require('../../database/userhelpers.js');
 const user = require('../../database/userhelpers.js');
 const mail = require('../../backend/utils.js');
@@ -11,13 +14,14 @@ module.exports = (req, res) => {
         return res().code(500)
       }
 
-      mail.sendemail('Admin comfirmation <erezedule@gmail.com>',
+      mail.sendemail(`Erezedule-Admin notification <${process.env.GMAIL_USER}>`,
         `${req.payload.email}`,
-        'Admin reject your registeration',
-        'Your registeration was rejected', (error, info) => {
+        'Registration request denied',
+        `We apologize for rejecting your registration request.
+        Please contact your organization's Admin`, (error, info) => {
           if (error) {
             // eslint-disable-next-line no-console
-            console.log('sendmail :',error)
+            console.log('sendmail Error :',error)
             return res().code(500);
 
           }

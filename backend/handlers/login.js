@@ -8,7 +8,7 @@ module.exports = (req, res) => {
     if (error) {
       {
           // eslint-disable-next-line no-console
-        console.log('get user by email :',error)
+        console.log('get user by email Error :',error)
         return res().code(500)
       }
     }
@@ -16,7 +16,7 @@ module.exports = (req, res) => {
       Bcrypt.compare(password, result.rows[0].password, (error, resultHash) => {
         if (error) {
           // eslint-disable-next-line no-console
-          console.log('Bcrypt comapre error  :',error)
+          console.log('Bcrypt comapre Error  :',error)
           return res().code(500)
 
         }
@@ -53,7 +53,7 @@ module.exports = (req, res) => {
         }
       })
     } else {
-      res(Boom.unauthorized('Email is not Exist'))
+      res(Boom.unauthorized('Email does not Exist'))
     }
   })
 
