@@ -88,6 +88,7 @@ class TripsPage extends React.Component {
   }
 }
 
+
 const mapStateToProps = (store) => {
   return {
     GetUserTrips: store.userTrips.createdTrip,
