@@ -10,13 +10,14 @@ module.exports = (req, res) => {
     }
     if (res1.rows.length > 0) {
       trip.deleteusertrip(usertripinfo, (error, result) => {
+        console.log(result);
         if (error)
         {
-          res({msg:'There was error try again'})
-        } else{
-          res({msg:'Your trip removed successfully'})
-
+          return   res({msg:'There was error try again'})
         }
+        res({msg:'Your trip removed successfully'})
+
+
       })
 
     } else {

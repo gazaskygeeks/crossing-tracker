@@ -16,6 +16,7 @@ function gettripbytime(data, cb) {
   dbutils.runQuery(query, [data.user_id, data.time, data.tripdate], cb);
 }
 function deleteusertrip(data,cb){
+  console.log(data);
   const query =`DELETE FROM
   usertrip
   where
@@ -170,6 +171,20 @@ function updatetrip(data, cb) {
     ]
     , cb);
 }
+function updateseats(data, cb) {
+
+  const query = `UPDATE trip
+   SET
+   available_seats=$1
+   WHERE trip_id=$2`;
+  dbutils.runQuery(
+    query,
+    [
+      data.available_seats,
+      data.trip_id
+    ]
+    , cb);
+}
 
 
 
@@ -231,5 +246,6 @@ module.exports = {
   updatetrip:updatetrip,
   getJoinedTrip:getJoinedTrip,
   getUserIdByTripId:getUserIdByTripId,
-  deleteusertrip:deleteusertrip
+  deleteusertrip:deleteusertrip,
+  updateseats:updateseats
 }
