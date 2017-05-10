@@ -26,7 +26,7 @@ test('POST/tripDetails: test  ', (t) => {
     }
     server.inject(option, (res) => {
       const re={
-        'available_seats':2,
+        'available_seats':1,
         'trip_id':1,'time':'01:01 AM',
         'date':'08082017','pass_point_time':null,
         'passing_by':null,'user_id':1,

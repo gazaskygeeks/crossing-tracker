@@ -29,6 +29,7 @@ module.exports = (req, res) => {
 
         }
         trip.getseats(req.payload.trip_id, (error, result) => {
+          const seats= result.rows[0].available_seats;
           if (error) {
             // eslint-disable-next-line no-console
             console.log('get trip by trip id error:',error)
@@ -56,30 +57,44 @@ module.exports = (req, res) => {
                       console.log('get user by user id error :',error)
                       return res().code(500)
                     }
-                    const owner = result.rows[0].email;
-                    const username = result.rows[0].username;
-                    user.getuserbyid(usertripinfo[0],(error,result)=>{
-                      const involved = result.rows[0].email;
-                      utiles.sendemail(
-                  'Site Admin <erezedule@gmail.com>',
-                        owner,
-                        'Someone Joined Your Trip',
-                        `Hi ${username},
-                        There someone Joined Your Trip,
-                        You Can Contact him/her by
-                        sending message to his/her email : ${involved}
-                        You can discover this by
-                        visiting your trip page  `, (error, info) => {
-                          if (error) {
-                             // eslint-disable-next-line no-console
-                            console.log('sendemail :',error)
-                            return res().code(500)
-                          }
-                          res({
-                            msg: 'Trip added successfully'
-                          }).code(200)
+                    trip.updateseats(
+                      {
+                        trip_id:usertripinfo[1],
+                        available_seats:seats-1
+                      }
+                      ,
+                      (error,result2)=>{
+                        if (error) {
+                          console.log(seats);
+                          // eslint-disable-next-line no-console
+                          console.log('Update Seats Error :',error)
+                          return res().code(500)
+                        }
+                        const owner = result.rows[0].email;
+                        const username = result.rows[0].username;
+                        user.getuserbyid(usertripinfo[0],(error,result)=>{
+                          const involved = result.rows[0].email;
+                          utiles.sendemail(
+                      'Site Admin <erezedule@gmail.com>',
+                            owner,
+                            'Someone Joined Your Trip',
+                            `Hi ${username},
+                            There someone Joined Your Trip,
+                            You Can Contact him/her by
+                            sending message to his/her email : ${involved}
+                            You can discover this by
+                            visiting your trip page  `, (error, info) => {
+                              if (error) {
+                                 // eslint-disable-next-line no-console
+                                console.log('sendemail :',error)
+                                return res().code(500)
+                              }
+                              res({
+                                msg: 'Trip added successfully'
+                              }).code(200)
+                            })
                         })
-                    })
+                      })
                   })
 
                 })
