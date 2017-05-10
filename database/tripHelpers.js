@@ -201,6 +201,8 @@ function getTripByid(data, cb) {
       trip.pass_point_time,
       trip.passing_by,
       trip.user_id,
+      trip.location_to_id,
+      trip.location_from_id,
       l.location_name as location_from,
       u.user_id,
       u.username,

@@ -3,6 +3,7 @@ import { Route, IndexRoute} from 'react-router';
 import App from './components/App.jsx';
 import HomePage from './components/home/homePage.jsx';
 import TripsPage from './components/trips/tripsPage.jsx';
+import UdateTrip from './components/trips/updateTrip.jsx';
 import {Sginup} from './components/signup/signupPage.jsx';
 import SigninPage from './components/signin/signinPage.jsx';
 import CreateTrip from './components/createTrip/createTrip.jsx';
@@ -19,6 +20,7 @@ export default (
     <Route path="tripdetails/:id" component={TripDetails} />
     <Route path="success" component={SuccessPage} />
     <Route path="adminpage" component={AdminHome} />
+    <Route path="updatetrip/:id" component={UdateTrip} />
   </Route>
 
 );
