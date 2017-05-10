@@ -16,7 +16,6 @@ function gettripbytime(data, cb) {
   dbutils.runQuery(query, [data.user_id, data.time, data.tripdate], cb);
 }
 function deleteusertrip(data,cb){
-  console.log(data);
   const query =`DELETE FROM
   usertrip
   where

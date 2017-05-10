@@ -65,7 +65,7 @@ module.exports = (req, res) => {
                       ,
                       (error,result2)=>{
                         if (error) {
-                          console.log(seats);
+
                           // eslint-disable-next-line no-console
                           console.log('Update Seats Error :',error)
                           return res().code(500)

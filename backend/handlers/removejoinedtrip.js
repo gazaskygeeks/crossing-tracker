@@ -19,9 +19,32 @@ module.exports = (req, res) => {
         {
           return   res({msg:'There was error try again'})
         }
-        res({msg:'Your trip removed successfully'})
+        trip.getTripByid({trip_id:usertripinfo[1]},(error,result)=>{
+          if (error) {
+            // eslint-disable-next-line no-console
+            console.log('get trip by tripid error :',error)
+            return res().code(500)
+          }
 
+          const seats= result.rows[0].available_seats;
 
+          trip.updateseats(
+            {
+              trip_id:usertripinfo[1],
+              available_seats:seats+1
+            }
+            ,
+            (error,result2)=>{
+              if (error) {
+
+                // eslint-disable-next-line no-console
+                console.log('Update Seats Error :',error)
+                return res().code(500)
+              }
+              res({msg:'Your trip removed successfully'})
+
+            })
+        })
       })
 
     } else {
