@@ -45,4 +45,28 @@ const UpdateUserTrips = (data)=>{
   })
 }
 
-export {getUserTrips,UpdateUserTrips};
+
+const UnjoinTrip = (tripId)=>{
+  console.log('tripId: ',tripId);
+  console.log('tripId: ',tripId);
+  fetch('/trip',{
+    method: 'DELETE',
+    headers: {
+           'Accept': 'application/json, text/plain, */*',
+           'Content-Type': 'application/json'
+    },
+    body:JSON.stringify(tripId),
+    credentials: 'include'
+  })
+  .then((response)=>{
+    return  response.json();
+  }).then((response)=>{
+      store.dispatch({type: types.UNJOIN_TRIP, payload: response});
+  }).catch((error) => {
+    store.dispatch({
+      type: types.UNJOIN_TRIP_FAILURE
+    })
+  })
+}
+
+export {getUserTrips,UpdateUserTrips,UnjoinTrip};

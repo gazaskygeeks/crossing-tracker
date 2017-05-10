@@ -1,6 +1,6 @@
 import React from 'react'
 
-const joinedTripsRow = ({joinedTrips}) => {
+const joinedTripsRow = ({joinedTrips, unjoinTrip, userData, msg}) => {
   if(!joinedTrips){
     return <div>Loading...</div>;
   }
@@ -24,9 +24,17 @@ const joinedTripsRow = ({joinedTrips}) => {
           </li>
         </ul>
         <div className='btn-wrp-right'>
+          <p className='error'>{msg}</p>
           <button
             type='button'
             className='btn btn-default'
+            onClick={
+              () => {
+                return(
+                  unjoinTrip({trip_id: trip.trip_id})
+                );
+              }
+            }
             >
             Cancel this ride
           </button>
