@@ -116,7 +116,7 @@ class CreateTrip extends React.Component{
                     />
 
                   <div className='form-group'>
-                    <label>Passing by</label>
+                    <label>Pickup point</label>
                     <input
                       type='text'
                       value={this.state.passing_by}
@@ -125,7 +125,7 @@ class CreateTrip extends React.Component{
                       />
                   </div>
                   <div className='form-group'>
-                    <label>Passingpoint Time</label>changePassingPointTime
+                    <label>Pickup Time</label>changePassingPointTime
                     <input
                       type='time'
                       value={this.state.pass_point_time}
