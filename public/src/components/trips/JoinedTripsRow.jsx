@@ -13,9 +13,9 @@ const joinedTripsRow = ({joinedTrips, unjoinTrip, userData, msg}) => {
           <li><label>Time</label> <span>{trip.time}</span></li>
           <li><label>From</label> <span>{trip.location_from}</span></li>
           <li><label>To</label> <span>{trip.location_to}</span></li>
-          <li><label>Passing by</label> <span>{trip.passing_by}</span></li>
+          <li><label>Pickup point</label> <span>{trip.passing_by}</span></li>
           <li>
-            <label>Passingpoint time</label>
+            <label>Pickup time</label>
             <span>{trip.pass_point_time}</span>
 
             </li>

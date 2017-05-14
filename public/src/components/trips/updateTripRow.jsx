@@ -68,7 +68,7 @@ const UpdateTrip = (
             />
         </li>
         <li>
-          <label>Passing by</label>
+          <label>Pickup point</label>
           <span>
             <input
               type="text"
@@ -79,7 +79,7 @@ const UpdateTrip = (
           </span>
         </li>
         <li>
-          <label>Passingpoint time</label>
+          <label>Pickup time</label>
           <span>
             <input
               type="time"
