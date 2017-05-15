@@ -76,7 +76,8 @@
     "react-dom": "^15.5.4",
     "react-redux": "^5.0.4",
     "react-router": "2.4.0",
-    "react-router-dom": "^4.1.1"
+    "react-router-dom": "^4.1.1",
+    "react-loading": "^0.1.2"
   },
   "devDependencies": {
     "codeclimate-test-reporter": "^0.4.1",
@@ -89,7 +90,6 @@
     "jest": "^19.0.2",
     "nodemon": "^1.11.0",
     "pre-commit": "^1.2.2",
-    "react-loading": "^0.1.2",
     "shot": "^3.4.0",
     "sinon": "^2.2.0",
     "tape": "^4.6.3",
