@@ -89,6 +89,7 @@
     "jest": "^19.0.2",
     "nodemon": "^1.11.0",
     "pre-commit": "^1.2.2",
+    "react-loading": "^0.1.2",
     "shot": "^3.4.0",
     "sinon": "^2.2.0",
     "tape": "^4.6.3",

@@ -4,7 +4,10 @@ import register from '../../actions/signupActions';
 import {connect} from 'react-redux';
 import getOrgs from '../../actions/getOrgsAction';
 import SelectOrgs from './selectOrgs.jsx';
-
+import Status from '../loading/loading.jsx'
+var type='';
+var message ='';
+var blue = '#1569ef';
 class SignupPage extends React.Component {
   constructor(props) {
     super(props);
@@ -42,6 +45,8 @@ class SignupPage extends React.Component {
   }
 
   valid() {
+    message ='';
+    type = 'spinningBubbles';
     this.props.sginup(this.state);
     this.setState(
       {
@@ -55,13 +60,20 @@ class SignupPage extends React.Component {
   }
 
   render() {
-    var message ='';
+
     if(this.props.signup.statusCode === 409){
       message=  'User already registered';
+      type ='';
+      // this.props.signup.statusCode = '';
+
     }
     else if (this.props.signup.statusCode === 400){
       message = 'Invalid inputs';
+      type ='';
+      // this.props.signup.statusCode = '';
+
     }
+
     return (
       <section className='form-wrp signup'>
         <div className='container'>
@@ -115,6 +127,7 @@ class SignupPage extends React.Component {
                   change={this.changeOrg.bind(this)}
                   />
                 <p className='error'>{message}</p>
+                  <Status type={type} color={blue}/>
                 <button
                   type='submit'
                   className='btn btn-primary'
