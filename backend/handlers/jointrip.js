@@ -61,9 +61,9 @@ module.exports = (req, res) => {
                       return res().code(500)
                     }
                     trip.updateseats({
-                        trip_id: usertripinfo[1],
-                        available_seats: seats - 1
-                      },
+                      trip_id: usertripinfo[1],
+                      available_seats: seats - 1
+                    },
                       (error, result2) => {
                         if (error) {
 
