@@ -13,6 +13,7 @@ const register = (data)=>{
   })
 .then((response)=>{
     if(response.statusCode === 200 && response.msg === 'User regestered'){
+       store.dispatch({type: types.REGISTER_USER, payload: response})
     hashHistory.push('success');
   }else{
     store.dispatch({type: types.REGISTER_USER, payload: response})
