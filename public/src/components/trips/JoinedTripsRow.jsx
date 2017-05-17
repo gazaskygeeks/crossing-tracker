@@ -4,7 +4,13 @@ const joinedTripsRow = ({joinedTrips, unjoinTrip, userData, msg}) => {
   if(!joinedTrips){
     return <div>Loading...</div>;
   }
+console.log('userData: ',userData);
   const trips = joinedTrips.map((trip)=>{
+    const msgFun = ()=>{
+      if(trip.trip_id === userData.trip_id ){
+        return {msg}
+      }
+    }
     return(
       <div key={trip.trip_id} className='col-md-offset-2 col-md-8'>
         <ul>
@@ -24,7 +30,7 @@ const joinedTripsRow = ({joinedTrips, unjoinTrip, userData, msg}) => {
           </li>
         </ul>
         <div className='btn-wrp-right'>
-          <p className='error'>{msg}</p>
+          <p className='error'>{msgFun()}</p>
           <button
             type='button'
             className='btn btn-default'
