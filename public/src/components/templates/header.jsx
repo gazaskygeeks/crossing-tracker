@@ -3,7 +3,7 @@ import { Link, IndexLink } from 'react-router';
 import signout from '../../actions/signout.js'
 
 const Header = ({logedIn , path}) => {
-  if(path != '/' && path != '/signup'){
+  if(path != '/' && path != '/signup' && path != '/success' ){
     return (
       <header>
         <div className='container'>

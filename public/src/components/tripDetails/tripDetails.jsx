@@ -4,7 +4,11 @@ import joinTrip from '../../actions/joinTripActions.js';
 import {connect} from 'react-redux';
 import TripSection from './tripSection.jsx';
 import UserSection from './userSection.jsx';
+import Status from '../loading/loading.jsx';
 
+var type='';
+var message='';
+var purple = '#794f6c';
 class TripDetails extends React.Component {
   constructor(props) {
     super(props);
@@ -14,9 +18,21 @@ class TripDetails extends React.Component {
   }
 
   joinTripp(){
+    message='';
+    type = 'spinningBubbles';
     this.props.joinThisTrip({trip_id: this.props.params.id});
   }
   render() {
+    if(this.props.joinTrip === 'Trip added successfully'){
+      message = this.props.joinTrip;
+      type ='';
+    }else if(this.props.joinTrip === 'User is already in this Trip'){
+      message = this.props.joinTrip;
+      type ='';
+    }else if (this.props.joinTrip === 'You can not join your created trip ') {
+      message = this.props.joinTrip;
+      type ='';
+    }
     return (
       <div>
 
@@ -25,7 +41,8 @@ class TripDetails extends React.Component {
         <UserSection user={this.props.tripDetails}/>
 
     <div className="btn-wrp-center">
-      <p className='error'>{this.props.joinTrip}</p>
+      <p className='error'>{message}</p>
+      <Status type={type} color={purple}/>
       <button
         className="btn btn-default"
         onClick={this.joinTripp.bind(this)}

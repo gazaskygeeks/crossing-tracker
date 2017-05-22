@@ -9,14 +9,42 @@ module.exports = (req, res) => {
       return res().code(500)
     }
     if (res1.rows.length > 0) {
-      trip.deleteusertrip(usertripinfo, (error, result) => {
+      trip.deleteusertrip(
+        {
+          user_id:req.state.sid.user_id,
+          trip_id:req.payload.trip_id
+        }
+        , (error, result) => {
         if (error)
         {
-          res({msg:'There was error try again'})
-        } else{
-          res({msg:'Your trip removed successfully'})
-
+          return   res({msg:'There was error try again'})
         }
+        trip.getTripByid({trip_id:usertripinfo[1]},(error,result)=>{
+          if (error) {
+            // eslint-disable-next-line no-console
+            console.log('get trip by tripid error :',error)
+            return res().code(500)
+          }
+
+          const seats= result.rows[0].available_seats;
+
+          trip.updateseats(
+            {
+              trip_id:usertripinfo[1],
+              available_seats:seats+1
+            }
+            ,
+            (error,result2)=>{
+              if (error) {
+
+                // eslint-disable-next-line no-console
+                console.log('Update Seats Error :',error)
+                return res().code(500)
+              }
+              res({msg:'Your trip removed successfully'})
+
+            })
+        })
       })
 
     } else {

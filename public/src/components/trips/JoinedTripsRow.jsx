@@ -1,4 +1,5 @@
 import React from 'react'
+import { hashHistory } from 'react-router';
 
 const joinedTripsRow = ({joinedTrips, unjoinTrip, userData, msg}) => {
   if(!joinedTrips){
@@ -18,9 +19,9 @@ console.log('userData: ',userData);
           <li><label>Time</label> <span>{trip.time}</span></li>
           <li><label>From</label> <span>{trip.location_from}</span></li>
           <li><label>To</label> <span>{trip.location_to}</span></li>
-          <li><label>Passing by</label> <span>{trip.passing_by}</span></li>
+          <li><label>Pickup point</label> <span>{trip.passing_by}</span></li>
           <li>
-            <label>Passingpoint time</label>
+            <label>Pickup time</label>
             <span>{trip.pass_point_time}</span>
 
             </li>
@@ -37,7 +38,8 @@ console.log('userData: ',userData);
             onClick={
               () => {
                 return(
-                  unjoinTrip({trip_id: trip.trip_id})
+                  unjoinTrip({trip_id: trip.trip_id}),
+                  window.location.reload()
                 );
               }
             }

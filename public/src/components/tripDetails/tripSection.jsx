@@ -17,7 +17,7 @@ const TripSection = ({trip}) => {
                   <th>Time</th>
                   <th>From</th>
                   <th>To</th>
-                  <th>Passing by</th>
+                  <th>Pickup point</th>
                   <th>Passpoint time</th>
                   <th>Seats available</th>
                   <th>Organization</th>

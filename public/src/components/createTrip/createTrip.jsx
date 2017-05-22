@@ -3,6 +3,10 @@ import  createTrip  from '../../actions/createTripsActions.js';
 import { connect } from 'react-redux';
 import getLocations from '../../actions/getLocationActions';
 import SelectLocations from './SelectLocations.jsx';
+import Status from '../loading/loading.jsx'
+var type='';
+var message ='';
+var green = '#4ad86a';
 
 class CreateTrip extends React.Component{
 
@@ -51,6 +55,8 @@ class CreateTrip extends React.Component{
     this.setState({available_seats: ev.target.value});
   }
   clickCreateTrip(){
+    message ='';
+    type = 'spinningBubbles';
     this.props.TripsCreation(this.state)
     this.setState(
       {
@@ -65,14 +71,18 @@ class CreateTrip extends React.Component{
     )
   }
   render() {
-    var message ='';
     if(this.props.createTrip.statusCode === 200){
       message=  'Your Trip Created Successfully';
+      type='';
     }
     else if (this.props.createTrip.statusCode === 409){
       message = 'You already Created trip before in this time ';
+      type='';
+
     }else if (this.props.createTrip.statusCode === 400){
       message = 'Invalid inputs'
+      type='';
+
     }
     return (
         <section className='trip-create'>
@@ -116,7 +126,7 @@ class CreateTrip extends React.Component{
                     />
 
                   <div className='form-group'>
-                    <label>Passing by</label>
+                    <label>Pickup point</label>
                     <input
                       type='text'
                       value={this.state.passing_by}
@@ -125,7 +135,7 @@ class CreateTrip extends React.Component{
                       />
                   </div>
                   <div className='form-group'>
-                    <label>Passingpoint Time</label>changePassingPointTime
+                    <label>Pickup Time</label>changePassingPointTime
                     <input
                       type='time'
                       value={this.state.pass_point_time}
@@ -145,6 +155,7 @@ class CreateTrip extends React.Component{
                   </div>
                   <div className='btn-wrp-right'>
                     <p className='error'>{message}</p>
+                    <Status type={type} color={green}/>
                     <button
                       type='submit'
                       className='btn btn-success'

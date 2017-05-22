@@ -2,6 +2,10 @@ import React,{PropTypes} from 'react';
 import { browserHistory, Link } from 'react-router';
 import  login  from '../../actions/signinActions';
 import { connect } from 'react-redux';
+import Status from '../loading/loading.jsx'
+var type='';
+var message ='';
+var green = '#4ad86a';
 class SigninPage extends React.Component {
   constructor(props) {
     super(props);
@@ -11,6 +15,8 @@ class SigninPage extends React.Component {
     };
   }
   valid(){
+    message ='';
+    type = 'spinningBubbles';
     if (this.state.email.length && this.state.password.length) {
       this.props.sginin(this.state)
       this.setState({email: '', password: ''})
@@ -23,12 +29,13 @@ class SigninPage extends React.Component {
     this.setState({password: ev.target.value});
   }
   render() {
-    var message ='';
     if(this.props.signin.statusCode === 401){
       message=  'Your email or password is not correct';
+      type ='';
     }
     else if (this.props.signin.statusCode === 403){
       message = 'Your registration request has not been approved yet ';
+      type ='';
     }
     return (
       <section className='form-wrp signin'>
@@ -65,6 +72,7 @@ class SigninPage extends React.Component {
                     />
                 </div>
                 <p className='error'>{message}</p>
+                <Status type={type} color={green}/>
                 <button
                   type='submit'
                   className='btn btn-success'

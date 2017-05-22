@@ -41,7 +41,7 @@
     content: "To: ";
   }
   .trip-details:first-of-type table tbody tr td:nth-child(5):before {
-    content: "Passing by: ";
+    content: "Pickup point: ";
   }
   .trip-details:first-of-type table tbody tr td:nth-child(6):before {
     content: "Passpoint time: ";
