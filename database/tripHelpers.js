@@ -79,7 +79,7 @@ function addtripuser(data,cb){
 function getusertripbytripisuserid(data, cb) {
 
   const query = `SELECT
-  id,user_id,trip_id
+  id,user_id,trip_id,approved
   From usertrip
   WHERE
   user_id=$1
@@ -122,7 +122,7 @@ function getJoinedTrip(data,cb){
   dbutils.runQuery(query, [data], cb);
 }
 function getusertripbyuserid(data, cb) {
-  const query = 'SELECT trip_id from usertrip where user_id=$1';
+  const query = 'SELECT trip_id,approved from usertrip where user_id=$1';
   dbutils.runQuery(query, [data], cb);
 }
 
@@ -139,7 +139,7 @@ function getUserIdByTripId(data, cb){
 
 function getusertripbytripid(data, cb) {
   const query = `SELECT
-   id,user_id,trip_id
+   id,user_id,trip_id,approved
    From usertrip
    WHERE trip_id=$1`;
   dbutils.runQuery(query, [data], cb);
