@@ -14,14 +14,15 @@ const UpdateTrip = (
     changeSeatsAvailable,
     locations,
     id,
-    getData
+    getData,
+    seatsMsg
   }
 ) => {
   if(!userTrip){
 
     return <div>Loading...</div>;
   }else{
-    console.log('userTrip: ',userTrip);
+    console.log('userTrip: ',seatsMsg);
   }
 
   return(
@@ -99,6 +100,7 @@ const UpdateTrip = (
               onChange={changeSeatsAvailable}
             />
           </span>
+          <p className='error'>{seatsMsg}</p>
         </li>
       </ul>
       <div className='btn-wrp-right'>

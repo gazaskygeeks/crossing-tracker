@@ -3,9 +3,9 @@ import { browserHistory, Link } from 'react-router';
 import  login  from '../../actions/signinActions';
 import { connect } from 'react-redux';
 import Status from '../loading/loading.jsx'
-var type='';
-var message ='';
-var green = '#4ad86a';
+let type='';
+let message ='';
+let green = '#4ad86a';
 class SigninPage extends React.Component {
   constructor(props) {
     super(props);
@@ -37,6 +37,7 @@ class SigninPage extends React.Component {
       message = 'Your registration request has not been approved yet ';
       type ='';
     }
+
     return (
       <section className='form-wrp signin'>
         <div className='overlay'></div>
