@@ -5,9 +5,13 @@ import {connect} from 'react-redux';
 import getOrgs from '../../actions/getOrgsAction';
 import SelectOrgs from './selectOrgs.jsx';
 import Status from '../loading/loading.jsx'
-var type='';
-var message ='';
-var blue = '#1569ef';
+let type='';
+let message ='';
+let blue = '#1569ef';
+let nameMsg = '';
+let emailMsg = '';
+let passMsg = '';
+let phoneMsg = '';
 class SignupPage extends React.Component {
   constructor(props) {
     super(props);
@@ -26,18 +30,57 @@ class SignupPage extends React.Component {
 
   changeName(ev) {
     this.setState({username: ev.target.value});
+    const status = ev.target.value.trim();
+    if(status.length < 5){
+      nameMsg = 'Username should be more than four characters';
+      type ='';
+    }else if (status.length > 25) {
+      nameMsg = 'Username should be less than twenty five characters';
+      type ='';
+    }else{
+      nameMsg = '';
+      type ='';
+    }
   }
 
   changeEmail(ev) {
     this.setState({email: ev.target.value});
+    const status = ev.target.value.trim();
+    // eslint-disable-next-line
+    const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    if(re.test(status) != true){
+      emailMsg = 'Email is not valid';
+      type ='';
+    }else{
+      emailMsg = '';
+      type ='';
+    }
   }
-
   changePassword(ev) {
     this.setState({password: ev.target.value});
+    const status = ev.target.value.trim();
+    if(status.length < 6){
+      passMsg = 'Password should be more than five characters';
+      type ='';
+    }else{
+      passMsg = '';
+      type ='';
+    }
   }
 
   changePhone(ev) {
     this.setState({phone: ev.target.value});
+    const status = ev.target.value.trim();
+    if(status.length < 6){
+      phoneMsg = 'Phone should be more than five characters';
+      type ='';
+    }else if (status.length > 15) {
+      phoneMsg = 'Phone should be less than fifteen characters';
+      type ='';
+    }else{
+      phoneMsg = '';
+      type ='';
+    }
   }
 
   changeOrg(ev) {
@@ -68,12 +111,11 @@ class SignupPage extends React.Component {
 
     }
     else if (this.props.signup.statusCode === 400){
-      message = 'Invalid inputs';
+      message = 'Fill in the inputs';
       type ='';
       // this.props.signup.statusCode = '';
 
     }
-
     return (
       <section className='form-wrp signup'>
         <div className='container'>
@@ -93,6 +135,7 @@ class SignupPage extends React.Component {
                     value={this.state.username}
                     onChange={this.changeName.bind(this)}
                     />
+                  <p className='error'>{nameMsg}</p>
                 </div>
                 <div className='form-group'>
                   <input
@@ -102,6 +145,7 @@ class SignupPage extends React.Component {
                     value={this.state.email}
                     onChange={this.changeEmail.bind(this)}
                     />
+                    <p className='error'>{emailMsg}</p>
                 </div>
                 <div className='form-group'>
                   <input
@@ -111,6 +155,7 @@ class SignupPage extends React.Component {
                     value={this.state.password}
                     onChange={this.changePassword.bind(this)}
                     />
+                  <p className='error'>{passMsg}</p>
                 </div>
                 <div className='form-group'>
                   <input
@@ -120,14 +165,15 @@ class SignupPage extends React.Component {
                     value={this.state.phone}
                     onChange={this.changePhone.bind(this)}
                     />
+                  <p className='error'>{phoneMsg}</p>
                 </div>
                 <SelectOrgs
                   options={this.props.orgs}
                   value={this.state.org_id}
                   change={this.changeOrg.bind(this)}
                   />
-                <p className='error'>{message}</p>
                   <Status type={type} color={blue}/>
+                  <p className='error'>{message}</p>
                 <button
                   type='submit'
                   className='btn btn-primary'
