@@ -4,10 +4,11 @@ import { connect } from 'react-redux';
 import getLocations from '../../actions/getLocationActions';
 import SelectLocations from './SelectLocations.jsx';
 import Status from '../loading/loading.jsx'
-var type='';
-var message ='';
-var green = '#4ad86a';
-
+let type='';
+let message ='';
+let green = '#4ad86a';
+let pickupMsg = '';
+let seatsMsg = '';
 class CreateTrip extends React.Component{
 
   constructor(props) {
@@ -45,6 +46,17 @@ class CreateTrip extends React.Component{
 
   changePassingBy(ev) {
     this.setState({passing_by: ev.target.value});
+    const status = ev.target.value.trim();
+    if(status.length < 3){
+      pickupMsg = 'Input should be more than six characters';
+      type ='';
+    }else if (status.length > 25) {
+      pickupMsg = 'Input should be less than twenty characters';
+      type ='';
+    }else{
+      pickupMsg = '';
+      type ='';
+    }
   }
 
   changePassingPointTime(ev) {
@@ -53,6 +65,14 @@ class CreateTrip extends React.Component{
 
   changeSeatsAvailable(ev) {
     this.setState({available_seats: ev.target.value});
+    const status = ev.target.value.trim();
+    if(status < 1){
+      seatsMsg = 'Available seats should be at least 1';
+      type ='';
+    }else{
+      seatsMsg = '';
+      type ='';
+    }
   }
   clickCreateTrip(){
     message ='';
@@ -80,7 +100,7 @@ class CreateTrip extends React.Component{
       type='';
 
     }else if (this.props.createTrip.statusCode === 400){
-      message = 'Invalid inputs'
+      message = 'You should fill in the inputs'
       type='';
 
     }
@@ -133,9 +153,10 @@ class CreateTrip extends React.Component{
                       className='form-control'
                       onChange={this.changePassingBy.bind(this)}
                       />
+                    <p className='error'>{pickupMsg}</p>
                   </div>
                   <div className='form-group'>
-                    <label>Pickup Time</label>changePassingPointTime
+                    <label>Pickup Time</label>
                     <input
                       type='time'
                       value={this.state.pass_point_time}
@@ -152,6 +173,7 @@ class CreateTrip extends React.Component{
                       className='form-control'
                       onChange={this.changeSeatsAvailable.bind(this)}
                       />
+                    <p className='error'>{seatsMsg}</p>
                   </div>
                   <div className='btn-wrp-right'>
                     <p className='error'>{message}</p>
