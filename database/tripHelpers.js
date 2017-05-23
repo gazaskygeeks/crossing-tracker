@@ -125,6 +125,10 @@ function getusertripbyuserid(data, cb) {
   const query = 'SELECT trip_id,approved from usertrip where user_id=$1';
   dbutils.runQuery(query, [data], cb);
 }
+function getJoinedUser(data, cb) {
+  const query = 'SELECT * from users where user_id=$1';
+  dbutils.runQuery(query, [data], cb);
+}
 
 function getseats(data, cb) {
   const query = `SELECT available_seats
@@ -182,6 +186,18 @@ function updateseats(data, cb) {
       data.available_seats,
       data.trip_id
     ]
+    , cb);
+}
+function updateStatus(data, cb) {
+
+  const query = `UPDATE usertrip
+   SET
+   approved=$2
+   WHERE trip_id=$3
+   AND user_id=$1`;
+  dbutils.runQuery(
+    query,
+    data
     , cb);
 }
 
@@ -248,5 +264,7 @@ module.exports = {
   getJoinedTrip:getJoinedTrip,
   getUserIdByTripId:getUserIdByTripId,
   deleteusertrip:deleteusertrip,
-  updateseats:updateseats
+  updateseats:updateseats,
+  updateStatus:updateStatus,
+  getJoinedUser:getJoinedUser
 }
