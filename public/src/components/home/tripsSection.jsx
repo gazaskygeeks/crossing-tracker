@@ -7,7 +7,7 @@ const TripsHomeDisplay = (props) => {
     trips = <tr>
               <td colSpan={4}>No Available trips.
                 You can create your own here:
-                <Link to={'/createtrip/'}>  Create Trip</Link>
+                <Link to={'/createtrip/'}>  Create trip</Link>
               </td>
            </tr>;
   } else {
@@ -19,7 +19,7 @@ const TripsHomeDisplay = (props) => {
                   {item.location_from}</td>
               <td>{item.location_to}</td>
               <td>
-                  <Link to={`/tripdetails/${item.trip_id}`}>View Trip</Link>
+                  <Link to={`/tripdetails/${item.trip_id}`}>View trip</Link>
               </td>
           </tr>
       )

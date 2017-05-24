@@ -9,7 +9,7 @@ const TripSection = ({trip}) => {
       <div className='container'>
         <div className='row'>
           <div className='col-md-offset-1 col-md-10'>
-            <h3 className='heading'>Trip Info</h3>
+            <h3 className='heading'>Trip info</h3>
             <table className='table table-bordered'>
               <thead>
                 <tr>
