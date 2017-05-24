@@ -11,7 +11,7 @@ const userTripsSection = ({userTrips}) => {
       <div className='container'>
         <div className='row'>
           <div className='col-md-offset-2 col-md-8'>
-            <h3 className='heading'>Created Trips</h3>
+            <h3 className='heading'>Created trips</h3>
             <span className='caption'>Own trips apear here</span>
           </div>
           <UserTripsRow

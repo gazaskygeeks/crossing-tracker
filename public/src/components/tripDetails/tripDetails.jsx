@@ -26,7 +26,7 @@ class TripDetails extends React.Component {
     if(this.props.joinTrip === 'Trip added successfully'){
       message = this.props.joinTrip;
       type ='';
-    }else if(this.props.joinTrip === 'User is already in this Trip'){
+    }else if(this.props.joinTrip === 'User is already in this trip'){
       message = this.props.joinTrip;
       type ='';
     }else if (this.props.joinTrip === 'You can not join your created trip ') {

@@ -40,12 +40,12 @@ const Header = ({logedIn , path}) => {
                     </li>
                     <li>
                       <Link to='/trips' activeClassName='active'>
-                        My Trips
+                        My trips
                       </Link>
                     </li>
                     <li>
                       <Link to='/createtrip' activeClassName='active'>
-                        Create Trips
+                        Create trips
                       </Link>
                     </li>
                     <li>

@@ -22,7 +22,7 @@ class HomeAdmin extends React.Component {
                                 <th>Email</th>
                                 <th>Phone no.</th>
                                 <th>Organization</th>
-                                <th>verification</th>
+                                <th>Verification</th>
                             </tr>
                         </thead>
                         <RegestratedList regList={this.props.list}
