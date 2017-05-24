@@ -42,7 +42,7 @@ const approvedColumn =` DO $$
         BEGIN
             ALTER TABLE usertrip ADD COLUMN approved INT  DEFAULT 0;
         EXCEPTION
-            WHEN duplicate_column
+              WHEN duplicate_column
             THEN RAISE NOTICE
             'column approved
             already exists in usertrip';
