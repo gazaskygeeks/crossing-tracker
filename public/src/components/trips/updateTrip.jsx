@@ -4,7 +4,7 @@ import {UpdateUserTrips} from '../../actions/myTripsActions.js';
 import getLocations from '../../actions/getLocationActions';
 import viewTrip from '../../actions/tripDetailsActions.js';
 import UpdateTripRow from './updateTripRow.jsx';
-
+let seatsMsg = '';
 class UserTripsRow extends React.Component {
   constructor(props) {
     super(props);
@@ -62,6 +62,12 @@ class UserTripsRow extends React.Component {
 
   changeSeatsAvailable(ev) {
     this.setState({available_seats: ev.target.value});
+    const status = ev.target.value.trim();
+    if(status < 1){
+      seatsMsg = 'Available seats should be at least 1';
+    }else{
+      seatsMsg = '';
+    }
   }
   render() {
     return (
@@ -84,6 +90,7 @@ class UserTripsRow extends React.Component {
             locations = {this.props.locations}
             id={this.props.params.id}
             getData = {this.test.bind(this)}
+            seatsMsg = {seatsMsg}
           />
         </div>
       </section>
@@ -92,7 +99,6 @@ class UserTripsRow extends React.Component {
 }
 
 const mapStateToProps = (store) => {
-  console.log('store.tripDetails[0]: ',store.tripDetails[0]);
   return {
     GetTripByID: store.tripDetails[0],
     locations: store.locations
