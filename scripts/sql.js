@@ -34,7 +34,8 @@ const trip = `CREATE TABLE IF NOT EXISTS trip (
 const usertrip = `CREATE TABLE IF NOT EXISTS usertrip (
   id serial PRIMARY KEY,
   user_id INT references users (user_id),
-  trip_id INT references trip(trip_id)
+  trip_id INT references trip(trip_id),
+  approved int default 0
 );`;
 
 const approvedColumn =` DO $$

@@ -1,8 +1,7 @@
 import React from 'react'
-import {connect} from 'react-redux'
 import {Link} from 'react-router';
 
-const HomeTrips = (props) => {
+const TripsHomeDisplay = (props) => {
   var trips;
   if (props.tripsList.length === 0) {
     trips = <tr>
@@ -32,10 +31,4 @@ const HomeTrips = (props) => {
         </tbody>
   )
 }
-
-const mapStateToProps = (store) => {
-  return {tripsList: store.homeTrips}
-}
-
-const TripsHomeDisplay = connect(mapStateToProps)(HomeTrips)
 export default TripsHomeDisplay
