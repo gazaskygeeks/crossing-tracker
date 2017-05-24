@@ -36,11 +36,17 @@ const usertrip = `CREATE TABLE IF NOT EXISTS usertrip (
   user_id INT references users (user_id),
   trip_id INT references trip(trip_id)
 );`;
+
+const approvedColumn =` alter table usertrip
+add column
+approved int default 0;
+`
 module.exports = {
   users,
   trip,
   usertrip,
   org,
   location,
-  usertype
+  usertype,
+  approvedColumn
 }
