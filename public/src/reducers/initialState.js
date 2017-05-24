@@ -9,5 +9,6 @@ export default {
   getLocations: [],
   getUserTrips:{},
   joinTrip:{},
-  unjoinTrip:{}
+  unjoinTrip:{},
+  allTrips : []
 };

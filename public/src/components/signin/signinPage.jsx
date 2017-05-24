@@ -3,9 +3,13 @@ import { browserHistory, Link } from 'react-router';
 import  login  from '../../actions/signinActions';
 import { connect } from 'react-redux';
 import Status from '../loading/loading.jsx'
+import moment from 'moment';
+import BigCalendar from 'react-big-calendar';
 var type='';
 var message ='';
 var green = '#4ad86a';
+
+
 class SigninPage extends React.Component {
   constructor(props) {
     super(props);
@@ -29,6 +33,8 @@ class SigninPage extends React.Component {
     this.setState({password: ev.target.value});
   }
   render() {
+    BigCalendar.momentLocalizer(moment);
+
     if(this.props.signin.statusCode === 401){
       message=  'Your email or password is not correct';
       type ='';
