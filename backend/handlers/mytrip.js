@@ -15,32 +15,34 @@ module.exports = (req, res) => {
       var tripMembers=[];
       if (result2.rowCount > 0) {
 
-        var final = []
+        var final = [];
         result2.rows.map((item) => {
-          trip.getJoinedUser(item.user_id,(err,result4)=>{
-            if (error) {
-              // eslint-disable-next-line no-console
-              console.log('get Joined User Error :', error)
-              return res().code(500)
-            }
-            tripMembers= tripMembers.concat(result4.rows)
-            trip.getJoinedTrip(item.trip_id, (error, result3) => {
+
+          trip.getJoinedUser(
+            [result1.rows[0].trip_id],(err,result4)=>{
               if (error) {
                 // eslint-disable-next-line no-console
-                console.log('get Joined Trip Error :', error)
+                console.log('get Joined User Error :', error)
                 return res().code(500)
               }
+              tripMembers= tripMembers.concat(result4.rows)
+              trip.getJoinedTrip(item.trip_id, (error, result3) => {
+                if (error) {
+                  // eslint-disable-next-line no-console
+                  console.log('get Joined Trip Error :', error)
+                  return res().code(500)
+                }
 
-              final = final.concat(result3.rows[0])
-              result2.rowCount --;
-              if (result2.rowCount === 0) {
-                return res({
-                  createdTrip: result1.rows,
-                  joinedTrip: final,
-                  tripMembers:tripMembers
-                })
-              }
-            })})
+                final = final.concat(result3.rows[0])
+                result2.rowCount --;
+                if (result2.rowCount === 0) {
+                  return res({
+                    createdTrip: result1.rows,
+                    joinedTrip: final,
+                    tripMembers:tripMembers
+                  })
+                }
+              })})
         })
       } else {
         res({
