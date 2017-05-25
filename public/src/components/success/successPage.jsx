@@ -10,7 +10,7 @@ class SuccessPage extends React.Component {
                 Your registeration request has been sent successfully!
               </div>
               <p>
-                We will send you an email as soon as the
+                An email will be sent to you as soon as the
                 admin approves your request
               </p>
             </div>

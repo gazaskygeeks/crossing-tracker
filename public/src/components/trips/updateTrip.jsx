@@ -74,7 +74,7 @@ class UserTripsRow extends React.Component {
       <section className='mytrip'>
         <div className='container'>
           <div className='col-md-offset-2 col-md-8'>
-            <h3 className='heading'>Created Trip</h3>
+            <h3 className='heading'>Created trip</h3>
             <span className='caption'>Update this trip</span>
           </div>
           <UpdateTripRow

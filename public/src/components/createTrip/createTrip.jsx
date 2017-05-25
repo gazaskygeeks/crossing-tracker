@@ -92,15 +92,15 @@ class CreateTrip extends React.Component{
   }
   render() {
     if(this.props.createTrip.statusCode === 200){
-      message=  'Your Trip Created Successfully';
+      message=  'Your trip created successfully';
       type='';
     }
     else if (this.props.createTrip.statusCode === 409){
-      message = 'You already Created trip before in this time ';
+      message = 'You have already created a trip in this time';
       type='';
 
     }else if (this.props.createTrip.statusCode === 400){
-      message = 'You should fill in the inputs'
+      message = 'You should fill in all the inputs'
       type='';
 
     }
@@ -109,8 +109,8 @@ class CreateTrip extends React.Component{
           <div className='container'>
             <div className='row'>
               <div className='col-md-offset-1 col-md-10'>
-                <h3 className='heading'>New Trip</h3>
-                <span className='caption'>Insert Info about your new trip</span>
+                <h3 className='heading'>New trip</h3>
+                <span className='caption'>Insert info about your new trip</span>
                 <div className='form'>
                   <div className='form-group'>
                     <label>Trip date</label>
@@ -156,7 +156,7 @@ class CreateTrip extends React.Component{
                     <p className='error'>{pickupMsg}</p>
                   </div>
                   <div className='form-group'>
-                    <label>Pickup Time</label>
+                    <label>Pickup time</label>
                     <input
                       type='time'
                       value={this.state.pass_point_time}
@@ -165,7 +165,7 @@ class CreateTrip extends React.Component{
                       />
                   </div>
                   <div className='form-group'>
-                    <label>Seats available</label>
+                    <label>Available seats</label>
                     <input
                       type='number'
                       className='form-control'

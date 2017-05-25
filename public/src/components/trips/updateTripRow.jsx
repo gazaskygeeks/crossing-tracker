@@ -91,7 +91,7 @@ const UpdateTrip = (
           </span>
         </li>
         <li>
-          <label>Seats available</label>
+          <label>Available seats</label>
           <span>
             <input
               type="number"
@@ -121,7 +121,7 @@ const UpdateTrip = (
               }
           }
           >
-            Get Trip's Old Data
+            Get trip's old data
         </button>
         <button
           type='button'

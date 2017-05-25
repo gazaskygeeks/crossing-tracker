@@ -32,10 +32,10 @@ class SignupPage extends React.Component {
     this.setState({username: ev.target.value});
     const status = ev.target.value.trim();
     if(status.length < 5){
-      nameMsg = 'Username should be more than four characters';
+      nameMsg = 'Username should be more than 4 characters';
       type ='';
     }else if (status.length > 25) {
-      nameMsg = 'Username should be less than twenty five characters';
+      nameMsg = 'Username should be less than 25 characters';
       type ='';
     }else{
       nameMsg = '';
@@ -60,7 +60,7 @@ class SignupPage extends React.Component {
     this.setState({password: ev.target.value});
     const status = ev.target.value.trim();
     if(status.length < 6){
-      passMsg = 'Password should be more than five characters';
+      passMsg = 'Password should be more than 5 characters';
       type ='';
     }else{
       passMsg = '';
@@ -72,10 +72,10 @@ class SignupPage extends React.Component {
     this.setState({phone: ev.target.value});
     const status = ev.target.value.trim();
     if(status.length < 6){
-      phoneMsg = 'Phone should be more than five characters';
+      phoneMsg = 'Phone no. should be more than 5 characters';
       type ='';
     }else if (status.length > 15) {
-      phoneMsg = 'Phone should be less than fifteen characters';
+      phoneMsg = 'Phone should be less than 15 characters';
       type ='';
     }else{
       phoneMsg = '';
@@ -105,7 +105,7 @@ class SignupPage extends React.Component {
   render() {
 
     if(this.props.signup.statusCode === 409){
-      message=  'User already registered';
+      message=  'User is already registered';
       type ='';
       // this.props.signup.statusCode = '';
 
@@ -131,7 +131,7 @@ class SignupPage extends React.Component {
                 <div className='form-group'>
                   <input type='text'
                     className='form-control'
-                    placeholder='Full Name'
+                    placeholder='Full name'
                     value={this.state.username}
                     onChange={this.changeName.bind(this)}
                     />
@@ -161,7 +161,7 @@ class SignupPage extends React.Component {
                   <input
                     type='text'
                     className='form-control'
-                    placeholder='Phone Number'
+                    placeholder='Phone number'
                     value={this.state.phone}
                     onChange={this.changePhone.bind(this)}
                     />
@@ -179,7 +179,7 @@ class SignupPage extends React.Component {
                   className='btn btn-primary'
                   onClick={this.valid.bind(this)}
                   >
-                  Sign Up
+                  Sign up
                 </button>
               </div>
             </div>
