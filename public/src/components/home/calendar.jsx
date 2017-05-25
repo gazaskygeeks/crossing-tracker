@@ -1,46 +1,37 @@
 import React from 'react';
-import DatePicker from 'react-datepicker';
 import moment from 'moment';
-import HomeTrips from '../../actions/tripsActions.js';
+import BigCalendar from 'react-big-calendar';
 import 'react-datepicker/dist/react-datepicker.css';
-import { connect } from 'react-redux'
-class Example extends React.Component {
+import 'react-big-calendar/lib/css/react-big-calendar.css';
+
+class Calendar extends React.Component {
   constructor(props) {
     super(props)
-    this.state = {
-      startDate: moment()
-    };
-
     this.handleChange = this.handleChange.bind(this);
   }
-  componentWillMount(){
-    var formatted = moment(this.state.startDate._d).format('YYYY-MM-DD');
-    this.props.getTrips(formatted);
+
+  componentWillMount() {
+    BigCalendar.momentLocalizer(moment);
+    this.props.getTrips(moment().format('YYYY-MM-DD'));
+    this.props.getAllTrips()
   }
   handleChange(date) {
-    var formatted = moment(date._d).format('YYYY-MM-DD');
+    var formatted = moment(date).format('YYYY-MM-DD');
     this.props.getTrips(formatted);
-    this.setState({
-      startDate: date
-    });
   }
   render() {
-    return <DatePicker
-      inline
-      selected={this.state.startDate}
-      onChange={this.handleChange}
-      />;
+    var events = this.props.allTrips.map(item => (Object.assign({}, {
+      title: item.time,
+      start: item.date,
+      end: item.date
+    })))
+    return (<BigCalendar
+      style={{height: '420px'}}
+      culture='en-GB'
+      views={['month']}
+      onNavigate={this.handleChange}
+      popup='true'
+      events={events}/>);
   }
 }
-const mapDispatchToProps = () => {
-  return {
-    getTrips  : (date) => {
-      HomeTrips(date);
-    }
-  }
-}
-const calendar = connect(
-  mapDispatchToProps
-)(Example)
-
-export default calendar;
+export default Calendar;

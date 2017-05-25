@@ -99,8 +99,6 @@ const mapStateToProps = (store) => {
   return { signin: store.signin }
 }
 
-
-
 const mapDispatchToProps = () => {
   return {
     sginin  : (data) => {

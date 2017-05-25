@@ -122,11 +122,11 @@ function getJoinedTrip(data,cb){
   dbutils.runQuery(query, [data], cb);
 }
 function getusertripbyuserid(data, cb) {
-  const query = 'SELECT trip_id,approved from usertrip where user_id=$1';
+  const query = 'SELECT trip_id,approved,user_id from usertrip where user_id=$1';
   dbutils.runQuery(query, [data], cb);
 }
 function getJoinedUser(data, cb) {
-  const query = 'SELECT * from users where user_id=$1';
+  const query = 'SELECT user_id,username,email,phone,org_id from users where user_id=$1';
   dbutils.runQuery(query, [data], cb);
 }
 
@@ -249,6 +249,10 @@ function getTripByid(data, cb) {
     `;
   dbutils.runQuery(query, [data.trip_id], cb);
 }
+function getAllTrips(cb) {
+  const query = 'SELECT date,time from trip;';
+  dbutils.runQuery(query,cb)
+}
 module.exports = {
   gettripbytime: gettripbytime,
   createtrip: createtrip,
@@ -266,5 +270,6 @@ module.exports = {
   deleteusertrip:deleteusertrip,
   updateseats:updateseats,
   updateStatus:updateStatus,
-  getJoinedUser:getJoinedUser
+  getJoinedUser:getJoinedUser,
+  getAllTrips : getAllTrips
 }

@@ -7,7 +7,8 @@ function runMigrate(cb) {
   ${table.users}
   ${table.trip}
   ${table.usertrip}
-  ${table.approvedColumn}`
+  ${table.approvedColumn}
+  `
   client.query(tables, cb);
 }
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, IndexLink } from 'react-router';
 import signout from '../../actions/signout.js'
-
+var user
 const Header = ({logedIn , path}) => {
   if(path != '/' && path != '/signup' && path != '/success' ){
     return (
