@@ -126,8 +126,9 @@ function getusertripbyuserid(data, cb) {
   dbutils.runQuery(query, [data], cb);
 }
 function getJoinedUser(data, cb) {
-  const query = 'SELECT user_id,username,email,phone,org_id from users where user_id=$1';
-  dbutils.runQuery(query, [data], cb);
+  const query = `SELECT user_id,username,email,phone,org_id from users where
+       user_id=(SELECT user_id   from usertrip where trip_id=$1) `;
+  dbutils.runQuery(query, data, cb);
 }
 
 function getseats(data, cb) {
