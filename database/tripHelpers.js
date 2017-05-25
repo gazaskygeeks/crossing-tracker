@@ -136,7 +136,13 @@ function getJoinedUser(data, cb) {
     u.phone,
     o.org_name,
     d.user_approved
-    from trip , users u, org o, usertrip d
+    from trip
+    INNER JOIN usertrip d
+    on trip.trip_id=d.trip_id
+    INNER JOIN users u
+    on  d.user_id=u.user_id
+    INNER JOIN org  o
+    on o.org_id=u.org_id
     where trip.trip_id=$1 and
     u.user_id = (SELECT user_id   from usertrip where trip_id=$1)
     and u.org_id = o.org_id and d.user_approved = 0`;
