@@ -3,7 +3,8 @@
 import * as types from './actionTypes';
 import store from '../store/store';
 
-const createTrip = (data)=>{
+const approveUser = (data)=>{
+  console.log('approveData: ',data);
   fetch('/approve',{
     method: 'POST',
     headers: {
@@ -16,6 +17,7 @@ const createTrip = (data)=>{
   .then((response)=>{
     return  response.json();
   }).then((response)=>{
+    console.log('approveResponse: ',response);
       store.dispatch({type: types.APPROVE_JOIN, payload: response});
   }).catch((error) => {
     store.dispatch({
@@ -24,4 +26,4 @@ const createTrip = (data)=>{
   })
 }
 
-export default createTrip;
+export default approveUser;

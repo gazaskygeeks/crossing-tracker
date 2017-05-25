@@ -10,5 +10,6 @@ export default {
   getUserTrips:{},
   joinTrip:{},
   unjoinTrip:{},
-  allTrips : []
+  allTrips : [],
+  approveJoin: {}
 };

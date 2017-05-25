@@ -4,6 +4,8 @@ import {getUserTrips} from '../../actions/myTripsActions.js';
 import UserTripsSection from './userTripsSection.jsx';
 import UserJoinedTrips from './userJoinedTrips.jsx';
 import {UnjoinTrip} from '../../actions/myTripsActions.js';
+import JoinedUsersRow from './joinedUsersRow.jsx';
+import ApproveJoin from '../../actions/approveJoin.js';
 
 class TripsPage extends React.Component {
   constructor(props) {
@@ -20,6 +22,10 @@ class TripsPage extends React.Component {
         <UserTripsSection
           userTrips={this.props.GetUserTrips}
           />
+        <JoinedUsersRow
+          joinedUsers={this.props.JoinedUsers}
+          approveJoin = {data => this.props.DoApproveJoin(data)}
+          />
         <UserJoinedTrips
           joinedTrips={this.props.UserJoinedTrips}
           unjoinTrip={id => this.props.unjoinTrip(id)}
@@ -33,11 +39,12 @@ class TripsPage extends React.Component {
 
 
 const mapStateToProps = (store) => {
-  console.log('store.userTrips.tripMembers: ',store.userTrips.tripMembers);
-  console.log('store.userTrips.createdTrip: ',store.userTrips.createdTrip);
+  console.log('store.aprroveJoin: ',store.userTrips.tripMembers);
   return {
     GetUserTrips: store.userTrips.createdTrip,
     UserJoinedTrips: store.userTrips.joinedTrip,
+    JoinedUsers: store.userTrips.tripMembers,
+    aprroveJoin: store.aprroveJoin,
     msg : store.unjoinTrip.msg
   }
 }
@@ -48,6 +55,9 @@ const mapDispatchToProps = () => {
     },
     unjoinTrip:(id)=>{
       UnjoinTrip(id)
+    },
+    DoApproveJoin: (data) => {
+      ApproveJoin(data)
     }
   }
 }
