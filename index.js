@@ -8,7 +8,7 @@ dbutils.runMigrate((error) => {
     if (error) {
       throw error
     }
-  // eslint-disable-next-line no-console
+    // eslint-disable-next-line no-console
     console.log('Server running at:' + server.info.uri)
   })
 })

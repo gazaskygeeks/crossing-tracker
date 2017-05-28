@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "erezedule-168618",
+  "private_key_id": "3815c6363e0e190b8f100f77bbe9ce583427f5eb",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCb13gZVOrBod9F\nmiUdUvLYUf7feKHKyLbKV8pI8ZetPDJqX4Vpr+lSE1wtYPxJUbBdMgzCo2nDQeWd\nNCDUTS42Ra33tO9ma95WKXPZZsjr6uHVwXI8T2qavIGzvD+3w57uGkRaUOjvw5Ku\nPRpLUKv1GQxTVAwmIo0vjcofcPWxQ0azUgKRiChON7eHFxYMnNi+yaysDsBioY3P\nYQT7HgwOygwUVS2/OblAU2czCueBtRXPQtuiUHiWVPyE26bkKS+SqahfS+FI7TzR\nQsH3T2Pw7oW7w9mDa86+wzTLWjF4v9yWn8LRspYX+PHrd+rN4TWGjrMFrTP4uxx+\nVt9p65CfAgMBAAECggEAOW+uadesNfVM7sAjEa2ypxuBTieNqclT5Tt56GxyNHzN\nL/tIlm0pFwDfpjHqibM7xv1dSpcjsb0lvUyrFNPlRkdkGLlsyljTNvpMIkIJpzmI\nRlnnmmbCqYj0XKPy7+1/M84mhwru7v8rnmASwtNWrRywOD3vxFZTpsUhS3k8dDn9\neqkimHH406/4UixVTw8B8X9ji6r96n/WWrzDNFGC4O2ztt/tKwx2gdx1FlkFFNWk\nYPq9eY5dlQoZ0k3Nab0eTaKAhH29hYSk/MZYFGOhnNsy4GTWJNzs2wGYvL4LTs5I\nWztVbDFaIpOU2VpJsOqmA6wUT1WycZNpjzdEYp9CQQKBgQDbzOrYsn8we3l8iqUL\nGe+SkG0BJQqtVet6jRYE2s4PupuFu0h+WCmXPyltIJpcIwXRcrCvt1MyTYY1eCJL\nETdW7wrqa/qXHgvErt5IvsMg4mDTY5diu602x5/mpUj/N0Ro9P5V5zYdcLNoe2HR\neHbsymh96ix3ackKAyf1TMresQKBgQC1gfatYkL4vQHkZMAjoMnLjJzCeQ/4c9FO\nAwdBJewR7JsBf4bIAJledLNIc4BB9xCB6XqYZxSEFLVEnko+z0sLSvFzyq322UTx\nY5+rJ2xsbcjRnWLO5pNE76vyJhSAp9kx8i8EP6YZb5Ft6fAJ6RJ0KjRo632qULDL\nKrAzgARYTwKBgB9fLh3jzDeVSA+4kjn1Z7ZZmtVQ/icjXkrNnFjxCfxAvDXoNz6h\nQr5tq3IB90YzUX9FiWZrGhrR6dfz36ErQeTMlZhD9S5ggXl/JAbqA1vMM9m4G0Fi\nXCS3dWEsMjELKF56qVqFd7nX/iNpiNqnAQJnGWbvZ41bsfAV5zwhy8rhAoGAfNcK\n524ySgsWBhUV4mtw4EOyfj/uMCDY0SNcFf8TQ7DNXFZuSZm/4yu5NBfdG4HnJLOF\n0tTzU3U6yBtnTZQeNYIyWEYLKUF/Hdg7tejDtkA8Y5AwqcYFfOCsDz0J1QOda7D7\njZyJje0ixcqlgut/+c4dhhySrlYZg2O1FXbzhhkCgYEAvT1y2y1Q/fNeqWgDLgj4\naUozis8QZfY/nwiPpahfGtB0ATDX3uCwjnPmsoVmaUnop4NFbCrFry65VOrwvKA4\nnUPdGBq5t6YMWCHCbZ21y21d1MifKZwSJAWQLWGvyKsYWrAfkrJz9FhwEug0B0at\n4wbS+KZSNLYXLNPIUxQsyO0=\n-----END PRIVATE KEY-----\n",
+  "client_email": "erezedule@erezedule-168618.iam.gserviceaccount.com",
+  "client_id": "108826678971748961453",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://accounts.google.com/o/oauth2/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/erezedule%40erezedule-168618.iam.gserviceaccount.com"
+}

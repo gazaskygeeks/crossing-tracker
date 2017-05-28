@@ -121,6 +121,7 @@ function getJoinedTrip(data,cb){
   and trip.location_from_id=l.location_id`;
   dbutils.runQuery(query, [data], cb);
 }
+
 function getusertripbyuserid(data, cb) {
   const query = 'SELECT trip_id,approved,user_id from usertrip where user_id=$1';
   dbutils.runQuery(query, [data], cb);
