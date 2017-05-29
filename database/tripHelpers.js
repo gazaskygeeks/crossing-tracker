@@ -145,7 +145,7 @@ function getJoinedUser(data, cb) {
     on o.org_id=u.org_id
     where trip.trip_id=$1 and
     u.user_id = (SELECT user_id   from usertrip where trip_id=$1)
-    and u.org_id = o.org_id and d.user_approved = 0`;
+    and u.org_id = o.org_id and d.user_approved = 0 `;
   dbutils.runQuery(query, data, cb);
 }
 
