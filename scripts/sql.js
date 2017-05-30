@@ -34,18 +34,17 @@ const trip = `CREATE TABLE IF NOT EXISTS trip (
 const usertrip = `CREATE TABLE IF NOT EXISTS usertrip (
   id serial PRIMARY KEY,
   user_id INT references users (user_id),
-  trip_id INT references trip(trip_id),
-  approved int default 0
+  trip_id INT references trip(trip_id)
 );`;
 
 const approvedColumn =`DO $$
     BEGIN
         BEGIN
-            ALTER TABLE usertrip ADD COLUMN approved INT  DEFAULT 0;
+            ALTER TABLE usertrip ADD COLUMN user_approved INT  DEFAULT 0;
         EXCEPTION
               WHEN duplicate_column
             THEN RAISE NOTICE
-            'column approved
+            'column user_approved
             already exists in usertrip';
         END;
     END;
