@@ -38,7 +38,7 @@ const usertrip = `CREATE TABLE IF NOT EXISTS usertrip (
   approved int default 0
 );`;
 
-const approvedColumn =` DO $$
+const approvedColumn =`DO $$
     BEGIN
         BEGIN
             ALTER TABLE usertrip ADD COLUMN approved INT  DEFAULT 0;
@@ -49,8 +49,21 @@ const approvedColumn =` DO $$
             already exists in usertrip';
         END;
     END;
-$$
-
+$$ ;
+`
+const sequence = 'ALTER SEQUENCE trip_trip_id_seq START WITH 10000;';
+const eventId = `DO $$
+    BEGIN
+        BEGIN
+            ALTER TABLE usertrip ADD COLUMN event_id INT;
+        EXCEPTION
+              WHEN duplicate_column
+            THEN RAISE NOTICE
+            'column event_id
+            already exists in usertrip';
+        END;
+    END;
+$$ ;
 `
 module.exports = {
   users,
@@ -59,5 +72,7 @@ module.exports = {
   org,
   location,
   usertype,
-  approvedColumn
+  approvedColumn,
+  sequence,
+  eventId
 }

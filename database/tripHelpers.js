@@ -48,7 +48,7 @@ values
   $6,
   $7,
   $8
-)
+) RETURNING trip_id
 `;
   dbutils.runQuery(
     query, [

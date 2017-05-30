@@ -8,7 +8,8 @@ function runMigrate(cb) {
   ${table.trip}
   ${table.usertrip}
   ${table.approvedColumn}
-  `
+  ${table.eventId}
+  ${table.sequence}`
   client.query(tables, cb);
 }
 

@@ -27,6 +27,7 @@ module.exports = (req, res) => {
           console.log('createtrip Error :', error)
           return res().code(500)
         }
+        const trip_id = result.rows[0].trip_id
         user.getuserbyid(userId, (err, result1) => {
           if (err) {
             // eslint-disable-next-line no-console
@@ -35,6 +36,8 @@ module.exports = (req, res) => {
 
           }
           const email = result1.rows[0].email;
+          const username = result1.rows[0].username;
+          const phone = result1.rows[0].phone;
           location.getLocationsById(data, (err, result2) => {
             if (err) {
               // eslint-disable-next-line no-console
@@ -45,9 +48,12 @@ module.exports = (req, res) => {
             const final = Object.assign(req.payload, {
               email: email,
               location_from: result2.rows[0].location_from,
-              location_to: result2.rows[0].location_to
+              location_to: result2.rows[0].location_to,
+              id: trip_id,
+              username: username,
+              phone:phone
             })
-            const event = template.eventTemplate(final);
+            const event = template.insertEventTemplate(final);
             utils.createEvent(event, (err, response) => {
               if (err) {
                 // eslint-disable-next-line no-console
