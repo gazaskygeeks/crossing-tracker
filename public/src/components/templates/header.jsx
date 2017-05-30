@@ -9,7 +9,7 @@ const Header = ({logedIn , path}) => {
         <div className='container'>
           <div className='row'>
             <div className='col-xs-4 logo'>
-              <img src={require('../../../img/logo.png')} />
+              <img src='/public/img/logo.png' />
             </div>
             <div className='col-xs-8 nav-wrp'>
               <nav className='navbar navbar-right navbar-default'>
