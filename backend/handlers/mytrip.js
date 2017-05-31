@@ -54,6 +54,14 @@ module.exports = (req, res) => {
                     }
                   })
                 })
+              }else {
+                if(index1==result1.rowCount-1){
+                  return res({
+                    createdTrip: createdTrip,
+                    joinedTrip: final,
+                    tripMembers:tripMembers
+                  })
+                }
               }
 
             })
