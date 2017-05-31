@@ -76,14 +76,12 @@ module.exports = (req, res) => {
                 return res().code(500)
               }
               final = final.concat(result3.rows[0])
-              result2.rowCount --;
-              if (result2.rowCount === 0) {
-                return res({
-                  createdTrip: createdTrip,
-                  joinedTrip: final,
-                  tripMembers:tripMembers
-                })
-              }
+
+              return res({
+                createdTrip: createdTrip,
+                joinedTrip: final,
+                tripMembers:tripMembers
+              })
             })
           })
         } else {
