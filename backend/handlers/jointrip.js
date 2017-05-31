@@ -36,7 +36,8 @@ module.exports = (req, res) => {
             return res().code(500)
           }
           trip.getusertripbytripid(req.payload.trip_id, (err, result2) => {
-            if (result2.rows.length <=result.rows[0].available_seats) {
+            if (result2.rows.length <=result.rows[0].available_seats &&
+              result.rows[0].available_seats!=0) {
               trip.addtripuser(usertripinfo, (error) => {
                 if (error) {
                   // eslint-disable-next-line no-console
