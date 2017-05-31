@@ -59,6 +59,7 @@ module.exports = (req, res) => {
         })
       }
       else {
+
         if (result2.rowCount > 0) {
           result2.rows.map((elm) => {
             trip.getJoinedTrip(elm.trip_id, (error, result3) => {
@@ -84,6 +85,14 @@ module.exports = (req, res) => {
               }
             })
           })
+        }else{
+
+          return res({
+            createdTrip: createdTrip,
+            joinedTrip: final,
+            tripMembers:tripMembers
+          })
+
         }
       }
     })
