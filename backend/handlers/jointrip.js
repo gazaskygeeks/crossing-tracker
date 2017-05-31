@@ -77,11 +77,9 @@ module.exports = (req, res) => {
                             owner,
                             'Someone Joined Your Trip',
                             `Hi ${username},
-                            There someone Joined Your Trip,
-                            You Can Contact him/her by
-                            sending message to his/her email : ${involved}
-                            You can discover this by
-                            visiting your trip page  `, (error, info) => {
+                            ${involved} has requested to join your trip,
+                            go to "My trips" to Accept/Reject passenger.
+                            `, (error, info) => {
                               if (error) {
                                 // eslint-disable-next-line no-console
                                 console.log('sendemail :', error)
