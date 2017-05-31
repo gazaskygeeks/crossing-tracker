@@ -30,9 +30,8 @@ console.log('error result1',error);
                 console.log('get Joined User Error :', error)
                 return res().code(500)
               }
-              if (result4.rowCount>0){
                 tripMembers= tripMembers.concat(result4.rows[0])
-              }
+
             })
           if (result2.rowCount > 0) {
             result2.rows.map((elm) => {
