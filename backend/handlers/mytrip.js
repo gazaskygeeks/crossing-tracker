@@ -4,6 +4,7 @@ module.exports = (req, res) => {
   var final = [];
   var createdTrip =[];
   trip.gettripbyuserid(req.state.sid.user_id, (error, result1) => {
+
     if (error) {
       // eslint-disable-next-line no-console
       console.log('get trip by user id  Error :', error)
@@ -20,7 +21,7 @@ module.exports = (req, res) => {
         result1.rows.map((item) => {
           trip.getJoinedUser(
             [item.trip_id],(err,result4)=>{
-              if (error) {
+              if (err) {
                 // eslint-disable-next-line no-console
                 console.log('get Joined User Error :', error)
                 return res().code(500)
