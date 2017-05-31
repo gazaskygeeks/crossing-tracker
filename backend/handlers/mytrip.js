@@ -11,8 +11,6 @@ module.exports = (req, res) => {
     }
     createdTrip=result1.rows;
     trip.getusertripbyuserid(req.state.sid.user_id, (error, result2) => {
-      console.log("this is result2",result2);
-
       if (error) {
         // eslint-disable-next-line no-console
         console.log('get user trip by user id Error :', error)
@@ -40,7 +38,6 @@ module.exports = (req, res) => {
                       return res().code(500)
                     }
                     final = final.concat(result3.rows[0])
-                    console.log("this is final",final);
                     // if(index2==result2.rowCount-1){
                     //   return res({
                     //     createdTrip: createdTrip,
