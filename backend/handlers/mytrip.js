@@ -24,7 +24,8 @@ console.log('error result1',error);
         result1.rows.map((item) => {
           trip.getJoinedUser(
             [item.trip_id],(err,result4)=>{
-
+              console.log('result4 return all disApproved user info and trip for tripid',result4.rows);
+              console.log('result4 error',error);
               if (err) {
                 // eslint-disable-next-line no-console
                 console.log('get Joined User Error :', error)
