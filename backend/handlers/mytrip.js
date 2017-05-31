@@ -11,6 +11,8 @@ module.exports = (req, res) => {
     }
     createdTrip=result1.rows;
     trip.getusertripbyuserid(req.state.sid.user_id, (error, result2) => {
+      console.log("this is result2",result2);
+
       if (error) {
         // eslint-disable-next-line no-console
         console.log('get user trip by user id Error :', error)
@@ -31,12 +33,14 @@ module.exports = (req, res) => {
               if (result2.rowCount > 0) {
                 result2.rows.map((elm,index2) => {
                   trip.getJoinedTrip(elm.trip_id, (error, result3) => {
+
                     if (error) {
                       // eslint-disable-next-line no-console
                       console.log('get Joined Trip Error :', error)
                       return res().code(500)
                     }
                     final = final.concat(result3.rows[0])
+                    console.log("this is final",final);
                     // if(index2==result2.rowCount-1){
                     //   return res({
                     //     createdTrip: createdTrip,
@@ -58,15 +62,23 @@ module.exports = (req, res) => {
         })
       }
       else {
+
         if (result2.rowCount > 0) {
           result2.rows.map((elm,index2) => {
             trip.getJoinedTrip(elm.trip_id, (error, result3) => {
+
               if (error) {
                 // eslint-disable-next-line no-console
                 console.log('get Joined Trip Error :', error)
                 return res().code(500)
               }
               final = final.concat(result3.rows[0])
+
+              return res({
+                createdTrip: createdTrip,
+                joinedTrip: final,
+                tripMembers:tripMembers
+              })
             })
             // if(index2==result2.rowCount-1){
             //   return res({
@@ -75,14 +87,18 @@ module.exports = (req, res) => {
             //     tripMembers:tripMembers
             //   })
             // }
+
           })
-        }else{
+        } else{
+
           return res({
             createdTrip: createdTrip,
             joinedTrip: final,
             tripMembers:tripMembers
           })
+
         }
+
       }
     })
   })
