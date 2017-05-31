@@ -1,7 +1,9 @@
+/*global process*/
+
 const utils = require('./utils.js');
 const google = require('googleapis');
 const calendar = google.calendar('v3');
-
+require('env2')('./.env');
 function createEvent(event, cb) {
   utils.googleAuth((err, auth) => {
     if (err) {
@@ -11,7 +13,7 @@ function createEvent(event, cb) {
     }
     calendar.events.insert({
       auth: auth,
-      calendarId: '8959pk6tb4ki55dtc0m085e6l4@group.calendar.google.com',
+      calendarId: process.env.CALENDAR_ID,
       'sendNotifications': true,
       resource: event,
     }, cb)
@@ -27,7 +29,7 @@ function updateEvent(event,id, cb) {
     }
     calendar.events.update({
       auth: auth,
-      calendarId: '8959pk6tb4ki55dtc0m085e6l4@group.calendar.google.com',
+      calendarId: process.env.CALENDAR_ID,
       'sendNotifications': true,
       resource: event,
       eventId: id

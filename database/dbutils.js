@@ -7,17 +7,19 @@ function runMigrate(cb) {
   ${table.users}
   ${table.trip}
   ${table.usertrip}
-  ${table.approvedColumn}
-  ${table.eventId}
-  ${table.sequence}`
+  ${table.approvedColumn}`
   client.query(tables, cb);
 }
+function runSequence (cb){
+  client.query(table.sequence,cb)
 
+}
 function runQuery(query, data, cb) {
   client.query(query, data, cb)
 }
 
 module.exports = {
   runMigrate,
-  runQuery
+  runQuery,
+  runSequence
 }

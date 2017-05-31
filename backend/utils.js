@@ -1,11 +1,10 @@
 /*global process*/
 
+require('env2')('./.env');
 const Bcrypt = require('bcrypt');
 const nodemailer = require('nodemailer');
 const SALT_WORK_FACTOR = 10;
 const google = require('googleapis');
-require('env2')('.env');
-const key = require('../key.json');
 
 const hash = (pass, cb) => {
   Bcrypt.genSalt(SALT_WORK_FACTOR, function(error, salt) {
@@ -38,14 +37,15 @@ const sendemail = (sender, recipient, sub, content, cb) => {
 
 const googleAuth = (cb) => {
   const jwtClient = new google.auth.JWT(
-    key.client_email,
+    process.env.CLIENT_EMAIL,
     null,
-    key.private_key, ['https://www.googleapis.com/auth/calendar'],
+    process.env.PRIVATE_KEY.replace(/\\n/g, '\n'),
+    ['https://www.googleapis.com/auth/calendar'],
     null
   );
+
   jwtClient.authorize((err) => {
     if (err) {
-      console.log('errrrr', err); //eslint-disable-line
       cb(err, undefined)
       return;
     }

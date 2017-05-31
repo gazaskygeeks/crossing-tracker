@@ -45,6 +45,7 @@ module.exports = (req, res) => {
               return res().code(500)
 
             }
+
             const final = Object.assign(req.payload, {
               email: email,
               location_from: result2.rows[0].location_from,
@@ -60,6 +61,8 @@ module.exports = (req, res) => {
                 console.log('Error in create event :', err)
                 return res().code(500)
               }
+              // eslint-disable-next-line no-console
+              console.log('add event to google calendar successfully');
               res({
                 msg: 'Your Trip Created Successfully',
                 statusCode: 200

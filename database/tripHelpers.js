@@ -273,6 +273,10 @@ function getAllTrips(cb) {
   const query = 'SELECT date,time from trip;';
   dbutils.runQuery(query,cb)
 }
+function getAllJionedUserIdByTripId(data,cb){
+  const query = 'SELECT user_id  from usertrip where trip_id = $1 AND user_approved = 1;';
+  dbutils.runQuery(query,[data],cb)
+}
 module.exports = {
   gettripbytime: gettripbytime,
   createtrip: createtrip,
@@ -291,5 +295,6 @@ module.exports = {
   updateseats:updateseats,
   updateStatus:updateStatus,
   getJoinedUser:getJoinedUser,
-  getAllTrips : getAllTrips
+  getAllTrips : getAllTrips,
+  getAllJionedUserIdByTripId
 }

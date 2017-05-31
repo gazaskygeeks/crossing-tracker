@@ -50,20 +50,8 @@ const approvedColumn =`DO $$
     END;
 $$ ;
 `
-const sequence = 'ALTER SEQUENCE trip_trip_id_seq START WITH 10000;';
-const eventId = `DO $$
-    BEGIN
-        BEGIN
-            ALTER TABLE usertrip ADD COLUMN event_id INT;
-        EXCEPTION
-              WHEN duplicate_column
-            THEN RAISE NOTICE
-            'column event_id
-            already exists in usertrip';
-        END;
-    END;
-$$ ;
-`
+const sequence = 'ALTER SEQUENCE trip_trip_id_seq RESTART WITH 10000;';
+
 module.exports = {
   users,
   trip,
@@ -72,6 +60,5 @@ module.exports = {
   location,
   usertype,
   approvedColumn,
-  sequence,
-  eventId
+  sequence
 }
