@@ -123,7 +123,7 @@ function getJoinedTrip(data,cb){
 }
 
 function getusertripbyuserid(data, cb) {
-  const query = 'SELECT trip_id,user_approved,user_id from usertrip where user_id=$1';
+  const query = 'SELECT trip_id,user_approved,user_id from usertrip where user_id=$1 and user_approved=1';
   dbutils.runQuery(query, [data], cb);
 }
 
@@ -145,7 +145,7 @@ function getJoinedUser(data, cb) {
     INNER JOIN org  o
     on o.org_id=u.org_id
     where trip.trip_id=$1 and
-    u.user_id = (SELECT user_id   from usertrip where trip_id=$1)
+    u.user_id in (SELECT user_id   from usertrip where trip_id=$1)
     and u.org_id = o.org_id and d.user_approved = 0 `;
   dbutils.runQuery(query, data, cb);
 }
