@@ -48,6 +48,14 @@ module.exports = (req, res) => {
                 }
               })
             })
+          }else{
+            return res({
+              createdTrip: createdTrip,
+              joinedTrip: final,
+              tripMembers:tripMembers
+            })
+
+
           }
         })
       }
@@ -70,6 +78,12 @@ module.exports = (req, res) => {
                 })
               }
             })
+          })
+        } else {
+          return res({
+            createdTrip: createdTrip,
+            joinedTrip: final,
+            tripMembers:tripMembers
           })
         }
       }
