@@ -40,7 +40,7 @@ module.exports = (req, res) => {
                       return res().code(500)
                     }
 
-                    final = final.concat(result3.rows[0])
+                    final = final.concat(result3.rows)
                     result2.rowCount --;
                     if (result2.rowCount === 0) {
 
@@ -75,7 +75,7 @@ module.exports = (req, res) => {
                 console.log('get Joined Trip Error :', error)
                 return res().code(500)
               }
-              final = final.concat(result3.rows[0])
+              final = final.concat(result3.rows)
 
               return res({
                 createdTrip: createdTrip,
