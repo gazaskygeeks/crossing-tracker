@@ -41,11 +41,16 @@ module.exports = (req, res) => {
                     }
 
                     final = final.concat(result3.rows[0])
-                
+
                   })
                 })
               }
             })
+        })
+        return res({
+          createdTrip: createdTrip,
+          joinedTrip: final,
+          tripMembers:tripMembers
         })
       }
       else {
@@ -63,12 +68,13 @@ module.exports = (req, res) => {
             })
           })
         }
+        return res({
+          createdTrip: createdTrip,
+          joinedTrip: final,
+          tripMembers:tripMembers
+        })
       }
-      return res({
-        createdTrip: createdTrip,
-        joinedTrip: final,
-        tripMembers:tripMembers
-      })
+
 
     })
   })
