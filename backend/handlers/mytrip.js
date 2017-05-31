@@ -71,8 +71,6 @@ console.log('error result1',error);
         if (result2.rowCount > 0) {
           result2.rows.map((elm) => {
             trip.getJoinedTrip(elm.trip_id, (error, result3) => {
-              console.log('result3333:',result3.rows);
-              console.log('result3333 error:',error);
               if (error) {
                 // eslint-disable-next-line no-console
                 console.log('get Joined Trip Error :', error)
@@ -81,12 +79,6 @@ console.log('error result1',error);
               final = final.concat(result3.rows[0])
               result2.rowCount --;
               if (result2.rowCount === 0) {
-                return res({
-                  createdTrip: createdTrip,
-                  joinedTrip: final,
-                  tripMembers:tripMembers
-                })
-              }else{
                 return res({
                   createdTrip: createdTrip,
                   joinedTrip: final,
