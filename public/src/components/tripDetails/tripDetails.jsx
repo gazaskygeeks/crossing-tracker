@@ -24,6 +24,8 @@ class TripDetails extends React.Component {
   }
   render() {
     message = this.props.joinTrip;
+    type='';
+    debugger;
     return (
       <div>
 
