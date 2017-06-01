@@ -4,7 +4,6 @@ module.exports = (req, res) => {
   var final = [];
   var createdTrip =[];
   trip.gettripbyuserid(req.state.sid.user_id, (error, result1) => {
-
     if (error) {
       // eslint-disable-next-line no-console
       console.log('get trip by user id  Error :', error)
@@ -17,13 +16,10 @@ module.exports = (req, res) => {
         console.log('get user trip by user id Error :', error)
         return res().code(500)
       }
-
       if (result1.rowCount > 0) {
-
         result1.rows.map((item,index1) => {
           trip.getJoinedUser(
             [item.trip_id],(err,result4)=>{
-
               if (error) {
                 // eslint-disable-next-line no-console
                 console.log('get Joined User Error :', error)
@@ -31,20 +27,25 @@ module.exports = (req, res) => {
               }
               if(result4.rowCount>0){
                 tripMembers= tripMembers.concat(result4.rows)
-
               }
               if (result2.rowCount > 0) {
-
                 result2.rows.map((elm,index2) => {
                   trip.getJoinedTrip(elm.trip_id, (error, result3) => {
+
                     if (error) {
                       // eslint-disable-next-line no-console
                       console.log('get Joined Trip Error :', error)
                       return res().code(500)
                     }
-
                     final = final.concat(result3.rows[0])
-                    if(index2==result2.rowCount-1){
+                    // if(index2==result2.rowCount-1){
+                    //   return res({
+                    //     createdTrip: createdTrip,
+                    //     joinedTrip: final,
+                    //     tripMembers:tripMembers
+                    //   })
+                    // }
+                    if(index1==result1.rowCount-1){
                       return res({
                         createdTrip: createdTrip,
                         joinedTrip: final,
@@ -53,23 +54,25 @@ module.exports = (req, res) => {
                     }
                   })
                 })
+              }else {
+                if(index1==result1.rowCount-1){
+                  return res({
+                    createdTrip: createdTrip,
+                    joinedTrip: final,
+                    tripMembers:tripMembers
+                  })
+                }
               }
-              if(index1==result1.rowCount-1){
-                return res({
-                  createdTrip: createdTrip,
-                  joinedTrip: final,
-                  tripMembers:tripMembers
-                })
-              }
+
             })
         })
-
-
       }
       else {
+
         if (result2.rowCount > 0) {
           result2.rows.map((elm,index2) => {
             trip.getJoinedTrip(elm.trip_id, (error, result3) => {
+
               if (error) {
                 // eslint-disable-next-line no-console
                 console.log('get Joined Trip Error :', error)
@@ -77,30 +80,32 @@ module.exports = (req, res) => {
               }
               final = final.concat(result3.rows[0])
 
-
-            })
-            if(index2==result2.rowCount-1){
               return res({
                 createdTrip: createdTrip,
                 joinedTrip: final,
                 tripMembers:tripMembers
               })
-            }
+            })
+            // if(index2==result2.rowCount-1){
+            //   return res({
+            //     createdTrip: createdTrip,
+            //     joinedTrip: final,
+            //     tripMembers:tripMembers
+            //   })
+            // }
+
           })
-        }else{
+        } else{
+
           return res({
             createdTrip: createdTrip,
             joinedTrip: final,
             tripMembers:tripMembers
           })
 
-
         }
 
-
       }
-
-
     })
   })
 }
