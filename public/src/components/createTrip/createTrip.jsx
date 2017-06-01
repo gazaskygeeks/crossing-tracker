@@ -7,7 +7,6 @@ import Status from '../loading/loading.jsx'
 let type='';
 let message ='';
 let green = '#4ad86a';
-let pickupMsg = '';
 let seatsMsg = '';
 class CreateTrip extends React.Component{
 
@@ -46,17 +45,6 @@ class CreateTrip extends React.Component{
 
   changePassingBy(ev) {
     this.setState({passing_by: ev.target.value});
-    const status = ev.target.value.trim();
-    if(status.length < 3){
-      pickupMsg = 'Input should be more than six characters';
-      type ='';
-    }else if (status.length > 25) {
-      pickupMsg = 'Input should be less than twenty characters';
-      type ='';
-    }else{
-      pickupMsg = '';
-      type ='';
-    }
   }
 
   changePassingPointTime(ev) {
@@ -153,7 +141,6 @@ class CreateTrip extends React.Component{
                       className='form-control'
                       onChange={this.changePassingBy.bind(this)}
                       />
-                    <p className='error'>{pickupMsg}</p>
                   </div>
                   <div className='form-group'>
                     <label>Pickup time</label>
