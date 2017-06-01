@@ -42,6 +42,7 @@ test('POST /edittrip : edit trip that not exist', (t) => {
     })
   })
 })
+
 test('POST /edittrip : edit trip by a different user ', (t) => {
 
   var data = {
@@ -52,12 +53,12 @@ test('POST /edittrip : edit trip by a different user ', (t) => {
     passing_by: 'Rammallah',
     pass_point_time: '12:02',
     available_seats: 2,
-    trip_id: 1
+    trip_id: 10000
   }
 
   var data1 = {
-    email: 'approvedUser@gmail.com', // from db.test.js line:82
-    password: 'approvedUser' // from db.test.js line:81
+    email: 'fake@fake.com', // from db.test.js line:82
+    password: 'notApprovedUser' // from db.test.js line:81
   }
   var option1 = {
     method: 'POST',
@@ -95,7 +96,7 @@ test('POST /edittrip : edit trip Successfully ', (t) => {
     passing_by: 'Rammallah',
     pass_point_time: '12:02',
     available_seats: 2,
-    trip_id: 2
+    trip_id: 10000
   }
 
 

@@ -1,8 +1,10 @@
 function insertEventTemplate (data){
   var event = {
     'summary':
-    `Tripe owner : ${data.username},
-    Tripe owner phone : ${data.phone},
+    `
+Trip owner : ${data.username},
+    
+Trip owner phone : ${data.phone},
     From :${data.location_from},
     To :${data.location_to},
     Available seats :${data.available_seats},
@@ -33,8 +35,10 @@ function insertEventTemplate (data){
 function updateEventTemplate (data){
   var event = {
     'summary':
-    `Tripe owner : ${data.username},
-    Tripe owner phone : ${data.phone},
+    `
+Trip owner : ${data.username},
+    
+Trip owner phone : ${data.phone},
     From :${data.location_from},
     To :${data.location_to},
     Available seats :${data.available_seats},
