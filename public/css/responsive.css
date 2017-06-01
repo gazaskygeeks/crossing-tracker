@@ -75,9 +75,6 @@
   .trip-details:last-of-type table tbody tr td:nth-child(3):before {
     content: "Phone no: ";
   }
-  .trip-details:last-of-type table tbody tr td:last-child:before {
-    content: "Skype name: ";
-  }
   .trip-create form .form-group input, .trip-create form .form-group select, .trip-create form .form-group label {
     width: 100%;
   }
@@ -96,13 +93,80 @@
   button.btn-default, button.btn-default:hover, button.btn-default:focus, button.btn-default:active:hover {
     font-size: 12px;
   }
-
   button.btn-success, button.btn-success:hover, button.btn-success:focus, button.btn-success:active:hover {
     font-size: 12px;
   }
-
   button.btn-danger, button.btn-danger:hover, button.btn-danger:focus, button.btn-danger:active:hover {
     font-size: 12px;
+  }
+  .admin table thead {
+    display: none;
+  }
+  .admin table{
+    text-align: left;
+  }
+  .admin table tbody tr td:before {
+    display: inline-block;
+    width: 110px;
+    font-weight: bold;
+  }
+  .admin table tbody tr:nth-child(even){
+    background-color: #eeeeee;
+  }
+  .admin table tbody tr td {
+    display: block;
+  }
+  .admin table tbody tr td:first-of-type:before {
+    content: 'Username: ';
+  }
+  .admin table tbody tr td:nth-child(2):before {
+    content: 'Email: ';
+  }
+  .admin table tbody tr td:nth-child(3):before {
+    content: 'Phone no. ';
+  }
+  .admin table tbody tr td:nth-child(4):before {
+    content: 'Organization: ';
+  }
+  .admin table tbody tr td:nth-child(5):before {
+    content: 'Verification: ';
+  }
+
+
+  .joined-users table thead {
+    display: none;
+  }
+  .joined-users table{
+    text-align: left;
+  }
+  .joined-users table tbody tr td:before {
+    display: inline-block;
+    width: 110px;
+    font-weight: bold;
+  }
+  .joined-users table tbody tr:nth-child(even){
+    background-color: #eeeeee;
+  }
+  .joined-users table tbody tr td {
+    display: block;
+  }
+  .joined-users table tbody tr td:first-of-type:before {
+    content: 'Trip Date: ';
+  }
+  .joined-users table tbody tr td:nth-child(2):before {
+    content: 'User Name: ';
+  }
+  .joined-users table tbody tr td:nth-child(3):before {
+    content: 'Email: ';
+  }
+  .joined-users table tbody tr td:nth-child(4):before {
+    content: 'Phone no. ';
+  }
+  .joined-users table tbody tr td:nth-child(5):before {
+    content: 'Organization: ';
+  }
+  .joined-users table tbody tr td:nth-child(6):before {
+    content: 'Accept/Reject User: ';
   }
 }
 
