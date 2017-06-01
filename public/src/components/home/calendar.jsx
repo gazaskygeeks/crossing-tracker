@@ -9,6 +9,7 @@ class Calendar extends React.Component {
     super(props)
     this.handleChange = this.handleChange.bind(this);
   }
+  ////////////////chaneg creat and calnder name in event of google cander
 
   componentWillMount() {
     BigCalendar.momentLocalizer(moment);
@@ -19,11 +20,15 @@ class Calendar extends React.Component {
     var formatted = moment(date).format('YYYY-MM-DD');
     this.props.getTrips(formatted);
   }
+  handelEvents(event){
+    this.props.getTripByTime(JSON.stringify(event.trip_id))
+  }
   render() {
     var events = this.props.allTrips.map(item => (Object.assign({}, {
       title: item.time,
       start: item.date,
-      end: item.date
+      end: item.date,
+      trip_id:item.trip_id
     })))
     return (<BigCalendar
       style={{height: '420px'}}
@@ -31,7 +36,12 @@ class Calendar extends React.Component {
       views={['month']}
       onNavigate={this.handleChange}
       popup='true'
-      events={events}/>);
+      events={events}
+      onSelectEvent={event =>
+        this.handelEvents(event)
+      }
+
+      />);
   }
 }
 export default Calendar;
