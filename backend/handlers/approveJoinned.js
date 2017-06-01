@@ -60,8 +60,8 @@ module.exports = (req, res) => {
                     // eslint-disable-next-line no-console
                     console.log('insert joined user successfully to google calendar');
                     return res({
-                      msg: 'Update successfully'
-                    });
+                      msg: 'Update user_approved status successfully'
+                    }).code(200);
                   })
                 }
               })

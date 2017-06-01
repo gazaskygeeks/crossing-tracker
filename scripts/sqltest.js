@@ -34,6 +34,7 @@ const userQuery = `INSERT INTO  users (
   ;`;
 const users = ['admin','admin@admin.com','123456','0598287410','1','2','1'];
 const tripQuery = `INSERT INTO trip (
+    trip_id,
     location_from_id ,
     location_to_id,
     time,
@@ -42,9 +43,10 @@ const tripQuery = `INSERT INTO trip (
     available_seats
   ) VALUES
  (
-   $1,$2,$3,$4,$5,$6
+   $1,$2,$3,$4,$5,$6,$7
  );`
-const trip = ['1','2','01:01 AM','08082017','1','2'];
+// const trip = ['
+// 10000','1','2','01:01','2017-08-08','1','1'];
 const usertripQuery =`INSERT INTO  usertrip
 (
   user_id ,
@@ -68,7 +70,7 @@ module.exports = {
   admin,
   normalUser,
   tripQuery,
-  trip,
+  // trip,
   usertripQuery,
   usertrip
 }

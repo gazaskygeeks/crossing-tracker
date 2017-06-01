@@ -27,8 +27,8 @@ test('POST/mytrip: Test my trip ', (t) => {
     }
     server.inject(option, (res) => {
       const conv = JSON.parse(res.payload);
-      t.equal(conv.createdTrip[0].trip_id,2, 'get the correct created trip data');
-      t.equal(conv.joinedTrip.length,1, 'get the correct joined trip data');
+      t.equal(conv.createdTrip[0].trip_id,10000, 'get the correct created trip data');
+      t.equal(conv.joinedTrip.length,0, 'get the correct joined trip data');
       t.end();
       // eslint-disable-next-line no-console
       console.log('*****************Get Disapproved users TEST****************************');

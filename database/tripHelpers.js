@@ -223,7 +223,7 @@ function updateStatus(data, cb) {
 
 
 
-function getTripeByDate(date, cb) {
+function getTripByDate(date, cb) {
   const query = `
   select
     trip.available_seats,
@@ -281,7 +281,7 @@ module.exports = {
   gettripbytime: gettripbytime,
   createtrip: createtrip,
   gettripbyuserid: gettripbyuserid,
-  getTripeByDate: getTripeByDate,
+  getTripByDate: getTripByDate,
   getTripByid: getTripByid,
   getusertripbyuserid:getusertripbyuserid,
   getseats: getseats,

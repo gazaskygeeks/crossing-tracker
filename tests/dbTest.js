@@ -6,9 +6,10 @@ const test = require('tape');
 console.log('************************* DataBase Test**********************************');
 test('create tables ', (t) => {
   dbutils.runMigrate((error) => {
-
-    t.notOk(error, 'create table successfully')
-    t.end()
+    dbutils.runSequence((error) => {
+      t.notOk(error, 'create table successfully')
+      t.end()
+    })
   })
 })
 test('insert data into ORGANIZATION table ', (t) => {
@@ -143,18 +144,18 @@ test('insert superAdmin  into USERS table ', (t) => {
     })
   })
 })
-test('insert trip  into trip table ', (t) => {
-  dbutils.runQuery(data.tripQuery, data.trip, (error) => {
-    t.notOk(error, 'insert data into USERS table successfully')
-    t.end()
-  })
-})
-test('insert data  into USERTRIP table ', (t) => {
-  dbutils.runQuery(data.usertripQuery, data.usertrip, (error) => {
-    t.notOk(error, 'insert data into USERS table successfully')
-    t.end()
-  })
-})
+// test('insert trip  into trip table ', (t) => {
+//   dbutils.runQuery(data.tripQuery, data.trip, (error) => {
+//     t.notOk(error, 'insert data into USERS table successfully')
+//     t.end()
+//   })
+// })
+// test('insert data  into USERTRIP table ', (t) => {
+//   dbutils.runQuery(data.usertripQuery, data.usertrip, (error) => {
+//     t.notOk(error, 'insert data into USERS table successfully')
+//     t.end()
+//   })
+// })
 test('select  data from USERS table ', (t) => {
   const query = 'SELECT user_id FROM users WHERE username=$1'
   const data = ['approvedUser'] //from previous insertion

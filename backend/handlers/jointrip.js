@@ -22,7 +22,6 @@ module.exports = (req, res) => {
           console.log('get trip by tripid error :', error)
           return res().code(500)
         }
-
         if (result.rows[0].user_id == usertripinfo[0]) {
           return res({
             msg: 'You can not join your created trip ',
