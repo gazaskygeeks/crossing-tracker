@@ -15,6 +15,7 @@ const getUserTrips = ()=>{
   .then((response)=>{
     return  response.json();
   }).then((response)=>{
+    console.log('response.tripMembers',response);
       store.dispatch({type: types.GET_USER_TRIPS, payload: response});
   }).catch((error) => {
     store.dispatch({

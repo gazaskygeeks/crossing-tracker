@@ -3,12 +3,13 @@ const server = require('../backend/server.js');
 
 test('POST /jointrip : test1', (t) => {
   var data = {
-    trip_id: 1
+    trip_id:
+10000
   }
 
   var data1 = {
-    email: 'approvedUser@gmail.com', // from db.test.js line:82
-    password: 'approvedUser' // from db.test.js line:81
+    email: 'approvedAdmin@gmail.com', // from db.test.js line:82
+    password: 'approvedAdmin' // from db.test.js line:81
   }
   var option1 = {
     method: 'POST',
@@ -29,8 +30,44 @@ test('POST /jointrip : test1', (t) => {
       }
     }
     server.inject(option, (res) => {
-
       t.equal(res.statusCode, 200, 'User joined the trip')
+      t.end();
+    })
+  })
+})
+
+test('POST / approve: accept the request of join trip',(t)=>{
+  var data1 = {
+    email: 'approvedUser@gmail.com', // from db.test.js line:82
+    password: 'approvedUser' // from db.test.js line:81
+  }
+  var option1 = {
+    method: 'POST',
+    url: '/login',
+    payload: data1
+  }
+
+  const data = {
+    trip_id: 10000,
+    userJoinnedId: 7,
+    memberStatus: 1
+  };
+
+  server.inject(option1, (response) => {
+    var cookies = response.request.response.headers['set-cookie']
+    var t1 = cookies[0].split(';');
+    var t2 = t1[0].split('=');
+    var t3 = t2[1];
+    var option = {
+      method: 'POST',
+      url: '/approve',
+      payload: data,
+      headers: {
+        cookie: 'sid=' + t3
+      }
+    }
+    server.inject(option, (res) => {
+      t.equal(res.statusCode, 200, 'Update user_approved status successfully')
       t.end();
     })
   })
@@ -38,12 +75,13 @@ test('POST /jointrip : test1', (t) => {
 
 test('POST /jointrip : test2', (t) => {
   var data = {
-    trip_id: 1
+    trip_id:
+10000
   }
 
   var data1 = {
-    email: 'approvedUser@gmail.com', // from db.test.js line:82
-    password: 'approvedUser' // from db.test.js line:81
+    email: 'approvedAdmin@gmail.com', // from db.test.js line:82
+    password: 'approvedAdmin' // from db.test.js line:81
   }
   var option1 = {
     method: 'POST',
@@ -72,12 +110,13 @@ test('POST /jointrip : test2', (t) => {
 
 test('POST /jointrip : test 3', (t) => {
   var data = {
-    trip_id: 1
+    trip_id:
+10000
   }
 
   var data1 = {
-    email: 'approvedAdmin@gmail.com', // from db.test.js line:82
-    password: 'approvedAdmin' // from db.test.js line:81
+    email: 'fake@fake.com', // from db.test.js line:82
+    password: 'notApprovedUser' // from db.test.js line:81
   }
   var option1 = {
     method: 'POST',

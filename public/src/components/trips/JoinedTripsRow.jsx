@@ -5,8 +5,9 @@ const joinedTripsRow = ({joinedTrips, unjoinTrip, userData, msg}) => {
   if(!joinedTrips){
     return <div>Loading...</div>;
   }
-console.log('userData: ',userData);
   const trips = joinedTrips.map((trip)=>{
+    console.log('trippppppppppppp: ',trip);
+
     const msgFun = ()=>{
       if(trip.trip_id === userData.trip_id ){
         return {msg}

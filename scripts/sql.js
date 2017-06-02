@@ -18,7 +18,9 @@ const users = `CREATE TABLE IF NOT EXISTS users (
     phone varchar(15),
     org_id INT references org(org_id),
     user_type INT references usertype(usertype_id) DEFAULT 3,
-    approved INT  DEFAULT 0
+    approved INT  DEFAULT 0,
+    resetpasswordtoken varchar(255),
+    resetpasswordexpires varchar(255)
   );`;
 const trip = `CREATE TABLE IF NOT EXISTS trip (
     trip_id serial PRIMARY KEY,
@@ -37,7 +39,7 @@ const usertrip = `CREATE TABLE IF NOT EXISTS usertrip (
   trip_id INT references trip(trip_id)
 );`;
 
-const approvedColumn =` DO $$
+const approvedColumn =`DO $$
     BEGIN
         BEGIN
             ALTER TABLE usertrip ADD COLUMN user_approved INT  DEFAULT 0;
@@ -48,9 +50,10 @@ const approvedColumn =` DO $$
             already exists in usertrip';
         END;
     END;
-$$
-
+$$ ;
 `
+const sequence = 'ALTER SEQUENCE trip_trip_id_seq RESTART WITH 10000;';
+
 module.exports = {
   users,
   trip,
@@ -58,5 +61,6 @@ module.exports = {
   org,
   location,
   usertype,
-  approvedColumn
+  approvedColumn,
+  sequence
 }

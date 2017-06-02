@@ -9,7 +9,7 @@ test('POST /createtrip : test if recive the the correct Data', (t) => {
     location_to: 2,
     passing_by:'asxsacs',
     pass_point_time:'01:01',
-    available_seats: 2,
+    available_seats: 1,
 
   }
 

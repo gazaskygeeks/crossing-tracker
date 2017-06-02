@@ -22,7 +22,6 @@ module.exports = (req, res) => {
           console.log('get trip by tripid error :', error)
           return res().code(500)
         }
-
         if (result.rows[0].user_id == usertripinfo[0]) {
           return res({
             msg: 'You can not join your created trip ',
@@ -36,7 +35,8 @@ module.exports = (req, res) => {
             return res().code(500)
           }
           trip.getusertripbytripid(req.payload.trip_id, (err, result2) => {
-            if (result2.rows.length < result.rows[0].available_seats) {
+            if (result2.rows.length <=result.rows[0].available_seats &&
+              result.rows[0].available_seats!=0) {
               trip.addtripuser(usertripinfo, (error) => {
                 if (error) {
                   // eslint-disable-next-line no-console
@@ -77,11 +77,9 @@ module.exports = (req, res) => {
                             owner,
                             'Someone Joined Your Trip',
                             `Hi ${username},
-                            There someone Joined Your Trip,
-                            You Can Contact him/her by
-                            sending message to his/her email : ${involved}
-                            You can discover this by
-                            visiting your trip page  `, (error, info) => {
+                            ${involved} has requested to join your trip,
+                            go to "My trips" to Accept/Reject passenger.
+                            `, (error, info) => {
                               if (error) {
                                 // eslint-disable-next-line no-console
                                 console.log('sendemail :', error)

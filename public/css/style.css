@@ -2,15 +2,39 @@
 
 
 /************ general ************/
-.Loading{
+
+.Loading {
   text-align: center;
-  margin:10px auto;
+  margin: 10px auto;
 }
-.Loading div{
+
+.Loading div {
   display: inline-block;
   height: 80px;
   width: 80px;
+  position: absolute;
 }
+.btn-wrp-center .Loading div {
+  position: absolute;
+  bottom: 50px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.form-wrp.signup .Loading div {
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.form-wrp.signin .Loading div {
+  position: absolute;
+  top: 80px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
 .heading {
   background-color: #f9f9f9;
   border-bottom: 2px solid #000000;

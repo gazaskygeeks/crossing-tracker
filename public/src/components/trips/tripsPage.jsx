@@ -39,6 +39,7 @@ class TripsPage extends React.Component {
 
 
 const mapStateToProps = (store) => {
+  console.log('stroooo:',store);
   console.log('store.aprroveJoin: ',store.userTrips.tripMembers);
   return {
     GetUserTrips: store.userTrips.createdTrip,
