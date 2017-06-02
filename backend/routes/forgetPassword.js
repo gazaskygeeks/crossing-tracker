@@ -1,11 +1,11 @@
-const forgetPassowrdHandler = require('../handlers/forgetPassword.js');
+const forgetpasswordHandler = require('../handlers/forgetPassword.js');
 
-const forgetPassowrd = {
+const forgetpassword = {
   method:'POST',
   path:'/forget',
-  handler:forgetPassowrdHandler,
+  handler:forgetpasswordHandler,
   config: {
     auth:false
   }
 }
-module.exports =forgetPassowrd;
+module.exports =forgetpassword;

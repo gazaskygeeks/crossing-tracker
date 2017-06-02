@@ -28,9 +28,9 @@ module.exports = (req, res) => {
       if (time>=1){
         return res({msg:'Token Expired'}).code(401)
       }
-      return res({msg:'You Can reset passowrd'})
+      return res({msg:'You Can reset password'})
     }else{
-      return res({msg:'You Cant reset passowrd'}).code(401);
+      return res({msg:'You Cant reset password'}).code(401);
     }
   })
 }

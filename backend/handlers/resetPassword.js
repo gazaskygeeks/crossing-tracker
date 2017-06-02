@@ -23,7 +23,12 @@ module.exports = (req, res) => {
     if (!token_db){
       return res({msg:'Link not valid'}).code(401);
     }
+
+
     if (token===token_db){
+      if (password<6){
+        return res({msg:'Password too short !'}).code(401);
+      }
       hash.make(password)
         .then(hsh => {
           user.updatePassword([hsh,user_id],(error,result2)=>{
@@ -61,7 +66,7 @@ module.exports = (req, res) => {
           })
         })
     }else{
-      return res({msg:'You Cant reset passowrd'}).code(401);
+      return res({msg:'You Cant reset password'}).code(401);
     }
   })
 }
