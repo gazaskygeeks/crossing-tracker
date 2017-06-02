@@ -3,6 +3,7 @@ const user = require('../../database/userhelpers.js');
 const template = require('../eventTemplate.js');
 const utils = require('../eventUtils.js');
 var emails = [];
+var description = '';
 module.exports = (req, res) => {
   // const ownerTrip       =req.state.sid.user_id;
   const joinnedMemberId = req.payload.userJoinnedId;
@@ -44,10 +45,15 @@ module.exports = (req, res) => {
                   return res().code(500)
                 }
                 emails = emails.concat({'email':result3.rows[0].email})
+                description = description.concat(`${result3.rows[0].username}:
+                  ${result3.rows[0].phone}\n`);
                 result2.rowCount--;
                 if (result2.rowCount === 0) {
+                  description = description.concat(`${result1.rows[0].username}:
+                    ${result1.rows[0].phone}\n`);
                   var data = Object.assign(result1.rows[0], {
-                    emails: emails.concat({'email':result1.rows[0].email})
+                    emails: emails.concat({'email':result1.rows[0].email}),
+                    description : description
                   })
                   var eventId = trip_id;
                   var event = template.updateEventTemplate(data);

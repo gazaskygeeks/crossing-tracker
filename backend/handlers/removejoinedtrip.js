@@ -7,6 +7,7 @@ module.exports = (req, res) => {
   const usertripinfo = [req.state.sid.user_id, req.payload.trip_id];
   const tripId = req.payload.trip_id;
   var emails = [];
+  var description = '';
   trip.getusertripbytripisuserid(usertripinfo, (error, res1) => {
     if (error) {
       // eslint-disable-next-line no-console
@@ -62,6 +63,9 @@ module.exports = (req, res) => {
                       emails = emails.concat({
                         'email': ownEmails.rows[0].email
                       })
+                      description = description.concat(
+                        `${ownEmails.rows[0].username}:
+                        ${ownEmails.rows[0].phone}\n`)
                       usersId.rowCount--;
                       if (usersId.rowCount === 0) {
                         trip.getTripByid({
@@ -72,10 +76,14 @@ module.exports = (req, res) => {
                             console.log('get trip by id  error :', err)
                             return res().code(500)
                           }
+                          description = description.concat(
+                            `${userAndTripInfo.rows[0].username}:
+                            ${userAndTripInfo.rows[0].phone}\n`);
                           var data = Object.assign(userAndTripInfo.rows[0], {
                             emails: emails.concat({
                               'email': userAndTripInfo.rows[0].email
-                            })
+                            }),
+                            description: description
                           })
                           var eventId = tripId;
                           var event = template.updateEventTemplate(data);
@@ -88,6 +96,9 @@ module.exports = (req, res) => {
                               }
                               // eslint-disable-next-line no-console
                               console.log('removed info successfully from google calendar');
+                              res({
+                                msg: 'Your trip removed successfully'
+                              })
                             })
                         })
                       } //end if of usersId.rowCount === 0
@@ -103,11 +114,15 @@ module.exports = (req, res) => {
                       return res().code(500)
                     }
                     var eventId = tripId;
+                    description = description.concat(
+                      `${userAndTripInfo.rows[0].username}:
+                      ${userAndTripInfo.rows[0].phone}\n`);
                     var attendees = [{
                       'email': userAndTripInfo.rows[0].email
                     }]
                     var data = Object.assign(userAndTripInfo.rows[0], {
-                      emails: attendees
+                      emails: attendees,
+                      description: description
                     })
                     var event = template.updateEventTemplate(data);
                     eventUtils.updateEvent(event, eventId,
@@ -119,15 +134,14 @@ module.exports = (req, res) => {
                         }
                         // eslint-disable-next-line no-console
                         console.log('removed info successfully from google calendar');
+                        res({
+                          msg: 'Your trip removed successfully'
+                        })
                       })
                   })
                 } // end else of if (usersId.rows.length > 0)
               })
               // END stuff of google cannder
-              res({
-                msg: 'Your trip removed successfully'
-              })
-
             })
         })
       })

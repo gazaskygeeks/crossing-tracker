@@ -6,13 +6,14 @@ const eventUtils = require('../eventUtils.js');
 module.exports = (req, res) => {
   const tripId = req.payload.trip_id;
   var emails = [];
+  var description = '';
   trip.getUserIdByTripId(req.payload.trip_id, (err, result) => {
     if (err) {
       // eslint-disable-next-line no-console
       console.log('get user id by trip id  error :', err)
       return res().code(500)
     }
-    if (result.rows.length > 0) {
+    if (result.rows.length > 0) {// there are users joined to this trip
       const d = result.rows[0];
       if (d.user_id === req.state.sid.user_id) {
         trip.updatetrip(req.payload, (error, result) => {
@@ -82,12 +83,19 @@ module.exports = (req, res) => {
                       emails = emails.concat({
                         'email': ownEmails.rows[0].email
                       })
+                      description = description.concat(
+                        `${ownEmails.rows[0].username}:
+                        ${ownEmails.rows[0].phone}\n`)
                       usersId.rowCount--;
                       if (usersId.rowCount === 0) {
+                        description = description.concat(
+                          `${tripAndUserInfo.rows[0].username}:
+                          ${tripAndUserInfo.rows[0].phone}\n`);
                         var data = Object.assign(tripAndUserInfo.rows[0], {
                           emails: emails.concat({
                             'email': tripAndUserInfo.rows[0].email
-                          })
+                          }),
+                          description:description
                         })
                         var eventId = tripId;
                         var event = template.updateEventTemplate(data);
@@ -100,14 +108,17 @@ module.exports = (req, res) => {
                             }
                             // eslint-disable-next-line no-console
                             console.log('update info in google calendar successfully');
+                            res({
+                              msg: 'Your Trip Edit Successfully'
+                            });
                           })
                       }
                     })
                   })
                 })
               })
-            } else {
-              //if no one joined the trip
+            } else {// no one joined the trip
+
               trip.getTripByid({
                 trip_id: tripId
               }, (err, tripAndUserInfo) => {
@@ -117,11 +128,15 @@ module.exports = (req, res) => {
                   return res().code(500)
                 }
                 var eventId = tripId;
+                description = description.concat(
+                  `${tripAndUserInfo.rows[0].username}:
+                  ${tripAndUserInfo.rows[0].phone}\n`);
                 var attendees = [{
                   'email': tripAndUserInfo.rows[0].email
                 }];
                 var data = Object.assign(tripAndUserInfo.rows[0], {
-                  emails: attendees
+                  emails: attendees,
+                  description:description
                 })
                 var event = template.updateEventTemplate(data);
                 eventUtils.updateEvent(event, eventId, (err, response) => {
@@ -132,13 +147,14 @@ module.exports = (req, res) => {
                   }
                   // eslint-disable-next-line no-console
                   console.log('update info in google calendar successfully');
+                  res({
+                    msg: 'Your Trip Edit Successfully'
+                  });
                 })
               })
             }
           })
-          res({
-            msg: 'Your Trip Edit Successfully'
-          });
+
         }) // end of updatetrip
       } else {
         res({
