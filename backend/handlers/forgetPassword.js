@@ -20,11 +20,11 @@ module.exports = (req, res) => {
     else {
       crypto.randomBytes(20, function(err, buf) {
         const token = buf.toString('hex');
-        const resetPasswordExpires = Date.now() + 3600000;
+        const resetpasswordexpires = Date.now() + 3600000;
         user.setToken(
           {
-            resetPasswordToken:token,
-            resetPasswordExpires:resetPasswordExpires,
+            resetpasswordtoken:token,
+            resetpasswordexpires:resetpasswordexpires,
             user_id:result.rows[0].user_id
           },
           (error,result2)=>{

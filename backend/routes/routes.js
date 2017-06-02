@@ -20,5 +20,7 @@ module.exports=[
   require('./approveJoinned.js'),
   require('./allTrips.js'),
   require('./forgetPassword.js'),
-  require('./resetPasswordPage.js')
+  require('./resetPasswordPage.js'),
+  require('./resetPassword.js'),
+
 ];

@@ -18,7 +18,9 @@ function getuserbyid(userid, cb) {
   email,password,
   phone,org_id,
   user_type,
-  approved
+  approved,
+  resetpasswordtoken,
+  resetpasswordexpires
   FROM users
   WHERE user_id=$1`;
   dbutils.runQuery(query, [userid], cb)
@@ -41,19 +43,19 @@ SET approved=1 WHERE email=$1`
 }
 function setToken(data, cb) {
   const query = `UPDATE users
-  SET resetPasswordToken=$1
-  , resetPasswordExpires=$2
+  SET resetpasswordtoken=$1
+  , resetpasswordexpires=$2
   WHERE
   user_id=$3`
   dbutils.runQuery(query,
     [
-      data.resetPasswordToken,
-      data.resetPasswordExpires,
+      data.resetpasswordtoken,
+      data.resetpasswordexpires,
       data.user_id
     ], cb)
 }
 function getToken(user_id, cb) {
-  const query = `Select resetPasswordToken,resetPasswordExpires
+  const query = `Select resetpasswordtoken,resetpasswordexpires
   from users
   WHERE
   user_id=$1`
@@ -67,11 +69,7 @@ function updatePassword(data,cb){
   SET password=$1
   where
   user_id=$2`
-  dbutils.runQuery(query,
-    [
-      data
-
-    ], cb)
+  dbutils.runQuery(query,data, cb)
 
 }
 function deletUser(email, cb) {
@@ -115,7 +113,7 @@ function createuser(data, cb) {
 }
 function getEmailByUserId(data,cb){
   const query = 'SELECT email from users where user_id = $1 ;';
-  dbutils.runQuery(query, data, cb)
+  dbutils.runQuery(query, [data], cb)
 }
 
 module.exports = {

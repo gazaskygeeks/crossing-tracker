@@ -20,7 +20,7 @@ module.exports = (req, res) => {
     }
     if (token===token_db){
       const timeNow = Date.now() + 3600000;
-      const orgTime=result.rows[0].resetPasswordExpires
+      const orgTime=result.rows[0].resetpasswordexpires
       const diff= timeNow-orgTime;
       var minutes = 1000 * 60;
       var hours = minutes * 60;
