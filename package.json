@@ -16,7 +16,7 @@
     "heroku-postbuild": "webpack -p --config webpack.config.js --progress",
     "build": "webpack",
     "jest:watch": "jest --watch",
-    "cover": "export NODE_ENV=test  &&  npm run db:create && istanbul cover ./tests/runner.js && npm run db:drop",
+    "cover": "export NODE_ENV=test  && npm run db:drop &&  npm run db:create && istanbul cover ./tests/runner.js",
     "db:create": "psql -c 'CREATE DATABASE tests;' -U postgres -h localhost",
     "db:drop": "psql -c 'DROP DATABASE IF EXISTS tests;' -U postgres -h localhost",
     "test:watch": "nodemon -x 'npm test' ",
