@@ -1,3 +1,4 @@
+const dbutils = require('../database/dbutils.js');
 const orgQuery = `INSERT INTO org
 (org_name)
 values
@@ -57,6 +58,11 @@ const usertripQuery =`INSERT INTO  usertrip
 )
 ;`;
 const usertrip = ['1','1']
+var randomSeq =Math.floor(Math.random()*90000) + 10000;
+const changeSequence = (cb) => {
+  const query = 'ALTER SEQUENCE trip_trip_id_seq RESTART WITH '.concat(randomSeq)
+  dbutils.runQuery(query,cb)
+}
 module.exports = {
   org,
   orgQuery,
@@ -70,7 +76,7 @@ module.exports = {
   admin,
   normalUser,
   tripQuery,
-  // trip,
+  changeSequence,
   usertripQuery,
   usertrip
 }

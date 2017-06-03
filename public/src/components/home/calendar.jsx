@@ -9,8 +9,6 @@ class Calendar extends React.Component {
     super(props)
     this.handleChange = this.handleChange.bind(this);
   }
-  ////////////////chaneg creat and calnder name in event of google cander
-
   componentWillMount() {
     BigCalendar.momentLocalizer(moment);
     this.props.getTrips(moment().format('YYYY-MM-DD'));

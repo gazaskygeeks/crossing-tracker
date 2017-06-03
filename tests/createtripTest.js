@@ -1,9 +1,11 @@
+/* eslint-disable */
+
 const test = require('tape');
 const server = require('../backend/server.js');
 test('POST /createtrip : test if recive the the correct Data', (t) => {
 
   var data ={
-    tripdate: '2017-04-25',
+    tripdate: '2017-07-02',
     time: '01:01',
     location_from: 1,
     location_to: 2,
@@ -35,11 +37,14 @@ test('POST /createtrip : test if recive the the correct Data', (t) => {
         cookie:'sid='+t3
       }
     }
+
     server.inject(option, (response) => {
       t.equal(typeof response.request.payload,'object', 'data is object')
       t.end();
+
     })
   })
+
 })
 
 
@@ -76,7 +81,7 @@ test('POST /createtrip : test data fields', (t) => {
       t.equal(response.statusCode, 400, 'data fields is required')
 
       var data ={
-        tripdate: '2017-04-25',
+        tripdate: '2017-04-02',
         time: '01:01',
         location_from: 1,
         location_to: 2,
@@ -132,7 +137,7 @@ test('POST /createtrip :check duplicate trip', (t) => {
       t.equal(response.statusCode, 400, 'data fields is required')
 
       var data ={
-        tripdate: '2017-04-25',
+        tripdate: '2017-07-02',
         time: '01:01',
         location_from: 1,
         location_to: 2,
@@ -153,7 +158,7 @@ test('POST /createtrip :check duplicate trip', (t) => {
         t.equal(response.result.statusCode, 409, 'trip already exists')
         t.end();
         // eslint-disable-next-line no-console
-        console.log('********************************* AcceptUser Test***********************');
+        console.log('********************************* Join Trip Test***********************');
       })
     })
   })
