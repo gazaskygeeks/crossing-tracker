@@ -42,7 +42,7 @@ function updateEventTemplate (data){
     Available seats :${data.available_seats},
     Pickup poin :${data.passing_by},
     Pickup time :${data.pass_point_time}`,
-    'description':`List of shared users:\n ${data.description}`,
+    'description':`List of shared passengers:\n ${data.description}`,
     'status':'confirmed',
     'start': {
       'dateTime': `${data.date}T${data.time}:00`,

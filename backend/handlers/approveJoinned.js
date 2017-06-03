@@ -2,9 +2,9 @@ const trip = require('../../database/tripHelpers')
 const user = require('../../database/userhelpers.js');
 const template = require('../eventTemplate.js');
 const utils = require('../eventUtils.js');
-var emails = [];
-var description = '';
 module.exports = (req, res) => {
+  var emails = [];
+  var description = '';
   // const ownerTrip       =req.state.sid.user_id;
   const joinnedMemberId = req.payload.userJoinnedId;
   const memberStatus = req.payload.memberStatus;
