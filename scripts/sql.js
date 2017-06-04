@@ -37,7 +37,7 @@ const usertrip = `CREATE TABLE IF NOT EXISTS usertrip (
   trip_id INT references trip(trip_id)
 );`;
 
-const approvedColumn =` DO $$
+const approvedColumn =`DO $$
     BEGIN
         BEGIN
             ALTER TABLE usertrip ADD COLUMN user_approved INT  DEFAULT 0;
@@ -48,9 +48,10 @@ const approvedColumn =` DO $$
             already exists in usertrip';
         END;
     END;
-$$
-
+$$ ;
 `
+const sequence = 'ALTER SEQUENCE trip_trip_id_seq RESTART WITH 10000;';
+
 module.exports = {
   users,
   trip,
@@ -58,5 +59,6 @@ module.exports = {
   org,
   location,
   usertype,
-  approvedColumn
+  approvedColumn,
+  sequence
 }

@@ -18,5 +18,6 @@ module.exports=[
   require('./edittrip.js'),
   require('./removejoinedtrip.js'),
   require('./approveJoinned.js'),
-  require('./allTrips.js')
+  require('./allTrips.js'),
+  require('./getTripByTime.js')
 ];

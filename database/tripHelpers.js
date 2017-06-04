@@ -48,7 +48,7 @@ values
   $6,
   $7,
   $8
-)
+) RETURNING trip_id
 `;
   dbutils.runQuery(
     query, [
@@ -121,8 +121,9 @@ function getJoinedTrip(data,cb){
   and trip.location_from_id=l.location_id`;
   dbutils.runQuery(query, [data], cb);
 }
+
 function getusertripbyuserid(data, cb) {
-  const query = 'SELECT trip_id,user_approved,user_id from usertrip where user_id=$1';
+  const query = 'SELECT trip_id,user_approved,user_id from usertrip where user_id=$1 and user_approved=1';
   dbutils.runQuery(query, [data], cb);
 }
 
@@ -144,7 +145,7 @@ function getJoinedUser(data, cb) {
     INNER JOIN org  o
     on o.org_id=u.org_id
     where trip.trip_id=$1 and
-    u.user_id = (SELECT user_id   from usertrip where trip_id=$1)
+    u.user_id in (SELECT user_id   from usertrip where trip_id=$1)
     and u.org_id = o.org_id and d.user_approved = 0 `;
   dbutils.runQuery(query, data, cb);
 }
@@ -222,7 +223,7 @@ function updateStatus(data, cb) {
 
 
 
-function getTripeByDate(date, cb) {
+function getTripByDate(date, cb) {
   const query = `
   select
     trip.available_seats,
@@ -238,6 +239,23 @@ function getTripeByDate(date, cb) {
   `;
 
   dbutils.runQuery(query, [date], cb)
+}
+function getTripByTime(id, cb) {
+  const query = `
+  select
+    trip.available_seats,
+    trip.trip_id,
+    trip.time,
+    trip.date,
+    l.location_name as location_from,
+    (select location_name from location where
+    location_id=trip.location_to_id) as location_to
+  from trip, location l
+  where trip_id=$1
+  and trip.location_from_id=l.location_id
+  `;
+
+  dbutils.runQuery(query, [id], cb)
 }
 
 function getTripByid(data, cb) {
@@ -269,14 +287,18 @@ function getTripByid(data, cb) {
   dbutils.runQuery(query, [data.trip_id], cb);
 }
 function getAllTrips(cb) {
-  const query = 'SELECT date,time from trip;';
+  const query = 'SELECT trip_id,date,time from trip;';
   dbutils.runQuery(query,cb)
+}
+function getAllJionedUserIdByTripId(data,cb){
+  const query = 'SELECT user_id  from usertrip where trip_id = $1 AND user_approved = 1;';
+  dbutils.runQuery(query,[data],cb)
 }
 module.exports = {
   gettripbytime: gettripbytime,
   createtrip: createtrip,
   gettripbyuserid: gettripbyuserid,
-  getTripeByDate: getTripeByDate,
+  getTripByDate: getTripByDate,
   getTripByid: getTripByid,
   getusertripbyuserid:getusertripbyuserid,
   getseats: getseats,
@@ -290,5 +312,7 @@ module.exports = {
   updateseats:updateseats,
   updateStatus:updateStatus,
   getJoinedUser:getJoinedUser,
-  getAllTrips : getAllTrips
+  getAllTrips : getAllTrips,
+  getAllJionedUserIdByTripId,
+  getTripByTime
 }

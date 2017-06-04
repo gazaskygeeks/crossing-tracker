@@ -78,6 +78,10 @@ function createuser(data, cb) {
         ], cb);
     });
 }
+function getEmailByUserId(data,cb){
+  const query = 'SELECT email,username,phone from users where user_id = $1 ;';
+  dbutils.runQuery(query, [data], cb)
+}
 
 module.exports = {
   getuserbyemail: getuserbyemail,
@@ -86,6 +90,7 @@ module.exports = {
   changestatus,
   deletUser,
   getDisApprovedUser,
-  getuserbyid
+  getuserbyid,
+  getEmailByUserId
 
 }

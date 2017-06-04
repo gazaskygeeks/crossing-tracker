@@ -2,7 +2,7 @@ import React from 'react'
 const RegestratedList = (props) => {
   const list = props.regList.map(function(item) {
     return (
-      <tr>
+      <tr key={item.email}>
         <td>{item.username}</td>
         <td>{item.email}</td>
         <td>{item.phone}</td>
