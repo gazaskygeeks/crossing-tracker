@@ -1,9 +1,9 @@
 const trip = require('../../database/tripHelpers');
 module.exports = (req, res) => {
-  trip.getTripByDate(req.payload, (error, result) => {
+  trip.getTripByTime(req.payload, (error, result) => {
     if (error) {
       // eslint-disable-next-line no-console
-      console.log('get Trip By Date Error :',error)
+      console.log('get Trip By Time Error :',error)
       {
         return res().code(500)
       }

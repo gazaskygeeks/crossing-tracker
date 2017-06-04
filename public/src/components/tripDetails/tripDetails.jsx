@@ -13,7 +13,7 @@ class TripDetails extends React.Component {
   constructor(props) {
     super(props);
   }
-  componentWillMount(){
+  componentDidMount(){
     {this.props.viewThisTrip(this.props.params.id)}
   }
 
@@ -23,16 +23,12 @@ class TripDetails extends React.Component {
     this.props.joinThisTrip({trip_id: this.props.params.id});
   }
   render() {
-    if(this.props.joinTrip === 'Trip added successfully'){
-      message = this.props.joinTrip;
-      type ='';
-    }else if(this.props.joinTrip === 'User is already in this trip'){
-      message = this.props.joinTrip;
-      type ='';
-    }else if (this.props.joinTrip === 'You can not join your created trip ') {
-      message = this.props.joinTrip;
-      type ='';
+    message = this.props.joinTrip;
+
+    if(message){
+      type='';
     }
+
     return (
       <div>
 
@@ -41,8 +37,8 @@ class TripDetails extends React.Component {
         <UserSection user={this.props.tripDetails}/>
 
     <div className="btn-wrp-center">
-      <p className='error'>{message}</p>
       <Status type={type} color={purple}/>
+      <p className='error'>{message}</p>
       <button
         className="btn btn-default"
         onClick={this.joinTripp.bind(this)}

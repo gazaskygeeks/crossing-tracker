@@ -5,7 +5,6 @@ const JoinedUsersRow = ({joinedUsers, approveJoin}) => {
     return <div>Loading...</div>;
   }
   const users = joinedUsers.map((user)=>{
-    console.log('user: ',user);
     if(user != null){
       const accept = {
         trip_id: user.trip_id,
@@ -18,7 +17,7 @@ const JoinedUsersRow = ({joinedUsers, approveJoin}) => {
         memberStatus: -1
       };
       return(
-          <tr>
+          <tr key={user.user_id+user.trip_id}>
             <td>{user.date}</td>
             <td>{user.username}</td>
             <td>{user.email}</td>
@@ -28,14 +27,28 @@ const JoinedUsersRow = ({joinedUsers, approveJoin}) => {
               <button
                 type="button"
                 className="btn btn-success"
-                onClick = {() => approveJoin(accept)}
+                onClick = {
+                  () => {
+                    return (
+                      approveJoin(accept),
+                      window.location.reload()
+                    );
+                  }
+                }
                 >
                 Accept
               </button>
               <button
                 type="button"
                 className="btn btn-danger"
-                onClick = {() => approveJoin(reject)}
+                onClick = {
+                  () => {
+                    return (
+                      approveJoin(reject),
+                      window.location.reload()
+                    );
+                  }
+                }
                 >
                 Reject
               </button>
@@ -49,7 +62,7 @@ const JoinedUsersRow = ({joinedUsers, approveJoin}) => {
       <div className='container'>
         <div className='row'>
           <div className='col-md-offset-2 col-md-8'>
-            <h3 className='heading'>Trip info</h3>
+            <h3 className='heading'>Awaiting passengers</h3>
             <table className='table'>
               <thead>
                 <tr>

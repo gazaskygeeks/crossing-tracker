@@ -1,14 +1,16 @@
 /*global process*/
 
+require('env2')('./.env');
 const Bcrypt = require('bcrypt');
 const nodemailer = require('nodemailer');
 const SALT_WORK_FACTOR = 10;
-const hash = (pass, cb) => {
+const google = require('googleapis');
 
+const hash = (pass, cb) => {
   Bcrypt.genSalt(SALT_WORK_FACTOR, function(error, salt) {
     if (error) {
       // eslint-disable-next-line no-console
-      console.log('genSalt :',error)
+      console.log('genSalt :', error)
 
       throw error
     }
@@ -16,7 +18,7 @@ const hash = (pass, cb) => {
   });
 }
 
-const sendemail = (sender, recipient, sub, content,cb) => {
+const sendemail = (sender, recipient, sub, content, cb) => {
   const transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
@@ -25,15 +27,36 @@ const sendemail = (sender, recipient, sub, content,cb) => {
     }
   });
   var mailOptions = {
-    from: sender, // sender address
-    to: recipient, // list of receivers
-    subject: sub, // Subject line
-    html: `<b>${content}</b>` // html body
+    from: sender,
+    to: recipient,
+    subject: sub,
+    html: `<b>${content}</b>`
   };
-  transporter.sendMail(mailOptions,cb)
+  transporter.sendMail(mailOptions, cb)
+}
+
+const googleAuth = (cb) => {
+  const jwtClient = new google.auth.JWT(
+    process.env.CLIENT_EMAIL,
+    null,
+    process.env.PRIVATE_KEY.replace(/\\n/g, '\n'),
+    ['https://www.googleapis.com/auth/calendar'],
+    null
+  );
+
+  jwtClient.authorize((err) => {
+    if (err) {
+      cb(err, undefined)
+      return;
+    }
+    cb(err, jwtClient)
+
+  });
 }
 
 module.exports = {
   hash,
-  sendemail
+  sendemail,
+  googleAuth
+
 }

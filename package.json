@@ -16,7 +16,7 @@
     "heroku-postbuild": "webpack -p --config webpack.config.js --progress",
     "build": "webpack",
     "jest:watch": "jest --watch",
-    "cover": "export NODE_ENV=test  &&  npm run db:create && istanbul cover ./tests/runner.js && npm run db:drop",
+    "cover": "export NODE_ENV=test  && npm run db:drop &&  npm run db:create && istanbul cover ./tests/runner.js",
     "db:create": "psql -c 'CREATE DATABASE tests;' -U postgres -h localhost",
     "db:drop": "psql -c 'DROP DATABASE IF EXISTS tests;' -U postgres -h localhost",
     "test:watch": "nodemon -x 'npm test' ",
@@ -55,6 +55,7 @@
     "eslint-plugin-react": "^6.10.3",
     "eslint-plugin-standard": "^3.0.1",
     "file-loader": "^0.8.5",
+    "googleapis": "^19.0.0",
     "hapi": "^16.1.1",
     "hapi-auth-cookie": "^7.0.0",
     "hapi-auth-jwt2": "^7.2.4",
@@ -79,8 +80,7 @@
     "redux": "^3.6.0",
     "style-loader": "^0.16.1",
     "url-loader": "0.5.7",
-    "webpack": "^2.4.1",
-    "react-loading": "^0.1.2"
+    "webpack": "^2.4.1"
   },
   "devDependencies": {
     "codeclimate-test-reporter": "^0.4.1",
