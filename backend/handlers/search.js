@@ -3,7 +3,16 @@ module.exports = (req, res) => {
   const from = req.payload.from;
   const to = req.payload.to;
   if (!from&&!to){
-    res('Error').code(400)
+    trip.getAllTrips((error, result) => {
+      if (error) {
+        // eslint-disable-next-line no-console
+        console.log('get Trip By Date Error :',error)
+        {
+          return res().code(500)
+        }
+      }
+      res(result.rows)
+    })
   }
   else if (from&&to){
     trip.getTripFromTo([from,to],(error,result)=>{
