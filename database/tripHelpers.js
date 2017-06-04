@@ -282,11 +282,27 @@ function getAllTrips(cb) {
   const query = 'SELECT trip_id,date,time from trip;';
   dbutils.runQuery(query,cb)
 }
+function getTripFromTo(data,cb) {
+  const query = 'SELECT trip_id,date,time from trip where location_from=$1 and location_to=$2 ;';
+  dbutils.runQuery(query,data,cb)
+}
+function getTripFrom(data,cb) {
+  const query = 'SELECT trip_id,date,time from trip where location_from=$1 ;';
+  dbutils.runQuery(query,data,cb)
+}
+function getTripTo(data,cb) {
+  const query = 'SELECT trip_id,date,time from trip where location_to=$1;';
+  dbutils.runQuery(query,data,cb)
+}
+
 function getAllJionedUserIdByTripId(data,cb){
   const query = 'SELECT user_id  from usertrip where trip_id = $1 AND user_approved = 1;';
   dbutils.runQuery(query,[data],cb)
 }
 module.exports = {
+  getTripFromTo,
+  getTripFrom,
+  getTripTo,
   gettripbytime: gettripbytime,
   createtrip: createtrip,
   gettripbyuserid: gettripbyuserid,
