@@ -40,7 +40,7 @@ test('DELETE/trip: Remove Joined Trip successfully', (t) => {
         t.equal(result.msg, 'Your trip removed successfully', 'Trip removed Succussfuly');
         t.end();
         // eslint-disable-next-line no-console
-        console.log('*****************Sign out TEST****************************');
+        console.log('*****************forgetPassword TEST****************************');
       })
     })
   })
