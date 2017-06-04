@@ -1,29 +1,27 @@
 import React from 'react';
 import viewTrip from '../../actions/tripDetailsActions.js';
-import joinTrip from '../../actions/joinTripActions.js';
+import joinTripThis from '../../actions/joinTripActions.js';
 import {connect} from 'react-redux';
 import TripSection from './tripSection.jsx';
 import UserSection from './userSection.jsx';
 import Status from '../loading/loading.jsx';
+import store from '../../store/store';
 
-var type='';
-var message='';
-var purple = '#794f6c';
 class TripDetails extends React.Component {
   constructor(props) {
     super(props);
   }
+
   componentWillMount(){
     {this.props.viewThisTrip(this.props.params.id)}
+    store.dispatch({type: 'EMPTY_MESSAE', payload: {}});
   }
 
   joinTripp(){
-    message='';
-    type = 'spinningBubbles';
     this.props.joinThisTrip({trip_id: this.props.params.id});
   }
   render() {
-    message = this.props.joinTrip;
+
     return (
       <div>
 
@@ -31,16 +29,16 @@ class TripDetails extends React.Component {
 
         <UserSection user={this.props.tripDetails}/>
 
-    <div className="btn-wrp-center">
-      <p className='error'>{message}</p>
-      <Status type={type} color={purple}/>
-      <button
-        className="btn btn-default"
-        onClick={this.joinTripp.bind(this)}
-        >
-        Join this trip
-      </button>
-    </div>
+        <div className="btn-wrp-center">
+          <p className='error'>{this.props.joinTrip}</p>
+          <button
+            className="btn btn-default"
+            onClick={this.joinTripp.bind(this)}
+            >
+            Join this trip
+          </button>
+        </div>
+
       </div>
     );
   }
@@ -59,7 +57,7 @@ const mapDispatchToProps = () => {
       viewTrip(id);
     },
     joinThisTrip : (id) => {
-      joinTrip(id);
+      joinTripThis(id);
     }
   }
 }

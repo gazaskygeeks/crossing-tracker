@@ -7,6 +7,8 @@ function joinTripReducer(state = initialState.joinTrip, action) {
     return action.payload;
   case types.JOIN_TRIP_FAILURE:
     return state;
+  case 'EMPTY_MESSAE':
+    return action.payload;
   default:
     return state;
   }

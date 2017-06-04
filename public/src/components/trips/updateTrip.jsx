@@ -22,7 +22,7 @@ class UserTripsRow extends React.Component {
   test(){
     this.state = {
       trip_id: this.props.GetTripByID.trip_id,
-      tripdate: this.props.GetTripByID.tripdate,
+      tripdate: this.props.GetTripByID.date,
       time: this.props.GetTripByID.time,
       location_from: this.props.GetTripByID.location_from_id,
       location_to: this.props.GetTripByID.location_to_id,
@@ -91,6 +91,7 @@ class UserTripsRow extends React.Component {
             id={this.props.params.id}
             getData = {this.test.bind(this)}
             seatsMsg = {seatsMsg}
+            GetTripByID = {this.props.GetTripByID}
           />
         </div>
       </section>
@@ -114,7 +115,7 @@ const mapDispatchToProps = () => {
     },
     viewThisTrip  : (id) => {
       viewTrip(id);
-    },
+    }
   }
 }
 
