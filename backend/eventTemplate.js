@@ -3,7 +3,7 @@ function insertEventTemplate (data){
     'summary':
     `
 Trip owner : ${data.username},
-    
+
 Trip owner phone : ${data.phone},
     From :${data.location_from},
     To :${data.location_to},
@@ -34,17 +34,16 @@ Trip owner phone : ${data.phone},
 
 function updateEventTemplate (data){
   var event = {
-    'summary':
-    `
-Trip owner : ${data.username},
-    
-Trip owner phone : ${data.phone},
+    'summary':`
+    Trip owner : ${data.username},
+    Trip owner phone : ${data.phone},
     From :${data.location_from},
     To :${data.location_to},
     Available seats :${data.available_seats},
     Pickup poin :${data.passing_by},
-    Pickup time :${data.pass_point_time}
-    ` ,
+    Pickup time :${data.pass_point_time}`,
+    'description':`List of shared passengers:\n ${data.description}`,
+    'status':'confirmed',
     'start': {
       'dateTime': `${data.date}T${data.time}:00`,
       'timeZone': '(GMT+03:00) Jerusalem'

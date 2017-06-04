@@ -3,6 +3,7 @@ import Calendar from './calendar.jsx';
 import TripsHomeDisplay from './tripsSection.jsx';
 import HomeTrips from '../../actions/tripsActions.js';
 import GetAllTrips from '../../actions/getAllTrips.js';
+import GetTripByTime from '../../actions/getTripByTime.js'
 import {connect} from 'react-redux'
 
 class PageHome extends React.Component {
@@ -47,6 +48,9 @@ const mapDispatchToProps = () => {
     },
     getAllTrips : () =>{
       GetAllTrips()
+    },
+    getTripByTime : (id) =>{
+      GetTripByTime(id)
     }
   }
 }

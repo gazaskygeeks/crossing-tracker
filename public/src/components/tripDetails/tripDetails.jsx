@@ -13,7 +13,7 @@ class TripDetails extends React.Component {
   constructor(props) {
     super(props);
   }
-  componentWillMount(){
+  componentDidMount(){
     {this.props.viewThisTrip(this.props.params.id)}
   }
 
@@ -24,6 +24,11 @@ class TripDetails extends React.Component {
   }
   render() {
     message = this.props.joinTrip;
+
+    if(message){
+      type='';
+    }
+
     return (
       <div>
 
@@ -32,8 +37,8 @@ class TripDetails extends React.Component {
         <UserSection user={this.props.tripDetails}/>
 
     <div className="btn-wrp-center">
-      <p className='error'>{message}</p>
       <Status type={type} color={purple}/>
+      <p className='error'>{message}</p>
       <button
         className="btn btn-default"
         onClick={this.joinTripp.bind(this)}

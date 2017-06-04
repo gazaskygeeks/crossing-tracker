@@ -1,12 +1,19 @@
+/* eslint-disable */
+
 const dbutils = require('../database/dbutils.js');
 const data = require('../scripts/sqltest.js');
 const utiles = require('../backend/utils.js');
 const test = require('tape');
+
 // eslint-disable-next-line no-console
 console.log('************************* DataBase Test**********************************');
 test('create tables ', (t) => {
   dbutils.runMigrate((error) => {
-    dbutils.runSequence((error) => {
+    data.changeSequence((err,result)=>{
+      if(err){
+        console.log('error in update sequence:',err);
+        return
+      }
       t.notOk(error, 'create table successfully')
       t.end()
     })

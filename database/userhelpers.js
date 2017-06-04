@@ -112,7 +112,7 @@ function createuser(data, cb) {
     });
 }
 function getEmailByUserId(data,cb){
-  const query = 'SELECT email from users where user_id = $1 ;';
+  const query = 'SELECT email,username,phone from users where user_id = $1 ;';
   dbutils.runQuery(query, [data], cb)
 }
 

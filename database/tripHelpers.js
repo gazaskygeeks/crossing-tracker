@@ -240,6 +240,23 @@ function getTripByDate(date, cb) {
 
   dbutils.runQuery(query, [date], cb)
 }
+function getTripByTime(id, cb) {
+  const query = `
+  select
+    trip.available_seats,
+    trip.trip_id,
+    trip.time,
+    trip.date,
+    l.location_name as location_from,
+    (select location_name from location where
+    location_id=trip.location_to_id) as location_to
+  from trip, location l
+  where trip_id=$1
+  and trip.location_from_id=l.location_id
+  `;
+
+  dbutils.runQuery(query, [id], cb)
+}
 
 function getTripByid(data, cb) {
   const query = `
@@ -270,7 +287,7 @@ function getTripByid(data, cb) {
   dbutils.runQuery(query, [data.trip_id], cb);
 }
 function getAllTrips(cb) {
-  const query = 'SELECT date,time from trip;';
+  const query = 'SELECT trip_id,date,time from trip;';
   dbutils.runQuery(query,cb)
 }
 function getAllJionedUserIdByTripId(data,cb){
@@ -296,5 +313,6 @@ module.exports = {
   updateStatus:updateStatus,
   getJoinedUser:getJoinedUser,
   getAllTrips : getAllTrips,
-  getAllJionedUserIdByTripId
+  getAllJionedUserIdByTripId,
+  getTripByTime
 }
