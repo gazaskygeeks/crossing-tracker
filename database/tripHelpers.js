@@ -79,7 +79,7 @@ function addtripuser(data,cb){
 function getusertripbytripisuserid(data, cb) {
 
   const query = `SELECT
-  id,user_id,trip_id
+  id,user_id,trip_id,user_approved
   From usertrip
   WHERE
   user_id=$1
@@ -122,8 +122,31 @@ function getJoinedTrip(data,cb){
   dbutils.runQuery(query, [data], cb);
 }
 function getusertripbyuserid(data, cb) {
-  const query = 'SELECT trip_id from usertrip where user_id=$1';
+  const query = 'SELECT trip_id,user_approved,user_id from usertrip where user_id=$1';
   dbutils.runQuery(query, [data], cb);
+}
+
+function getJoinedUser(data, cb) {
+  const query = `select trip.trip_id,
+    trip.date,
+    trip.user_id,
+    u.user_id,
+    u.username,
+    u.email,
+    u.phone,
+    o.org_name,
+    d.user_approved
+    from trip
+    INNER JOIN usertrip d
+    on trip.trip_id=d.trip_id
+    INNER JOIN users u
+    on  d.user_id=u.user_id
+    INNER JOIN org  o
+    on o.org_id=u.org_id
+    where trip.trip_id=$1 and
+    u.user_id = (SELECT user_id   from usertrip where trip_id=$1)
+    and u.org_id = o.org_id and d.user_approved = 0 `;
+  dbutils.runQuery(query, data, cb);
 }
 
 function getseats(data, cb) {
@@ -139,7 +162,7 @@ function getUserIdByTripId(data, cb){
 
 function getusertripbytripid(data, cb) {
   const query = `SELECT
-   id,user_id,trip_id
+   id,user_id,trip_id,user_approved
    From usertrip
    WHERE trip_id=$1`;
   dbutils.runQuery(query, [data], cb);
@@ -182,6 +205,18 @@ function updateseats(data, cb) {
       data.available_seats,
       data.trip_id
     ]
+    , cb);
+}
+function updateStatus(data, cb) {
+
+  const query = `UPDATE usertrip
+   SET
+   user_approved=$2
+   WHERE trip_id=$3
+   AND user_id=$1`;
+  dbutils.runQuery(
+    query,
+    data
     , cb);
 }
 
@@ -233,6 +268,10 @@ function getTripByid(data, cb) {
     `;
   dbutils.runQuery(query, [data.trip_id], cb);
 }
+function getAllTrips(cb) {
+  const query = 'SELECT date,time from trip;';
+  dbutils.runQuery(query,cb)
+}
 module.exports = {
   gettripbytime: gettripbytime,
   createtrip: createtrip,
@@ -248,5 +287,8 @@ module.exports = {
   getJoinedTrip:getJoinedTrip,
   getUserIdByTripId:getUserIdByTripId,
   deleteusertrip:deleteusertrip,
-  updateseats:updateseats
+  updateseats:updateseats,
+  updateStatus:updateStatus,
+  getJoinedUser:getJoinedUser,
+  getAllTrips : getAllTrips
 }

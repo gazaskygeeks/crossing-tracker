@@ -10,6 +10,8 @@ import {geLocationsReducer} from '../reducers/getLocationsReducer.js';
 import {joinTripReducer} from '../reducers/joinTripReducers.js';
 import {userTripsReducer} from '../reducers/myTripsReducer.js';
 import {unjoinTripReducer} from '../reducers/unjoinTripReduce.js';
+import {getAllTripsReducer} from '../reducers/getAllTripsReducer.js';
+import {joinApproveReducer} from '../reducers/approveJoinReducer.js';
 
 const reducers = combineReducers({
   signin: signinReducer,
@@ -23,7 +25,9 @@ const reducers = combineReducers({
   locations: geLocationsReducer,
   joinTrip: joinTripReducer,
   userTrips: userTripsReducer,
-  unjoinTrip: unjoinTripReducer
+  unjoinTrip: unjoinTripReducer,
+  allTrips : getAllTripsReducer,
+  aprroveJoin : joinApproveReducer
 });
 var store = createStore(
   reducers,

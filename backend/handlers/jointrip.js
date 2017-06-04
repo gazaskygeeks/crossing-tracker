@@ -27,7 +27,6 @@ module.exports = (req, res) => {
           return res({
             msg: 'You can not join your created trip ',
           }).code(401)
-
         }
         trip.getseats(req.payload.trip_id, (error, result) => {
           const seats = result.rows[0].available_seats;
@@ -36,7 +35,6 @@ module.exports = (req, res) => {
             console.log('get trip by trip id error:', error)
             return res().code(500)
           }
-
           trip.getusertripbytripid(req.payload.trip_id, (err, result2) => {
             if (result2.rows.length < result.rows[0].available_seats) {
               trip.addtripuser(usertripinfo, (error) => {
@@ -66,7 +64,6 @@ module.exports = (req, res) => {
                     },
                       (error, result2) => {
                         if (error) {
-
                           // eslint-disable-next-line no-console
                           console.log('Update Seats Error :', error)
                           return res().code(500)
@@ -93,18 +90,15 @@ module.exports = (req, res) => {
                               trip.getTripByid({
                                 trip_id: usertripinfo[1]
                               }, (error, data) => {
-
                                 res({
                                   msg: 'Trip added successfully',
                                   result: data.rows
                                 }).code(200)
-
                               })
                             })
                         })
                       })
                   })
-
                 })
               })
             } else {

@@ -1,14 +1,13 @@
 import React from 'react'
-import {connect} from 'react-redux'
 import {Link} from 'react-router';
 
-const HomeTrips = (props) => {
+const TripsHomeDisplay = (props) => {
   var trips;
   if (props.tripsList.length === 0) {
     trips = <tr>
               <td colSpan={4}>No Available trips.
                 You can create your own here:
-                <Link to={'/createtrip/'}>  Create Trip</Link>
+                <Link to={'/createtrip/'}>  Create trip</Link>
               </td>
            </tr>;
   } else {
@@ -20,7 +19,7 @@ const HomeTrips = (props) => {
                   {item.location_from}</td>
               <td>{item.location_to}</td>
               <td>
-                  <Link to={`/tripdetails/${item.trip_id}`}>View Trip</Link>
+                  <Link to={`/tripdetails/${item.trip_id}`}>View trip</Link>
               </td>
           </tr>
       )
@@ -32,10 +31,4 @@ const HomeTrips = (props) => {
         </tbody>
   )
 }
-
-const mapStateToProps = (store) => {
-  return {tripsList: store.homeTrips}
-}
-
-const TripsHomeDisplay = connect(mapStateToProps)(HomeTrips)
 export default TripsHomeDisplay

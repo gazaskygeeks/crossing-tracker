@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, IndexLink } from 'react-router';
 import signout from '../../actions/signout.js'
-
+var user
 const Header = ({logedIn , path}) => {
   if(path != '/' && path != '/signup' && path != '/success' ){
     return (
@@ -9,7 +9,7 @@ const Header = ({logedIn , path}) => {
         <div className='container'>
           <div className='row'>
             <div className='col-xs-4 logo'>
-              <img src={require('../../../img/logo.png')} />
+              <img src='/public/img/logo.png' />
             </div>
             <div className='col-xs-8 nav-wrp'>
               <nav className='navbar navbar-right navbar-default'>
@@ -40,12 +40,12 @@ const Header = ({logedIn , path}) => {
                     </li>
                     <li>
                       <Link to='/trips' activeClassName='active'>
-                        My Trips
+                        My trips
                       </Link>
                     </li>
                     <li>
                       <Link to='/createtrip' activeClassName='active'>
-                        Create Trips
+                        Create trips
                       </Link>
                     </li>
                     <li>

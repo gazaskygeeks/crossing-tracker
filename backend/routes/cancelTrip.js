@@ -1,7 +1,7 @@
 const cancelTripHandler = require('../handlers/cancelTrip.js');
 
 const canselTrip = {
-  method:'POST',
+  method:'DELETE',
   path:'/cancelTrip',
   handler:cancelTripHandler,
   config: {

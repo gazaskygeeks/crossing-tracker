@@ -18,7 +18,7 @@ const UserTripsRow = ({userTrips}) => {
             <span>{trip.pass_point_time}</span>
           </li>
           <li>
-            <label>Seats available</label>
+            <label>Available seats </label>
             <span>{trip.available_seats}</span>
           </li>
         </ul>

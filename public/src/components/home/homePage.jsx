@@ -1,16 +1,20 @@
 import React from 'react';
-import {Link} from 'react-router';
 import Calendar from './calendar.jsx';
 import TripsHomeDisplay from './tripsSection.jsx';
+import HomeTrips from '../../actions/tripsActions.js';
+import GetAllTrips from '../../actions/getAllTrips.js';
+import {connect} from 'react-redux'
 
-class HomePage extends React.Component {
-    render() {
-        return (
+class PageHome extends React.Component {
+  render() {
+    return (
             <section className='data-wrp'>
                 <div className='container'>
                     <div className='row'>
                         <div className='col-md-8 calendar'>
-                            <Calendar/>
+                            <Calendar
+                              {...this.props}
+                            />
                         </div>
                         <div className='col-md-4 details'>
                             <table className='table'>
@@ -22,14 +26,32 @@ class HomePage extends React.Component {
                                         <th>Details</th>
                                     </tr>
                                 </thead>
-                                <TripsHomeDisplay />
+                                <TripsHomeDisplay
+                                {...this.props}/>
                             </table>
                         </div>
                     </div>
                 </div>
             </section>
-        );
-    }
+    );
+  }
 }
+const mapStateToProps = (store) => {
+  return {tripsList: store.homeTrips,
+    allTrips : store.allTrips}
+}
+const mapDispatchToProps = () => {
+  return {
+    getTrips  : (date) => {
+      HomeTrips(date);
+    },
+    getAllTrips : () =>{
+      GetAllTrips()
+    }
+  }
+}
+const HomePage = connect(
+  mapStateToProps,mapDispatchToProps
+)(PageHome)
 
 export default HomePage;

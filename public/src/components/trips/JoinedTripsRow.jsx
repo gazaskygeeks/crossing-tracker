@@ -26,7 +26,7 @@ console.log('userData: ',userData);
 
             </li>
           <li>
-            <label>Seats available</label>
+            <label>Available seats</label>
             <span>{trip.available_seats}</span>
           </li>
         </ul>

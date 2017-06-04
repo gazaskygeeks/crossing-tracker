@@ -30,7 +30,7 @@ class SigninPage extends React.Component {
   }
   render() {
     if(this.props.signin.statusCode === 401){
-      message=  'Your email or password is not correct';
+      message=  'Email or password not correct';
       type ='';
     }
     else if (this.props.signin.statusCode === 403){
@@ -53,7 +53,7 @@ class SigninPage extends React.Component {
               wrapper'
               >
               <div className='form'>
-                <h1>Member Login</h1>
+                <h1>Member login</h1>
                 <div className='form-group'>
                   <input
                     type='email'
@@ -98,8 +98,6 @@ class SigninPage extends React.Component {
 const mapStateToProps = (store) => {
   return { signin: store.signin }
 }
-
-
 
 const mapDispatchToProps = () => {
   return {

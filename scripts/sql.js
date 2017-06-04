@@ -36,11 +36,27 @@ const usertrip = `CREATE TABLE IF NOT EXISTS usertrip (
   user_id INT references users (user_id),
   trip_id INT references trip(trip_id)
 );`;
+
+const approvedColumn =` DO $$
+    BEGIN
+        BEGIN
+            ALTER TABLE usertrip ADD COLUMN user_approved INT  DEFAULT 0;
+        EXCEPTION
+              WHEN duplicate_column
+            THEN RAISE NOTICE
+            'column user_approved
+            already exists in usertrip';
+        END;
+    END;
+$$
+
+`
 module.exports = {
   users,
   trip,
   usertrip,
   org,
   location,
-  usertype
+  usertype,
+  approvedColumn
 }
