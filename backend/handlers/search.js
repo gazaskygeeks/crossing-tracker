@@ -1,8 +1,14 @@
 const trip = require('../../database/tripHelpers');
 module.exports = (req, res) => {
+
+  if(!req.payload){
+    return   res().code(400)
+
+  }
   const from = req.payload.from;
   const to = req.payload.to;
   if (!from&&!to){
+
     trip.getAllTrips((error, result) => {
       if (error) {
         // eslint-disable-next-line no-console

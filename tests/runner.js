@@ -11,4 +11,5 @@ require('./mytripTest.js');
 require('./getDisApprovedTest.js')
 require('./removeJoinedTripTest.js')
 require('./forgetPasswordTest.js')
+require('./searchTest.js')
 require('./signoutTest.js');

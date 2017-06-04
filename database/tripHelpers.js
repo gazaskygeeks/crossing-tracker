@@ -283,15 +283,15 @@ function getAllTrips(cb) {
   dbutils.runQuery(query,cb)
 }
 function getTripFromTo(data,cb) {
-  const query = 'SELECT trip_id,date,time from trip where location_from=$1 and location_to=$2 ;';
+  const query = 'SELECT trip_id,date,time from trip where location_from_id=$1 and location_to_id=$2 ;';
   dbutils.runQuery(query,data,cb)
 }
 function getTripFrom(data,cb) {
-  const query = 'SELECT trip_id,date,time from trip where location_from=$1 ;';
+  const query = 'SELECT trip_id,date,time from trip where location_from_id=$1 ;';
   dbutils.runQuery(query,data,cb)
 }
 function getTripTo(data,cb) {
-  const query = 'SELECT trip_id,date,time from trip where location_to=$1;';
+  const query = 'SELECT trip_id,date,time from trip where location_to_id=$1;';
   dbutils.runQuery(query,data,cb)
 }
 

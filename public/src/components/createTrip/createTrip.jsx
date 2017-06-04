@@ -131,7 +131,8 @@ class CreateTrip extends React.Component{
 
                   <div className='form-group'>
                     <label>Other details</label>
-                    <input
+                    <textarea
+                      placeholder="e.g. 'Meet outside the National Hotel"
                       type='text'
                       value={this.state.details}
                       className='form-control'
