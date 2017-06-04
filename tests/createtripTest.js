@@ -9,8 +9,7 @@ test('POST /createtrip : test if recive the the correct Data', (t) => {
     time: '01:01',
     location_from: 1,
     location_to: 2,
-    passing_by:'asxsacs',
-    pass_point_time:'01:01',
+    details:'asxsacs',
     available_seats: 1,
 
   }
@@ -79,29 +78,7 @@ test('POST /createtrip : test data fields', (t) => {
     server.inject(option, (response) => {
 
       t.equal(response.statusCode, 400, 'data fields is required')
-
-      var data ={
-        tripdate: '2017-04-02',
-        time: '01:01',
-        location_from: 1,
-        location_to: 2,
-        passing_by:'asxsacs',
-        pass_point_time:'01:1',
-        available_seats: 2,
-
-      }
-      var  option = {
-        method: 'POST',
-        url: '/trip',
-        payload:data,
-        headers:{
-          cookie:'sid='+t3
-        }
-      }
-      server.inject(option, (response) => {
-        t.equal(response.statusCode, 400, 'check pas point time')
-        t.end();
-      })
+      t.end();
     })
   })
 
@@ -141,8 +118,7 @@ test('POST /createtrip :check duplicate trip', (t) => {
         time: '01:01',
         location_from: 1,
         location_to: 2,
-        passing_by:'asxsacs',
-        pass_point_time:'01:01',
+        details:'asxsacs',
         available_seats: 2,
 
       }
