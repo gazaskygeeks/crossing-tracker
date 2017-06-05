@@ -100,7 +100,8 @@ function gettripbyuserid(data, cb) {
   (select location_name from location where
   location_id=trip.location_to_id) as location_to  FROM
   trip , location l where user_id=$1
-  and trip.location_from_id=l.location_id`;
+  and trip.location_from_id=l.location_id
+  and trip_status=0`;
   dbutils.runQuery(query, [data], cb);
 }
 function getJoinedTrip(data,cb){

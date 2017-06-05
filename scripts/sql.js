@@ -53,7 +53,7 @@ const approvedColumn =`DO $$
 $$ ;
 `
 const sequence = 'ALTER SEQUENCE trip_trip_id_seq RESTART WITH 10000;';
-
+const trip_status = 'ALTER TABLE trip ADD COLUMN IF NOT EXISTS trip_status INT DEFAULT 0;'
 module.exports = {
   users,
   trip,
@@ -62,5 +62,6 @@ module.exports = {
   location,
   usertype,
   approvedColumn,
-  sequence
+  sequence,
+  trip_status
 }
