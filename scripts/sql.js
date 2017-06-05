@@ -18,7 +18,9 @@ const users = `CREATE TABLE IF NOT EXISTS users (
     phone varchar(15),
     org_id INT references org(org_id),
     user_type INT references usertype(usertype_id) DEFAULT 3,
-    approved INT  DEFAULT 0
+    approved INT  DEFAULT 0,
+    resetpasswordtoken varchar(255),
+    resetpasswordexpires varchar(255)
   );`;
 const trip = `CREATE TABLE IF NOT EXISTS trip (
     trip_id serial PRIMARY KEY,

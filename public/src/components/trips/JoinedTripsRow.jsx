@@ -14,7 +14,7 @@ const joinedTripsRow = ({joinedTrips, unjoinTrip, userData, msg}) => {
       }
     }
     return(
-      <div key={trip.trip_id} className='col-md-offset-2 col-md-8'>
+      <div key={trip.trip_id}>
         <ul>
           <li><label>Trip date</label> <span>{trip.date}</span></li>
           <li><label>Time</label> <span>{trip.time}</span></li>

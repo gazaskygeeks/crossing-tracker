@@ -1,12 +1,31 @@
-import React from 'react'
+import React from 'react';
 import { hashHistory } from 'react-router';
+import moment from 'moment';
+
 const UserTripsRow = ({userTrips}) => {
   if(!userTrips){
     return <div>Loading...</div>;
   }
-  const trips = userTrips.map((trip)=>{
+
+  const arr = userTrips.sort(function(a,b){
+    return new Date(b.date) - new Date(a.date);
+  });
+
+  const trips = arr.map((trip)=>{
+    const date =  new Date(trip.date);
+    const Newdate = new Date(date.setTime( date.getTime() + 1 * 86400000 ));
+
+    let show;
+    let message;
+    if(moment()._d > Newdate){
+      show = {visibility: 'hidden'};
+      message = 'Expired Trip';
+    }else{
+      show = {visibility: 'visible'};
+      message = '';
+    }
     return(
-      <div key={trip.trip_id} className='col-md-offset-2 col-md-8'>
+      <div key={trip.trip_id}>
         <ul>
           <li><label>Trip date</label> <span>{trip.date}</span></li>
           <li><label>Time</label> <span>{trip.time}</span></li>
@@ -23,7 +42,9 @@ const UserTripsRow = ({userTrips}) => {
           </li>
         </ul>
         <div className='btn-wrp-right'>
+          <p className='error'>{message}</p>
           <button
+            style={show}
             type='button'
             className='btn btn-default'
             onClick={

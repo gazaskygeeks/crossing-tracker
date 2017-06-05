@@ -18,5 +18,9 @@ module.exports=[
   require('./edittrip.js'),
   require('./removejoinedtrip.js'),
   require('./approveJoinned.js'),
-  require('./allTrips.js')
+  require('./allTrips.js'),
+  require('./forgetPassword.js'),
+  require('./resetPasswordPage.js'),
+  require('./resetPassword.js'),
+  require('./getTripByTime.js')
 ];

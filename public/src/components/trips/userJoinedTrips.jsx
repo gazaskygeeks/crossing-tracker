@@ -8,20 +8,14 @@ const userJoinedTrips = ({joinedTrips, unjoinTrip, userData, msg}) => {
 
   return (
     <section className='mytrip'>
-      <div className='container'>
-        <div className='row'>
-          <div className='col-md-offset-2 col-md-8'>
-            <h3 className='heading'>Joined trips</h3>
-            <span className='caption'>Joined trips apear here</span>
-          </div>
-          <UserTripsRow
-            joinedTrips={joinedTrips}
-            unjoinTrip={unjoinTrip}
-            userData={userData}
-            msg={msg}
-            />
-        </div>
-      </div>
+      <h3 className='heading'>Joined trips</h3>
+      <span className='caption'>Joined trips apear here</span>
+      <UserTripsRow
+        joinedTrips={joinedTrips}
+        unjoinTrip={unjoinTrip}
+        userData={userData}
+        msg={msg}
+        />
     </section>
   )
 

@@ -14,6 +14,7 @@
   width: 80px;
   position: absolute;
 }
+
 .btn-wrp-center .Loading div {
   position: absolute;
   bottom: 50px;
@@ -22,10 +23,10 @@
 }
 
 .form-wrp.signup .Loading div {
-    position: absolute;
-    top: 60%;
-    left: 50%;
-    transform: translateX(-50%);
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 .form-wrp.signin .Loading div {
@@ -503,4 +504,19 @@ header .navbar-default .navbar-toggle:focus, header .navbar-default .navbar-togg
   font-weight: 600;
   margin-bottom: 10px !important;
   font-size: 16px;
+}
+
+.btns-wrp {
+  padding-top: 20px;
+  text-align: center;
+}
+
+.btns-wrp button {
+  width: 85%;
+  margin-bottom: 4px;
+  border-radius: 0;
+}
+
+.joined-users {
+    padding-top: 20px;
 }

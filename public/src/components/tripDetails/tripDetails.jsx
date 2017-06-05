@@ -6,6 +6,7 @@ import TripSection from './tripSection.jsx';
 import UserSection from './userSection.jsx';
 import Status from '../loading/loading.jsx';
 import store from '../../store/store';
+import moment from 'moment';
 
 class TripDetails extends React.Component {
   constructor(props) {
@@ -21,6 +22,20 @@ class TripDetails extends React.Component {
     this.props.joinThisTrip({trip_id: this.props.params.id});
   }
   render() {
+    let show = {};
+    let message = '';
+
+    if(this.props.tripDetails){
+      const date =  new Date(this.props.tripDetails.date);
+      const Newdate = new Date(date.setTime( date.getTime() + 1 * 86400000 ));
+      if(moment()._d > Newdate){
+        show = {visibility: 'hidden'};
+        message = 'Expired Trip';
+      }else{
+        show = {visibility: 'visible'};
+        message = '';
+      }
+    }
 
     return (
       <div>
@@ -31,14 +46,15 @@ class TripDetails extends React.Component {
 
         <div className="btn-wrp-center">
           <p className='error'>{this.props.joinTrip}</p>
+          <p className='error'>{message}</p>
           <button
+            style={show}
             className="btn btn-default"
             onClick={this.joinTripp.bind(this)}
             >
             Join this trip
           </button>
         </div>
-
       </div>
     );
   }
