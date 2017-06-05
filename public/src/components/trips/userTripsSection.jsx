@@ -8,17 +8,11 @@ const userTripsSection = ({userTrips}) => {
 
   return (
     <section className='mytrip'>
-      <div className='container'>
-        <div className='row'>
-          <div className='col-md-offset-2 col-md-8'>
-            <h3 className='heading'>Created trips</h3>
-            <span className='caption'>Own trips apear here</span>
-          </div>
-          <UserTripsRow
-            userTrips = {userTrips}
-            />
-        </div>
-      </div>
+        <h3 className='heading'>Created trips</h3>
+        <span className='caption'>Own trips apear here</span>
+        <UserTripsRow
+          userTrips = {userTrips}
+          />
     </section>
   )
 

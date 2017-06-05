@@ -19,7 +19,6 @@ class SigninPage extends React.Component {
     type = 'spinningBubbles';
     if (this.state.email.length && this.state.password.length) {
       this.props.sginin(this.state)
-      this.setState({email: '', password: ''})
     }
   }
   changeEmail(ev) {

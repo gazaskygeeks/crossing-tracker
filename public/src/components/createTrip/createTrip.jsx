@@ -63,16 +63,6 @@ class CreateTrip extends React.Component{
     message ='';
     type = 'spinningBubbles';
     this.props.TripsCreation(this.state)
-    this.setState(
-      {
-        tripdate: '',
-        time: '',
-        location_from: '',
-        location_to: '',
-        details:'',
-        available_seats: 0
-      }
-    )
   }
   render() {
     if(this.props.createTrip.statusCode === 200){
@@ -106,9 +96,10 @@ class CreateTrip extends React.Component{
                       />
                   </div>
                   <div className='form-group'>
-                    <label>Time</label>
+                    <label>Departure Time</label>
                     <input
                       type='time'
+                      name='time'
                       value={this.state.time}
                       className='form-control'
                       onChange={this.changeTime.bind(this)}
