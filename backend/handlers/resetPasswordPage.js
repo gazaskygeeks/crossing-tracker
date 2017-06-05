@@ -30,7 +30,7 @@ module.exports = (req, res) => {
       }
       return res({msg:'You Can reset password'})
     }else{
-      return res({msg:'You Cant reset password'}).code(401);
+      return res({msg:'You Can not reset password'}).code(401);
     }
   })
 }

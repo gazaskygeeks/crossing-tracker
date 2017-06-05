@@ -13,11 +13,12 @@ module.exports=(req,res)=>{
         console.log('changestatus Error :',error)
         return res().code(500)
       }
-      mail.sendemail(`Erezedule-Admin comfirmation <${process.env.GMAIL_USER}>`,
+      mail.sendemail(`Erezedule | Admin comfirmation
+        <${process.env.GMAIL_USER}>`,
         `${req.payload.email}`,
-        'Welcome in Erezedule!',
-        `Your registration request was approved.
-        Please use the link to log in (^_^):
+        'Welcome to Erezedule!',
+        `Your registration request has been approved.
+        Please use this link to log in (^_^):\n
         https://crossing-tracker.herokuapp.com`
         , (error, info) => {
           if (error) {

@@ -41,14 +41,14 @@ module.exports = (req, res) => {
                   var email = result.rows[0].email;
                   var username = result.rows[0].username;
                   utiles.sendemail(
-                    'Site Admin <erezedule@gmail.com>',
+                    'Erezedule | Admin message <erezedule@gmail.com>',
                     email,
-                    'There changes Happend in your trip',
+                    'An update to your trip',
                     `Hi ${username},
-                    The owner of trip you joined,
-                    Made new Changes on trip,
-                    You can check changes by visiting
-                    MyTrip page
+                    The owner of a trip you joined,
+                    has made new changes,
+                    You can check them out by visiting
+                    'My trips' page.
                     `, (error, info) => {
                       if (error) {
                         // eslint-disable-next-line no-console

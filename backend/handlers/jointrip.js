@@ -11,7 +11,7 @@ module.exports = (req, res) => {
     }
     if (res1.rows.length > 0) {
       res({
-        msg: 'User is already in this Trip',
+        msg: 'You are already in this Trip',
       }).code(401)
     } else {
       trip.getTripByid({
@@ -24,7 +24,7 @@ module.exports = (req, res) => {
         }
         if (result.rows[0].user_id == usertripinfo[0]) {
           return res({
-            msg: 'You can not join your created trip ',
+            msg: 'You can not join your own trip ',
           }).code(401)
         }
         trip.getseats(req.payload.trip_id, (error, result) => {
@@ -89,7 +89,7 @@ module.exports = (req, res) => {
                                 trip_id: usertripinfo[1]
                               }, (error, data) => {
                                 res({
-                                  msg: 'Trip added successfully',
+                                  msg: 'Trip added successfully!',
                                   result: data.rows
                                 }).code(200)
                               })
