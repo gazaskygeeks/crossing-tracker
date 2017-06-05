@@ -23,5 +23,6 @@ module.exports=[
   require('./forgetPassword.js'),
   require('./resetPasswordPage.js'),
   require('./resetPassword.js'),
+  require('./search.js'),
   require('./getTripByTime.js')
 ];

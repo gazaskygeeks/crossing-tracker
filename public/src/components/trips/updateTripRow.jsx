@@ -9,8 +9,7 @@ const UpdateTrip = (
     changeTime,
     changeLocationFrom,
     changeLocationTo,
-    changePassingBy,
-    changePassingPointTime,
+    changeDetails,
     changeSeatsAvailable,
     locations,
     id,
@@ -69,24 +68,13 @@ const UpdateTrip = (
             />
         </li>
         <li>
-          <label>Pickup point</label>
+          <label>Other details</label>
           <span>
             <input
               type="text"
               className="form-control"
-              value={userTrip.passing_by}
-              onChange={changePassingBy}
-            />
-          </span>
-        </li>
-        <li>
-          <label>Pickup time</label>
-          <span>
-            <input
-              type="time"
-              className="form-control"
-              value={userTrip.pass_point_time}
-              onChange={changePassingPointTime}
+              value={userTrip.details}
+              onChange={changeDetails}
             />
           </span>
         </li>

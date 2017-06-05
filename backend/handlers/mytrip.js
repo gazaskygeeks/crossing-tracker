@@ -38,13 +38,7 @@ module.exports = (req, res) => {
                       return res().code(500)
                     }
                     final = final.concat(result3.rows[0])
-                    // if(index2==result2.rowCount-1){
-                    //   return res({
-                    //     createdTrip: createdTrip,
-                    //     joinedTrip: final,
-                    //     tripMembers:tripMembers
-                    //   })
-                    // }
+
                     if(index1==result1.rowCount-1){
                       return res({
                         createdTrip: createdTrip,
@@ -86,14 +80,6 @@ module.exports = (req, res) => {
                 tripMembers:tripMembers
               })
             })
-            // if(index2==result2.rowCount-1){
-            //   return res({
-            //     createdTrip: createdTrip,
-            //     joinedTrip: final,
-            //     tripMembers:tripMembers
-            //   })
-            // }
-
           })
         } else{
 

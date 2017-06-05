@@ -28,8 +28,7 @@ const trip = `CREATE TABLE IF NOT EXISTS trip (
     location_to_id INT references location(location_id),
     time varchar(30),
     date varchar(30),
-    pass_point_time varchar(30),
-    passing_by varchar(50),
+    details varchar(255),
     user_id INT references users(user_id),
     available_seats int
   );`;

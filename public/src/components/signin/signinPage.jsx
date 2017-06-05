@@ -81,7 +81,12 @@ class SigninPage extends React.Component {
                   >
                   Sign In
                 </button>
-                <p>
+                <p className='link'>
+                  <Link to='/forgetPassword'  >
+                    Forget your password?
+                  </Link>
+                </p>
+                <p className='link'>
                   <Link to='/signup' activeClassName='active'>
                     You can create new acount
                   </Link>

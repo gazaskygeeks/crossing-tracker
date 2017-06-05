@@ -10,8 +10,7 @@ test('POST /edittrip : edit trip that not exist', (t) => {
     time: '02:01',
     location_from: 2,
     location_to: 1,
-    passing_by: 'Rammallah',
-    pass_point_time: '12:02',
+    details: 'Rammallah',
     available_seats: 2,
     trip_id: 55
   }
@@ -55,8 +54,7 @@ test('POST /edittrip : edit trip by a different user ', (t) => {
     time: '02:01',
     location_from: 2,
     location_to: 1,
-    passing_by: 'Rammallah',
-    pass_point_time: '12:02',
+    details: 'Rammallah',
     available_seats: 2
   }
 
@@ -109,8 +107,7 @@ test('POST /edittrip : edit trip Successfully ', (t) => {
     time: '02:01',
     location_from: 2,
     location_to: 1,
-    passing_by: 'Rammallah',
-    pass_point_time: '12:02',
+    details: 'Rammallah',
     available_seats: 2
   }
 

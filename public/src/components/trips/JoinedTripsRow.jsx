@@ -6,8 +6,6 @@ const joinedTripsRow = ({joinedTrips, unjoinTrip, userData, msg}) => {
     return <div>Loading...</div>;
   }
   const trips = joinedTrips.map((trip)=>{
-    console.log('trippppppppppppp: ',trip);
-
     const msgFun = ()=>{
       if(trip.trip_id === userData.trip_id ){
         return {msg}
@@ -20,12 +18,7 @@ const joinedTripsRow = ({joinedTrips, unjoinTrip, userData, msg}) => {
           <li><label>Time</label> <span>{trip.time}</span></li>
           <li><label>From</label> <span>{trip.location_from}</span></li>
           <li><label>To</label> <span>{trip.location_to}</span></li>
-          <li><label>Pickup point</label> <span>{trip.passing_by}</span></li>
-          <li>
-            <label>Pickup time</label>
-            <span>{trip.pass_point_time}</span>
-
-            </li>
+          <li><label>Other Details</label> <span>{trip.details}</span></li>
           <li>
             <label>Available seats</label>
             <span>{trip.available_seats}</span>

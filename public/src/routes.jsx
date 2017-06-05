@@ -10,6 +10,9 @@ import CreateTrip from './components/createTrip/createTrip.jsx';
 import TripDetails from './components/tripDetails/tripDetails.jsx';
 import SuccessPage from './components/success/successPage.jsx';
 import AdminHome from './components/admin/homeAdmin.jsx';
+import ForgetPassword from './components/forgetPassword/forgetPassword.jsx'
+import ResetPassword from './components/resetPassword/resetPassword.jsx'
+
 export default (
   <Route path="/" component={App}>
     <IndexRoute component={SigninPage} />
@@ -21,6 +24,8 @@ export default (
     <Route path="success" component={SuccessPage} />
     <Route path="adminpage" component={AdminHome} />
     <Route path="updatetrip/:id" component={UdateTrip} />
+    <Route path="forgetPassword" component={ForgetPassword} />
+    <Route path="reset"  component={ResetPassword} />
   </Route>
 
 );

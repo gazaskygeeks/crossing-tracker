@@ -46,7 +46,7 @@ module.exports = (req, res) => {
               },
               (error,result2)=>{
                 utiles.sendemail(
-                  'Site Admin <erezedule@gmail.com>',
+                  'Erezedule | Admin message <erezedule@gmail.com>',
                   email,
                   'Password Reset confirmation',
                 `Hello,\n\n
