@@ -1,6 +1,6 @@
 import React from 'react';
 
-const JoinedUsersRow = ({joinedUsers, approveJoin}) => {
+const JoinedUsersRow = ({joinedUsers, approveJoin, getUserTrips}) => {
   if(!joinedUsers || !approveJoin){
     return <div>Loading...</div>;
   }
@@ -31,7 +31,7 @@ const JoinedUsersRow = ({joinedUsers, approveJoin}) => {
                   () => {
                     return (
                       approveJoin(accept),
-                      window.location.reload()
+                      getUserTrips()
                     );
                   }
                 }
@@ -45,7 +45,7 @@ const JoinedUsersRow = ({joinedUsers, approveJoin}) => {
                   () => {
                     return (
                       approveJoin(reject),
-                      window.location.reload()
+                      getUserTrips()
                     );
                   }
                 }
@@ -59,28 +59,22 @@ const JoinedUsersRow = ({joinedUsers, approveJoin}) => {
   });
   return (
     <section className='joined-users'>
-      <div className='container'>
-        <div className='row'>
-          <div className='col-md-offset-2 col-md-8'>
-            <h3 className='heading'>Awaiting passengers</h3>
-            <table className='table'>
-              <thead>
-                <tr>
-                  <th>Trip Date</th>
-                  <th>User Name</th>
-                  <th>Email</th>
-                  <th>Phone no.</th>
-                  <th>Organization</th>
-                  <th>Accept/Reject User</th>
-                </tr>
-              </thead>
-              <tbody>
-                {users}
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </div>
+        <h3 className='heading'>Awaiting passengers</h3>
+        <table className='table'>
+          <thead>
+            <tr>
+              <th>Trip Date</th>
+              <th>User Name</th>
+              <th>Email</th>
+              <th>Phone no.</th>
+              <th>Organization</th>
+              <th>Accept/Reject User</th>
+            </tr>
+          </thead>
+          <tbody>
+            {users}
+          </tbody>
+        </table>
     </section>
   )
 

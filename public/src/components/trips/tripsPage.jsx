@@ -10,28 +10,104 @@ import ApproveJoin from '../../actions/approveJoin.js';
 class TripsPage extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      MyTrips: true,
+      JoinedUsers: false,
+      JoinedTrips: false
+    };
+    this.showMyTrips = this.showMyTrips.bind(this);
+    this.showJoinedUsers = this.showJoinedUsers.bind(this);
+    this.showJoinedTrips = this.showJoinedTrips.bind(this);
   }
 
   componentWillMount(){
     this.props.UserTrips();
   }
 
+  showMyTrips(){
+    this.setState(
+      {
+        MyTrips: true,
+        JoinedUsers: false,
+        JoinedTrips: false
+      }
+    );
+
+  }
+
+  showJoinedUsers(){
+    this.setState(
+      {
+        MyTrips: false,
+        JoinedUsers: true,
+        JoinedTrips: false
+      }
+    );
+  }
+
+  showJoinedTrips(){
+    this.setState(
+      {
+        MyTrips: false,
+        JoinedUsers: false,
+        JoinedTrips: true
+      }
+    );
+  }
+
   render() {
+
     return (
-      <div>
-        <UserTripsSection
-          userTrips={this.props.GetUserTrips}
-          />
-        <JoinedUsersRow
-          joinedUsers={this.props.JoinedUsers}
-          approveJoin = {data => this.props.DoApproveJoin(data)}
-          />
-        <UserJoinedTrips
-          joinedTrips={this.props.UserJoinedTrips}
-          unjoinTrip={id => this.props.unjoinTrip(id)}
-          userData={() => this.props.UserTrips()}
-          msg={this.props.msg}
-          />
+      <div className='container-fluid'>
+        <div className='row'>
+          <div className='col-md-3 btns-wrp'>
+            <button
+              className='btn btn-default'
+              onClick = {
+                this.showMyTrips
+              }
+              >
+              My Trips
+            </button>
+            <button
+              className='btn btn-default'
+              onClick = {
+                this.showJoinedUsers
+              }
+              >
+              People Joined My Trips
+            </button>
+
+            <button
+              className='btn btn-default'
+              onClick = {
+                this.showJoinedTrips
+              }
+              >
+              Trips I've joined
+            </button>
+          </div>
+          <div className='col-md-8'>
+            {this.state.MyTrips ? <UserTripsSection
+              userTrips={this.props.GetUserTrips}
+              getUserTrips = {() => this.props.UserTrips()}
+              /> : null}
+
+            {this.state.JoinedUsers ? <JoinedUsersRow
+              joinedUsers={this.props.JoinedUsers}
+              approveJoin = {data => this.props.DoApproveJoin(data)}
+              getUserTrips = {() => this.props.UserTrips()}
+              /> : null}
+
+            {this.state.JoinedTrips ? <UserJoinedTrips
+              joinedTrips={this.props.UserJoinedTrips}
+              unjoinTrip={id => this.props.unjoinTrip(id)}
+              userData={() => this.props.UserTrips()}
+              msg={this.props.msg}
+              getUserTrips = {() => this.props.UserTrips()}
+              /> : null}
+          </div>
+        </div>
       </div>
     );
   }
@@ -39,8 +115,8 @@ class TripsPage extends React.Component {
 
 
 const mapStateToProps = (store) => {
-  console.log('stroooo:',store);
-  console.log('store.aprroveJoin: ',store.userTrips.tripMembers);
+  console.log('stroooo:',store.userTrips);
+  console.log('store.aprroveJoin: ',store.userTrips.joinedTrip);
   return {
     GetUserTrips: store.userTrips.createdTrip,
     UserJoinedTrips: store.userTrips.joinedTrip,
