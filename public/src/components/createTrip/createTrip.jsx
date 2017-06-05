@@ -17,8 +17,7 @@ class CreateTrip extends React.Component{
       time: '',
       location_from: '',
       location_to: '',
-      passing_by:'',
-      pass_point_time:'',
+      details:'',
       available_seats: 0
     };
   }
@@ -43,13 +42,11 @@ class CreateTrip extends React.Component{
     this.setState({location_to: ev.target.value});
   }
 
-  changePassingBy(ev) {
-    this.setState({passing_by: ev.target.value});
+  changeDetails(ev) {
+    this.setState({details: ev.target.value});
   }
 
-  changePassingPointTime(ev) {
-    this.setState({pass_point_time: ev.target.value});
-  }
+
 
   changeSeatsAvailable(ev) {
     this.setState({available_seats: ev.target.value});
@@ -72,8 +69,7 @@ class CreateTrip extends React.Component{
         time: '',
         location_from: '',
         location_to: '',
-        passing_by:'',
-        pass_point_time:'',
+        details:'',
         available_seats: 0
       }
     )
@@ -134,21 +130,13 @@ class CreateTrip extends React.Component{
                     />
 
                   <div className='form-group'>
-                    <label>Pickup point</label>
-                    <input
+                    <label>Other details</label>
+                    <textarea
+                      placeholder="e.g. 'Meet outside the National Hotel"
                       type='text'
-                      value={this.state.passing_by}
+                      value={this.state.details}
                       className='form-control'
-                      onChange={this.changePassingBy.bind(this)}
-                      />
-                  </div>
-                  <div className='form-group'>
-                    <label>Pickup time</label>
-                    <input
-                      type='time'
-                      value={this.state.pass_point_time}
-                      className='form-control'
-                      onChange={this.changePassingPointTime.bind(this)}
+                      onChange={this.changeDetails.bind(this)}
                       />
                   </div>
                   <div className='form-group'>

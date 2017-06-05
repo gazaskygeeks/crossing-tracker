@@ -28,8 +28,8 @@ module.exports = (req, res) => {
           return res().code(500)
         }
         const trip_id = result.rows[0].trip_id
-        user.getuserbyid(userId, (err, result1) => {
-          if (err) {
+        user.getuserbyid(userId, (error, result1) => {
+          if (error) {
             // eslint-disable-next-line no-console
             console.log('get user by suerId Error :', error)
             return res().code(500)

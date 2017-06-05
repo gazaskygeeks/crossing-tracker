@@ -12,11 +12,7 @@ const UserTripsRow = ({userTrips}) => {
           <li><label>Time</label> <span>{trip.time}</span></li>
           <li><label>From</label> <span>{trip.location_from}</span></li>
           <li><label>To</label> <span>{trip.location_to}</span></li>
-          <li><label>Pickup point</label> <span>{trip.passing_by}</span></li>
-          <li>
-            <label>Pickup time</label>
-            <span>{trip.pass_point_time}</span>
-          </li>
+          <li><label>Other details</label> <span>{trip.details}</span></li>
           <li>
             <label>Available seats </label>
             <span>{trip.available_seats}</span>

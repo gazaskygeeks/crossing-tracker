@@ -296,7 +296,6 @@ test('POST /reset : test reset page test change passowrd after change from  same
       })
     })
   })
+  // eslint-disable-next-line no-console
+  console.log('*****************SearchTest TEST****************************');
 })
-
-// eslint-disable-next-line no-console
-console.log('*****************Sign out TEST****************************');

@@ -8,8 +8,7 @@ Trip owner phone : ${data.phone},
     From :${data.location_from},
     To :${data.location_to},
     Available seats :${data.available_seats},
-    Pickup poin :${data.passing_by},
-    Pickup time :${data.pass_point_time}
+    Other details :${data.details}
     ` ,
     'status':'confirmed',
     'start': {
@@ -40,8 +39,7 @@ function updateEventTemplate (data){
     From :${data.location_from},
     To :${data.location_to},
     Available seats :${data.available_seats},
-    Pickup poin :${data.passing_by},
-    Pickup time :${data.pass_point_time}`,
+    Other details :${data.details}`,
     'description':`List of shared passengers:\n ${data.description}`,
     'status':'confirmed',
     'start': {
