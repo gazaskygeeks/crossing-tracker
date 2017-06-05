@@ -49,7 +49,7 @@ test('POST /forgetpassword : test correct email', (t) => {
   }
   server.inject(option, (res) => {
     t.equal(res.result.msg,
-       'An e-mail has been sent to your email with further instructions.',
+       'You have been sent an email with further instructions, please check your inbox.',
         'ok ! Email Found   ');
     t.end();
 
@@ -76,7 +76,7 @@ test('POST /reset : test reset page  empty token and real user', (t) => {
   }
   server.inject(option, (res) => {
     t.equal(res.result.msg,
-       'You Cant reset password',
+       'You Can not reset password',
         'ok ! token empty ');
     t.end();
   })
@@ -89,7 +89,7 @@ test('POST /reset : test reset page fake token and real user', (t) => {
   }
   server.inject(option, (res) => {
     t.equal(res.result.msg,
-       'You Cant reset password',
+       'You Can not reset password',
         'ok ! token fake');
     t.end();
   })
