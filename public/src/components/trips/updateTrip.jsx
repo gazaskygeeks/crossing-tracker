@@ -14,8 +14,7 @@ class UserTripsRow extends React.Component {
       time: '',
       location_from: '',
       location_to: '',
-      passing_by: '',
-      pass_point_time: '',
+      details: '',
       available_seats: 0
     }
   }
@@ -26,8 +25,7 @@ class UserTripsRow extends React.Component {
       time: this.props.GetTripByID.time,
       location_from: this.props.GetTripByID.location_from_id,
       location_to: this.props.GetTripByID.location_to_id,
-      passing_by:this.props.GetTripByID.passing_by,
-      pass_point_time:this.props.GetTripByID.pass_point_time,
+      details:this.props.GetTripByID.details,
       available_seats: this.props.GetTripByID.available_seats
     };
   }
@@ -52,13 +50,10 @@ class UserTripsRow extends React.Component {
     this.setState({location_to: ev.target.value});
   }
 
-  changePassingBy(ev) {
-    this.setState({passing_by: ev.target.value});
+  changeDetails(ev) {
+    this.setState({details: ev.target.value});
   }
 
-  changePassingPointTime(ev) {
-    this.setState({pass_point_time: ev.target.value});
-  }
 
   changeSeatsAvailable(ev) {
     this.setState({available_seats: ev.target.value});
@@ -84,8 +79,7 @@ class UserTripsRow extends React.Component {
             changeTime = {this.changeTime.bind(this)}
             changeLocationFrom = {this.changeLocationFrom.bind(this)}
             changeLocationTo = {this.changeLocationTo.bind(this)}
-            changePassingBy = {this.changePassingBy.bind(this)}
-            changePassingPointTime = {this.changePassingPointTime.bind(this)}
+            changeDetails = {this.changeDetails.bind(this)}
             changeSeatsAvailable = {this.changeSeatsAvailable.bind(this)}
             locations = {this.props.locations}
             id={this.props.params.id}
