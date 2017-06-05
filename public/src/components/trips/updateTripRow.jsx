@@ -14,14 +14,19 @@ const UpdateTrip = (
     locations,
     id,
     getData,
-    seatsMsg
+    seatsMsg,
+    GetTripByID
   }
 ) => {
-  if(!userTrip){
+  function getTheFuckingData() {
+    getData();
+  }
+  if(!userTrip || !GetTripByID){
 
     return <div>Loading...</div>;
   }else{
-    console.log('userTrip: ',seatsMsg);
+    console.log('userTrip: ',userTrip.tripdate);
+    getTheFuckingData();
   }
 
   return(
@@ -33,7 +38,7 @@ const UpdateTrip = (
             <input
             type="date"
             className="form-control"
-            value={userTrip.date}
+            value={userTrip.tripdate}
             onChange={changeTripDate}
             />
           </span>
@@ -97,19 +102,6 @@ const UpdateTrip = (
           onClick={() => hashHistory.push('trips')}
           >
             Cancel
-        </button>
-        <button
-          className='btn btn-default'
-          onClick={
-              () => {
-                return(
-                  getData(),
-                  hashHistory.push(`updatetrip/${id}`)
-                );
-              }
-          }
-          >
-            Get trip's old data
         </button>
         <button
           type='button'

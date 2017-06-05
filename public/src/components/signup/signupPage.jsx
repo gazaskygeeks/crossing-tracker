@@ -87,19 +87,11 @@ class SignupPage extends React.Component {
     this.setState({org_id: ev.target.value});
   }
 
-  valid() {
+  valid(event) {
+    event.preventDefault();
     message ='';
     type = 'spinningBubbles';
     this.props.sginup(this.state);
-    this.setState(
-      {
-        username: '',
-        email: '',
-        password: '',
-        phone: '',
-        org_id: ''
-      }
-    );
   }
 
   render() {
@@ -127,7 +119,7 @@ class SignupPage extends React.Component {
               col-md-4
               wrapper'>
               <h1>Sign up</h1>
-              <div className='form'>
+              <form className='form' onSubmit={this.valid.bind(this)}>
                 <div className='form-group'>
                   <input type='text'
                     className='form-control'
@@ -175,13 +167,13 @@ class SignupPage extends React.Component {
                   <Status type={type} color={blue}/>
                   <p className='error'>{message}</p>
                 <button
-                  type='submit'
+                  type="submit"
                   className='btn btn-primary'
-                  onClick={this.valid.bind(this)}
+                  action='submit'
                   >
                   Sign up
                 </button>
-              </div>
+              </form>
             </div>
           </div>
         </div>
