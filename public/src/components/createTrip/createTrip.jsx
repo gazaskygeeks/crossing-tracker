@@ -76,7 +76,7 @@ class CreateTrip extends React.Component{
   }
   render() {
     if(this.props.createTrip.statusCode === 200){
-      message=  'Your trip created successfully';
+      message=  'Your trip created successfully!';
       type='';
     }
     else if (this.props.createTrip.statusCode === 409){

@@ -2,7 +2,6 @@ const user = require('../../database/userhelpers.js');
 const crypto = require('crypto');
 const utiles = require('../utils.js');
 module.exports = (req, res) => {
-
   if(!req.payload){
     return res({msg:'No email found'}).code(401)
   }
@@ -36,15 +35,15 @@ module.exports = (req, res) => {
             const email = result.rows[0].email;
             const user_id = result.rows[0].user_id;
             utiles.sendemail(
-              'Site Admin <erezedule@gmail.com>',
+              'Erezedule | Admin message  <erezedule@gmail.com>',
               email,
               'Password Reset',
             `You are receiving this because you
              (or someone else) have requested
-             the reset of the password for your account.\n\n
+             to reset of the password for your account.\n\n
              Please click on the following link,
-             or paste this into your browser to complete the process:\n\n
-             http://${req.headers.host}/reset/?user_id=${user_id}&token=${token} \n\n
+             or paste it into your browser to complete the process:\n\n
+             http://${req.headers.host}/#/reset/?user_id=${user_id}&token=${token} \n\n
              If you did not request this, please ignore this email
              and your password will remain unchanged.\n`
             ,(error, info) => {
@@ -54,7 +53,7 @@ module.exports = (req, res) => {
                 return res().code(500)
               }
               res({
-                msg: 'An e-mail has been sent to your email with further instructions.'})
+                msg: 'You have been sent an email with further instructions, please check your inbox.'})
             });
           })
       })

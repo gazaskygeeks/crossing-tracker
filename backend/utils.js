@@ -30,7 +30,7 @@ const sendemail = (sender, recipient, sub, content, cb) => {
     from: sender,
     to: recipient,
     subject: sub,
-    html: `<b>${content}</b>`
+    html: `<p>${content}<p>`
   };
   transporter.sendMail(mailOptions, cb)
 }
