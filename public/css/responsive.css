@@ -41,11 +41,9 @@
     content: "To: ";
   }
   .trip-details:first-of-type table tbody tr td:nth-child(5):before {
-    content: "Pickup point: ";
+    content: "Other Details: ";
   }
-  .trip-details:first-of-type table tbody tr td:nth-child(6):before {
-    content: "Passpoint time: ";
-  }
+
   .trip-details:first-of-type table tbody tr td:nth-child(7):before {
     content: "Seats available: ";
   }

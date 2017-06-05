@@ -1,6 +1,6 @@
 import React from 'react';
 
-const JoinedUsersRow = ({joinedUsers, approveJoin}) => {
+const JoinedUsersRow = ({joinedUsers, approveJoin, getUserTrips}) => {
   if(!joinedUsers || !approveJoin){
     return <div>Loading...</div>;
   }
@@ -31,7 +31,7 @@ const JoinedUsersRow = ({joinedUsers, approveJoin}) => {
                   () => {
                     return (
                       approveJoin(accept),
-                      window.location.reload()
+                      getUserTrips()
                     );
                   }
                 }
@@ -45,7 +45,7 @@ const JoinedUsersRow = ({joinedUsers, approveJoin}) => {
                   () => {
                     return (
                       approveJoin(reject),
-                      window.location.reload()
+                      getUserTrips()
                     );
                   }
                 }

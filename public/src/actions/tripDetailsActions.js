@@ -7,6 +7,10 @@ const viewTrip = (id)=>{
   fetch(`/tripdetails/${id}`,{
     method: 'POST',
     body:JSON.stringify(id),
+    headers: {
+           'Accept': 'application/json, text/plain, */*',
+           'Content-Type': 'application/json'
+    },
     credentials: 'include'
   })
   .then((response)=>{

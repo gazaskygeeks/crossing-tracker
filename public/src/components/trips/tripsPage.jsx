@@ -90,11 +90,13 @@ class TripsPage extends React.Component {
           <div className='col-md-8'>
             {this.state.MyTrips ? <UserTripsSection
               userTrips={this.props.GetUserTrips}
+              getUserTrips = {() => this.props.UserTrips()}
               /> : null}
 
             {this.state.JoinedUsers ? <JoinedUsersRow
               joinedUsers={this.props.JoinedUsers}
               approveJoin = {data => this.props.DoApproveJoin(data)}
+              getUserTrips = {() => this.props.UserTrips()}
               /> : null}
 
             {this.state.JoinedTrips ? <UserJoinedTrips
@@ -102,6 +104,7 @@ class TripsPage extends React.Component {
               unjoinTrip={id => this.props.unjoinTrip(id)}
               userData={() => this.props.UserTrips()}
               msg={this.props.msg}
+              getUserTrips = {() => this.props.UserTrips()}
               /> : null}
           </div>
         </div>
@@ -112,7 +115,7 @@ class TripsPage extends React.Component {
 
 
 const mapStateToProps = (store) => {
-  console.log('stroooo:',store);
+  console.log('stroooo:',store.userTrips);
   console.log('store.aprroveJoin: ',store.userTrips.joinedTrip);
   return {
     GetUserTrips: store.userTrips.createdTrip,
