@@ -1,6 +1,6 @@
 import React from 'react';
 import UserTripsRow from './JoinedTripsRow.jsx';
-const userJoinedTrips = ({joinedTrips, unjoinTrip, userData, msg}) => {
+const userJoinedTrips = ({joinedTrips, unjoinTrip, userData, msg, getUserTrips}) => {
 
   if(!joinedTrips){
     return <div>Loading...</div>;
@@ -15,6 +15,7 @@ const userJoinedTrips = ({joinedTrips, unjoinTrip, userData, msg}) => {
         unjoinTrip={unjoinTrip}
         userData={userData}
         msg={msg}
+        getUserTrips = {() => getUserTrips()}
         />
     </section>
   )
