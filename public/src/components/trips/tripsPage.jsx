@@ -67,7 +67,7 @@ class TripsPage extends React.Component {
                 this.showMyTrips
               }
               >
-              My Trips
+              My trips
             </button>
             <button
               className='btn btn-default'
@@ -75,7 +75,7 @@ class TripsPage extends React.Component {
                 this.showJoinedUsers
               }
               >
-              People Joined My Trips
+              People joined my trips
             </button>
 
             <button

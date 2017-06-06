@@ -30,7 +30,7 @@ class TripDetails extends React.Component {
       const Newdate = new Date(date.setTime( date.getTime() + 1 * 86400000 ));
       if(moment()._d > Newdate){
         show = {visibility: 'hidden'};
-        message = 'Expired Trip';
+        message = 'Expired trip!';
       }else{
         show = {visibility: 'visible'};
         message = '';

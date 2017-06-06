@@ -12,6 +12,7 @@ let nameMsg = '';
 let emailMsg = '';
 let passMsg = '';
 let phoneMsg = '';
+let show = {display: 'none'};
 class SignupPage extends React.Component {
   constructor(props) {
     super(props);
@@ -33,13 +34,10 @@ class SignupPage extends React.Component {
     const status = ev.target.value.trim();
     if(status.length < 5){
       nameMsg = 'Username should be more than 4 characters';
-      type ='';
     }else if (status.length > 25) {
       nameMsg = 'Username should be less than 25 characters';
-      type ='';
     }else{
       nameMsg = '';
-      type ='';
     }
   }
 
@@ -50,10 +48,8 @@ class SignupPage extends React.Component {
     const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     if(re.test(status) != true){
       emailMsg = 'Email is not valid';
-      type ='';
     }else{
       emailMsg = '';
-      type ='';
     }
   }
   changePassword(ev) {
@@ -61,10 +57,8 @@ class SignupPage extends React.Component {
     const status = ev.target.value.trim();
     if(status.length < 6){
       passMsg = 'Password should be more than 5 characters';
-      type ='';
     }else{
       passMsg = '';
-      type ='';
     }
   }
 
@@ -73,13 +67,10 @@ class SignupPage extends React.Component {
     const status = ev.target.value.trim();
     if(status.length < 6){
       phoneMsg = 'Phone no. should be more than 5 characters';
-      type ='';
     }else if (status.length > 15) {
       phoneMsg = 'Phone should be less than 15 characters';
-      type ='';
     }else{
       phoneMsg = '';
-      type ='';
     }
   }
 
@@ -91,6 +82,7 @@ class SignupPage extends React.Component {
     event.preventDefault();
     message ='';
     type = 'spinningBubbles';
+    show = {display: 'block'};
     this.props.sginup(this.state);
   }
 
@@ -99,12 +91,14 @@ class SignupPage extends React.Component {
     if(this.props.signup.statusCode === 409){
       message=  'User is already registered';
       type ='';
+      show = {display: 'none'};
       // this.props.signup.statusCode = '';
 
     }
     else if (this.props.signup.statusCode === 400){
       message = 'Fill in the inputs';
       type ='';
+      show = {display: 'none'};
       // this.props.signup.statusCode = '';
 
     }
@@ -164,7 +158,7 @@ class SignupPage extends React.Component {
                   value={this.state.org_id}
                   change={this.changeOrg.bind(this)}
                   />
-                  <Status type={type} color={blue}/>
+                <Status type={type} color={blue} show={show}/>
                   <p className='error'>{message}</p>
                 <button
                   type="submit"
