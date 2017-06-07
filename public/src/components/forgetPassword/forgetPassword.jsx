@@ -3,9 +3,11 @@ import { browserHistory, Link } from 'react-router';
 import  forgetPasswordAction  from '../../actions/forgetPasswordAction.js';
 import { connect } from 'react-redux';
 import Status from '../loading/loading.jsx'
-let type='spinningBubbles';
+let type='';
 let message ='';
 let green = '#4ad86a';
+let show = {display: 'none'};
+
 class Password extends React.Component {
   constructor(props) {
     super(props);
@@ -14,6 +16,9 @@ class Password extends React.Component {
     };
   }
   valid(){
+    type='spinningBubbles';
+    show = {display: 'block'};
+    message = '';
     if (this.state.email.length) {
       this.props.submit(this.state)
       this.setState({email: ''})
@@ -23,10 +28,12 @@ class Password extends React.Component {
     this.setState({email: ev.target.value});
   }
   render() {
-    message = this.props.password.msg
-console.log('this.props.password.msg:',message);
+    message = this.props.password.msg;
+    if(message){
+      show = {display: 'none'};
+    }
     return (
-      <section className='form-wrp signin'>
+      <section className='form-wrp signin forget-pass'>
         <div className='overlay'></div>
         <img src={require('../../../img/IMG_1925.jpg')} />
         <div className='container'>
@@ -51,6 +58,8 @@ console.log('this.props.password.msg:',message);
                     />
                 </div>
                   <p className='error'>{message}</p>
+                    <Status type={type} color={green} show={show}/>
+
                 <button
                   type='submit'
                   className='btn btn-success'

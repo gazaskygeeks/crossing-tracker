@@ -8,6 +8,7 @@ let type='';
 let message ='';
 let green = '#4ad86a';
 let seatsMsg = '';
+let show = {display: 'none'};
 class CreateTrip extends React.Component{
 
   constructor(props) {
@@ -53,29 +54,31 @@ class CreateTrip extends React.Component{
     const status = ev.target.value.trim();
     if(status < 1){
       seatsMsg = 'Available seats should be at least 1';
-      type ='';
     }else{
       seatsMsg = '';
-      type ='';
     }
   }
   clickCreateTrip(){
     message ='';
     type = 'spinningBubbles';
+    show = {display: 'block'};
     this.props.TripsCreation(this.state)
   }
   render() {
     if(this.props.createTrip.statusCode === 200){
       message=  'Your trip created successfully!';
       type='';
+      show = {display: 'none'};
     }
     else if (this.props.createTrip.statusCode === 409){
       message = 'You have already created a trip in this time';
       type='';
+      show = {display: 'none'};
 
     }else if (this.props.createTrip.statusCode === 400){
       message = 'You should fill in all the inputs'
       type='';
+      show = {display: 'none'};
 
     }
     return (
@@ -105,21 +108,24 @@ class CreateTrip extends React.Component{
                       onChange={this.changeTime.bind(this)}
                       />
                   </div>
-
-                  <SelectLocations
-                    label='From'
-                    options={this.props.locations}
-                    value={this.state.location_from}
-                    change={this.changeLocationFrom.bind(this)}
-                    />
-
-                  <SelectLocations
-                    label='To'
-                    options={this.props.locations}
-                    value={this.state.location_to}
-                    change={this.changeLocationTo.bind(this)}
-                    />
-
+                  <div className='form-group'>
+                    <label>From</label>
+                    <SelectLocations
+                      label='From'
+                      options={this.props.locations}
+                      value={this.state.location_from}
+                      change={this.changeLocationFrom.bind(this)}
+                      />
+                  </div>
+                  <div className='form-group'>
+                    <label>To</label>
+                    <SelectLocations
+                      label='To'
+                      options={this.props.locations}
+                      value={this.state.location_to}
+                      change={this.changeLocationTo.bind(this)}
+                      />
+                  </div>
                   <div className='form-group'>
                     <label>Other details</label>
                     <textarea
@@ -143,7 +149,7 @@ class CreateTrip extends React.Component{
                   </div>
                   <div className='btn-wrp-right'>
                     <p className='error'>{message}</p>
-                    <Status type={type} color={green}/>
+                    <Status type={type} color={green} show={show}/>
                     <button
                       type='submit'
                       className='btn btn-success'
