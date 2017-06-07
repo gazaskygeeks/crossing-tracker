@@ -12,7 +12,8 @@ function gettripbytime(data, cb) {
   AND
   time=$2
   AND
-  date=$3`;
+  date=$3
+  and trip_status=0`;
   dbutils.runQuery(query, [data.user_id, data.time, data.tripdate], cb);
 }
 function deleteusertrip(data,cb){
@@ -142,18 +143,18 @@ function getJoinedUser(data, cb) {
     on o.org_id=u.org_id
     where trip.trip_id=$1 and
     u.user_id in (SELECT user_id   from usertrip where trip_id=$1)
-    and u.org_id = o.org_id and d.user_approved = 0 `;
+    and u.org_id = o.org_id and d.user_approved = 0 and trip_status=0`;
   dbutils.runQuery(query, data, cb);
 }
 
 function getseats(data, cb) {
   const query = `SELECT available_seats
-  From trip WHERE trip_id=$1`;
+  From trip WHERE trip_id=$1 and trip_status=0`;
   dbutils.runQuery(query, [data], cb);
 }
 function getUserIdByTripId(data, cb){
   const query = `SELECT user_id
-  From trip WHERE trip_id=$1`;
+  From trip WHERE trip_id=$1 and trip_status=0`;
   dbutils.runQuery(query, [data], cb);
 }
 
@@ -230,6 +231,7 @@ function getTripByDate(date, cb) {
   from trip, location l
   where date=$1
   and trip.location_from_id=l.location_id
+  and trip_status=0
   `;
 
   dbutils.runQuery(query, [date], cb)
@@ -247,6 +249,7 @@ function getTripByTime(id, cb) {
   from trip, location l
   where trip_id=$1
   and trip.location_from_id=l.location_id
+  and trip_status=0
   `;
 
   dbutils.runQuery(query, [id], cb)
@@ -276,23 +279,24 @@ function getTripByid(data, cb) {
       from trip, location l , users u, org o
       where trip.trip_id=$1 and u.user_id = trip.user_id
       and trip.location_from_id=l.location_id and u.org_id = o.org_id
+      and trip_status=0
     `;
   dbutils.runQuery(query, [data.trip_id], cb);
 }
 function getAllTrips(cb) {
-  const query = 'SELECT trip_id,date,time from trip;';
+  const query = 'SELECT trip_id,date,time from trip where trip_status=0;';
   dbutils.runQuery(query,cb)
 }
 function getTripFromTo(data,cb) {
-  const query = 'SELECT trip_id,date,time from trip where location_from_id=$1 and location_to_id=$2 ;';
+  const query = 'SELECT trip_id,date,time from trip where location_from_id=$1 and location_to_id=$2 and trip_status=0;';
   dbutils.runQuery(query,data,cb)
 }
 function getTripFrom(data,cb) {
-  const query = 'SELECT trip_id,date,time from trip where location_from_id=$1 ;';
+  const query = 'SELECT trip_id,date,time from trip where location_from_id=$1 and trip_status=0;';
   dbutils.runQuery(query,data,cb)
 }
 function getTripTo(data,cb) {
-  const query = 'SELECT trip_id,date,time from trip where location_to_id=$1;';
+  const query = 'SELECT trip_id,date,time from trip where location_to_id=$1 and trip_status=0;';
   dbutils.runQuery(query,data,cb)
 }
 
