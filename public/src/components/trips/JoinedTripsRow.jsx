@@ -1,7 +1,7 @@
 import React from 'react'
 import { hashHistory } from 'react-router';
 
-const joinedTripsRow = ({joinedTrips, unjoinTrip, userData, msg}) => {
+const joinedTripsRow = ({joinedTrips, unjoinTrip, userData, msg, getUserTrips}) => {
   if(!joinedTrips){
     return <div>Loading...</div>;
   }
@@ -33,7 +33,7 @@ const joinedTripsRow = ({joinedTrips, unjoinTrip, userData, msg}) => {
               () => {
                 return(
                   unjoinTrip({trip_id: trip.trip_id}),
-                  window.location.reload()
+                  getUserTrips()
                 );
               }
             }
