@@ -300,6 +300,16 @@ function getAllJionedUserIdByTripId(data,cb){
   const query = 'SELECT user_id  from usertrip where trip_id = $1 AND user_approved = 1;';
   dbutils.runQuery(query,[data],cb)
 }
+
+function cancelTrip(data,cb){
+  const query = 'UPDATE trip set trip_status=1 where trip_id=$1;';
+  dbutils.runQuery(query,[data],cb)
+}
+
+function selectusersbytripid(data, cb){
+  const query = 'SELECT user_id  from usertrip where trip_id = $1;';
+  dbutils.runQuery(query,[data],cb)
+}
 module.exports = {
   getTripFromTo,
   getTripFrom,
@@ -323,5 +333,7 @@ module.exports = {
   getJoinedUser:getJoinedUser,
   getAllTrips : getAllTrips,
   getAllJionedUserIdByTripId,
-  getTripByTime
+  getTripByTime,
+  cancelTrip,
+  selectusersbytripid
 }

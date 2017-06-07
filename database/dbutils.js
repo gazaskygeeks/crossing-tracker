@@ -18,9 +18,8 @@ function runSequence (cb){
 function runQuery(query, data, cb) {
   client.query(query, data, cb)
 }
-
 module.exports = {
   runMigrate,
   runQuery,
-  runSequence
+  runSequence,
 }

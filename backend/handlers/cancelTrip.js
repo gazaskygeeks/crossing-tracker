@@ -1,56 +1,55 @@
 const trip = require('../../database/tripHelpers');
+const user = require('../../database/userhelpers')
+const mail = require('../utils.js');
 
 module.exports = (req, res) => {
-  const usertripinfo = [req.state.sid.user_id, req.payload.trip_id];
-  trip.getusertripbytripisuserid(usertripinfo, (error, res1) => {
+  trip.cancelTrip(req.payload.trip_id, (error, result) => {
     if (error) {
       // eslint-disable-next-line no-console
-      console.log('get user trip by trip id user id error :',error)
+      console.log('get user trip by trip id user id error :', error)
       return res().code(500)
     }
-    if (res1.rows.length > 0) {
-      trip.deleteusertrip(
-        {
-          user_id:req.state.sid.user_id,
-          trip_id:req.payload.trip_id
-        }
-        , (error, result) => {
-        if (error)
-        {
-          return   res({msg:'There was error try again'})
-        }
-        trip.getTripByid({trip_id:usertripinfo[1]},(error,result)=>{
-          if (error) {
-            // eslint-disable-next-line no-console
-            console.log('get trip by tripid error :',error)
-            return res().code(500)
+
+    trip.selectusersbytripid(req.payload.trip_id, (error, result2) => {
+      if (result2.rowCount > 0) {
+        result2.rows.map((data, index) => {
+          var deluser = {
+            user_id: data.user_id,
+            trip_id: req.payload.trip_id
           }
-
-          const seats= result.rows[0].available_seats;
-
-          trip.updateseats(
-            {
-              trip_id:usertripinfo[1],
-              available_seats:seats+1
-            }
-            ,
-            (error,result2)=>{
-              if (error) {
-
+          trip.deleteusertrip(deluser, (error, result3) => {
+            user.getEmailByUserId(deluser.user_id, (err, result) => {
+              if (err) {
                 // eslint-disable-next-line no-console
-                console.log('Update Seats Error :',error)
+                console.log('get email  by user id  error :', err)
                 return res().code(500)
               }
-              res({msg:'Your trip removed successfully'})
-
+              mail.sendemail(
+                'Erezedule | Admin message  <erezedule@gmail.com>',
+                result.rows[0].email,
+                'Trip Canceled',
+                req.payload.msg, (error, info) => {
+                  if (error) {
+                    // eslint-disable-next-line no-console
+                    console.log('sendemail Error :', error)
+                    return res().code(500)
+                  }
+                })
+              if (index + 1 == result2.rows.length) {
+                return res({
+                  msg: 'Your trip canceled successfully and all joined deleted'
+                })
+              }
             })
-        })
-      })
+          })
+        });
 
-    } else {
-      res({
-        msg: 'You dont have any joined trip'
-      }).code(401)
-    }
+      } else {
+        return res({
+          msg: 'Your trip canceled successfully'
+        })
+      }
+    })
+
   })
 }
