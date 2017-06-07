@@ -3,6 +3,7 @@ import { browserHistory, Link } from 'react-router';
 import  login  from '../../actions/signinActions';
 import { connect } from 'react-redux';
 import Status from '../loading/loading.jsx'
+
 let type='';
 let message ='';
 let green = '#4ad86a';
@@ -30,6 +31,7 @@ class SigninPage extends React.Component {
   changePassword(ev) {
     this.setState({password: ev.target.value});
   }
+  
   render() {
     if(this.props.signin.statusCode === 401){
       message=  'Email or password not correct';

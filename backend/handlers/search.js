@@ -1,6 +1,5 @@
 const trip = require('../../database/tripHelpers');
 module.exports = (req, res) => {
-  var filter = [];
   var details = [];
   if (!req.payload) {
     return res().code(400)

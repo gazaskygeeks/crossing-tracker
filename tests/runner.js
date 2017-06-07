@@ -13,3 +13,4 @@ require('./removeJoinedTripTest.js')
 require('./forgetPasswordTest.js')
 require('./searchTest.js')
 require('./signoutTest.js');
+require('./checkUserTest.js')
