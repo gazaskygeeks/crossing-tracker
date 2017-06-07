@@ -15,21 +15,18 @@ const SelectLocations = ({options,value,change,label}) => {
     );
   });
   return (
-    <div className='form-group'>
-      <label>{label}</label>
-      <select
-        value={value}
-        className='form-control'
-        onChange={change}
+    <select
+      value={value}
+      className='form-control'
+      onChange={change}
+      >
+      <option
+        disabled='disabled'
         >
-        <option
-          disabled='disabled'
-          >
-          {label}
-        </option>
-        {locationOptions}
-      </select>
-    </div>
+        {label}
+      </option>
+      {locationOptions}
+    </select>
   )
 
 }

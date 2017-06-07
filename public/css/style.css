@@ -12,28 +12,6 @@
   display: inline-block;
   height: 80px;
   width: 80px;
-  position: absolute;
-}
-
-.btn-wrp-center .Loading div {
-  position: absolute;
-  bottom: 50px;
-  left: 50%;
-  transform: translateX(-50%);
-}
-
-.form-wrp.signup .Loading div {
-  position: absolute;
-  top: 60%;
-  left: 50%;
-  transform: translateX(-50%);
-}
-
-.form-wrp.signin .Loading div {
-  position: absolute;
-  top: 80px;
-  left: 50%;
-  transform: translateX(-50%);
 }
 
 .heading {
@@ -203,6 +181,27 @@ header .navbar-default .navbar-toggle:focus, header .navbar-default .navbar-togg
 
 
 /************ home page ************/
+
+.search-form{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: -15px;
+}
+
+.search-form div{
+  flex: 1;
+  margin: 0 15px 15px 15px;
+}
+
+.search-form div:first-child{
+  margin: 0 15px 15px 0;
+}
+
+.search-form .btn{
+  background-color: #3174ad;
+  color: white;
+}
 
 .data-wrp {
   padding-top: 30px;

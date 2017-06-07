@@ -6,6 +6,8 @@ import Status from '../loading/loading.jsx'
 let type='';
 let message ='';
 let green = '#4ad86a';
+let show = {display: 'none'};
+
 class SigninPage extends React.Component {
   constructor(props) {
     super(props);
@@ -17,6 +19,7 @@ class SigninPage extends React.Component {
   valid(){
     message ='';
     type = 'spinningBubbles';
+    show = {display: 'block'};
     if (this.state.email.length && this.state.password.length) {
       this.props.sginin(this.state)
     }
@@ -31,10 +34,12 @@ class SigninPage extends React.Component {
     if(this.props.signin.statusCode === 401){
       message=  'Email or password not correct';
       type ='';
+      show = {display: 'none'};
     }
     else if (this.props.signin.statusCode === 403){
       message = 'Your registration request has not been approved yet ';
       type ='';
+      show = {display: 'none'};
     }
 
     return (
@@ -72,7 +77,7 @@ class SigninPage extends React.Component {
                     />
                 </div>
                 <p className='error'>{message}</p>
-                <Status type={type} color={green}/>
+                <Status type={type} color={green} show={show}/>
                 <button
                   type='submit'
                   className='btn btn-success'
@@ -81,7 +86,7 @@ class SigninPage extends React.Component {
                   Sign In
                 </button>
                 <p className='link'>
-                  <Link to='/forgetPassword'  >
+                  <Link to='/forgetPassword' activeClassName='active' >
                     Forget your password?
                   </Link>
                 </p>

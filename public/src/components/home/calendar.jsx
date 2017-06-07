@@ -18,7 +18,7 @@ class Calendar extends React.Component {
     var formatted = moment(date).format('YYYY-MM-DD');
     this.props.getTrips(formatted);
   }
-  handelEvents(event){
+  handleEvents(event){
     this.props.getTripByTime(JSON.stringify(event.trip_id))
   }
   render() {
@@ -36,7 +36,7 @@ class Calendar extends React.Component {
       popup='true'
       events={events}
       onSelectEvent={event =>
-        this.handelEvents(event)
+        this.handleEvents(event)
       }
 
       />);

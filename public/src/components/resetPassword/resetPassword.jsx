@@ -6,6 +6,8 @@ import Status from '../loading/loading.jsx'
 let type = '';
 let message = '';
 let green = '#4ad86a';
+let show = {display: 'none'};
+
 class ResetPassword extends React.Component {
   constructor(props) {
     super(props);
@@ -18,6 +20,7 @@ class ResetPassword extends React.Component {
   valid() {
     message = '';
     type = 'spinningBubbles';
+    show = {display: 'block'};
     if (this.state.password.length) {
       this.props.resetPassAction(this.state)
       this.setState({password: ''})
@@ -38,6 +41,9 @@ class ResetPassword extends React.Component {
     message = this.props.resetPassStore.msg
     if (message === 'Success! Your password has been changed.') {
       text = 'Go to login page'
+    }
+    if(message){
+      show = {display: 'none'};
     }
     return (
       <section className='form-wrp signin'>
@@ -61,12 +67,13 @@ class ResetPassword extends React.Component {
                     onChange={this.changePassword.bind(this)}/>
                 </div>
                 <p className='error'>{message}</p>
+                <Status type={type} color={green} show={show}/>
                 <button type='submit'
                   className='btn btn-success'
                   onClick={this.valid.bind(this)}>
                   Submit
                 </button>
-                <p>
+                <p className='link'>
                   <Link to='/' activeClassName='active'>
                     {text}
                   </Link>
