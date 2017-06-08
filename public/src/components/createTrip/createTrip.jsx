@@ -3,7 +3,8 @@ import  createTrip  from '../../actions/createTripsActions.js';
 import { connect } from 'react-redux';
 import getLocations from '../../actions/getLocationActions';
 import SelectLocations from './SelectLocations.jsx';
-import Status from '../loading/loading.jsx'
+import Status from '../loading/loading.jsx';
+
 let type='';
 let message ='';
 let green = '#4ad86a';
@@ -26,6 +27,7 @@ class CreateTrip extends React.Component{
   componentWillMount(){
     this.props.Locations();
   }
+
 
   changeTripDate(ev) {
     this.setState({tripdate: ev.target.value});
@@ -169,8 +171,10 @@ class CreateTrip extends React.Component{
 }
 
 const mapStateToProps = (store) => {
-  return {locations: store.locations,
-    createTrip: store.createTrip}
+  return {
+    locations: store.locations,
+    createTrip: store.createTrip
+  }
 }
 const mapDispatchToProps = () => {
   return {

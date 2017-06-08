@@ -12,8 +12,9 @@ import {userTripsReducer} from '../reducers/myTripsReducer.js';
 import {unjoinTripReducer} from '../reducers/unjoinTripReduce.js';
 import {getAllTripsReducer} from '../reducers/getAllTripsReducer.js';
 import {joinApproveReducer} from '../reducers/approveJoinReducer.js';
-import {forgetPasswordReducer} from '../reducers/forgetPasswordReducer.js'
-import {resetPasswordReducer} from '../reducers/resetPasswordReducer.js'
+import {forgetPasswordReducer} from '../reducers/forgetPasswordReducer.js';
+import {resetPasswordReducer} from '../reducers/resetPasswordReducer.js';
+import {UserTypeReducer} from '../reducers/userTypeReducer.js'
 
 
 const reducers = combineReducers({
@@ -32,7 +33,8 @@ const reducers = combineReducers({
   allTrips : getAllTripsReducer,
   aprroveJoin : joinApproveReducer,
   forgetPassword : forgetPasswordReducer,
-  resetPassword : resetPasswordReducer
+  resetPassword : resetPasswordReducer,
+  userType: UserTypeReducer
 });
 var store = createStore(
   reducers,
