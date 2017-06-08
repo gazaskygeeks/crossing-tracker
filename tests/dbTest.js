@@ -9,6 +9,7 @@ const test = require('tape');
 console.log('************************* DataBase Test**********************************');
 test('create tables ', (t) => {
   dbutils.runMigrate((error) => {
+    console.log(error);
     data.changeSequence((err,result)=>{
       if(err){
         console.log('error in update sequence:',err);
