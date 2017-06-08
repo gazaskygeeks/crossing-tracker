@@ -27,11 +27,10 @@ class PageHome extends React.Component {
     this.setState({location_to: ev.target.value});
   }
   handleSearch() {
-    console.log('moment().format',moment().format('YYYY-MM-DD'));
     this.props.Filter({
       from: this.state.location_from,
       to: this.state.location_to,
-    date :moment().format('YYYY-MM-DD')})
+      date :moment().format('YYYY-MM-DD')})
       this.setState({
         location_from :'',
         location_to: ''

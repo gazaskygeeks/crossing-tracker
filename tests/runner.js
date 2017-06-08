@@ -14,3 +14,4 @@ require('./forgetPasswordTest.js')
 require('./searchTest.js')
 require('./cancelTripTest.js')
 require('./signoutTest.js');
+require('./checkUserTest.js')
