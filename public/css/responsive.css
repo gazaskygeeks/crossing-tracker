@@ -44,7 +44,7 @@
     content: "Other Details: ";
   }
 
-  .trip-details:first-of-type table tbody tr td:nth-child(7):before {
+  .trip-details:first-of-type table tbody tr td:nth-child(6):before {
     content: "Seats available: ";
   }
   .trip-details:first-of-type table tbody tr td:last-child:before {

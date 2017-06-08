@@ -2,19 +2,26 @@ import React from 'react';
 import { hashHistory } from 'react-router';
 import moment from 'moment';
 
-const UserTripsRow = ({userTrips}) => {
+const UserTripsRow = (
+  {userTrips, messageChange, delMessage, getUserTrips, CancelTripp, msg}
+) => {
+  let disabled;
   if(!userTrips){
     return <div>Loading...</div>;
   }
-
   const arr = userTrips.sort(function(a,b){
     return new Date(b.date) - new Date(a.date);
   });
-
+  if(delMessage.length === 0){
+    disabled = 'disabled';
+  }else if(delMessage.length > 0){
+    disabled = '';
+  }
   const trips = arr.map((trip)=>{
     const date =  new Date(trip.date);
     const Newdate = new Date(date.setTime( date.getTime() + 1 * 86400000 ));
-
+    const toggleID = `#myModal${trip.trip_id}`
+    const modalID = `myModal${trip.trip_id}`
     let show;
     let message;
     if(moment()._d > Newdate){
@@ -49,6 +56,71 @@ const UserTripsRow = ({userTrips}) => {
             >
             Edit this trip
           </button>
+          <button
+            style={show}
+            type='button'
+            className='btn btn-default'
+            data-toggle='modal'
+            data-target={toggleID}
+            >
+            Cancel This Trip
+          </button>
+        </div>
+        <div
+          className='modal fade'
+          id={modalID}
+          tabIndex='-1'
+          role='dialog'
+          aria-labelledby='myModalLabel'
+          >
+          <div className='modal-dialog' role='document'>
+            <div className='modal-content'>
+              <div className='modal-header'>
+                <button
+                  type='button'
+                  className='close'
+                  data-dismiss='modal'
+                  aria-label='Close'>
+                    <span aria-hidden='true'>&times;</span>
+                </button>
+                <h4
+                  className='modal-title'
+                  id='myModalLabel'
+                  >
+                  Type a message
+                </h4>
+              </div>
+              <div className='modal-body'>
+                <div className='form-group'>
+                  <textarea
+                    type='text'
+                    placeholder='Why do you want to cancel this trip?'
+                    className='form-control'
+                    rows='5'
+                    value={delMessage}
+                    onChange={messageChange}
+                    >
+                  </textarea>
+                  <p className='error'>{msg}</p>
+                </div>
+
+                <button
+                  className='btn btn-danger'
+                  data-dismiss='modal'
+                  aria-label='Close'
+                  disabled={disabled}
+                  onClick={
+                    () => {
+                      CancelTripp({msg: delMessage, trip_id: trip.trip_id}),
+                      getUserTrips()
+                    }
+                  }
+                  >
+                  Cancel Trip
+                </button>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     );

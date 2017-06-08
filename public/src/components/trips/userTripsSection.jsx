@@ -1,6 +1,8 @@
-import React from 'react'
+import React from 'react';
 import UserTripsRow from './userTripsRow.jsx';
-const userTripsSection = ({userTrips}) => {
+const userTripsSection = (
+  {userTrips, messageChange, delMessage, getUserTrips, CancelTripp, msg}
+) => {
 
   if(!userTrips){
     return <div>Loading...</div>;
@@ -12,6 +14,11 @@ const userTripsSection = ({userTrips}) => {
         <span className='caption'>Own trips apear here</span>
         <UserTripsRow
           userTrips = {userTrips}
+          messageChange = {messageChange}
+          delMessage = {delMessage}
+          getUserTrips = {() => getUserTrips()}
+          CancelTripp = {data => CancelTripp(data)}
+          msg ={msg}
           />
     </section>
   )

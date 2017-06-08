@@ -15,7 +15,6 @@ const getUserTrips = ()=>{
   .then((response)=>{
     return  response.json();
   }).then((response)=>{
-    console.log('response.tripMembers',response);
       store.dispatch({type: types.GET_USER_TRIPS, payload: response});
   }).catch((error) => {
     store.dispatch({
@@ -47,8 +46,6 @@ const UpdateUserTrips = (data)=>{
 
 
 const UnjoinTrip = (tripId)=>{
-  console.log('tripId: ',tripId);
-  console.log('tripId: ',tripId);
   fetch('/trip',{
     method: 'DELETE',
     headers: {
@@ -69,4 +66,25 @@ const UnjoinTrip = (tripId)=>{
   })
 }
 
-export {getUserTrips,UpdateUserTrips,UnjoinTrip};
+const CancelTrip = (data)=>{
+  fetch('/cancelTrip',{
+    method: 'DELETE',
+    headers: {
+           'Accept': 'application/json, text/plain, */*',
+           'Content-Type': 'application/json'
+    },
+    body:JSON.stringify(data),
+    credentials: 'include'
+  })
+  .then((response)=>{
+    return  response.json();
+  }).then((response)=>{
+      store.dispatch({type: types.CANCEL_TRIP, payload: response});
+  }).catch((error) => {
+    store.dispatch({
+      type: types.CANCEL_TRIP_FAILURE
+    })
+  })
+}
+
+export {getUserTrips,UpdateUserTrips,UnjoinTrip,CancelTrip};
