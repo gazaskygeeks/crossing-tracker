@@ -14,5 +14,6 @@ export default {
   approveJoin: {},
   forgetPassword: {},
   resetPassword : {},
-  userType: 0
+  userType: 0,
+  updateTrip: {}
 };

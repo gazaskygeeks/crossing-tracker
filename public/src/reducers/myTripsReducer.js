@@ -11,10 +11,6 @@ function userTripsReducer(state = initialState.getUserTrips, action) {
     return action.payload;
   case types.GET_USER_TRIPS_FAILURE:
     return state;
-  case types.UPDATE_USER_TRIPS:
-    return action.payload;
-  case types.UPDATE_USER_TRIPS_FAILURE:
-    return state;
   default:
     return state;
   }
