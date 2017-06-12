@@ -20,7 +20,7 @@ class CreateTrip extends React.Component{
       location_from: '',
       location_to: '',
       details:'',
-      available_seats: 0
+      available_seats: ''
     };
   }
 
