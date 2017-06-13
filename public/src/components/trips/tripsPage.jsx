@@ -6,6 +6,8 @@ import UserJoinedTrips from './userJoinedTrips.jsx';
 import {UnjoinTrip} from '../../actions/myTripsActions.js';
 import JoinedUsersRow from './joinedUsersRow.jsx';
 import ApproveJoin from '../../actions/approveJoin.js';
+import {CancelTrip} from '../../actions/myTripsActions.js';
+let msg;
 
 class TripsPage extends React.Component {
   constructor(props) {
@@ -13,15 +15,27 @@ class TripsPage extends React.Component {
     this.state = {
       MyTrips: true,
       JoinedUsers: false,
-      JoinedTrips: false
+      JoinedTrips: false,
+      message: ''
     };
     this.showMyTrips = this.showMyTrips.bind(this);
     this.showJoinedUsers = this.showJoinedUsers.bind(this);
     this.showJoinedTrips = this.showJoinedTrips.bind(this);
+    this.messageChange = this.messageChange.bind(this);
   }
 
   componentWillMount(){
     this.props.UserTrips();
+  }
+
+  messageChange(ev) {
+    this.setState({message: ev.target.value});
+    const status = ev.target.value.trim();
+    if(status.length === 0){
+      msg = 'Message is required';
+    }else if(status.length > 0){
+      msg = '';
+    }
   }
 
   showMyTrips(){
@@ -91,6 +105,10 @@ class TripsPage extends React.Component {
             {this.state.MyTrips ? <UserTripsSection
               userTrips={this.props.GetUserTrips}
               getUserTrips = {() => this.props.UserTrips()}
+              messageChange = {this.messageChange}
+              delMessage = {this.state.message}
+              CancelTripp = { data => this.props.CancelTripp(data)}
+              msg = {msg}
               /> : null}
 
             {this.state.JoinedUsers ? <JoinedUsersRow
@@ -115,8 +133,7 @@ class TripsPage extends React.Component {
 
 
 const mapStateToProps = (store) => {
-  console.log('stroooo:',store.userTrips);
-  console.log('store.aprroveJoin: ',store.userTrips.joinedTrip);
+  console.log('store.userTrips: ',store.userTrips);
   return {
     GetUserTrips: store.userTrips.createdTrip,
     UserJoinedTrips: store.userTrips.joinedTrip,
@@ -135,7 +152,10 @@ const mapDispatchToProps = () => {
     },
     DoApproveJoin: (data) => {
       ApproveJoin(data)
-    }
+    },
+    CancelTripp: (data) => {
+      CancelTrip(data)
+    },
   }
 }
 

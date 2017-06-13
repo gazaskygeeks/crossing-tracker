@@ -65,12 +65,17 @@ class SignupPage extends React.Component {
   changePhone(ev) {
     this.setState({phone: ev.target.value});
     const status = ev.target.value.trim();
-    if(status.length < 6){
-      phoneMsg = 'Phone no. should be more than 5 characters';
-    }else if (status.length > 15) {
-      phoneMsg = 'Phone should be less than 15 characters';
+    const isnum = /^\d+$/.test(ev.target.value.trim());
+    if(isnum){
+      if(status.length < 6){
+        phoneMsg = 'Phone no. should be more than 5 digits';
+      }else if (status.length > 15) {
+        phoneMsg = 'Phone should be less than 15 digits';
+      }else{
+        phoneMsg = '';
+      }
     }else{
-      phoneMsg = '';
+      phoneMsg = 'it should contain only numbers';
     }
   }
 

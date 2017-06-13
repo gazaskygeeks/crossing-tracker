@@ -13,5 +13,7 @@ export default {
   allTrips : [],
   approveJoin: {},
   forgetPassword: {},
-  resetPassword : {}
+  resetPassword : {},
+  userType: 0,
+  updateTrip: {}
 };
