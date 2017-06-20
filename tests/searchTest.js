@@ -187,7 +187,7 @@ test('POST /search : Test search with wrong from to ', (t) => {
       t.deepEqual(result.filter, [], 'no trip returned');
       t.end();
       // eslint-disable-next-line no-console
-      console.log('*****************SearchTest TEST****************************');
+      console.log('*****************Cancel event TEST****************************');
 
     })
 

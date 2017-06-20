@@ -85,13 +85,14 @@ class SignupPage extends React.Component {
 
   valid(event) {
     event.preventDefault();
-    message ='';
-    type = 'spinningBubbles';
+    type='spinningBubbles';
     show = {display: 'block'};
+    message = '';
     this.props.sginup(this.state);
   }
 
   render() {
+
 
     if(this.props.signup.statusCode === 409){
       message=  'User is already registered';

@@ -31,8 +31,9 @@ class SigninPage extends React.Component {
   changePassword(ev) {
     this.setState({password: ev.target.value});
   }
-  
+
   render() {
+
     if(this.props.signin.statusCode === 401){
       message=  'Email or password not correct';
       type ='';
