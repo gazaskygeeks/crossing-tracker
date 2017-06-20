@@ -1,6 +1,7 @@
 const trip = require('../../database/tripHelpers');
 const user = require('../../database/userhelpers')
 const mail = require('../utils.js');
+const eventUtils = require('../eventUtils.js');
 
 module.exports = (req, res) => {
   trip.cancelTrip(req.payload.trip_id, (error, result) => {
@@ -36,13 +37,23 @@ module.exports = (req, res) => {
                   }
                 })
               if (index + 1 == result2.rows.length) {
+                eventUtils.deleteEvent(req.payload.trip_id, (err, response) => {
+                  if (err) {
+                    // eslint-disable-next-line no-console
+                    console.log('Error in cancle event :', err)
+                    return res().code(500)
+                  }
+                  // eslint-disable-next-line no-console
+                  console.log('event was canceled successfully');
+                })
                 return res({
                   msg: 'Your trip canceled successfully and all joined deleted'
                 })
+// end of delete trip from calnder
               }
             })
           })
-        });
+        }); // end of map
 
       } else {
         return res({
