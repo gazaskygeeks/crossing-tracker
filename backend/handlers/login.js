@@ -7,7 +7,7 @@ module.exports = (req, res) => {
   user.getuserbyemail(email, (error, result) => {
     if (error) {
       {
-          // eslint-disable-next-line no-console
+        // eslint-disable-next-line no-console
         console.log('get user by email Error :',error)
         return res().code(500)
       }
