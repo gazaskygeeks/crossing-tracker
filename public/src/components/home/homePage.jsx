@@ -7,9 +7,8 @@ import GetAllTrips from '../../actions/getAllTrips.js';
 import GetTripByTime from '../../actions/getTripByTime.js'
 import SelectLocations from '../createTrip/SelectLocations.jsx';
 import getLocations from '../../actions/getLocationActions';
-import search from '../../actions/searchAction.js'
-
-import {connect} from 'react-redux'
+import search from '../../actions/searchAction.js';
+import {connect} from 'react-redux';
 
 class PageHome extends React.Component {
   constructor(props) {
@@ -93,9 +92,11 @@ class PageHome extends React.Component {
   }
 }
 const mapStateToProps = (store) => {
-  return {tripsList: store.homeTrips,
-          allTrips: store.allTrips,
-          locations: store.locations}
+  return {
+    tripsList: store.homeTrips,
+    allTrips: store.allTrips,
+    locations: store.locations
+  }
 }
 const mapDispatchToProps = () => {
   return {

@@ -11,29 +11,28 @@ class HomeAdmin extends React.Component {
   componentDidMount(){
     this.props.disApproved()
   }
-    render() {
-        return (
-            <section className="admin">
-                <div className="container">
-                    <table className="table">
-                        <thead>
-                            <tr>
-                                <th>Username</th>
-                                <th>Email</th>
-                                <th>Phone no.</th>
-                                <th>Organization</th>
-                                <th>Verification</th>
-                            </tr>
-                        </thead>
-                        <RegestratedList regList={this.props.list}
-                          onAccept={this.props.accept}
-                          onReject={this.props.reject}/>
-                    </table>
-                </div>
-            </section>
-        );
-
-    }
+  render() {
+    return (
+        <section className="admin">
+            <div className="container">
+                <table className="table">
+                    <thead>
+                        <tr>
+                            <th>Username</th>
+                            <th>Email</th>
+                            <th>Phone no.</th>
+                            <th>Organization</th>
+                            <th>Verification</th>
+                        </tr>
+                    </thead>
+                    <RegestratedList regList={this.props.list}
+                      onAccept={this.props.accept}
+                      onReject={this.props.reject}/>
+                </table>
+            </div>
+        </section>
+    );
+  }
 }
 const mapStateToProps = (store) => {
   return {list: store.disApproved}
