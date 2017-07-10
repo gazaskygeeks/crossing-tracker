@@ -8,8 +8,6 @@ import { hashHistory } from 'react-router';
 const Header = (props) => {
   const userType = props.userType;
   {props.GetUserType()}
-  console.log('userType: ',userType);
-
   if(props.path != '/' && props.path != '/signup' && props.path != '/success' && props.path != '/forgetPassword'  && props.path != '/reset/'){
     if(userType === 2){
       return (

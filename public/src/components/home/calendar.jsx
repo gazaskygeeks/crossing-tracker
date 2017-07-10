@@ -21,13 +21,21 @@ class Calendar extends React.Component {
   handleEvents(event){
     this.props.getTripByTime(JSON.stringify(event.trip_id))
   }
+
   render() {
-    var events = this.props.allTrips.map(item => (Object.assign({}, {
-      title: item.time,
-      start: item.date,
-      end: item.date,
-      trip_id:item.trip_id
-    })))
+    var events = this.props.allTrips.map((item) => {
+      const date =  new Date(item.date);
+      const Newdate = new Date(date.setTime( date.getTime() + 1 * 86400000 ));
+      if(moment()._d < Newdate){
+        return((Object.assign({}, {
+          title: item.time,
+          start: item.date,
+          end: item.date,
+          trip_id:item.trip_id
+        })))
+      }
+    }
+  )
     return (<BigCalendar
       style={{height: '420px'}}
       culture='en-GB'
