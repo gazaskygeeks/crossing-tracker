@@ -15,30 +15,41 @@ class PageHome extends React.Component {
     super(props);
     this.state = {
       location_from: '',
-      location_to: ''
+      location_to: '',
+      from: '',
+      to: '',
+      displayHint : false
     };
+    this.cancleSearch = this.cancleSearch.bind(this)
   }
   changeLocationFrom(ev) {
-    this.setState({location_from: ev.target.value});
+    const index = ev.nativeEvent.target.selectedIndex;
+    const text = ev.nativeEvent.target[index].text;
+    this.setState({location_from: ev.target.value, from: text});
+
+
   }
 
   changeLocationTo(ev) {
-    this.setState({location_to: ev.target.value});
+    const index = ev.nativeEvent.target.selectedIndex;
+    const text = ev.nativeEvent.target[index].text;
+    this.setState({location_to: ev.target.value, to : text});
   }
   handleSearch() {
-    this.props.Filter({
-      from: this.state.location_from,
-      to: this.state.location_to,
-      date :moment().format('YYYY-MM-DD')})
-      this.setState({
-        location_from :'',
-        location_to: ''
-      })
+    this.setState({displayHint : true})
+    this.props.Filter({from: this.state.location_from, to: this.state.location_to, date: moment().format('YYYY-MM-DD')})
+    this.setState({location_from: '', location_to: ''})
+  }
+  cancleSearch(){
+    this.setState({displayHint : false})
+    this.props.getTrips(moment().format('YYYY-MM-DD'));
+    this.props.getAllTrips()
   }
   componentWillMount() {
     this.props.Locations();
   }
   render() {
+
     return (
       <section className='data-wrp'>
         <div className='container'>
@@ -47,29 +58,24 @@ class PageHome extends React.Component {
               <div className='search-form'>
                 <div className='form-group'>
                   <label></label>
-                  <SelectLocations
-                    label='From'
-                    options={this.props.locations}
-                    value={this.state.location_from}
-                    change={this.changeLocationFrom.bind(this)}
-                    />
+                  <SelectLocations label='From' options={this.props.locations} value={this.state.location_from} change={this.changeLocationFrom.bind(this)}/>
                 </div>
                 <div className='form-group'>
                   <label></label>
-                  <SelectLocations
-                    label='To'
-                    options={this.props.locations}
-                    value={this.state.location_to}
-                    change={this.changeLocationTo.bind(this)}
-                    />
+                  <SelectLocations label='To' options={this.props.locations} value={this.state.location_to} change={this.changeLocationTo.bind(this)}/>
                 </div>
-                <button
-                  type='submit'
-                  className='btn'
-                  onClick={this.handleSearch.bind(this)}>
+                <button type='submit' className='btn' onClick={this.handleSearch.bind(this)}>
                   Search
                 </button>
               </div>
+              {this.state.displayHint
+                ? <div>
+                    Only showing trips from {this.state.from}
+                    to {this.state.to}
+                    <button onClick={this.cancleSearch}>close</button>
+                  </div>
+                : null
+}
               <Calendar {...this.props}/>
             </div>
             <div className='col-md-4 details'>
@@ -92,11 +98,7 @@ class PageHome extends React.Component {
   }
 }
 const mapStateToProps = (store) => {
-  return {
-    tripsList: store.homeTrips,
-    allTrips: store.allTrips,
-    locations: store.locations
-  }
+  return {tripsList: store.homeTrips, allTrips: store.allTrips, locations: store.locations}
 }
 const mapDispatchToProps = () => {
   return {
