@@ -47,7 +47,7 @@ test('POST/tripDetails: test  ', (t) => {
           org_id: 1,
           org_name: 'mercyco',
           details: 'Rammallah',
-          duration:null,
+          duration:'30',
           phone: '059984253',
           time: '02:01',
           trip_id: trip_id,

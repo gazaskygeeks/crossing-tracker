@@ -75,6 +75,7 @@ test('DELETE /cancelTrip : cancel trip that having user', (t) => {
     location_to: 2,
     details: 'asxsacs',
     available_seats: 3,
+    duration:30
   }
 
   var data1 = {
