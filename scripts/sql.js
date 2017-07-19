@@ -65,6 +65,20 @@ const trip_status = `DO $$
     END;
 $$ ;
 `
+const duration = `DO $$
+    BEGIN
+        BEGIN
+            ALTER TABLE trip ADD COLUMN  duration varchar(25);
+        EXCEPTION
+              WHEN duplicate_column
+            THEN RAISE NOTICE
+            'column duration
+            already exists in trip';
+        END;
+    END;
+$$ ;
+`
+
 module.exports = {
   users,
   trip,
@@ -74,5 +88,6 @@ module.exports = {
   usertype,
   approvedColumn,
   sequence,
-  trip_status
+  trip_status,
+  duration
 }

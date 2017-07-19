@@ -41,10 +41,11 @@ const tripQuery = `INSERT INTO trip (
     time,
     date,
     user_id,
-    available_seats
+    available_seats,
+    duration
   ) VALUES
  (
-   $1,$2,$3,$4,$5,$6,$7
+   $1,$2,$3,$4,$5,$6,$7,$8
  );`
 // const trip = ['
 // 10000','1','2','01:01','2017-08-08','1','1'];

@@ -17,7 +17,6 @@ const hash = (pass, cb) => {
     Bcrypt.hash(pass, salt, cb);
   });
 }
-
 const sendemail = (sender, recipient, sub, content, cb) => {
   const transporter = nodemailer.createTransport({
     service: 'gmail',

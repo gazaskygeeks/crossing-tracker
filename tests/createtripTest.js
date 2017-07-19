@@ -11,6 +11,7 @@ test('POST /createtrip : test if recive the the correct Data', (t) => {
     location_to: 2,
     details:'asxsacs',
     available_seats: 1,
+    duration:30
 
   }
 
@@ -120,6 +121,8 @@ test('POST /createtrip :check duplicate trip', (t) => {
         location_to: 2,
         details:'asxsacs',
         available_seats: 2,
+        duration:30
+
 
       }
       option = {
