@@ -59,20 +59,25 @@ const endTime = (time,duration)=>{
   var seperate = time.split(':')
   var hours = hour+Number(seperate[0])
   var minuts = minut+Number(seperate[1])
+
   if(minuts >= 60){
     hours += 1;
     minuts = minuts %60;
-    if(minuts <=9){
-      minuts= '0' + minuts
-    }
   }
   if(hours >= 24){
     hours = hours % 24;
-    if(hours <=9){
-      hours= '0' + hours
-    }
   }
-  return`${hours}:${minuts}`
+  if(minuts <=9){
+    minuts= '0' + minuts
+  }
+
+  if(hours <=9){
+    hours= '0' + hours
+  }
+  return{endTime:`${hours}:${minuts}`,
+    hours : hour,
+    minuts : minut
+  }
 
 }
 module.exports = {
