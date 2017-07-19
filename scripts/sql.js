@@ -64,7 +64,7 @@ const trip_status = `DO $$
         END;
     END;
 $$ ;
-`
+`;
 const duration = `DO $$
     BEGIN
         BEGIN

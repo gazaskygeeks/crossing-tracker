@@ -66,7 +66,6 @@ test('POST / approve: accept the request of join trip', (t) => {
     const query = `SELECT trip_id FROM trip WHERE user_id=$1;`;
     const user = ['4'];
     dbutils.runQuery(query, user, (err, result) => {
-      console.log(result);
       if (err) {
         console.log('error: get trip_id by user_id in joinTripTest:', err);
         return;
