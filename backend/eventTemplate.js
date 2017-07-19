@@ -4,14 +4,13 @@ function insertEventTemplate(data) {
     'status': 'confirmed',
     'description':`Leaving at ${data.time} from ${data.location_from}
 Ending at ${data.location_to} (${data.details})
-At approximately 15:00 (duration hours)`,
+At approximately ${data.endTime} (${data.hours} hours & ${data.minuts} minuts)`,
     'start': {
       'dateTime': `${data.tripdate}T${data.time}:00`,
       'timeZone': '(GMT+03:00) Jerusalem'
     },
-    'defaultEventLength': '120',
     'end': {
-      'dateTime': `${data.tripdate}T15:00:00`,
+      'dateTime': `${data.tripdate}T${data.endTime}:00`,
       'timeZone': '(GMT+03:00) Jerusalem'
     },
     'id': data.id,
