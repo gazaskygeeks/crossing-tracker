@@ -4,6 +4,9 @@ import {connect} from 'react-redux';
 import getLocations from '../../actions/getLocationActions';
 import SelectLocations from './SelectLocations.jsx';
 import Status from '../loading/loading.jsx';
+import {  hashHistory } from 'react-router';
+import Store from '../../store/store.js';
+import * as types from '../../actions/actionTypes.js';
 
 let type = '',
   message = '',
@@ -53,7 +56,6 @@ class CreateTrip extends React.Component {
   }
 
   changeSeatsAvailable(ev) {
-    console.log(this.state);
     this.setState({available_seats: ev.target.value});
     const status = ev.target.value.trim();
     if (status < 1) {
@@ -74,7 +76,6 @@ class CreateTrip extends React.Component {
     }
   }
   clickCreateTrip() {
-    console.log(this.state);
     message = '';
     type = 'spinningBubbles';
     show = {
@@ -89,6 +90,12 @@ class CreateTrip extends React.Component {
       show = {
         display: 'none'
       };
+      setTimeout(()=>{
+        hashHistory.push('/home');
+        Store.dispatch({type: types.CREATE_TRIP, payload: {}});
+        message = ''
+      },1000)
+
     } else if (this.props.createTrip.statusCode === 409) {
       message = 'You have already created a trip in this time';
       type = '';
@@ -114,38 +121,56 @@ class CreateTrip extends React.Component {
               <div className='form'>
                 <div className='form-group'>
                   <label>Trip date</label>
-                  <input type='date' value={this.state.tripdate} className='form-control' onChange={this.changeTripDate.bind(this)}/>
+                  <input type='date' value={this.state.tripdate}
+                    className='form-control'
+                    onChange={this.changeTripDate.bind(this)}/>
                 </div>
                 <div className='form-group'>
                   <label>Departure Time</label>
-                  <input type='time' name='time' value={this.state.time} className='form-control' onChange={this.changeTime.bind(this)}/>
+                  <input type='time' name='time' value={this.state.time}
+                    className='form-control'
+                    onChange={this.changeTime.bind(this)}/>
                 </div>
                 <div className='form-group'>
                   <label>Estimated duration (in minutes)</label>
-                  <input placeholder='e.g. 30' type='text' className='form-control' value={this.state.duration} className='form-control' onChange={this.changeDuration.bind(this)}/>
+                  <input placeholder='e.g. 30' type='text'
+                    className='form-control' value={this.state.duration}
+                    className='form-control'
+                    onChange={this.changeDuration.bind(this)}/>
                   <p className='error'>{durationMsg}</p>
                 </div>
                 <div className='form-group'>
                   <label>From</label>
-                  <SelectLocations label='From' options={this.props.locations} value={this.state.location_from} change={this.changeLocationFrom.bind(this)}/>
+                  <SelectLocations label='From' options={this.props.locations}
+                    value={this.state.location_from}
+                    change={this.changeLocationFrom.bind(this)}/>
                 </div>
                 <div className='form-group'>
                   <label>To</label>
-                  <SelectLocations label='To' options={this.props.locations} value={this.state.location_to} change={this.changeLocationTo.bind(this)}/>
+                  <SelectLocations label='To' options={this.props.locations}
+                    value={this.state.location_to}
+                    change={this.changeLocationTo.bind(this)}/>
                 </div>
                 <div className='form-group'>
                   <label>Other details</label>
-                  <textarea placeholder="e.g. 'Meet outside the National Hotel" type='text' value={this.state.details} className='form-control' onChange={this.changeDetails.bind(this)}/>
+                  <textarea placeholder="e.g. 'Meet outside the National Hotel"
+                    type='text' value={this.state.details}
+                    className='form-control'
+                    onChange={this.changeDetails.bind(this)}/>
                 </div>
                 <div className='form-group'>
                   <label>Available seats</label>
-                  <input type='number' className='form-control' value={this.state.available_seats} className='form-control' onChange={this.changeSeatsAvailable.bind(this)}/>
+                  <input type='number' className='form-control'
+                    value={this.state.available_seats}
+                    className='form-control'
+                    onChange={this.changeSeatsAvailable.bind(this)}/>
                   <p className='error'>{seatsMsg}</p>
                 </div>
                 <div className='btn-wrp-right'>
                   <p className='error'>{message}</p>
                   <Status type={type} color={green} show={show}/>
-                  <button type='submit' className='btn btn-success' onClick={this.clickCreateTrip.bind(this)}>
+                  <button type='submit' className='btn btn-success'
+                    onClick={this.clickCreateTrip.bind(this)}>
                     Add this trip
                   </button>
                 </div>
