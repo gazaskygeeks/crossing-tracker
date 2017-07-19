@@ -73,7 +73,7 @@ module.exports = (req, res) => {
                     console.log('get users ids by trip id  error :', err)
                     return res().code(500)
                   }
-                  usersId.rows.map((item) => {
+                  usersId.rows.map((item,index ) => {
                     user.getEmailByUserId(item.user_id, (err, ownEmails) => {
                       if (err) {
                         // eslint-disable-next-line no-console
@@ -84,13 +84,14 @@ module.exports = (req, res) => {
                         'email': ownEmails.rows[0].email
                       })
                       description = description.concat(
-                        `${ownEmails.rows[0].username}:
-                        ${ownEmails.rows[0].phone}\n`)
+                        `${index+1}. ${ownEmails.rows[0].username},
+                        ${ownEmails.rows[0].phone},
+                        ${ownEmails.rows[0].email} \n`)
                       usersId.rowCount--;
                       if (usersId.rowCount === 0) {
-                        description = description.concat(
-                          `${tripAndUserInfo.rows[0].username}:
-                          ${tripAndUserInfo.rows[0].phone}\n`);
+                        // description = description.concat(
+                        //   `${tripAndUserInfo.rows[0].username}:
+                        //   ${tripAndUserInfo.rows[0].phone}\n`);
                         var data = Object.assign(tripAndUserInfo.rows[0], {
                           emails: emails.concat({
                             'email': tripAndUserInfo.rows[0].email

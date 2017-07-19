@@ -53,7 +53,7 @@ module.exports = (req, res) => {
                   return res().code(500)
                 }
                 if (usersId.rows.length > 0) { // there are users joined to this trip
-                  usersId.rows.map((item) => {
+                  usersId.rows.map((item, index) => {
                     user.getEmailByUserId(item.user_id, (err, ownEmails) => {
                       if (err) {
                         // eslint-disable-next-line no-console
@@ -64,8 +64,9 @@ module.exports = (req, res) => {
                         'email': ownEmails.rows[0].email
                       })
                       description = description.concat(
-                        `${ownEmails.rows[0].username}:
-                        ${ownEmails.rows[0].phone}\n`)
+                        `${index+1}. ${ownEmails.rows[0].username},
+                        ${ownEmails.rows[0].phone},
+                        ${ownEmails.rows[0].email} \n`)
                       usersId.rowCount--;
                       if (usersId.rowCount === 0) {
                         trip.getTripByid({
@@ -76,9 +77,9 @@ module.exports = (req, res) => {
                             console.log('get trip by id  error :', err)
                             return res().code(500)
                           }
-                          description = description.concat(
-                            `${userAndTripInfo.rows[0].username}:
-                            ${userAndTripInfo.rows[0].phone}\n`);
+                          // description = description.concat(
+                          //   `${userAndTripInfo.rows[0].username}:
+                          //   ${userAndTripInfo.rows[0].phone}\n`);
                           var data = Object.assign(userAndTripInfo.rows[0], {
                             emails: emails.concat({
                               'email': userAndTripInfo.rows[0].email
