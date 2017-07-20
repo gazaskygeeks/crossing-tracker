@@ -2,6 +2,7 @@ const trip = require('../../database/tripHelpers')
 const user = require('../../database/userhelpers.js');
 const template = require('../eventTemplate.js');
 const utils = require('../eventUtils.js');
+const calcTime = require('../utils.js');
 module.exports = (req, res) => {
   var emails = [];
   var description = '';
@@ -45,17 +46,21 @@ module.exports = (req, res) => {
                   return res().code(500)
                 }
                 emails = emails.concat({'email':result3.rows[0].email})
-                description = description.concat(
-                  `${index+1}. ${result3.rows[0].username},
-                  ${result3.rows[0].phone},
-                  ${result3.rows[0].email} \n`)
+                description = description.concat(`
+${index+1}. ${result3.rows[0].username},${result3.rows[0].phone},${result3.rows[0].email} \n`)
                 result2.rowCount--;
                 if (result2.rowCount === 0) {
-                  // description = description.concat(`${result1.rows[0].username}:
-                  //   ${result1.rows[0].phone}\n`);
+                  description = description.concat(`
+${index+1}. ${result1.rows[0].username},${result1.rows[0].phone},${result1.rows[0].email} \n`);
+                  const time = result1.rows[0].time;
+                  const duration = result1.rows[0].duration;
+                  const newTime=calcTime.endTime(time,duration)
                   var data = Object.assign(result1.rows[0], {
                     emails: emails.concat({'email':result1.rows[0].email}),
-                    description : description
+                    description : description,
+                    endTime : newTime.endTime,
+                    hours : newTime.hours,
+                    minuts : newTime.minuts
                   })
                   var eventId = trip_id;
                   var event = template.updateEventTemplate(data);
