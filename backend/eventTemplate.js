@@ -31,8 +31,8 @@ function updateEventTemplate(data) {
     'summary': `Trip from ${data.location_from} to ${data.location_to}`,
     'description': `Leaving at ${data.time} from ${data.location_from}
 Ending at ${data.location_to} (${data.details})
-At approximately 15:00 (duration hours)\n\n Passengers:\n
-${data.description}`,
+At approximately ${data.endTime} (${data.hours} hours & ${data.minuts} minuts)
+\nPassengers:\n${data.description}`,
     'status': 'confirmed',
     'start': {
       'dateTime': `${data.date}T${data.time}:00`,
