@@ -26,7 +26,8 @@ const editTripValidation = {
   location_from: Joi.number().min(1).required(),
   location_to: Joi.number().min(1).required(),
   details: Joi.string().min(3).max(255).allow(''),
-  available_seats: Joi.number().min(0).required()
+  available_seats: Joi.number().min(0).required(),
+  duration: Joi.number().required()
 }
 
 

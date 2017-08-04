@@ -51,7 +51,7 @@ ${index+1}. ${result3.rows[0].username},${result3.rows[0].phone},${result3.rows[
                 result2.rowCount--;
                 if (result2.rowCount === 0) {
                   description = description.concat(`
-${index+1}. ${result1.rows[0].username},${result1.rows[0].phone},${result1.rows[0].email} \n`);
+${index+2}. ${result1.rows[0].username},${result1.rows[0].phone},${result1.rows[0].email} \n`);
                   const time = result1.rows[0].time;
                   const duration = result1.rows[0].duration;
                   const newTime=calcTime.endTime(time,duration)

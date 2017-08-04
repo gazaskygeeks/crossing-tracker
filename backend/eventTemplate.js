@@ -39,7 +39,7 @@ At approximately ${data.endTime} (${data.hours} hours & ${data.minuts} minuts)
       'timeZone': '(GMT+03:00) Jerusalem'
     },
     'end': {
-      'dateTime': `${data.date}T${data.time}:00`,
+      'dateTime': `${data.date}T${data.endTime}:00`,
       'timeZone': '(GMT+03:00) Jerusalem'
     },
     'recurrence': [

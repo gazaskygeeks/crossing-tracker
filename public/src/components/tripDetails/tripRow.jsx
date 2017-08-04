@@ -10,6 +10,7 @@ const TripRow = ({trip}) => {
           <tr>
             <td>{trip.date}</td>
             <td>{trip.time}</td>
+            <td>{trip.duration}</td>
             <td>{trip.location_from}</td>
             <td>{trip.location_to}</td>
             <td>{trip.details}</td>
