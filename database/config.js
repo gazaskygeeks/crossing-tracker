@@ -6,13 +6,13 @@ const pg = require('pg');
 const config = {
   development: {
     user: 'postgres',
-    password: '123654',
+    password: '123456',
     database: 'test2',
     port: 5432
   },
   test: {
     user: 'postgres',
-    password: '123654',
+    password: '123456',
     database: 'tests',
     port: 5432
   },
