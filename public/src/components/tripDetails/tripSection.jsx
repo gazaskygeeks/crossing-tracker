@@ -14,7 +14,8 @@ const TripSection = ({trip}) => {
               <thead>
                 <tr>
                   <th>Trip Date</th>
-                  <th>Time</th>
+                  <th>Departure Time</th>
+                  <th>Estimated duration (in minutes)</th>
                   <th>From</th>
                   <th>To</th>
                   <th>Other details</th>

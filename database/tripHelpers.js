@@ -97,6 +97,7 @@ function gettripbyuserid(data, cb) {
   trip.time,
   trip.details,
   trip.available_seats,
+  trip.duration,
   l.location_name as location_from,
   (select location_name from location where
   location_id=trip.location_to_id) as location_to  FROM
@@ -111,6 +112,7 @@ function getJoinedTrip(data,cb){
   trip.time,
   trip.details,
   trip.available_seats,
+  trip.duration,
   l.location_name as location_from,
   u.username,
   u.email,
@@ -171,7 +173,6 @@ function getusertripbytripid(data, cb) {
   dbutils.runQuery(query, [data], cb);
 }
 function updatetrip(data, cb) {
-
   const query = `UPDATE trip
    SET
    location_from_id=$1,
@@ -179,8 +180,9 @@ function updatetrip(data, cb) {
    time=$3,
    date=$4,
    details=$5,
-   available_seats=$6
-   WHERE trip_id=$7`;
+   available_seats=$6,
+   duration =$7
+   WHERE trip_id=$8`;
   dbutils.runQuery(
     query,
     [
@@ -190,6 +192,7 @@ function updatetrip(data, cb) {
       data.tripdate,
       data.details,
       data.available_seats,
+      data.duration,
       data.trip_id
     ]
     , cb);

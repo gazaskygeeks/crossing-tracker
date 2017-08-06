@@ -2,6 +2,8 @@ const trip = require('../../database/tripHelpers');
 const user = require('../../database/userhelpers.js');
 const template = require('../../backend/eventTemplate.js');
 const eventUtils = require('../../backend/eventUtils.js');
+const calcTime = require('../utils.js');
+
 
 module.exports = (req, res) => {
   const usertripinfo = [req.state.sid.user_id, req.payload.trip_id];
@@ -53,7 +55,7 @@ module.exports = (req, res) => {
                   return res().code(500)
                 }
                 if (usersId.rows.length > 0) { // there are users joined to this trip
-                  usersId.rows.map((item) => {
+                  usersId.rows.map((item, index) => {
                     user.getEmailByUserId(item.user_id, (err, ownEmails) => {
                       if (err) {
                         // eslint-disable-next-line no-console
@@ -63,9 +65,8 @@ module.exports = (req, res) => {
                       emails = emails.concat({
                         'email': ownEmails.rows[0].email
                       })
-                      description = description.concat(
-                        `${ownEmails.rows[0].username}:
-                        ${ownEmails.rows[0].phone}\n`)
+                      description = description.concat(`
+${index+1}. ${ownEmails.rows[0].username},${ownEmails.rows[0].phone},${ownEmails.rows[0].email} \n`)
                       usersId.rowCount--;
                       if (usersId.rowCount === 0) {
                         trip.getTripByid({
@@ -76,14 +77,19 @@ module.exports = (req, res) => {
                             console.log('get trip by id  error :', err)
                             return res().code(500)
                           }
-                          description = description.concat(
-                            `${userAndTripInfo.rows[0].username}:
-                            ${userAndTripInfo.rows[0].phone}\n`);
+                          description = description.concat(`
+${index+2}. ${userAndTripInfo.rows[0].username},${userAndTripInfo.rows[0].phone},${userAndTripInfo.rows[0].email} \n`)
+                          const time = userAndTripInfo.rows[0].time;
+                          const duration = userAndTripInfo.rows[0].duration;
+                          const newTime=calcTime.endTime(time,duration)
                           var data = Object.assign(userAndTripInfo.rows[0], {
                             emails: emails.concat({
                               'email': userAndTripInfo.rows[0].email
                             }),
-                            description: description
+                            description: description,
+                            endTime : newTime.endTime,
+                            hours : newTime.hours,
+                            minuts : newTime.minuts
                           })
                           var eventId = tripId;
                           var event = template.updateEventTemplate(data);
@@ -114,15 +120,18 @@ module.exports = (req, res) => {
                       return res().code(500)
                     }
                     var eventId = tripId;
-                    description = description.concat(
-                      `${userAndTripInfo.rows[0].username}:
-                      ${userAndTripInfo.rows[0].phone}\n`);
+                    const time = userAndTripInfo.rows[0].time;
+                    const duration = userAndTripInfo.rows[0].duration;
+                    const newTime=calcTime.endTime(time,duration)
                     var attendees = [{
                       'email': userAndTripInfo.rows[0].email
                     }]
                     var data = Object.assign(userAndTripInfo.rows[0], {
                       emails: attendees,
-                      description: description
+                      description: '',
+                      endTime : newTime.endTime,
+                      hours : newTime.hours,
+                      minuts : newTime.minuts
                     })
                     var event = template.updateEventTemplate(data);
                     eventUtils.updateEvent(event, eventId,

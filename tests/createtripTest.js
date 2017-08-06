@@ -2,6 +2,11 @@
 
 const test = require('tape');
 const server = require('../backend/server.js');
+const google = require('googleapis');
+const sinon = require('sinon');
+// const mock = () => ({ authorize: (cb) => cb(null, {test: 'data'}) });
+// sinon.stub(google, 'jwtClient', mock);
+
 test('POST /createtrip : test if recive the the correct Data', (t) => {
 
   var data ={

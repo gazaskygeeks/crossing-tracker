@@ -25,7 +25,8 @@ const UserTripsRow = (
       <div key={trip.trip_id}>
         <ul>
           <li><label>Trip date</label> <span>{trip.date}</span></li>
-          <li><label>Time</label> <span>{trip.time}</span></li>
+          <li><label>Departure Time</label> <span>{trip.time}</span></li>
+          <li><label>Estimated duration (in minutes)</label> <span>{trip.duration}</span></li>
           <li><label>From</label> <span>{trip.location_from}</span></li>
           <li><label>To</label> <span>{trip.location_to}</span></li>
           <li><label>Other details</label> <span>{trip.details}</span></li>

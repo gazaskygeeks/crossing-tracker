@@ -26,7 +26,8 @@ class UserTripsRow extends React.Component {
       location_from: this.props.GetTripByID.location_from_id,
       location_to: this.props.GetTripByID.location_to_id,
       details:this.props.GetTripByID.details,
-      available_seats: this.props.GetTripByID.available_seats
+      available_seats: this.props.GetTripByID.available_seats,
+      duration : this.props.GetTripByID.duration
     };
   }
   componentWillMount(){
@@ -52,6 +53,9 @@ class UserTripsRow extends React.Component {
 
   changeDetails(ev) {
     this.setState({details: ev.target.value});
+  }
+  changeDuration(ev){
+    this.setState({duration: ev.target.value});
   }
 
 
@@ -81,6 +85,7 @@ class UserTripsRow extends React.Component {
             changeLocationTo = {this.changeLocationTo.bind(this)}
             changeDetails = {this.changeDetails.bind(this)}
             changeSeatsAvailable = {this.changeSeatsAvailable.bind(this)}
+            changeDuration = {this.changeDuration.bind(this)}
             locations = {this.props.locations}
             id={this.props.params.id}
             getData = {this.test.bind(this)}

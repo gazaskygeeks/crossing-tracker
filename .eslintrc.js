@@ -25,7 +25,7 @@ module.exports = {
       "args": "none"
     }
   ],
-  "max-len": [2, 80, 4, {ignoreComments: true, ignoreUrls: true,ignoreStrings: true, ignorePattern: "^\\s*var\\s.+=\\s*require\\s*\\("}]
+  "max-len": [2, 100, 4, {ignoreComments: true, ignoreUrls: true,ignoreStrings: true, ignorePattern: "^\\s*var\\s.+=\\s*require\\s*\\("}]
   },
   "plugins": [
     "react",
