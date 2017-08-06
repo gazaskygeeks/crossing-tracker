@@ -12,7 +12,7 @@ const loginvalidation = {
 }
 const tripvalidation = {
   tripdate: Joi.required(),
-  time:Joi.string().regex(/^([0-2]?[1-9]|1[012])(:[0-5]\d)$/).required(),
+  time:Joi.required(),
   location_from: Joi.number().min(1).required(),
   location_to: Joi.number().min(1).required(),
   details: Joi.string().min(3).max(255).allow(''),
@@ -22,11 +22,12 @@ const tripvalidation = {
 const editTripValidation = {
   trip_id:Joi.number().required(),
   tripdate: Joi.required(),
-  time:Joi.string().regex(/^([0-2]?[1-9]|1[012])(:[0-5]\d)$/).required(),
+  time:Joi.required(),
   location_from: Joi.number().min(1).required(),
   location_to: Joi.number().min(1).required(),
   details: Joi.string().min(3).max(255).allow(''),
-  available_seats: Joi.number().min(0).required()
+  available_seats: Joi.number().min(0).required(),
+  duration: Joi.number().required()
 }
 
 

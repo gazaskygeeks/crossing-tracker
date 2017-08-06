@@ -3,6 +3,8 @@ const user = require('../../database/userhelpers')
 const utiles = require('../utils.js');
 const template = require('../eventTemplate.js');
 const eventUtils = require('../eventUtils.js');
+const calcTime = require('../utils.js');
+
 module.exports = (req, res) => {
   const tripId = req.payload.trip_id;
   var emails = [];
@@ -73,7 +75,7 @@ module.exports = (req, res) => {
                     console.log('get users ids by trip id  error :', err)
                     return res().code(500)
                   }
-                  usersId.rows.map((item) => {
+                  usersId.rows.map((item,index ) => {
                     user.getEmailByUserId(item.user_id, (err, ownEmails) => {
                       if (err) {
                         // eslint-disable-next-line no-console
@@ -83,19 +85,21 @@ module.exports = (req, res) => {
                       emails = emails.concat({
                         'email': ownEmails.rows[0].email
                       })
-                      description = description.concat(
-                        `${ownEmails.rows[0].username}:
-                        ${ownEmails.rows[0].phone}\n`)
+                      description = description.concat(`
+${index+1}. ${ownEmails.rows[0].username},${ownEmails.rows[0].phone},${ownEmails.rows[0].email} \n`)
                       usersId.rowCount--;
                       if (usersId.rowCount === 0) {
-                        description = description.concat(
-                          `${tripAndUserInfo.rows[0].username}:
-                          ${tripAndUserInfo.rows[0].phone}\n`);
+                        description = description.concat(`
+${index+2}. ${tripAndUserInfo.rows[0].username},${tripAndUserInfo.rows[0].phone},${tripAndUserInfo.rows[0].email} \n`)
+                        const time = tripAndUserInfo.rows[0].time;
+                        const duration = tripAndUserInfo.rows[0].duration;
+                        const newTime=calcTime.endTime(time,duration)
                         var data = Object.assign(tripAndUserInfo.rows[0], {
-                          emails: emails.concat({
-                            'email': tripAndUserInfo.rows[0].email
-                          }),
-                          description:description
+                          emails: emails.concat({'email':tripAndUserInfo.rows[0].email}),
+                          description : description,
+                          endTime : newTime.endTime,
+                          hours : newTime.hours,
+                          minuts : newTime.minuts
                         })
                         var eventId = tripId;
                         var event = template.updateEventTemplate(data);
@@ -128,15 +132,18 @@ module.exports = (req, res) => {
                   return res().code(500)
                 }
                 var eventId = tripId;
-                description = description.concat(
-                  `${tripAndUserInfo.rows[0].username}:
-                  ${tripAndUserInfo.rows[0].phone}\n`);
+                const time = tripAndUserInfo.rows[0].time;
+                const duration = tripAndUserInfo.rows[0].duration;
+                const newTime=calcTime.endTime(time,duration)
                 var attendees = [{
                   'email': tripAndUserInfo.rows[0].email
-                }];
+                }]
                 var data = Object.assign(tripAndUserInfo.rows[0], {
                   emails: attendees,
-                  description:description
+                  description: '',
+                  endTime : newTime.endTime,
+                  hours : newTime.hours,
+                  minuts : newTime.minuts
                 })
                 var event = template.updateEventTemplate(data);
                 eventUtils.updateEvent(event, eventId, (err, response) => {

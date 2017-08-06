@@ -3,8 +3,11 @@ const user = require('../../database/userhelpers.js');
 const location = require('../../database/locationsHelpers.js');
 const template = require('../eventTemplate.js');
 const utils = require('../eventUtils.js');
+const calcTime = require('../utils.js')
 module.exports = (req, res) => {
   const userId = req.state.sid.user_id;
+  const duration = req.payload.duration;
+  const time = req.payload.time;
   const data = Object.assign(req.payload, {
     user_id: userId
   })
@@ -46,13 +49,17 @@ module.exports = (req, res) => {
 
             }
 
+            const newTime=calcTime.endTime(time,duration)
             const final = Object.assign(req.payload, {
               email: email,
               location_from: result2.rows[0].location_from,
               location_to: result2.rows[0].location_to,
               id: trip_id,
               username: username,
-              phone:phone
+              phone:phone,
+              endTime : newTime.endTime,
+              hours : newTime.hours,
+              minuts : newTime.minuts
             })
             const event = template.insertEventTemplate(final);
             utils.createEvent(event, (err, response) => {

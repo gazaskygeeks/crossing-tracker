@@ -11,6 +11,7 @@ const UpdateTrip = (
     changeLocationTo,
     changeDetails,
     changeSeatsAvailable,
+    changeDuration,
     locations,
     id,
     getData,
@@ -44,13 +45,24 @@ const UpdateTrip = (
           </span>
         </li>
         <li>
-          <label>Time</label>
+          <label>Departure Time</label>
           <span>
             <input
               type="time"
               className="form-control"
               value={userTrip.time}
               onChange={changeTime}
+            />
+          </span>
+        </li>
+        <li>
+          <label>Estimated duration (in minutes)</label>
+          <span>
+            <input
+              type="text"
+              className="form-control"
+              value={userTrip.duration}
+              onChange={changeDuration}
             />
           </span>
         </li>
