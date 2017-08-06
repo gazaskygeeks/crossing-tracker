@@ -2,8 +2,9 @@ import React from 'react';
 import { connect } from 'react-redux';
 import {getUserTrips} from '../../actions/myTripsActions.js';
 import UserTripsSection from './userTripsSection.jsx';
+import ExpiredTrips from './expiredTrips.jsx';
 import UserJoinedTrips from './userJoinedTrips.jsx';
-import {UnjoinTrip} from '../../actions/myTripsActions.js';
+import { UnjoinTrip } from '../../actions/myTripsActions.js';
 import JoinedUsersRow from './joinedUsersRow.jsx';
 import ApproveJoin from '../../actions/approveJoin.js';
 import {CancelTrip} from '../../actions/myTripsActions.js';
@@ -16,12 +17,14 @@ class TripsPage extends React.Component {
       MyTrips: true,
       JoinedUsers: false,
       JoinedTrips: false,
+      expiredTrips: false,
       message: ''
     };
     this.showMyTrips = this.showMyTrips.bind(this);
     this.showJoinedUsers = this.showJoinedUsers.bind(this);
     this.showJoinedTrips = this.showJoinedTrips.bind(this);
     this.messageChange = this.messageChange.bind(this);
+    this.showExpiredTrips = this.showExpiredTrips.bind(this);
   }
 
   componentWillMount(){
@@ -43,6 +46,7 @@ class TripsPage extends React.Component {
       {
         MyTrips: true,
         JoinedUsers: false,
+        expiredTrips: false,
         JoinedTrips: false
       }
     );
@@ -54,6 +58,7 @@ class TripsPage extends React.Component {
       {
         MyTrips: false,
         JoinedUsers: true,
+        expiredTrips: false,
         JoinedTrips: false
       }
     );
@@ -64,11 +69,22 @@ class TripsPage extends React.Component {
       {
         MyTrips: false,
         JoinedUsers: false,
+        expiredTrips: false,
         JoinedTrips: true
       }
     );
   }
 
+  showExpiredTrips(){
+    this.setState(
+      {
+        MyTrips: false,
+        JoinedUsers: false,
+        expiredTrips: true,
+        JoinedTrips: false
+      }
+    );
+  }
   render() {
 
     return (
@@ -81,15 +97,7 @@ class TripsPage extends React.Component {
                 this.showMyTrips
               }
               >
-              My trips
-            </button>
-            <button
-              className='btn btn-default'
-              onClick = {
-                this.showJoinedUsers
-              }
-              >
-              People joined my trips
+              Trips I own
             </button>
 
             <button
@@ -99,6 +107,15 @@ class TripsPage extends React.Component {
               }
               >
               Trips I've joined
+            </button>
+
+            <button
+              className='btn btn-default'
+              onClick = {
+                this.showExpiredTrips
+              }
+              >
+              Expired trips
             </button>
           </div>
           <div className='col-md-8'>
@@ -110,6 +127,10 @@ class TripsPage extends React.Component {
               CancelTripp = { data => this.props.CancelTripp(data)}
               msg = {msg}
               /> : null}
+
+              {this.state.expiredTrips ? <ExpiredTrips
+                userTrips={this.props.GetUserTrips}
+                /> : null}
 
             {this.state.JoinedUsers ? <JoinedUsersRow
               joinedUsers={this.props.JoinedUsers}

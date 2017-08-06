@@ -18,19 +18,9 @@ const UserTripsRow = (
     disabled = '';
   }
   const trips = arr.map((trip)=>{
-    const date =  new Date(trip.date);
-    const Newdate = new Date(date.setTime( date.getTime() + 1 * 86400000 ));
     const toggleID = `#myModal${trip.trip_id}`
     const modalID = `myModal${trip.trip_id}`
-    let show;
-    let message;
-    if(moment()._d > Newdate){
-      show = {visibility: 'hidden'};
-      message = 'Expired Trip';
-    }else{
-      show = {visibility: 'visible'};
-      message = '';
-    }
+
     return(
       <div key={trip.trip_id}>
         <ul>
@@ -45,9 +35,7 @@ const UserTripsRow = (
           </li>
         </ul>
         <div className='btn-wrp-right'>
-          <p className='error'>{message}</p>
           <button
-            style={show}
             type='button'
             className='btn btn-default'
             onClick={
@@ -57,7 +45,6 @@ const UserTripsRow = (
             Edit this trip
           </button>
           <button
-            style={show}
             type='button'
             className='btn btn-default'
             data-toggle='modal'

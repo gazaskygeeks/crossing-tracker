@@ -4,11 +4,13 @@ import { connect } from 'react-redux';
 import getLocations from '../../actions/getLocationActions';
 import SelectLocations from './SelectLocations.jsx';
 import Status from '../loading/loading.jsx';
+import moment from 'moment';
 
 let type='';
 let message ='';
 let green = '#4ad86a';
 let seatsMsg = '';
+let dateMsg = '';
 let show = {display: 'none'};
 class CreateTrip extends React.Component{
 
@@ -31,6 +33,14 @@ class CreateTrip extends React.Component{
 
   changeTripDate(ev) {
     this.setState({tripdate: ev.target.value});
+    const status = ev.target.value.trim();
+    const date =  new Date(status);
+    const Newdate = new Date(date.setTime( date.getTime() + 1 * 86400000 ));
+    if(moment()._d > Newdate){
+      dateMsg = 'You can\'t create a trip on a previous date/time';
+    }else{
+      dateMsg = '';
+    }
   }
 
   changeTime(ev) {
@@ -78,7 +88,7 @@ class CreateTrip extends React.Component{
       show = {display: 'none'};
 
     }else if (this.props.createTrip.statusCode === 400){
-      message = 'You should fill in all the inputs'
+      message = 'Your request has failed'
       type='';
       show = {display: 'none'};
 
@@ -99,6 +109,7 @@ class CreateTrip extends React.Component{
                       className='form-control'
                       onChange={this.changeTripDate.bind(this)}
                       />
+                    <p className='error'>{dateMsg}</p>
                   </div>
                   <div className='form-group'>
                     <label>Departure Time</label>
