@@ -1,7 +1,16 @@
 import React from 'react';
 import UserTripsRow from './userTripsRow.jsx';
 const userTripsSection = (
-  {userTrips, messageChange, delMessage, getUserTrips, CancelTripp, msg}
+  {
+    userTrips,
+    messageChange,
+    delMessage,
+    CancelTripp,
+    msg,
+    joinedUsers,
+    approveJoin,
+    getUserTrips
+  }
 ) => {
 
   if(!userTrips){
@@ -10,15 +19,15 @@ const userTripsSection = (
 
   return (
     <section className='mytrip'>
-        <h3 className='heading'>Created trips</h3>
-        <span className='caption'>Own trips apear here</span>
         <UserTripsRow
           userTrips = {userTrips}
           messageChange = {messageChange}
           delMessage = {delMessage}
-          getUserTrips = {() => getUserTrips()}
           CancelTripp = {data => CancelTripp(data)}
           msg ={msg}
+          joinedUsers = {joinedUsers}
+          approveJoin = { data => approveJoin(data) }
+          getUserTrips = {() => getUserTrips()}
           />
     </section>
   )

@@ -69,10 +69,15 @@ class PageHome extends React.Component {
                 </button>
               </div>
               {this.state.displayHint
-                ? <div>
-                    Only showing trips from {this.state.from}
-                    to {this.state.to}
-                    <button onClick={this.cancleSearch}>close</button>
+                ? <div style={{paddingBottom: '20px'}}>
+                    Only showing trips from {this.state.from} to {this.state.to}
+                    <button
+                      onClick={this.cancleSearch}
+                      style={{marginLeft: '10px'}}
+                      className='btn btn-danger'
+                      >
+                      close
+                    </button>
                   </div>
                 : null
 }

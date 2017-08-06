@@ -241,13 +241,20 @@ header .navbar-default .navbar-toggle:focus, header .navbar-default .navbar-togg
   padding-bottom: 0;
 }
 
-.mytrip:first-of-type {
-  padding-top: 20px;
-}
 
 .mytrip ul {
   padding-left: 0;
   margin-bottom: 10px;
+}
+
+.mytrip ol.approved-users li{
+  font-size: 14px;
+  display: block;
+}
+
+.mytrip ol.approved-users {
+  padding-left: 0;
+  margin-bottom: 0;
 }
 
 .mytrip ul li {
@@ -255,9 +262,11 @@ header .navbar-default .navbar-toggle:focus, header .navbar-default .navbar-togg
   padding: 8px 10px;
   border-radius: 5px;
   font-size: 0;
+  display: flex;
+  align-items: center;
 }
 
-.mytrip ul li:nth-child(odd) {
+.mytrip ul>li:nth-child(odd) {
   background-color: #eeeeee;
 }
 
@@ -269,7 +278,7 @@ header .navbar-default .navbar-toggle:focus, header .navbar-default .navbar-togg
 }
 
 .mytrip button.btn-default {
-  margin-bottom: 40px;
+  margin-bottom: 20px;
   margin-left: 10px;
 }
 
@@ -518,15 +527,13 @@ display: inline-block;
 
 .btns-wrp {
   padding-top: 20px;
-  text-align: center;
 }
 
 .btns-wrp button {
-  width: 85%;
-  margin-bottom: 4px;
   border-radius: 0;
+  margin-right: 1px;
 }
 
 .joined-users {
-    padding-top: 20px;
+    padding-bottom: 60px;
 }
