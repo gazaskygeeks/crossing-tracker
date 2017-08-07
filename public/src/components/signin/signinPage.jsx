@@ -95,7 +95,7 @@ class SigninPage extends React.Component {
                 </p>
                 <p className='link'>
                   <Link to='/signup' activeClassName='active'>
-                    Create new acount
+                    Create new account
                   </Link>
                 </p>
               </div>
