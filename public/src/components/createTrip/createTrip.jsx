@@ -37,6 +37,14 @@ class CreateTrip extends React.Component {
 
   changeTripDate(ev) {
     this.setState({tripdate: ev.target.value});
+    const status = ev.target.value.trim();
+    const date =  new Date(status);
+    const Newdate = new Date(date.setTime( date.getTime() + 1 * 86400000 ));
+    if(moment()._d > Newdate){
+      dateMsg = 'You can\'t create a trip on a previous date/time';
+    }else{
+      dateMsg = '';
+    }
   }
 
   changeTime(ev) {
@@ -102,7 +110,6 @@ class CreateTrip extends React.Component {
       show = {
         display: 'none'
       };
-
     } else if (this.props.createTrip.statusCode === 400) {
       message = 'You should fill in all the inputs'
       type = '';

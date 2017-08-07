@@ -2,9 +2,9 @@ import React from 'react';
 import { connect } from 'react-redux';
 import {getUserTrips} from '../../actions/myTripsActions.js';
 import UserTripsSection from './userTripsSection.jsx';
+import ExpiredTrips from './expiredTrips.jsx';
 import UserJoinedTrips from './userJoinedTrips.jsx';
-import {UnjoinTrip} from '../../actions/myTripsActions.js';
-import JoinedUsersRow from './joinedUsersRow.jsx';
+import { UnjoinTrip } from '../../actions/myTripsActions.js';
 import ApproveJoin from '../../actions/approveJoin.js';
 import {CancelTrip} from '../../actions/myTripsActions.js';
 let msg;
@@ -14,14 +14,14 @@ class TripsPage extends React.Component {
     super(props);
     this.state = {
       MyTrips: true,
-      JoinedUsers: false,
       JoinedTrips: false,
+      expiredTrips: false,
       message: ''
     };
     this.showMyTrips = this.showMyTrips.bind(this);
-    this.showJoinedUsers = this.showJoinedUsers.bind(this);
     this.showJoinedTrips = this.showJoinedTrips.bind(this);
     this.messageChange = this.messageChange.bind(this);
+    this.showExpiredTrips = this.showExpiredTrips.bind(this);
   }
 
   componentWillMount(){
@@ -42,80 +42,85 @@ class TripsPage extends React.Component {
     this.setState(
       {
         MyTrips: true,
-        JoinedUsers: false,
+        expiredTrips: false,
         JoinedTrips: false
       }
     );
 
-  }
-
-  showJoinedUsers(){
-    this.setState(
-      {
-        MyTrips: false,
-        JoinedUsers: true,
-        JoinedTrips: false
-      }
-    );
   }
 
   showJoinedTrips(){
     this.setState(
       {
         MyTrips: false,
-        JoinedUsers: false,
+        expiredTrips: false,
         JoinedTrips: true
       }
     );
   }
 
+  showExpiredTrips(){
+    this.setState(
+      {
+        MyTrips: false,
+        expiredTrips: true,
+        JoinedTrips: false
+      }
+    );
+  }
   render() {
 
     return (
-      <div className='container-fluid'>
+      <div className='container'>
         <div className='row'>
-          <div className='col-md-3 btns-wrp'>
+          <div className='col-md-offset-2 col-md-8 btns-wrp'>
             <button
-              className='btn btn-default'
+              className={this.state.MyTrips ?
+                'btn btn-default active' : 'btn btn-default' }
               onClick = {
                 this.showMyTrips
               }
               >
-              My trips
-            </button>
-            <button
-              className='btn btn-default'
-              onClick = {
-                this.showJoinedUsers
-              }
-              >
-              People joined my trips
+              Trips I own
             </button>
 
             <button
-              className='btn btn-default'
+
+              className={this.state.JoinedTrips ?
+                'btn btn-default active' : 'btn btn-default' }
               onClick = {
                 this.showJoinedTrips
               }
               >
               Trips I've joined
             </button>
+
+            <button
+              className={this.state.expiredTrips ?
+                'btn btn-default active' : 'btn btn-default' }
+              onClick = {
+                this.showExpiredTrips
+              }
+              >
+              Expired trips
+            </button>
           </div>
-          <div className='col-md-8'>
+          <div className='col-md-offset-2 col-md-8'>
             {this.state.MyTrips ? <UserTripsSection
               userTrips={this.props.GetUserTrips}
-              getUserTrips = {() => this.props.UserTrips()}
               messageChange = {this.messageChange}
               delMessage = {this.state.message}
               CancelTripp = { data => this.props.CancelTripp(data)}
               msg = {msg}
-              /> : null}
-
-            {this.state.JoinedUsers ? <JoinedUsersRow
               joinedUsers={this.props.JoinedUsers}
               approveJoin = {data => this.props.DoApproveJoin(data)}
               getUserTrips = {() => this.props.UserTrips()}
               /> : null}
+
+              {this.state.expiredTrips ? <ExpiredTrips
+                userTrips={this.props.GetUserTrips}
+                /> : null}
+
 
             {this.state.JoinedTrips ? <UserJoinedTrips
               joinedTrips={this.props.UserJoinedTrips}
@@ -133,7 +138,7 @@ class TripsPage extends React.Component {
 
 
 const mapStateToProps = (store) => {
-  console.log('store.userTrips: ',store.userTrips);
+  console.log('store.tripMembers: ',store.userTrips.tripMembers);
   return {
     GetUserTrips: store.userTrips.createdTrip,
     UserJoinedTrips: store.userTrips.joinedTrip,
