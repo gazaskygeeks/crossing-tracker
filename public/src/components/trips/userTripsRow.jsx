@@ -101,7 +101,7 @@ const UserTripsRow = (
     if(moment()._d < Newdate){
       return(
         <div key={trip.trip_id}>
-          <h3 className='heading'>Trip I own</h3>
+          <h3 className='heading'>Trips I own</h3>
           <ul>
             <li><label>Trip date</label> <span>{trip.date}</span></li>
             <li><label>Departure Time</label> <span>{trip.time}</span></li>
