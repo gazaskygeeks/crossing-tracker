@@ -35,16 +35,19 @@
     content: "Time: ";
   }
   .trip-details:first-of-type table tbody tr td:nth-child(3):before {
-    content: "From: ";
+    content: "Estimated duration: ";
   }
   .trip-details:first-of-type table tbody tr td:nth-child(4):before {
-    content: "To: ";
+    content: "From: ";
   }
   .trip-details:first-of-type table tbody tr td:nth-child(5):before {
+    content: "To: ";
+  }
+  .trip-details:first-of-type table tbody tr td:nth-child(6):before {
     content: "Other Details: ";
   }
 
-  .trip-details:first-of-type table tbody tr td:nth-child(6):before {
+  .trip-details:first-of-type table tbody tr td:nth-child(7):before {
     content: "Seats available: ";
   }
   .trip-details:first-of-type table tbody tr td:last-child:before {
