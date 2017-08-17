@@ -327,8 +327,8 @@ function selectusersbytripid(data, cb){
   dbutils.runQuery(query,[data],cb)
 }
 function getTripByToken(data,cb){
-  const query = 'SELECT *  from usertrip where token = $1 and approved=0;';
-  dbutils.runQuery(query,[data],cb)
+  const query = 'SELECT *  from usertrip where token=$1 and user_approved=0;';
+  dbutils.runQuery(query,[data[0]],cb)
 
 }
 module.exports = {

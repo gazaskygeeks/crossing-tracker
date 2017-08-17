@@ -86,10 +86,10 @@ module.exports = (req, res) => {
                               `Hi ${username},
                               ${involved} has requested to join your trip,
                               to accept the passenger please click
-                              <a href="http://${req.headers.host}/#/approve/${token}/1">here
+                              <a href="http://${req.headers.host}/approve/${token}/1">here
                               </a> </b>
                               to Reject the passenger please click
-                              <a href="http://${req.headers.host}/#/approve/${token}/2">here
+                              <a href="http://${req.headers.host}/approve/${token}/2">here
                               </a> </b>
                               or </b>
                               go to "My trips" to Accept/Reject passenger.
