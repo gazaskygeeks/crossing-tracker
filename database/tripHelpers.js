@@ -69,10 +69,11 @@ function addtripuser(data,cb){
   const usertripQuery = `INSERT INTO  usertrip
   (
     user_id ,
-    trip_id
+    trip_id ,
+    token
   )VALUES
   (
-    $1,$2
+    $1,$2,$3
   )
   ;`;
   dbutils.runQuery(usertripQuery, data, cb);
@@ -325,6 +326,11 @@ function selectusersbytripid(data, cb){
   const query = 'SELECT user_id  from usertrip where trip_id = $1;';
   dbutils.runQuery(query,[data],cb)
 }
+function getTripByToken(data,cb){
+  const query = 'SELECT *  from usertrip where token = $1 and approved=0;';
+  dbutils.runQuery(query,[data],cb)
+
+}
 module.exports = {
   getTripFromTo,
   getTripFrom,
@@ -350,5 +356,6 @@ module.exports = {
   getAllJionedUserIdByTripId,
   getTripByTime,
   cancelTrip,
-  selectusersbytripid
+  selectusersbytripid,
+  getTripByToken
 }
