@@ -51,6 +51,19 @@ const approvedColumn =`DO $$
     END;
 $$ ;
 `
+const tokenColumn =`DO $$
+    BEGIN
+        BEGIN
+            ALTER TABLE usertrip ADD COLUMN   token varchar(255) NULL;
+        EXCEPTION
+              WHEN duplicate_column
+            THEN RAISE NOTICE
+            'column token
+            already exists in usertrip';
+        END;
+    END;
+$$ ;
+`
 const sequence = 'ALTER SEQUENCE trip_trip_id_seq RESTART WITH 10000;';
 const trip_status = `DO $$
     BEGIN
@@ -89,5 +102,6 @@ module.exports = {
   approvedColumn,
   sequence,
   trip_status,
-  duration
+  duration,
+  tokenColumn
 }

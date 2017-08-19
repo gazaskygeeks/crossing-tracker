@@ -9,7 +9,9 @@ function runMigrate(cb) {
   ${table.usertrip}
   ${table.approvedColumn}
   ${table.trip_status}
-  ${table.duration}`
+  ${table.duration}
+  ${table.tokenColumn}
+  `
   client.query(tables, cb);
 }
 function runSequence (cb){

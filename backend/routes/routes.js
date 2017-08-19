@@ -1,4 +1,5 @@
 
+  
 module.exports=[
   require ('./signup.js'),
   require ('./home.js'),
@@ -18,6 +19,7 @@ module.exports=[
   require('./edittrip.js'),
   require('./removejoinedtrip.js'),
   require('./cancelTrip.js'),
+  require('./approveJoinnedLink.js'),
   require('./approveJoinned.js'),
   require('./allTrips.js'),
   require('./forgetPassword.js'),
